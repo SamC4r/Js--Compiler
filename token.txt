@@ -1,0 +1,10 @@
+<palabraReservada, 10>
+<entero, 1>
+<palabraReservada, 3>
+<id, 1>
+<id, 1>
+<id, 1>
+<id, 1>
+<id, 1>
+<id, 1>
+<id, 1>
