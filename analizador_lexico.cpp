@@ -67,7 +67,7 @@ enum class TiposToken{
   PARENTESIS_IZQ,
   PARENTESIS_DER,
   LLAVE_IZQ,
-  LLAVE_DER,
+
 };
 
 struct Generator{
@@ -87,16 +87,24 @@ struct Generator{
   };
 
   unordered_map<char, string> tipo_caracter_especial ={
-  {'=',"operadorAsignacion"},
-  {',',"coma"},
-  {';',"puntoComa"},
-  {'(',"parentesisIzda"},
-  {')',"parentesisDcha"},
-  {'{',"llavesIzda"},
-  {'}',"llavesDcha"},
+    {'=',"operadorAsignacion"},
+    {',',"coma"},
+    {';',"puntoComa"},
+    {'(',"parentesisIzda"},
+    {')',"parentesisDcha"},
+    {'{',"llavesIzda"},
+    {'}',"llavesDcha"},
+    {'-',"operadorMenos"},
+    {'%',"operadorModulo"},
+    {'>',"opeardorMayor"},
+    {'!',"operadorNegacion"},
   };
 
+  unordered_map<string,string> operadoresEspeciales = {
+    {"--","operadorEspecial"},
+  };
 
+  int cnt=0;
   fstream token_file;
   template<typename T1, typename T2>
   void gen_token(T1 tipo, T2 atributo){
@@ -113,15 +121,26 @@ struct Generator{
     if(codigo_palabra_reservada.count(identificador)){
       gen_token("palabraReservada",codigo_palabra_reservada[identificador]);
     }else{
-      gen_token("id",1);
+      gen_token("id",++cnt);
     }
   }
+
   void Token(char c){
     gen_token(tipo_caracter_especial[c],'-');
   }
+
   void Token(int valor){
     gen_token("constanteEntera",valor);
   }
+
+  void Token(TiposToken tipo){
+    gen_token("operadorEspecial",'-');
+  }
+
+  void Token(string str,char del){
+    if(del == '\'') gen_token("cadena",str);
+  }
+
 };
 
 class AnalizadorLexico{
@@ -147,14 +166,22 @@ private:
   }
 
   bool caracter_especial(char c){
-    return (c == '=' || c == '%' || c == '-' || c == '(' || c == ')' || c == '{' || c == '}' || c == ';' || c == ',');
-    
+    return (c == '=' || c == '%' || c == '-' || c == '(' || c == ')' || c == '{' || c == '}' || c == ';' || c == ',' || c == '%' || c == '>' || c == '!');
+  }
+
+  bool cadena(char c){
+    return (c == '\'');
+  }
+
+
+  bool menos(char c){
+    return (c == '-');
   }
 
   char leer_digito(){
     int number=0;
-    char c = programa.get();
-    while(d(c) && !programa.eof()){
+    char c;
+    while(d(c=programa.peek()) && !programa.eof()){
       number = number * 10 + (c - '0');
       c=programa.get();
     }
@@ -165,14 +192,55 @@ private:
 
   char leer_letra(){
     string palabra="";
-    char c = programa.get();
-    while((l(c) || d(c)) && !programa.eof()){
+    char c;
+    while((l(c = programa.peek()) || d(c)) && !programa.eof()){
       palabra+=c;
       c=programa.get();
     }
     cerr << "Palabra: " << palabra << endl;
     generator.Token(palabra);
     return c;
+  }
+
+
+  char predecremento(){
+    string decremento = "";
+    char c;
+    int cnt=0;
+    while(menos(c=programa.peek()) && !programa.eof()){
+      decremento+=c;
+      c=programa.get();
+      cnt++;
+    }
+    if(cnt > 2){
+      throw runtime_error("Expresion expected");
+    }else if(cnt == 2){
+      cerr << "predecremento: " << decremento << endl;
+      generator.Token(TiposToken::OPERADOR_ESPECIAL);
+    }else{
+      //operador menos
+      generator.Token(c);
+    }
+    return c;
+  }
+
+  char cadena(){
+    string str = "";
+    char c = programa.get(); //to skip '  --> place pointer on it. Then test for the next ones
+    int cnt=1;
+    while(!cadena(c=programa.peek()) && !programa.eof()){
+      str+=c;
+      c=programa.get();
+    }
+    debug(str);
+    if(cnt > 2){
+      throw runtime_error("Cadena no cerrada");
+    }else{
+      //operador menos
+      generator.Token(str,'\'');
+    }
+    return c;
+
   }
 
 public:
@@ -188,19 +256,27 @@ public:
     char c;
     while (programa && !programa.eof()){
       c=programa.peek();
-
       if(l(c)){
         c=leer_letra();
       }else if(d(c)){
         c=leer_digito();
+      }else if(menos(c)){
+        c=predecremento();
+      }else if(cadena(c)){
+        c=cadena();
       }
 
       if(is_delimiter(c)){
-        cerr << "Delimiter: " << (int)c << endl;
+        cerr << "Delimiter: " << (int) c << endl;
       }else if(caracter_especial(c)){
+
+        if(menos(c))continue;
+        if(cadena(c))continue;
+
+        cerr << "especial: " << c << endl;
         generator.Token(c);
       }
-      programa.get();
+      c=programa.get();
     }
   }
 };
