@@ -79,12 +79,12 @@ void Generator::Token(string identificador){
     gen_token("palabraReservada",codigo_palabra_reservada[identificador]);
   }else{
 
-    TablaSimbolos simbolos = queue.top();
-    if(simbolos.get(identificador) == -1){
-      simbolos.add(identificador);
-      cout << "simbolo nuevo: " << simbolos.get(identificador) << endl;
+    TablaSimbolos* simbolos = queue.top();
+    if(simbolos->get(identificador) == -1){
+      simbolos->add(identificador);
+      cout << "simbolo nuevo: " << simbolos->get(identificador) << endl;
     }
-    gen_token("id",simbolos.get(identificador));
+    gen_token("id",simbolos->get(identificador));
   }
 }
 

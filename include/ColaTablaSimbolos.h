@@ -16,6 +16,6 @@ public:
   ColaTablaSimbolos();
   void add(TablaSimbolos symbol);
   void pop();
-  TablaSimbolos top();
+  TablaSimbolos* top();
   void search(string id);
 };

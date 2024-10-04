@@ -16,7 +16,7 @@ void ColaTablaSimbolos::pop() {
   q.pop();
 }
 
-TablaSimbolos ColaTablaSimbolos::top() {
-  return q.front();
+TablaSimbolos* ColaTablaSimbolos::top() {
+  return &q.front();
 }
 
