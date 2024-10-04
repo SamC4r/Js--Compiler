@@ -15,3 +15,5 @@ a='cadena 1'
 b = 'string de prueba para el ... $*(^@#8&^&!^#&^)'
 
 var otro = 'string jijijijai'
+
+var no='no lo soonieeeeeeee eeeeeee eeeee'

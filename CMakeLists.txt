@@ -14,6 +14,8 @@ include_directories(${PROJECT_SOURCE_DIR}/include)
 set(SOURCES
     include/principal.cpp           # Main file
     include/analizador_lexico.cpp   # Source file inside the include directory
+    include/TablaSimbolos.cpp
+    include/ColaTablaSimbolos.cpp
 )
 
 # Add executable

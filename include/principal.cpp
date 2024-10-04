@@ -4,6 +4,8 @@
 
 #include "tabla-simbolos.h"
 #include "analizador_lexico.h"
+#include "TablaSimbolos.h"
+#include "ColaTablaSimbolos.h"
 
  
 #define all(x) (x).begin(), (x).end()
@@ -21,7 +23,9 @@ int main() {
   string filename = "ejemplo.jsm";
   string token_file="tokens.txt";
 
-  AnalizadorLexico lexico(filename,token_file);
+  ColaTablaSimbolos queue;
+  AnalizadorLexico lexico(filename,token_file,queue);
+
  
   return 0;
 }

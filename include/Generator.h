@@ -1,6 +1,8 @@
 #include<unordered_map>
 #include<string>
 #include<fstream>
+
+#include "ColaTablaSimbolos.h"
 #include "TiposToken.h"
 
 
@@ -10,6 +12,8 @@ using namespace std;
 class Generator{
   
 fstream token_file;
+  ColaTablaSimbolos queue;
+
 public:
   unordered_map<string,int> codigo_palabra_reservada = {
     {"boolean",1},
@@ -48,7 +52,7 @@ public:
   template<typename T1, typename T2>
   void gen_token(T1 tipo, T2 atributo);
 
-  void init(string file_name);
+  void init(string file_name,ColaTablaSimbolos &queue);
   void Token(string identificador);
   void Token(char c);
   void Token(int valor);

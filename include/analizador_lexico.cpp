@@ -5,6 +5,8 @@
 #include<string>
 #include <unordered_map>
 #include "Generator.h"
+#include "TablaSimbolos.h"
+#include "ColaTablaSimbolos.h"
 
 #define endl "\n"
 
@@ -62,8 +64,12 @@ void Generator::gen_token(T1 tipo, T2 atributo){
 }
 
 
-void Generator::init(string file_name){
+void Generator::init(string file_name,ColaTablaSimbolos &queue){
   token_file.open(file_name,fstream::out);
+  this->queue=queue;
+
+  TablaSimbolos global;
+  this->queue.add(global);
 }
 
 void Generator::Token(string identificador){
@@ -71,7 +77,10 @@ void Generator::Token(string identificador){
   if(codigo_palabra_reservada.count(identificador)){
     gen_token("palabraReservada",codigo_palabra_reservada[identificador]);
   }else{
+
     gen_token("id",++cnt);
+    TablaSimbolos simbolos = queue.top();
+    cout << "AAAAAAAAAAAAAAAA ";
   }
 }
 
@@ -190,9 +199,10 @@ char AnalizadorLexico::cadena(){
   return c;
 }
 
-AnalizadorLexico::AnalizadorLexico (string nombre,string token_file){
+AnalizadorLexico::AnalizadorLexico (string nombre,string token_file,ColaTablaSimbolos &queue){
   programa.open(nombre, ios::in);
-  generator.init(token_file);
+  generator.init(token_file,queue);
+  
 
   if(!programa.is_open()){
     cout << "[+] Error abriendo archivo" << endl;

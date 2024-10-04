@@ -1,1 +1,1 @@
-/usr/bin/c++ -g CMakeFiles/JsCompiler.dir/include/principal.cpp.o CMakeFiles/JsCompiler.dir/include/analizador_lexico.cpp.o -o JsCompiler
+/usr/bin/c++ -g CMakeFiles/JsCompiler.dir/include/principal.cpp.o CMakeFiles/JsCompiler.dir/include/analizador_lexico.cpp.o CMakeFiles/JsCompiler.dir/include/TablaSimbolos.cpp.o CMakeFiles/JsCompiler.dir/include/ColaTablaSimbolos.cpp.o -o JsCompiler

@@ -1,9 +1,7 @@
-#include <ios>
-#include<iostream>
 #include <fstream>
 #include<string>
-#include <unordered_map>
 #include "Generator.h"
+#include "ColaTablaSimbolos.h"
 
 
 using namespace std;
@@ -27,7 +25,7 @@ private:
   char cadena();
 
 public:
-  AnalizadorLexico(string nombre,string token_file);
+  AnalizadorLexico(string nombre,string token_file, ColaTablaSimbolos &queue);
 
 };
 

@@ -1,4 +1,8 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/JsCompiler.dir/include/ColaTablaSimbolos.cpp.o"
+  "CMakeFiles/JsCompiler.dir/include/ColaTablaSimbolos.cpp.o.d"
+  "CMakeFiles/JsCompiler.dir/include/TablaSimbolos.cpp.o"
+  "CMakeFiles/JsCompiler.dir/include/TablaSimbolos.cpp.o.d"
   "CMakeFiles/JsCompiler.dir/include/analizador_lexico.cpp.o"
   "CMakeFiles/JsCompiler.dir/include/analizador_lexico.cpp.o.d"
   "CMakeFiles/JsCompiler.dir/include/principal.cpp.o"

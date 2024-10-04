@@ -40,3 +40,7 @@
 <id, 14>
 <operadorAsignacion, ->
 <cadena, string jijijijai>
+<palabraReservada, 10>
+<id, 15>
+<operadorAsignacion, ->
+<cadena, no lo soonieeeeeeee eeeeeee eeeee>

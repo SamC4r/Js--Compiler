@@ -179,12 +179,22 @@ CMakeFiles/JsCompiler.dir/include/principal.cpp.o: \
  /usr/include/c++/13/fstream \
  /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
- /usr/include/c++/13/bits/fstream.tcc /usr/include/c++/13/unordered_map \
+ /usr/include/c++/13/bits/fstream.tcc \
+ /home/sam/Documents/compiler/Js--Compiler/include/Generator.h \
+ /usr/include/c++/13/unordered_map \
  /usr/include/c++/13/bits/unordered_map.h \
  /usr/include/c++/13/bits/hashtable.h \
  /usr/include/c++/13/bits/hashtable_policy.h \
  /usr/include/c++/13/bits/enable_special_members.h \
  /usr/include/c++/13/bits/node_handle.h \
  /usr/include/c++/13/bits/erase_if.h \
- /home/sam/Documents/compiler/Js--Compiler/include/Generator.h \
+ /home/sam/Documents/compiler/Js--Compiler/include/ColaTablaSimbolos.h \
+ /usr/include/c++/13/queue /usr/include/c++/13/deque \
+ /usr/include/c++/13/bits/stl_uninitialized.h \
+ /usr/include/c++/13/bits/stl_deque.h /usr/include/c++/13/bits/deque.tcc \
+ /usr/include/c++/13/vector /usr/include/c++/13/bits/stl_vector.h \
+ /usr/include/c++/13/bits/stl_bvector.h \
+ /usr/include/c++/13/bits/vector.tcc /usr/include/c++/13/bits/stl_heap.h \
+ /usr/include/c++/13/bits/stl_queue.h \
+ /home/sam/Documents/compiler/Js--Compiler/include/TablaSimbolos.h \
  /home/sam/Documents/compiler/Js--Compiler/include/TiposToken.h
