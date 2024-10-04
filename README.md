@@ -5,7 +5,7 @@
 
 # 🗿
 
-# Installation
+# Compile & Test
 1. `git clone https://github.com/SamC4r/Js--Compiler.git`
 2. `cd Js--Compiler/build`
 3. `cmake ..`
