@@ -31,4 +31,3 @@ public:
 
 };
 
-vector<pair<char,int>> v;
