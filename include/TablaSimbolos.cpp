@@ -9,11 +9,23 @@ Implementacion de los metodos de la clase TablaSimbolos
 
 using namespace std;
 
-
 TablaSimbolos::TablaSimbolos() {
-  value=2;
+  this->cnt=0;
 }
 
 void TablaSimbolos::print() {
-  cout << value << endl;
+  cout << "hola " << endl;
+}
+
+void TablaSimbolos::add(string id) {
+  simbolos[id]={cnt++,id,"var"};
+  cout << simbolos[id].pos << endl;
+}
+
+int TablaSimbolos::get(string id) {
+  if(!simbolos.count(id)){
+    return -1;
+  }else{
+    return simbolos[id].pos;
+  }
 }

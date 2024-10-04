@@ -2,7 +2,6 @@
 #include<filesystem> // 
 #include<iostream>
 
-#include "tabla-simbolos.h"
 #include "analizador_lexico.h"
 #include "TablaSimbolos.h"
 #include "ColaTablaSimbolos.h"

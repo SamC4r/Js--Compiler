@@ -70,6 +70,7 @@ void Generator::init(string file_name,ColaTablaSimbolos &queue){
 
   TablaSimbolos global;
   this->queue.add(global);
+  cout << "global added" << endl;
 }
 
 void Generator::Token(string identificador){
@@ -78,9 +79,12 @@ void Generator::Token(string identificador){
     gen_token("palabraReservada",codigo_palabra_reservada[identificador]);
   }else{
 
-    gen_token("id",++cnt);
     TablaSimbolos simbolos = queue.top();
-    cout << "AAAAAAAAAAAAAAAA ";
+    if(simbolos.get(identificador) == -1){
+      simbolos.add(identificador);
+      cout << "simbolo nuevo: " << simbolos.get(identificador) << endl;
+    }
+    gen_token("id",simbolos.get(identificador));
   }
 }
 
