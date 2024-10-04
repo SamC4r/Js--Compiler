@@ -180,6 +180,7 @@ char AnalizadorLexico::predecremento(){
     generator.Token(TiposToken::OPERADOR_ESPECIAL);
   }else{
     //operador menos
+    cerr << "<menos,->" << ' ' << c << endl;
     generator.Token(c);
   }
   return c;
@@ -225,6 +226,7 @@ AnalizadorLexico::AnalizadorLexico (string nombre,string token_file,ColaTablaSim
       c=predecremento();
     }else if(cadena(c)){
       c=cadena();
+      debug(c);
     }
 
     if(is_delimiter(c)){
@@ -236,7 +238,7 @@ AnalizadorLexico::AnalizadorLexico (string nombre,string token_file,ColaTablaSim
 
       cerr << "especial: " << c << endl;
       generator.Token(c);
-    }
+    }else if(d(c) || l(c))continue;
     c=programa.get();
   }
 }
