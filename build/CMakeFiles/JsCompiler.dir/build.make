@@ -97,19 +97,51 @@ CMakeFiles/JsCompiler.dir/include/analizador_lexico.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/JsCompiler.dir/include/analizador_lexico.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sam/Documents/compiler/Js--Compiler/include/analizador_lexico.cpp -o CMakeFiles/JsCompiler.dir/include/analizador_lexico.cpp.s
 
+CMakeFiles/JsCompiler.dir/include/TablaSimbolos.cpp.o: CMakeFiles/JsCompiler.dir/flags.make
+CMakeFiles/JsCompiler.dir/include/TablaSimbolos.cpp.o: /home/sam/Documents/compiler/Js--Compiler/include/TablaSimbolos.cpp
+CMakeFiles/JsCompiler.dir/include/TablaSimbolos.cpp.o: CMakeFiles/JsCompiler.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/sam/Documents/compiler/Js--Compiler/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/JsCompiler.dir/include/TablaSimbolos.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/JsCompiler.dir/include/TablaSimbolos.cpp.o -MF CMakeFiles/JsCompiler.dir/include/TablaSimbolos.cpp.o.d -o CMakeFiles/JsCompiler.dir/include/TablaSimbolos.cpp.o -c /home/sam/Documents/compiler/Js--Compiler/include/TablaSimbolos.cpp
+
+CMakeFiles/JsCompiler.dir/include/TablaSimbolos.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/JsCompiler.dir/include/TablaSimbolos.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sam/Documents/compiler/Js--Compiler/include/TablaSimbolos.cpp > CMakeFiles/JsCompiler.dir/include/TablaSimbolos.cpp.i
+
+CMakeFiles/JsCompiler.dir/include/TablaSimbolos.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/JsCompiler.dir/include/TablaSimbolos.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sam/Documents/compiler/Js--Compiler/include/TablaSimbolos.cpp -o CMakeFiles/JsCompiler.dir/include/TablaSimbolos.cpp.s
+
+CMakeFiles/JsCompiler.dir/include/ColaTablaSimbolos.cpp.o: CMakeFiles/JsCompiler.dir/flags.make
+CMakeFiles/JsCompiler.dir/include/ColaTablaSimbolos.cpp.o: /home/sam/Documents/compiler/Js--Compiler/include/ColaTablaSimbolos.cpp
+CMakeFiles/JsCompiler.dir/include/ColaTablaSimbolos.cpp.o: CMakeFiles/JsCompiler.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/sam/Documents/compiler/Js--Compiler/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/JsCompiler.dir/include/ColaTablaSimbolos.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/JsCompiler.dir/include/ColaTablaSimbolos.cpp.o -MF CMakeFiles/JsCompiler.dir/include/ColaTablaSimbolos.cpp.o.d -o CMakeFiles/JsCompiler.dir/include/ColaTablaSimbolos.cpp.o -c /home/sam/Documents/compiler/Js--Compiler/include/ColaTablaSimbolos.cpp
+
+CMakeFiles/JsCompiler.dir/include/ColaTablaSimbolos.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/JsCompiler.dir/include/ColaTablaSimbolos.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sam/Documents/compiler/Js--Compiler/include/ColaTablaSimbolos.cpp > CMakeFiles/JsCompiler.dir/include/ColaTablaSimbolos.cpp.i
+
+CMakeFiles/JsCompiler.dir/include/ColaTablaSimbolos.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/JsCompiler.dir/include/ColaTablaSimbolos.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sam/Documents/compiler/Js--Compiler/include/ColaTablaSimbolos.cpp -o CMakeFiles/JsCompiler.dir/include/ColaTablaSimbolos.cpp.s
+
 # Object files for target JsCompiler
 JsCompiler_OBJECTS = \
 "CMakeFiles/JsCompiler.dir/include/principal.cpp.o" \
-"CMakeFiles/JsCompiler.dir/include/analizador_lexico.cpp.o"
+"CMakeFiles/JsCompiler.dir/include/analizador_lexico.cpp.o" \
+"CMakeFiles/JsCompiler.dir/include/TablaSimbolos.cpp.o" \
+"CMakeFiles/JsCompiler.dir/include/ColaTablaSimbolos.cpp.o"
 
 # External object files for target JsCompiler
 JsCompiler_EXTERNAL_OBJECTS =
 
 JsCompiler: CMakeFiles/JsCompiler.dir/include/principal.cpp.o
 JsCompiler: CMakeFiles/JsCompiler.dir/include/analizador_lexico.cpp.o
+JsCompiler: CMakeFiles/JsCompiler.dir/include/TablaSimbolos.cpp.o
+JsCompiler: CMakeFiles/JsCompiler.dir/include/ColaTablaSimbolos.cpp.o
 JsCompiler: CMakeFiles/JsCompiler.dir/build.make
 JsCompiler: CMakeFiles/JsCompiler.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/sam/Documents/compiler/Js--Compiler/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable JsCompiler"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/sam/Documents/compiler/Js--Compiler/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable JsCompiler"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/JsCompiler.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

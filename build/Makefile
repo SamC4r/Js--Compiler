@@ -129,6 +129,54 @@ JsCompiler/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/JsCompiler.dir/build.make CMakeFiles/JsCompiler.dir/build
 .PHONY : JsCompiler/fast
 
+include/ColaTablaSimbolos.o: include/ColaTablaSimbolos.cpp.o
+.PHONY : include/ColaTablaSimbolos.o
+
+# target to build an object file
+include/ColaTablaSimbolos.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/JsCompiler.dir/build.make CMakeFiles/JsCompiler.dir/include/ColaTablaSimbolos.cpp.o
+.PHONY : include/ColaTablaSimbolos.cpp.o
+
+include/ColaTablaSimbolos.i: include/ColaTablaSimbolos.cpp.i
+.PHONY : include/ColaTablaSimbolos.i
+
+# target to preprocess a source file
+include/ColaTablaSimbolos.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/JsCompiler.dir/build.make CMakeFiles/JsCompiler.dir/include/ColaTablaSimbolos.cpp.i
+.PHONY : include/ColaTablaSimbolos.cpp.i
+
+include/ColaTablaSimbolos.s: include/ColaTablaSimbolos.cpp.s
+.PHONY : include/ColaTablaSimbolos.s
+
+# target to generate assembly for a file
+include/ColaTablaSimbolos.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/JsCompiler.dir/build.make CMakeFiles/JsCompiler.dir/include/ColaTablaSimbolos.cpp.s
+.PHONY : include/ColaTablaSimbolos.cpp.s
+
+include/TablaSimbolos.o: include/TablaSimbolos.cpp.o
+.PHONY : include/TablaSimbolos.o
+
+# target to build an object file
+include/TablaSimbolos.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/JsCompiler.dir/build.make CMakeFiles/JsCompiler.dir/include/TablaSimbolos.cpp.o
+.PHONY : include/TablaSimbolos.cpp.o
+
+include/TablaSimbolos.i: include/TablaSimbolos.cpp.i
+.PHONY : include/TablaSimbolos.i
+
+# target to preprocess a source file
+include/TablaSimbolos.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/JsCompiler.dir/build.make CMakeFiles/JsCompiler.dir/include/TablaSimbolos.cpp.i
+.PHONY : include/TablaSimbolos.cpp.i
+
+include/TablaSimbolos.s: include/TablaSimbolos.cpp.s
+.PHONY : include/TablaSimbolos.s
+
+# target to generate assembly for a file
+include/TablaSimbolos.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/JsCompiler.dir/build.make CMakeFiles/JsCompiler.dir/include/TablaSimbolos.cpp.s
+.PHONY : include/TablaSimbolos.cpp.s
+
 include/analizador_lexico.o: include/analizador_lexico.cpp.o
 .PHONY : include/analizador_lexico.o
 
@@ -186,6 +234,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... JsCompiler"
+	@echo "... include/ColaTablaSimbolos.o"
+	@echo "... include/ColaTablaSimbolos.i"
+	@echo "... include/ColaTablaSimbolos.s"
+	@echo "... include/TablaSimbolos.o"
+	@echo "... include/TablaSimbolos.i"
+	@echo "... include/TablaSimbolos.s"
 	@echo "... include/analizador_lexico.o"
 	@echo "... include/analizador_lexico.i"
 	@echo "... include/analizador_lexico.s"

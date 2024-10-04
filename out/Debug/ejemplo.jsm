@@ -1,19 +1,15 @@
-
-var c = 1;
-
-function sum(a,b){
-  output a % b > !a;
+var    int a   ;
+var    int b       ;
+var    int number  ;
+output  'Introduce el primer operando' ;
+input a;
+output 'Introduce el segundo operando';input  
+	b;
+function int operacion (int num1, int num2)
+{
+	return num1%num2;
 }
 
---c
-
-sum(a,b);
-
-a-b
-
-a='cadena 1'
-b = 'string de prueba para el ... $*(^@#8&^&!^#&^)'
-
-var otro = 'string jijijijai'
-
-var no='no lo soonieeeeeeee eeeeeee eeeee'
+number = operacion (a, b);
+output 'Ojo: el valor que se acaba de calcular no excede el valor permitido.'
+;

@@ -172,5 +172,5 @@ CMakeFiles/JsCompiler.dir/include/analizador_lexico.cpp.o: \
  /usr/include/c++/13/bits/vector.tcc /usr/include/c++/13/bits/stl_heap.h \
  /usr/include/c++/13/bits/stl_queue.h \
  /home/sam/Documents/compiler/Js--Compiler/include/TablaSimbolos.h \
- /usr/include/c++/13/iostream \
- /home/sam/Documents/compiler/Js--Compiler/include/TiposToken.h
+ /home/sam/Documents/compiler/Js--Compiler/include/TiposToken.h \
+ /usr/include/c++/13/iostream

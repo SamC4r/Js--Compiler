@@ -197,7 +197,11 @@ char AnalizadorLexico::cadena(){
   debug(str);
   if(cnt > 2){
     throw runtime_error("Cadena no cerrada");
-  }else{
+  }
+  if(str.size() > 64){
+    throw runtime_error("Cadena demasiado larga");
+  }
+  else{
     //operador menos
     generator.Token(str,'\'');
   }

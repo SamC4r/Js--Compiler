@@ -174,7 +174,6 @@ CMakeFiles/JsCompiler.dir/include/principal.cpp.o: \
  /usr/include/c++/13/ext/aligned_buffer.h \
  /usr/include/c++/13/bits/fs_dir.h /usr/include/c++/13/bits/fs_ops.h \
  /usr/include/c++/13/iostream \
- /home/sam/Documents/compiler/Js--Compiler/include/tabla-simbolos.h \
  /home/sam/Documents/compiler/Js--Compiler/include/analizador_lexico.h \
  /usr/include/c++/13/fstream \
  /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
