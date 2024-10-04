@@ -1,0 +1,14 @@
+[
+{
+  "directory": "/home/sam/Documents/compiler/Js--Compiler/out/Debug",
+  "command": "/usr/bin/c++  -I/home/sam/Documents/compiler/Js--Compiler/include -g -std=gnu++17 -o CMakeFiles/JsCompiler.dir/include/principal.cpp.o -c /home/sam/Documents/compiler/Js--Compiler/include/principal.cpp",
+  "file": "/home/sam/Documents/compiler/Js--Compiler/include/principal.cpp",
+  "output": "CMakeFiles/JsCompiler.dir/include/principal.cpp.o"
+},
+{
+  "directory": "/home/sam/Documents/compiler/Js--Compiler/out/Debug",
+  "command": "/usr/bin/c++  -I/home/sam/Documents/compiler/Js--Compiler/include -g -std=gnu++17 -o CMakeFiles/JsCompiler.dir/include/analizador_lexico.cpp.o -c /home/sam/Documents/compiler/Js--Compiler/include/analizador_lexico.cpp",
+  "file": "/home/sam/Documents/compiler/Js--Compiler/include/analizador_lexico.cpp",
+  "output": "CMakeFiles/JsCompiler.dir/include/analizador_lexico.cpp.o"
+}
+]

@@ -1,0 +1,3 @@
+/home/sam/Documents/compiler/Js--Compiler/out/Debug/CMakeFiles/JsCompiler.dir
+/home/sam/Documents/compiler/Js--Compiler/out/Debug/CMakeFiles/edit_cache.dir
+/home/sam/Documents/compiler/Js--Compiler/out/Debug/CMakeFiles/rebuild_cache.dir

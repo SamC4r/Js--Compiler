@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/JsCompiler.dir/include/principal.cpp.o CMakeFiles/JsCompiler.dir/include/analizador_lexico.cpp.o -o JsCompiler

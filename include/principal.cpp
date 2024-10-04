@@ -1,7 +1,9 @@
 
-#include "analizador_lexico.h"
+#include<filesystem> // 
 #include<iostream>
+
 #include "tabla-simbolos.h"
+#include "analizador_lexico.h"
 
  
 #define all(x) (x).begin(), (x).end()
@@ -13,6 +15,8 @@ using namespace std;
 int main() {
   ios_base::sync_with_stdio(0);
   cin.tie(NULL);
+
+  cout << filesystem::current_path() << endl;
 
   string filename = "ejemplo.jsm";
   string token_file="tokens.txt";
