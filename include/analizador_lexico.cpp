@@ -121,7 +121,7 @@ bool AnalizadorLexico::d(char c){
 }
 
 bool AnalizadorLexico::l(char c){
-  return ((c >='a' && c<='z') || (c >= 'A' && c<='Z'));
+  return ((c >='a' && c<='z') || (c >= 'A' && c<='Z') || c == '_');
 }
 
 bool AnalizadorLexico::caracter_especial(char c){
@@ -145,6 +145,10 @@ char AnalizadorLexico::leer_digito(){
     c=programa.get();
   }
   cerr << "Numero: " << number << endl;
+  if(number >= (1 << 15)){
+
+    throw runtime_error("Numero demasiado grande");
+  }
   generator.Token(number);
   return c;
 }
@@ -201,10 +205,10 @@ char AnalizadorLexico::cadena(){
   if(str.size() > 64){
     throw runtime_error("Cadena demasiado larga");
   }
-  else{
-    //operador menos
-    generator.Token(str,'\'');
-  }
+  
+  //operador menos
+  generator.Token(str,'\'');
+ 
   return c;
 }
 
@@ -220,6 +224,7 @@ AnalizadorLexico::AnalizadorLexico (string nombre,string token_file,ColaTablaSim
   string s = "";
   char c;
   cout << "jijiji" << endl;
+  bool negativo=false;
   while (programa && !programa.eof()){
     c=programa.peek();
     if(l(c)){
@@ -237,7 +242,10 @@ AnalizadorLexico::AnalizadorLexico (string nombre,string token_file,ColaTablaSim
       cerr << "Delimiter: " << (int) c << endl;
     }else if(caracter_especial(c)){
 
-      if(menos(c))continue;
+      if(menos(c)){
+        negativo=true;
+        continue;
+      }
       if(cadena(c))continue;
 
       cerr << "especial: " << c << endl;
