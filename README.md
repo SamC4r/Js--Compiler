@@ -11,3 +11,9 @@
 3. `cmake ..`
 4. `make`
 5. `./Js--Compiler`
+
+
+# ToDo
+- [ ] Comentarios de bloque
+- [ ] Mejorar tabla de simbolos
+- [ ] 
