@@ -1,0 +1,97 @@
+<palabraReservada, 10>
+<palabraReservada, 9>
+<id, 0>
+<puntoComa,>
+<palabraReservada, 3>
+<palabraReservada, 11>
+<id, 1>
+<parentesisIzda,>
+<palabraReservada, 11>
+<parentesisDcha,>
+<llavesIzda,>
+<id, 1>
+<parentesisIzda,>
+<parentesisDcha,>
+<puntoComa,>
+<id, 1>
+<parentesisIzda,>
+<parentesisDcha,>
+<puntoComa,>
+<palabraReservada, 7>
+<cadena,'Escribe algo'>
+<puntoComa,>
+<palabraReservada, 5>
+<id, 0>
+<puntoComa,>
+<llavesDcha,>
+<palabraReservada, 3>
+<palabraReservada, 11>
+<id, 2>
+<parentesisIzda,>
+<palabraReservada, 9>
+<id, 3>
+<parentesisDcha,>
+<llavesIzda,>
+<palabraReservada, 7>
+<id, 3>
+<puntoComa,>
+<id, 2>
+<parentesisIzda,>
+<id, 3>
+<parentesisDcha,>
+<puntoComa,>
+<llavesDcha,>
+<id, 1>
+<parentesisIzda,>
+<parentesisDcha,>
+<puntoComa,>
+<id, 2>
+<parentesisIzda,>
+<id, 0>
+<parentesisDcha,>
+<puntoComa,>
+<id, 4>
+<operadorAsignacion,>
+<id, 5>
+<constanteEntera, 2>
+<id, 6>
+<operadorEspecial,>
+<id, 7>
+<palabraReservada, 11>
+<id, 8>
+<parentesisIzda,>
+<palabraReservada, 6>
+<id, 4>
+<coma,>
+<palabraReservada, 6>
+<id, 5>
+<coma,>
+<palabraReservada, 6>
+<id, 6>
+<parentesisDcha,>
+<llavesIzda,>
+<palabraReservada, 10>
+<id, 9>
+<operadorAsignacion,>
+<constanteEntera, 2>
+<palabraReservada, 8>
+<operadorNegacion,>
+<parentesisIzda,>
+<parentesisIzda,>
+<id, 4>
+<id, 5>
+<parentesisDcha,>
+<operadorModulo,>
+<id, 6>
+<opeardorMayor,>
+<parentesisIzda,>
+<id, 4>
+<id, 5>
+<parentesisDcha,>
+<parentesisDcha,>
+<puntoComa,>
+<llavesDcha,>
+<palabraReservada, 10>
+<id, 10>
+<operadorAsignacion,>
+<cadena,'hola jaja salu2 esta cadena deberia'>

@@ -1,15 +1,31 @@
-var    int a   ;
-var    int b       ;
-var    int number  ;
-output  'Introduce el primer operando' ;
-input a;
-output 'Introduce el segundo operando';input  
-	b;
-function int operacion (int num1, int num2)
+var string texto;
+function void pideTexto(void)
 {
-	return num1%num2;
+  pideTexto();
+  pideTexto();
+	output 'Escribe algo';
+	input texto;
+}
+function void put(string msg)
+{
+	output msg;
+  put(msg);
 }
 
-number = operacion (a, b);
-output 'Ojo: el valor que se acaba de calcular no excede el valor permitido.'
-;
+
+
+pideTexto();
+  put
+	(texto);
+a = b+2 + c--
+
+functoin void v(int a, int b,int c){
+  var d = /*deaaa*/2
+  return !((a*b) % c > (a+b)); /*void fun=2*/
+}
+
+/* Hola carambola a = 2 + v */
+
+var lol='hola jaja salu2 esta cadena deberia'
+
+

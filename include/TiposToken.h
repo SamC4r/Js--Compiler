@@ -1,20 +1,9 @@
 #pragma once
-enum class TiposToken{
-  PALABRA_RESERVADA, 
-  IDENTIFICADOR, 
-  NUMERO_ENTERO, 
-  CADENA,
-  OPERADOR, 
-  OPERADOR_ARITMETICO, 
-  OPERADOR_LOGICO, 
-  OPERADOR_RELACIONAL,
-  OPERADOR_ASIGNACION,
+enum class TiposToken {
+  PALABRA,           // string
+  ID,                //-
+  NUMERO_ENTERO,     // valor
+  CADENA,            // valor
+  CARACTER_ESPECIAL, //
   OPERADOR_ESPECIAL,
-  PUNTO_COMA,
-  COMA,
-  PARENTESIS_IZQ,
-  PARENTESIS_DER,
-  LLAVE_IZQ,
 };
-
-

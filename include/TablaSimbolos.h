@@ -15,6 +15,7 @@ struct Entry{
 class TablaSimbolos{
   int cnt;
   unordered_map<string,Entry> simbolos;
+
 public:
   TablaSimbolos();
   void print();
