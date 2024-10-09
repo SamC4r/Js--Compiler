@@ -14,6 +14,6 @@
 
 
 # ToDo
-- [ ] Comentarios de bloque
+- [x] Comentarios de bloque
 - [ ] Mejorar tabla de simbolos
 - [ ] Numeros negativos (ALEX no lo hace)
