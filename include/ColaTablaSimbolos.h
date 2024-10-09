@@ -1,6 +1,5 @@
 #include<queue>
 
-
 #include "TablaSimbolos.h"
 
 using namespace std;

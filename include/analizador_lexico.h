@@ -1,13 +1,11 @@
-#include <fstream>
-#include<string>
-#include "Generator.h"
 #include "ColaTablaSimbolos.h"
-
+#include "Generator.h"
+#include <fstream>
+#include <string>
 
 using namespace std;
 
-
-class AnalizadorLexico{
+class AnalizadorLexico {
 private:
   fstream programa;
   Generator generator;
@@ -25,7 +23,6 @@ private:
   char cadena();
 
 public:
-  AnalizadorLexico(string nombre,string token_file, ColaTablaSimbolos &queue);
-
+  AnalizadorLexico(string nombre, string token_file, string ts_file,
+                   ColaTablaSimbolos &queue);
 };
-

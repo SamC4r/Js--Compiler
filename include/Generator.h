@@ -11,6 +11,7 @@ using namespace std;
 class Generator {
 
   fstream token_file;
+  fstream ts_file;
   ColaTablaSimbolos queue;
 
 public:
@@ -25,7 +26,7 @@ public:
       {';', "puntoComa"},          {'(', "parentesisIzda"},
       {')', "parentesisDcha"},     {'{', "llavesIzda"},
       {'}', "llavesDcha"},         {'-', "operadorMenos"},
-      {'%', "operadorModulo"},     {'>', "opeardorMayor"},
+      {'%', "operadorModulo"},     {'>', "operadorMayor"},
       {'!', "operadorNegacion"},
   };
 
@@ -35,9 +36,10 @@ public:
 
   template <typename T1, typename T2> void gen_token(T1 tipo, T2 atributo);
   template <typename T1> void gen_token(T1 tipo);
-  template <typename T1> void gen_token(T1 tipo,string cadena);
+  template <typename T1> void gen_token(T1 tipo, string cadena);
 
-  void init(string file_name, ColaTablaSimbolos &queue);
+  void init(string token_file_name, ColaTablaSimbolos &queue,
+            string ts_file_name);
   void Token(string identificador);
   void Token(char c);
   void Token(int valor);
