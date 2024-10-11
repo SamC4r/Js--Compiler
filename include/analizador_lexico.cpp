@@ -13,6 +13,8 @@
 
 using namespace std;
 int cnt = 0;
+int lineas=0;
+string fuente="";
 
 template <typename T1, typename T2>
 void Generator::gen_token(T1 tipo, T2 atributo) {
@@ -38,7 +40,7 @@ void Generator::init(string token_file_name, ColaTablaSimbolos &queue,
 
   TablaSimbolos global;
   this->queue.add(global);
-  cout << "global added" << endl;
+  // cout << "global added" << endl;
 }
 
 void Generator::Token(string identificador) {
@@ -100,10 +102,13 @@ char AnalizadorLexico::leer_digito() {
     number = number * 10 + (c - '0');
     c = programa.get();
   }
-  cerr << "Numero: " << number << endl;
+  // cerr << "Numero: " << number << endl;
   if (number >= (1 << 15)) {
+    string error="\n[-] Error Lexico [-]\n Numero fuera de rango [-2^15,2^15-1] --> " + to_string(number);
+    error+="\n - "+fuente+":"+to_string(lineas);
+    error+="\n\twhat()\n\n ************************* \n";
 
-    throw runtime_error("Numero demasiado grande");
+    cerr << error << endl;
   }
   generator.Token(number);
   return c;
@@ -116,7 +121,7 @@ char AnalizadorLexico::leer_letra() {
     palabra += c;
     c = programa.get();
   }
-  cerr << "Palabra: " << palabra << endl;
+  // cerr << "Palabra: " << palabra << endl;
   generator.Token(palabra);
   return c;
 }
@@ -135,11 +140,11 @@ char AnalizadorLexico::predecremento() {
   if (cnt > 2) {
     throw runtime_error("Expresion expected");
   } else if (cnt == 2) {
-    cerr << "predecremento: " << decremento << endl;
+    // cerr << "predecremento: " << decremento << endl;
     generator.Token(TiposToken::OPERADOR_ESPECIAL);
   } else {
     // operador menos
-    cerr << "<menos,->" << ' ' << c << endl;
+    // cerr << "<menos,->" << ' ' << c << endl;
     generator.Token(c);
   }
   return c;
@@ -154,11 +159,25 @@ char AnalizadorLexico::cadena() {
     str += c;
     c = programa.get();
   }
-  if (cnt > 2) {
-    throw runtime_error("Cadena no cerrada");
+
+  cnt+=(c == '\'');
+  if (cnt < 2) {
+    string error="\n[-] Error Lexico [-]\n Cadena no cerrada";
+    error+="\n - "+fuente+":"+to_string(lineas);
+    error+="\n\twhat()\n\n ************************* \n";
+
+    cerr << error << endl;
   }
   if (str.size() > 64) {
-    throw runtime_error("Cadena demasiado larga");
+    //TODO: Anadir en gestor de errores
+
+    int s=str.size();
+    string error="\n[-] Error Lexico [-]\n Cadena Demasiado larga (len=" + to_string(s) + " > 64) --> \'";
+    error+=str;
+    error+="\n - "+fuente+":"+to_string(lineas);
+    error+="\n\twhat()\n\n ************************* \n";
+
+    cerr << error << endl;
   }
 
   // operador menos
@@ -192,9 +211,10 @@ AnalizadorLexico::AnalizadorLexico(string nombre, string token_file,
 
   programa.open(nombre, ios::in);
   generator.init(token_file, queue, ts_file_name);
+  fuente=nombre;
 
   if (!programa.is_open()) {
-    cout << "[+] Error abriendo archivo" << endl;
+    cerr << "[+] Error abriendo archivo" << endl;
     return;
   }
 
@@ -247,7 +267,7 @@ AnalizadorLexico::AnalizadorLexico(string nombre, string token_file,
     }
 
     if (is_delimiter(c)) { // En este caso hay que saltarlo
-      cerr << "Delimiter: " << (int)c << endl;
+      // cerr << "Delimiter: " << (int)c << endl;
       goto next;
     } else if (caracter_especial(c)) {
       if (menos(c)) {
@@ -258,11 +278,12 @@ AnalizadorLexico::AnalizadorLexico(string nombre, string token_file,
       }
       if (cadena(c))
         continue;
-      cerr << "especial: " << c << endl;
+      // cerr << "especial: " << c << endl;
       generator.Token(c);
     } else if (d(c) || l(c))
       continue;
   next:
+    if(c == '\n')lineas++;
     c = programa.get();
   }
 }
