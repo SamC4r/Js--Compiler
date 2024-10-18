@@ -1,4 +1,5 @@
 #include "ColaTablaSimbolos.h"
+#include "Gestor_Errores.cpp"
 #include "Generator.h"
 #include <fstream>
 #include <string>
@@ -9,6 +10,7 @@ class AnalizadorLexico {
 private:
   fstream programa;
   Generator generator;
+  GestorErrores errores;
 
   bool is_delimiter(char c);
   bool is_eof(char c);
@@ -24,5 +26,5 @@ private:
 
 public:
   AnalizadorLexico(string nombre, string token_file, string ts_file,
-                   ColaTablaSimbolos &queue);
+                   ColaTablaSimbolos &queue,GestorErrores &errores);
 };

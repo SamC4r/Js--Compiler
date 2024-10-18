@@ -7,13 +7,14 @@
 #include <ios>
 #include <iostream>
 #include <string>
+#include <system_error>
 #include <unordered_map>
 
 #define endl "\n"
 
 using namespace std;
 int cnt = 0;
-int lineas=0;
+int lineas=1;
 string fuente="";
 
 template <typename T1, typename T2>
@@ -102,15 +103,12 @@ char AnalizadorLexico::leer_digito() {
     number = number * 10 + (c - '0');
     c = programa.get();
   }
-  // cerr << "Numero: " << number << endl;
-  if (number >= (1 << 15)) {
-    string error="\n[-] Error Lexico [-]\n Numero fuera de rango [-2^15,2^15-1] --> " + to_string(number);
-    error+="\n - "+fuente+":"+to_string(lineas);
-    error+="\n\twhat()\n\n ************************* \n";
 
-    cerr << error << endl;
+  if (number >= (1 << 15)) {
+    errores.genError(errores::NUMERO_FUERA_RANGO,lineas,to_string(number));
+  }else{
+    generator.Token(number);
   }
-  generator.Token(number);
   return c;
 }
 
@@ -162,27 +160,14 @@ char AnalizadorLexico::cadena() {
 
   cnt+=(c == '\'');
   if (cnt < 2) {
-    string error="\n[-] Error Lexico [-]\n Cadena no cerrada";
-    error+="\n - "+fuente+":"+to_string(lineas);
-    error+="\n\twhat()\n\n ************************* \n";
-
-    cerr << error << endl;
+    errores.genError(errores::CADENA_NO_CERRADA,lineas,str);
   }
-  if (str.size() > 64) {
-    //TODO: Anadir en gestor de errores
-
-    int s=str.size();
-    string error="\n[-] Error Lexico [-]\n Cadena Demasiado larga (len=" + to_string(s) + " > 64) --> \'";
-    error+=str;
-    error+="\n - "+fuente+":"+to_string(lineas);
-    error+="\n\twhat()\n\n ************************* \n";
-
-    cerr << error << endl;
+  else if (str.size() > 64) {
+    errores.genError(errores::CADENA_LARGA,lineas,str);
+  }else{
+    // operador menos
+    generator.Token(str, '\'');
   }
-
-  // operador menos
-  generator.Token(str, '\'');
-
   return c;
 }
 
@@ -207,11 +192,13 @@ TODO:
 
 AnalizadorLexico::AnalizadorLexico(string nombre, string token_file,
                                    string ts_file_name,
-                                   ColaTablaSimbolos &queue) {
+                                   ColaTablaSimbolos &queue,GestorErrores &errores) {
 
   programa.open(nombre, ios::in);
   generator.init(token_file, queue, ts_file_name);
   fuente=nombre;
+
+  this->errores=errores;
 
   if (!programa.is_open()) {
     cerr << "[+] Error abriendo archivo" << endl;

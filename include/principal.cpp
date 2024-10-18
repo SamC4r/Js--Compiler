@@ -3,7 +3,6 @@
 #include <iostream>
 
 #include "ColaTablaSimbolos.h"
-#include "TablaSimbolos.h"
 #include "analizador_lexico.h"
 
 #define all(x) (x).begin(), (x).end()
@@ -23,7 +22,8 @@ int main() {
   string ts_file = "tabla_simbolos.txt";
 
   ColaTablaSimbolos queue;
-  AnalizadorLexico lexico(filename, token_file, ts_file, queue);
+  GestorErrores errores;
+  AnalizadorLexico lexico(filename, token_file, ts_file, queue,errores);
 
   return 0;
 }
