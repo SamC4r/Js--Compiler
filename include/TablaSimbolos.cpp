@@ -15,7 +15,7 @@ void TablaSimbolos::print() { cout << "hola " << endl; }
 
 void TablaSimbolos::add(string id) {
   simbolos[id] = {cnt++, id, "var"};
-  cout << simbolos[id].pos << endl;
+  // cout << simbolos[id].pos << endl;
 }
 
 int TablaSimbolos::get(string id) {

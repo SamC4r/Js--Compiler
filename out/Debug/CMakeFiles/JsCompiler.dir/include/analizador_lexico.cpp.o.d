@@ -132,6 +132,7 @@ CMakeFiles/JsCompiler.dir/include/analizador_lexico.cpp.o: \
  /usr/include/c++/13/bits/enable_special_members.h \
  /usr/include/c++/13/bits/node_handle.h \
  /usr/include/c++/13/bits/erase_if.h \
+ /home/sam/Documents/compiler/Js--Compiler/include/Gestor_Errores.h \
  /home/sam/Documents/compiler/Js--Compiler/include/Generator.h \
  /usr/include/c++/13/fstream /usr/include/c++/13/istream \
  /usr/include/c++/13/ios /usr/include/c++/13/exception \

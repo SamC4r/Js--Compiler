@@ -16,6 +16,7 @@ set(SOURCES
     include/analizador_lexico.cpp   # Source file inside the include directory
     include/TablaSimbolos.cpp
     include/ColaTablaSimbolos.cpp
+    include/Gestor_Errores.cpp
 )
 
 # Add executable

@@ -14,8 +14,8 @@
 
 using namespace std;
 int cnt = 0;
-int lineas=1;
-string fuente="";
+int lineas = 1;
+string fuente = "";
 
 template <typename T1, typename T2>
 void Generator::gen_token(T1 tipo, T2 atributo) {
@@ -75,7 +75,10 @@ void Generator::Token(string str, char del) {
 }
 
 bool AnalizadorLexico::is_delimiter(char c) {
-  return (c == ' ' || c == '\n' || c == '\t');
+  if (c == '\n')
+    lineas++;
+  return (c == ' ' || c == '\n' || c == '\t' || c == '\0' || c == '\r' ||
+          c == EOF);
 }
 
 bool AnalizadorLexico::is_eof(char c) { return (c == EOF); }
@@ -105,8 +108,8 @@ char AnalizadorLexico::leer_digito() {
   }
 
   if (number >= (1 << 15)) {
-    errores.genError(errores::NUMERO_FUERA_RANGO,lineas,to_string(number));
-  }else{
+    errores.genError(errores::NUMERO_FUERA_RANGO, lineas, to_string(number));
+  } else {
     generator.Token(number);
   }
   return c;
@@ -154,17 +157,18 @@ char AnalizadorLexico::cadena() {
                            // the next ones
   int cnt = 1;
   while (!cadena(c = programa.peek()) && !programa.eof()) {
+    if (c == '\n') {
+      break;
+    }
     str += c;
     c = programa.get();
   }
-
-  cnt+=(c == '\'');
+  cnt += (c == '\'');
   if (cnt < 2) {
-    errores.genError(errores::CADENA_NO_CERRADA,lineas,str);
-  }
-  else if (str.size() > 64) {
-    errores.genError(errores::CADENA_LARGA,lineas,str);
-  }else{
+    errores.genError(errores::CADENA_NO_CERRADA, lineas, str);
+  } else if (str.size() > 64) {
+    errores.genError(errores::CADENA_LARGA, lineas, str);
+  } else {
     // operador menos
     generator.Token(str, '\'');
   }
@@ -192,13 +196,14 @@ TODO:
 
 AnalizadorLexico::AnalizadorLexico(string nombre, string token_file,
                                    string ts_file_name,
-                                   ColaTablaSimbolos &queue,GestorErrores &errores) {
+                                   ColaTablaSimbolos &queue,
+                                   GestorErrores &errores) {
 
   programa.open(nombre, ios::in);
   generator.init(token_file, queue, ts_file_name);
-  fuente=nombre;
+  fuente = nombre;
 
-  this->errores=errores;
+  this->errores = errores;
 
   if (!programa.is_open()) {
     cerr << "[+] Error abriendo archivo" << endl;
@@ -222,10 +227,14 @@ AnalizadorLexico::AnalizadorLexico(string nombre, string token_file,
       comentario = false;
       posible_fin_comentario = false;
       posible_comentario = false;
+      goto next;
+    } else {
+      posible_fin_comentario = false;
     }
 
     if (comentario && c == '*') {
       posible_fin_comentario = true;
+      goto next;
     }
 
     if (comentario)
@@ -233,6 +242,7 @@ AnalizadorLexico::AnalizadorLexico(string nombre, string token_file,
 
     if (posible_comentario && c == '*') {
       comentario = true;
+      goto next;
     } else {
       posible_comentario = false;
     }
@@ -267,10 +277,16 @@ AnalizadorLexico::AnalizadorLexico(string nombre, string token_file,
         continue;
       // cerr << "especial: " << c << endl;
       generator.Token(c);
-    } else if (d(c) || l(c))
+    } else if (d(c) || l(c)) {
       continue;
+    } else if (cadena(c)) {
+      goto next;
+    } else {
+      string s = "";
+      s += c;
+      errores.genError(errores::CARACTER_NO_DEFINIDO, lineas, s);
+    }
   next:
-    if(c == '\n')lineas++;
     c = programa.get();
   }
 }

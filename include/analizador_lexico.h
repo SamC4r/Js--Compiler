@@ -1,5 +1,5 @@
 #include "ColaTablaSimbolos.h"
-#include "Gestor_Errores.cpp"
+#include "Gestor_Errores.h"
 #include "Generator.h"
 #include <fstream>
 #include <string>

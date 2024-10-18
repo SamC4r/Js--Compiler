@@ -153,6 +153,30 @@ include/ColaTablaSimbolos.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/JsCompiler.dir/build.make CMakeFiles/JsCompiler.dir/include/ColaTablaSimbolos.cpp.s
 .PHONY : include/ColaTablaSimbolos.cpp.s
 
+include/Gestor_Errores.o: include/Gestor_Errores.cpp.o
+.PHONY : include/Gestor_Errores.o
+
+# target to build an object file
+include/Gestor_Errores.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/JsCompiler.dir/build.make CMakeFiles/JsCompiler.dir/include/Gestor_Errores.cpp.o
+.PHONY : include/Gestor_Errores.cpp.o
+
+include/Gestor_Errores.i: include/Gestor_Errores.cpp.i
+.PHONY : include/Gestor_Errores.i
+
+# target to preprocess a source file
+include/Gestor_Errores.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/JsCompiler.dir/build.make CMakeFiles/JsCompiler.dir/include/Gestor_Errores.cpp.i
+.PHONY : include/Gestor_Errores.cpp.i
+
+include/Gestor_Errores.s: include/Gestor_Errores.cpp.s
+.PHONY : include/Gestor_Errores.s
+
+# target to generate assembly for a file
+include/Gestor_Errores.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/JsCompiler.dir/build.make CMakeFiles/JsCompiler.dir/include/Gestor_Errores.cpp.s
+.PHONY : include/Gestor_Errores.cpp.s
+
 include/TablaSimbolos.o: include/TablaSimbolos.cpp.o
 .PHONY : include/TablaSimbolos.o
 
@@ -237,6 +261,9 @@ help:
 	@echo "... include/ColaTablaSimbolos.o"
 	@echo "... include/ColaTablaSimbolos.i"
 	@echo "... include/ColaTablaSimbolos.s"
+	@echo "... include/Gestor_Errores.o"
+	@echo "... include/Gestor_Errores.i"
+	@echo "... include/Gestor_Errores.s"
 	@echo "... include/TablaSimbolos.o"
 	@echo "... include/TablaSimbolos.i"
 	@echo "... include/TablaSimbolos.s"

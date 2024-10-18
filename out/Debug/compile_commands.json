@@ -22,5 +22,11 @@
   "command": "/usr/bin/c++  -I/home/sam/Documents/compiler/Js--Compiler/include -g -std=gnu++17 -o CMakeFiles/JsCompiler.dir/include/ColaTablaSimbolos.cpp.o -c /home/sam/Documents/compiler/Js--Compiler/include/ColaTablaSimbolos.cpp",
   "file": "/home/sam/Documents/compiler/Js--Compiler/include/ColaTablaSimbolos.cpp",
   "output": "CMakeFiles/JsCompiler.dir/include/ColaTablaSimbolos.cpp.o"
+},
+{
+  "directory": "/home/sam/Documents/compiler/Js--Compiler/out/Debug",
+  "command": "/usr/bin/c++  -I/home/sam/Documents/compiler/Js--Compiler/include -g -std=gnu++17 -o CMakeFiles/JsCompiler.dir/include/Gestor_Errores.cpp.o -c /home/sam/Documents/compiler/Js--Compiler/include/Gestor_Errores.cpp",
+  "file": "/home/sam/Documents/compiler/Js--Compiler/include/Gestor_Errores.cpp",
+  "output": "CMakeFiles/JsCompiler.dir/include/Gestor_Errores.cpp.o"
 }
 ]

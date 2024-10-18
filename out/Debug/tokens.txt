@@ -1,55 +1,44 @@
-<palabraReservada, 10>
-<palabraReservada, 6>
 <id, 0>
-<puntoComa,>
-<palabraReservada, 10>
-<palabraReservada, 6>
-<id, 1>
-<puntoComa,>
-<palabraReservada, 10>
-<palabraReservada, 6>
-<id, 2>
-<puntoComa,>
-<palabraReservada, 7>
-<cadena,'Introduce el primer operando'>
-<puntoComa,>
-<palabraReservada, 5>
+<operadorAsignacion,>
+<cadena,'jasdpo9uwlkhaslkfjhasfdoiu'>
 <id, 0>
-<puntoComa,>
-<palabraReservada, 7>
-<cadena,'Introduce el segundo operando'>
-<puntoComa,>
-<palabraReservada, 5>
+<operadorAsignacion,>
+<cadena,'cadenilla'>
+<palabraReservada, 10>
 <id, 1>
-<puntoComa,>
-<palabraReservada, 3>
-<palabraReservada, 6>
-<id, 3>
+<operadorAsignacion,>
+<operadorNegacion,>
 <parentesisIzda,>
-<palabraReservada, 6>
-<id, 4>
-<coma,>
-<palabraReservada, 6>
-<id, 5>
+<id, 1>
+<operadorModulo,>
+<id, 2>
+<operadorMayor,>
+<operadorEspecial,>
+<id, 3>
 <parentesisDcha,>
+<coma,>
 <llavesIzda,>
-<palabraReservada, 8>
-<id, 4>
-<operadorModulo,>
-<id, 5>
-<operadorModulo,>
-<constanteEntera, 77>
 <puntoComa,>
 <llavesDcha,>
-<id, 2>
+<palabraReservada, 10>
+<id, 4>
 <operadorAsignacion,>
-<constanteEntera, 0>
+<cadena,'() {'>
+<palabraReservada, 1>
+<palabraReservada, 2>
+<palabraReservada, 5>
+<palabraReservada, 9>
 <puntoComa,>
-<palabraReservada, 7>
 <id, 3>
-<parentesisIzda,>
-<id, 1>
-<coma,>
-<id, 0>
-<parentesisDcha,>
+<operadorAsignacion,>
+<cadena,'funcion'>
 <puntoComa,>
+<llavesDcha,>
+<puntoComa,>
+<palabraReservada, 10>
+<id, 5>
+<operadorAsignacion,>
+<puntoComa,>
+<palabraReservada, 9>
+<id, 6>
+<operadorAsignacion,>

@@ -1,14 +1,10 @@
-var    int a   ;
-var    int b       ;
-var    int number  ;
-output  'Introduce el primer operando' ;
-input a;
-output 'Introduce el segundo operando';input  
-	b;
-function int operacion	(int num_1, int num_2)
-{
-	return  num_1  %  num_2%77;
-}
+cadena = 'jasdpo9uwlkhaslkfjhasfdoiu'
 
-number = 0;
-output operacion(b,a);
+cadena = /*adslkjasd*/ 'cadenilla'
+
+var a = !(a % b > --c), {; }
+var p ='() {' boolean else input string /*dea*/; c = 'funcion';};
+
+var numeroso=10000000000000009; /*numer  *   /   oso**/
+
+string error = 'cadeuna ultra mega super giga chad hiper turbo épico legendario omnipotente indestructible inigualable fenomenal colosal' 

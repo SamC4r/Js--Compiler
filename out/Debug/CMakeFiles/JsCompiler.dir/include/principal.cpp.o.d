@@ -191,6 +191,7 @@ CMakeFiles/JsCompiler.dir/include/principal.cpp.o: \
  /usr/include/c++/13/bits/node_handle.h \
  /usr/include/c++/13/bits/erase_if.h \
  /home/sam/Documents/compiler/Js--Compiler/include/analizador_lexico.h \
+ /home/sam/Documents/compiler/Js--Compiler/include/Gestor_Errores.h \
  /home/sam/Documents/compiler/Js--Compiler/include/Generator.h \
  /usr/include/c++/13/fstream \
  /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \

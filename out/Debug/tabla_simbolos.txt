@@ -1,7 +1,8 @@
 Contenidos de la Tabla # 1 :
+  * LEXEMA : 'cadena'
   * LEXEMA : 'a'
   * LEXEMA : 'b'
-  * LEXEMA : 'number'
-  * LEXEMA : 'operacion'
-  * LEXEMA : 'num_1'
-  * LEXEMA : 'num_2'
+  * LEXEMA : 'c'
+  * LEXEMA : 'p'
+  * LEXEMA : 'numeroso'
+  * LEXEMA : 'error'
