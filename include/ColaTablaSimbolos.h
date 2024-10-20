@@ -1,4 +1,5 @@
-#include<queue>
+#include <fstream>
+#include <stack>
 
 #include "TablaSimbolos.h"
 
@@ -6,15 +7,17 @@ using namespace std;
 
 #pragma once
 
-class ColaTablaSimbolos{
+class ColaTablaSimbolos {
 
 private:
-  queue<TablaSimbolos> q;
+  stack<TablaSimbolos> q;
+  fstream ts_file;
 
 public:
-  ColaTablaSimbolos();
+  ColaTablaSimbolos(string ts_file_name);
   void add(TablaSimbolos symbol);
   void pop();
-  TablaSimbolos* top();
+  TablaSimbolos *top();
   void search(string id);
+  void print();
 };

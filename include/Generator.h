@@ -11,8 +11,7 @@ using namespace std;
 class Generator {
 
   fstream token_file;
-  fstream ts_file;
-  ColaTablaSimbolos queue;
+  ColaTablaSimbolos *queue;
 
 public:
   unordered_map<string, int> codigo_palabra_reservada = {
@@ -38,8 +37,7 @@ public:
   template <typename T1> void gen_token(T1 tipo);
   template <typename T1> void gen_token(T1 tipo, string cadena);
 
-  void init(string token_file_name, ColaTablaSimbolos &queue,
-            string ts_file_name);
+  void init(string token_file_name, ColaTablaSimbolos &queue);
   void Token(string identificador);
   void Token(char c);
   void Token(int valor);

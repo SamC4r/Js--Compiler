@@ -13,17 +13,11 @@ TablaSimbolos::TablaSimbolos() { this->cnt = 0; }
 
 void TablaSimbolos::print() { cout << "hola " << endl; }
 
-void TablaSimbolos::add(string id) {
-  simbolos[id] = {cnt++, id, "var"};
-  // cout << simbolos[id].pos << endl;
-}
+void TablaSimbolos::add(string id) { simbolos[id] = {cnt++, id, "var"}; }
 
-int TablaSimbolos::get(string id) {
+Entry *TablaSimbolos::getEntry(string id) {
   if (!simbolos.count(id)) {
-    return -1;
-  } else {
-    return simbolos[id].pos;
+    return NULL;
   }
+  return &simbolos[id];
 }
-
-Entry TablaSimbolos::getEntry(string id) { return simbolos[id]; }

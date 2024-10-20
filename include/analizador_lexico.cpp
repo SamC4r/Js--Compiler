@@ -28,20 +28,14 @@ template <typename T1> void Generator::gen_token(T1 tipo, string cadena) {
   token_file << "<" << tipo << ",\'" << cadena << "\'>" << endl;
 }
 
-void Generator::init(string token_file_name, ColaTablaSimbolos &queue,
-                     string ts_file_name) {
+void Generator::init(string token_file_name, ColaTablaSimbolos &queue) {
 
   token_file.open(token_file_name, fstream::out);
-  ts_file.open(ts_file_name, fstream::out);
 
-  // Esto solo por ahora
-  ts_file << "Contenidos de la Tabla # 1 :" << endl;
-
-  this->queue = queue;
+  this->queue = &queue;
 
   TablaSimbolos global;
-  this->queue.add(global);
-  // cout << "global added" << endl;
+  this->queue->add(global);
 }
 
 void Generator::Token(string identificador) {
@@ -50,13 +44,11 @@ void Generator::Token(string identificador) {
     gen_token("palabraReservada", codigo_palabra_reservada[identificador]);
   } else {
 
-    TablaSimbolos *simbolos = queue.top();
-    if (simbolos->get(identificador) == -1) {
+    TablaSimbolos *simbolos = queue->top();
+    if (simbolos->getEntry(identificador) == NULL) {
       simbolos->add(identificador);
-      ts_file << "  * LEXEMA : \'" << simbolos->getEntry(identificador).lexema
-              << '\'' << endl;
     }
-    gen_token("id", simbolos->get(identificador));
+    gen_token("id", simbolos->getEntry(identificador)->pos);
   }
 }
 
@@ -195,12 +187,11 @@ TODO:
 */
 
 AnalizadorLexico::AnalizadorLexico(string nombre, string token_file,
-                                   string ts_file_name,
                                    ColaTablaSimbolos &queue,
                                    GestorErrores &errores) {
 
   programa.open(nombre, ios::in);
-  generator.init(token_file, queue, ts_file_name);
+  generator.init(token_file, queue);
   fuente = nombre;
 
   this->errores = errores;

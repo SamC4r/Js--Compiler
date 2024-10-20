@@ -21,9 +21,10 @@ int main() {
   string token_file = "tokens.txt";
   string ts_file = "tabla_simbolos.txt";
 
-  ColaTablaSimbolos queue;
+  ColaTablaSimbolos queue(ts_file);
   GestorErrores errores;
-  AnalizadorLexico lexico(filename, token_file, ts_file, queue,errores);
+  AnalizadorLexico lexico(filename, token_file, queue, errores);
+  queue.print();
 
   return 0;
 }

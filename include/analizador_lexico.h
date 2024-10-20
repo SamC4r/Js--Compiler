@@ -1,6 +1,6 @@
 #include "ColaTablaSimbolos.h"
-#include "Gestor_Errores.h"
 #include "Generator.h"
+#include "Gestor_Errores.h"
 #include <fstream>
 #include <string>
 
@@ -25,6 +25,6 @@ private:
   char cadena();
 
 public:
-  AnalizadorLexico(string nombre, string token_file, string ts_file,
-                   ColaTablaSimbolos &queue,GestorErrores &errores);
+  AnalizadorLexico(string nombre, string token_file, ColaTablaSimbolos &queue,
+                   GestorErrores &errores);
 };

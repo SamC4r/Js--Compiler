@@ -9,16 +9,20 @@ struct Entry {
   int pos;
   string lexema;
   string atributo;
+  /*
+    Mas columnas
+  */
 };
 
 class TablaSimbolos {
+public:
   int cnt;
   unordered_map<string, Entry> simbolos;
 
 public:
   TablaSimbolos();
   void print();
-  int get(string id);
-  Entry getEntry(string id);
+  int getPos(string id);
+  Entry *getEntry(string id);
   void add(string id);
 };
