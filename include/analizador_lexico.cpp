@@ -20,12 +20,21 @@ string fuente = "";
 template <typename T1, typename T2>
 void Generator::gen_token(T1 tipo, T2 atributo) {
   token_file << "<" << tipo << ", " << atributo << ">" << endl;
+  lastTokenType = tipo;
+  lastTokenAttribute = atributo;
+  buscando = false;
 }
 template <typename T1> void Generator::gen_token(T1 tipo) {
   token_file << "<" << tipo << ",>" << endl;
+  lastTokenType = tipo;
+  lastTokenAttribute = "";
+  buscando = false;
 }
 template <typename T1> void Generator::gen_token(T1 tipo, string cadena) {
   token_file << "<" << tipo << ",\'" << cadena << "\'>" << endl;
+  lastTokenType = tipo;
+  lastTokenAttribute = cadena;
+  buscando = false;
 }
 
 void Generator::init(string token_file_name, ColaTablaSimbolos &queue) {
@@ -57,13 +66,15 @@ void Generator::Token(char c) { gen_token(tipo_caracter_especial[c]); }
 void Generator::Token(int valor) { gen_token("constanteEntera", valor); }
 
 void Generator::Token(TiposToken tipo) {
-  if (tipo == TiposToken::OPERADOR_ESPECIAL)
+  if (tipo == TiposToken::OPERADOR_ESPECIAL) {
     gen_token("operadorEspecial");
+  }
 }
 
 void Generator::Token(string str, char del) {
-  if (del == '\'')
+  if (del == '\'') {
     gen_token("cadena", str);
+  }
 }
 
 bool AnalizadorLexico::is_delimiter(char c) {
@@ -146,7 +157,7 @@ char AnalizadorLexico::predecremento() {
 char AnalizadorLexico::cadena() {
   string str = "";
   char c = programa.get(); // to skip '  --> place pointer on it. Then test for
-                           // the next ones
+  // the next ones
   int cnt = 1;
   while (!cadena(c = programa.peek()) && !programa.eof()) {
     if (c == '\n') {
@@ -186,20 +197,7 @@ TODO:
   No debe leer todo sino, esperar a que A.semantico pida token
 */
 
-AnalizadorLexico::AnalizadorLexico(string nombre, string token_file,
-                                   ColaTablaSimbolos &queue,
-                                   GestorErrores &errores) {
-
-  programa.open(nombre, ios::in);
-  generator.init(token_file, queue);
-  fuente = nombre;
-
-  this->errores = errores;
-
-  if (!programa.is_open()) {
-    cerr << "[+] Error abriendo archivo" << endl;
-    return;
-  }
+string AnalizadorLexico::getToken() {
 
   char c;
   bool negativo = false;
@@ -209,8 +207,10 @@ AnalizadorLexico::AnalizadorLexico(string nombre, string token_file,
   bool comentario = false;
   bool posible_comentario = false;
   bool posible_fin_comentario = false;
-
-  while (programa && !programa.eof()) {
+  generator.buscando = true;
+  if (programa.eof())
+    return "EOF";
+  while (programa && !programa.eof() && generator.buscando) {
 
     c = programa.peek();
 
@@ -245,7 +245,7 @@ AnalizadorLexico::AnalizadorLexico(string nombre, string token_file,
 
     if (l(c)) {
       c = leer_letra(); // Devuelve el caracter en el que se encuentra el
-                        // puntero de lectura
+      // puntero de lectura
     } else if (d(c)) {
       c = leer_digito();
     } else if (menos(c)) {
@@ -279,5 +279,23 @@ AnalizadorLexico::AnalizadorLexico(string nombre, string token_file,
     }
   next:
     c = programa.get();
+  }
+
+  return generator.lastTokenType;
+}
+
+AnalizadorLexico::AnalizadorLexico(string nombre, string token_file,
+                                   ColaTablaSimbolos &queue,
+                                   GestorErrores &errores) {
+
+  programa.open(nombre, ios::in);
+  generator.init(token_file, queue);
+  fuente = nombre;
+
+  this->errores = errores;
+
+  if (!programa.is_open()) {
+    cerr << "[+] Error abriendo archivo" << endl;
+    return;
   }
 }

@@ -14,6 +14,10 @@ class Generator {
   ColaTablaSimbolos *queue;
 
 public:
+  bool buscando;
+  string lastTokenType;
+  string lastTokenAttribute;
+
   unordered_map<string, int> codigo_palabra_reservada = {
       {"boolean", 1}, {"else", 2}, {"function", 3}, {"if", 4},
       {"input", 5},   {"int", 6},  {"output", 7},   {"return", 8},

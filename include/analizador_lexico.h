@@ -25,6 +25,7 @@ private:
   char cadena();
 
 public:
+  string getToken();
   AnalizadorLexico(string nombre, string token_file, ColaTablaSimbolos &queue,
                    GestorErrores &errores);
 };

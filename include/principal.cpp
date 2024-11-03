@@ -2,8 +2,8 @@
 #include <filesystem> //
 #include <iostream>
 
+#include "Analizador_Sintactico.cpp"
 #include "ColaTablaSimbolos.h"
-#include "analizador_lexico.h"
 
 #define all(x) (x).begin(), (x).end()
 #define endl "\n"
@@ -24,6 +24,7 @@ int main() {
   ColaTablaSimbolos queue(ts_file);
   GestorErrores errores;
   AnalizadorLexico lexico(filename, token_file, queue, errores);
+  AnalizadorSintactico sintactico(lexico, errores);
   queue.print();
 
   return 0;
