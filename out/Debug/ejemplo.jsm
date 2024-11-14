@@ -1,9 +1,8 @@
-cadena = 'jasdpo9uwlkhaslkfjhasfdoiu'
+cadena = 'jasdpo9uwlkhaslkfjhasfdoiu';
 
-cadena = /*adslkjasd*/ 'cadenilla'
+cadena = 'cadenilla';
 
-var a = !(a % b > --c), {; }
-var p ='() {' boolean else input string /*dea*/; c = 'funcion';};
+/*var p ='() {' boolean else input string /*dea; c = 'funcion';}; */
 
 var numeroso=10000000000000009; /*numer  *   /   oso**/
 

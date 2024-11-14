@@ -23,18 +23,22 @@ void Generator::gen_token(T1 tipo, T2 atributo) {
   lastTokenType = tipo;
   lastTokenAttribute = atributo;
   buscando = false;
+  // cerr << "last Token " << lastTokenType << endl;
+  q.push(lastTokenType);
 }
 template <typename T1> void Generator::gen_token(T1 tipo) {
   token_file << "<" << tipo << ",>" << endl;
   lastTokenType = tipo;
   lastTokenAttribute = "";
   buscando = false;
+  q.push(lastTokenType);
 }
 template <typename T1> void Generator::gen_token(T1 tipo, string cadena) {
   token_file << "<" << tipo << ",\'" << cadena << "\'>" << endl;
   lastTokenType = tipo;
   lastTokenAttribute = cadena;
   buscando = false;
+  q.push(lastTokenType);
 }
 
 void Generator::init(string token_file_name, ColaTablaSimbolos &queue) {
@@ -50,7 +54,7 @@ void Generator::init(string token_file_name, ColaTablaSimbolos &queue) {
 void Generator::Token(string identificador) {
 
   if (codigo_palabra_reservada.count(identificador)) {
-    gen_token("palabraReservada", codigo_palabra_reservada[identificador]);
+    gen_token(identificador, codigo_palabra_reservada[identificador]);
   } else {
 
     TablaSimbolos *simbolos = queue->top();
@@ -67,7 +71,7 @@ void Generator::Token(int valor) { gen_token("constanteEntera", valor); }
 
 void Generator::Token(TiposToken tipo) {
   if (tipo == TiposToken::OPERADOR_ESPECIAL) {
-    gen_token("operadorEspecial");
+    gen_token("--");
   }
 }
 
@@ -210,6 +214,13 @@ string AnalizadorLexico::getToken() {
   generator.buscando = true;
   if (programa.eof())
     return "EOF";
+
+  if(!generator.q.empty()){
+    string top = generator.q.front();
+    generator.q.pop();
+    return top;
+  }
+
   while (programa && !programa.eof() && generator.buscando) {
 
     c = programa.peek();
@@ -280,8 +291,12 @@ string AnalizadorLexico::getToken() {
   next:
     c = programa.get();
   }
-
-  return generator.lastTokenType;
+  if(programa.eof()){
+    return "EOF";
+  }
+  string top = generator.q.front();
+  generator.q.pop();
+  return top;
 }
 
 AnalizadorLexico::AnalizadorLexico(string nombre, string token_file,

@@ -54,10 +54,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/sam/Documents/compiler/Js--Compiler
+CMAKE_SOURCE_DIR = /root/Documents/Js--Compiler
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/sam/Documents/compiler/Js--Compiler/build
+CMAKE_BINARY_DIR = /root/Documents/Js--Compiler/build
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -81,14 +81,14 @@ clean: CMakeFiles/JsCompiler.dir/clean
 CMakeFiles/JsCompiler.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/JsCompiler.dir/build.make CMakeFiles/JsCompiler.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/JsCompiler.dir/build.make CMakeFiles/JsCompiler.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/sam/Documents/compiler/Js--Compiler/build/CMakeFiles --progress-num=1,2,3,4,5 "Built target JsCompiler"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/root/Documents/Js--Compiler/build/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target JsCompiler"
 .PHONY : CMakeFiles/JsCompiler.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/JsCompiler.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/sam/Documents/compiler/Js--Compiler/build/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/Documents/Js--Compiler/build/CMakeFiles 6
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/JsCompiler.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/sam/Documents/compiler/Js--Compiler/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/Documents/Js--Compiler/build/CMakeFiles 0
 .PHONY : CMakeFiles/JsCompiler.dir/rule
 
 # Convenience name for target.

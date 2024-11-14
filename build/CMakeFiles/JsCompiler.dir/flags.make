@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/sam/Documents/compiler/Js--Compiler/include
+CXX_INCLUDES = -I/root/Documents/Js--Compiler/include
 
 CXX_FLAGS = -std=gnu++17
 

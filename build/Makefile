@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/sam/Documents/compiler/Js--Compiler
+CMAKE_SOURCE_DIR = /root/Documents/Js--Compiler
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/sam/Documents/compiler/Js--Compiler/build
+CMAKE_BINARY_DIR = /root/Documents/Js--Compiler/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/sam/Documents/compiler/Js--Compiler/build/CMakeFiles /home/sam/Documents/compiler/Js--Compiler/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/Documents/Js--Compiler/build/CMakeFiles /root/Documents/Js--Compiler/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/sam/Documents/compiler/Js--Compiler/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/Documents/Js--Compiler/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -152,6 +152,30 @@ include/ColaTablaSimbolos.s: include/ColaTablaSimbolos.cpp.s
 include/ColaTablaSimbolos.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/JsCompiler.dir/build.make CMakeFiles/JsCompiler.dir/include/ColaTablaSimbolos.cpp.s
 .PHONY : include/ColaTablaSimbolos.cpp.s
+
+include/Gestor_Errores.o: include/Gestor_Errores.cpp.o
+.PHONY : include/Gestor_Errores.o
+
+# target to build an object file
+include/Gestor_Errores.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/JsCompiler.dir/build.make CMakeFiles/JsCompiler.dir/include/Gestor_Errores.cpp.o
+.PHONY : include/Gestor_Errores.cpp.o
+
+include/Gestor_Errores.i: include/Gestor_Errores.cpp.i
+.PHONY : include/Gestor_Errores.i
+
+# target to preprocess a source file
+include/Gestor_Errores.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/JsCompiler.dir/build.make CMakeFiles/JsCompiler.dir/include/Gestor_Errores.cpp.i
+.PHONY : include/Gestor_Errores.cpp.i
+
+include/Gestor_Errores.s: include/Gestor_Errores.cpp.s
+.PHONY : include/Gestor_Errores.s
+
+# target to generate assembly for a file
+include/Gestor_Errores.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/JsCompiler.dir/build.make CMakeFiles/JsCompiler.dir/include/Gestor_Errores.cpp.s
+.PHONY : include/Gestor_Errores.cpp.s
 
 include/TablaSimbolos.o: include/TablaSimbolos.cpp.o
 .PHONY : include/TablaSimbolos.o
@@ -237,6 +261,9 @@ help:
 	@echo "... include/ColaTablaSimbolos.o"
 	@echo "... include/ColaTablaSimbolos.i"
 	@echo "... include/ColaTablaSimbolos.s"
+	@echo "... include/Gestor_Errores.o"
+	@echo "... include/Gestor_Errores.i"
+	@echo "... include/Gestor_Errores.s"
 	@echo "... include/TablaSimbolos.o"
 	@echo "... include/TablaSimbolos.i"
 	@echo "... include/TablaSimbolos.s"

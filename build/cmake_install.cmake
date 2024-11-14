@@ -1,4 +1,4 @@
-# Install script for directory: /home/sam/Documents/compiler/Js--Compiler
+# Install script for directory: /root/Documents/Js--Compiler
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/sam/Documents/compiler/Js--Compiler/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/root/Documents/Js--Compiler/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

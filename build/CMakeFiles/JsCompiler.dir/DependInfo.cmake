@@ -8,10 +8,11 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/sam/Documents/compiler/Js--Compiler/include/ColaTablaSimbolos.cpp" "CMakeFiles/JsCompiler.dir/include/ColaTablaSimbolos.cpp.o" "gcc" "CMakeFiles/JsCompiler.dir/include/ColaTablaSimbolos.cpp.o.d"
-  "/home/sam/Documents/compiler/Js--Compiler/include/TablaSimbolos.cpp" "CMakeFiles/JsCompiler.dir/include/TablaSimbolos.cpp.o" "gcc" "CMakeFiles/JsCompiler.dir/include/TablaSimbolos.cpp.o.d"
-  "/home/sam/Documents/compiler/Js--Compiler/include/analizador_lexico.cpp" "CMakeFiles/JsCompiler.dir/include/analizador_lexico.cpp.o" "gcc" "CMakeFiles/JsCompiler.dir/include/analizador_lexico.cpp.o.d"
-  "/home/sam/Documents/compiler/Js--Compiler/include/principal.cpp" "CMakeFiles/JsCompiler.dir/include/principal.cpp.o" "gcc" "CMakeFiles/JsCompiler.dir/include/principal.cpp.o.d"
+  "/root/Documents/Js--Compiler/include/ColaTablaSimbolos.cpp" "CMakeFiles/JsCompiler.dir/include/ColaTablaSimbolos.cpp.o" "gcc" "CMakeFiles/JsCompiler.dir/include/ColaTablaSimbolos.cpp.o.d"
+  "/root/Documents/Js--Compiler/include/Gestor_Errores.cpp" "CMakeFiles/JsCompiler.dir/include/Gestor_Errores.cpp.o" "gcc" "CMakeFiles/JsCompiler.dir/include/Gestor_Errores.cpp.o.d"
+  "/root/Documents/Js--Compiler/include/TablaSimbolos.cpp" "CMakeFiles/JsCompiler.dir/include/TablaSimbolos.cpp.o" "gcc" "CMakeFiles/JsCompiler.dir/include/TablaSimbolos.cpp.o.d"
+  "/root/Documents/Js--Compiler/include/analizador_lexico.cpp" "CMakeFiles/JsCompiler.dir/include/analizador_lexico.cpp.o" "gcc" "CMakeFiles/JsCompiler.dir/include/analizador_lexico.cpp.o.d"
+  "/root/Documents/Js--Compiler/include/principal.cpp" "CMakeFiles/JsCompiler.dir/include/principal.cpp.o" "gcc" "CMakeFiles/JsCompiler.dir/include/principal.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

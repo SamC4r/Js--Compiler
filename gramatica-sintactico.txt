@@ -3,7 +3,7 @@ Terminales = {
   id
   ; ,
   if else
-  ( { } )
+  ( { })
   int boolean string void
   > - % !
   return 
@@ -15,7 +15,6 @@ Terminales = {
 }
 
 NoTerminales = {
-
 Z
 B
 T

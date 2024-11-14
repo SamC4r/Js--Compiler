@@ -1,6 +1,7 @@
 #include <fstream>
 #include <string>
 #include <unordered_map>
+#include <queue>
 
 #include "ColaTablaSimbolos.h"
 #include "TiposToken.h"
@@ -17,6 +18,7 @@ public:
   bool buscando;
   string lastTokenType;
   string lastTokenAttribute;
+  std::queue<string> q;
 
   unordered_map<string, int> codigo_palabra_reservada = {
       {"boolean", 1}, {"else", 2}, {"function", 3}, {"if", 4},
@@ -25,12 +27,8 @@ public:
   };
 
   unordered_map<char, string> tipo_caracter_especial = {
-      {'=', "operadorAsignacion"}, {',', "coma"},
-      {';', "puntoComa"},          {'(', "parentesisIzda"},
-      {')', "parentesisDcha"},     {'{', "llavesIzda"},
-      {'}', "llavesDcha"},         {'-', "operadorMenos"},
-      {'%', "operadorModulo"},     {'>', "operadorMayor"},
-      {'!', "operadorNegacion"},
+      {'=', "="}, {',', ","}, {';', ";"}, {'(', "("}, {')', ")"}, {'{', "{"},
+      {'}', "}"}, {'-', "-"}, {'%', "%"}, {'>', ">"}, {'!', "!"},
   };
 
   unordered_map<string, string> operadoresEspeciales = {
