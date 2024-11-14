@@ -58,6 +58,7 @@ AnalizadorSintactico::AnalizadorSintactico(AnalizadorLexico &lexico,
   string a;
   parse.open("parse.txt", fstream::out);
   parse << "D";
+  while ((a = siguienteToken()) != "EOF") {}
 
   while ((a = siguienteToken()) != "EOF") {
     pila.push("$");

@@ -40,9 +40,8 @@ public:
   };
 
   template <typename T1, typename T2> void gen_token(T1 tipo, T2 atributo);
-  void gen_token(char c);
-  void gen_token(string c);
   template <typename T1> void gen_token(T1 tipo, string cadena);
+  template <typename T1> void gen_token(T1 tipo);
 
   void init(string token_file_name, ColaTablaSimbolos &queue);
   void Token(string identificador);

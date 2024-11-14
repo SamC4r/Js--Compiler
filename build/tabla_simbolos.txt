@@ -1,0 +1,6 @@
+Contenidos de la Tabla # 1 :
+  * LEXEMA : 'a'
+  * LEXEMA : 'b'
+  * LEXEMA : 'x'
+  * LEXEMA : 'z'
+  * LEXEMA : 'y'

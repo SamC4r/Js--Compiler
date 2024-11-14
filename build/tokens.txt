@@ -1,0 +1,57 @@
+<id, 0>
+<operadorMenos,>
+<id, 1>
+<var, 10>
+<int, 6>
+<id, 2>
+<puntoComa,>
+<var, 10>
+<boolean, 1>
+<id, 1>
+<puntoComa,>
+<var, 10>
+<int, 6>
+<id, 3>
+<puntoComa,>
+<input, 5>
+<id, 3>
+<puntoComa,>
+<output, 7>
+<id, 3>
+<puntoComa,>
+<id, 2>
+<operadorAsignacion,>
+<id, 3>
+<puntoComa,>
+<output, 7>
+<id, 3>
+<operadorMenos,>
+<constanteEntera, 1>
+<puntoComa,>
+<id, 1>
+<operadorAsignacion,>
+<operadorNegacion,>
+<id, 1>
+<puntoComa,>
+<if, 4>
+<parentesisIzda,>
+<id, 1>
+<parentesisDcha,>
+<id, 2>
+<operadorAsignacion,>
+<id, 2>
+<operadorMenos,>
+<constanteEntera, 6>
+<operadorMenos,>
+<id, 3>
+<operadorMenos,>
+<constanteEntera, 1>
+<operadorMenos,>
+<parentesisIzda,>
+<constanteEntera, 2>
+<operadorMenos,>
+<id, 4>
+<operadorMenos,>
+<constanteEntera, 7>
+<parentesisDcha,>
+<puntoComa,>
