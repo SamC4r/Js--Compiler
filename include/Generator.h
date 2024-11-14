@@ -1,7 +1,7 @@
 #include <fstream>
 #include <string>
 #include <unordered_map>
-#include <queue>
+#include<queue>
 
 #include "ColaTablaSimbolos.h"
 #include "TiposToken.h"
@@ -27,8 +27,12 @@ public:
   };
 
   unordered_map<char, string> tipo_caracter_especial = {
-      {'=', "="}, {',', ","}, {';', ";"}, {'(', "("}, {')', ")"}, {'{', "{"},
-      {'}', "}"}, {'-', "-"}, {'%', "%"}, {'>', ">"}, {'!', "!"},
+      {'=', "operadorAsignacion"}, {',', "coma"},
+      {';', "puntoComa"},          {'(', "parentesisIzda"},
+      {')', "parentesisDcha"},     {'{', "llavesIzda"},
+      {'}', "llavesDcha"},         {'-', "operadorMenos"},
+      {'%', "operadorModulo"},     {'>', "operadorMayor"},
+      {'!', "operadorNegacion"},
   };
 
   unordered_map<string, string> operadoresEspeciales = {
@@ -36,7 +40,8 @@ public:
   };
 
   template <typename T1, typename T2> void gen_token(T1 tipo, T2 atributo);
-  template <typename T1> void gen_token(T1 tipo);
+  void gen_token(char c);
+  void gen_token(string c);
   template <typename T1> void gen_token(T1 tipo, string cadena);
 
   void init(string token_file_name, ColaTablaSimbolos &queue);

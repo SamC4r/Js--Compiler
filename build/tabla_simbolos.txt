@@ -1,4 +1,0 @@
-Contenidos de la Tabla # 1 :
-  * LEXEMA : 'a'
-  * LEXEMA : 'cadena'
-  * LEXEMA : 'hola'

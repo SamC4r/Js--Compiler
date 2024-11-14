@@ -57,6 +57,7 @@ AnalizadorSintactico::AnalizadorSintactico(AnalizadorLexico &lexico,
     : lexico(lexico), errores(errores) {
   string a;
   parse.open("parse.txt", fstream::out);
+  parse << "D";
 
   while ((a = siguienteToken()) != "EOF") {
     pila.push("$");
@@ -82,7 +83,7 @@ AnalizadorSintactico::AnalizadorSintactico(AnalizadorLexico &lexico,
 
         string regla = X + " -> " + production;
 
-        parse << producciones[regla] << ", " << endl;
+        parse << " " << producciones[regla];
 
         pila.pop();
 

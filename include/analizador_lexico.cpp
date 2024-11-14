@@ -26,8 +26,17 @@ void Generator::gen_token(T1 tipo, T2 atributo) {
   // cerr << "last Token " << lastTokenType << endl;
   q.push(lastTokenType);
 }
-template <typename T1> void Generator::gen_token(T1 tipo) {
-  token_file << "<" << tipo << ",>" << endl;
+
+void Generator::gen_token(string tipo) {
+  token_file << "<" << operadoresEspeciales[tipo] << ",>" << endl;
+  lastTokenType = tipo;
+  lastTokenAttribute = "";
+  buscando = false;
+  q.push(lastTokenType);
+}
+
+void Generator::gen_token(char tipo) {
+  token_file << "<" << tipo_caracter_especial[tipo] << ",>" << endl;
   lastTokenType = tipo;
   lastTokenAttribute = "";
   buscando = false;
@@ -65,7 +74,7 @@ void Generator::Token(string identificador) {
   }
 }
 
-void Generator::Token(char c) { gen_token(tipo_caracter_especial[c]); }
+void Generator::Token(char c) { gen_token(c); }
 
 void Generator::Token(int valor) { gen_token("constanteEntera", valor); }
 
