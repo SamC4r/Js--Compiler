@@ -56,19 +56,20 @@ void AnalizadorSintactico::error(string unexpected) {
 AnalizadorSintactico::AnalizadorSintactico(AnalizadorLexico &lexico,
                                            GestorErrores &errores)
     : lexico(lexico), errores(errores) {
-  string a;
+  string a = "";
   parse.open("parse.txt", fstream::out);
   parse << "D";
   //while ((a = siguienteToken()) != "EOF") {}
-  a = siguienteToken();
-  while (a  != "$") {
+  while ((a = siguienteToken())  != "EOF" && a != "$" ) {
     pila.push("$");
     pila.push("Z"); // axioma
     auto X = pila.top();
     while (X != "$") {
+      debug(X);
       if(token_char.count(a))a=token_char[a];
       if(token_char.count(X))X=token_char[X];
       cout << "element: " << X << ' ' << a << endl;
+      if(a == "EOF") a= "$";
       if (X == a) {
         pila.pop();
         cout << "top" << pila.top() << endl;
@@ -87,7 +88,7 @@ AnalizadorSintactico::AnalizadorSintactico(AnalizadorLexico &lexico,
         string regla = X + " -> " + production;
         cerr << "Regla: " << regla << endl;
         parse << " " << producciones[regla];
-
+        cerr << "contiene? " << producciones.count(regla) << " " << producciones[regla] << endl;
         pila.pop();
 
         istringstream stream(production);
@@ -106,6 +107,7 @@ AnalizadorSintactico::AnalizadorSintactico(AnalizadorLexico &lexico,
         debug(production);
       }
       X = pila.top();
+      debug(X);
     }
   };
 };
