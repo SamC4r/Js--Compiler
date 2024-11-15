@@ -212,7 +212,7 @@ string AnalizadorLexico::getToken() {
   bool posible_fin_comentario = false;
   generator.buscando = true;
   if (programa.eof())
-    return "EOF";
+    return "$";
 
   if(!generator.q.empty()){
     string top = generator.q.front();
@@ -291,7 +291,7 @@ string AnalizadorLexico::getToken() {
     c = programa.get();
   }
   if(programa.eof()){
-    return "EOF";
+    return "$";
   }
   string top = generator.q.front();
   generator.q.pop();
