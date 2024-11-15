@@ -14,7 +14,6 @@
 
 using namespace std;
 int cnt = 0;
-int lineas = 1;
 string fuente = "";
 
 template <typename T1, typename T2>
@@ -266,7 +265,7 @@ string AnalizadorLexico::getToken() {
     }
 
     if (is_delimiter(c)) { // En este caso hay que saltarlo
-      // cerr << "Delimiter: " << (int)c << endl;
+      // cerr << "Delimiter: " << (int)c <AnalizadorSintactico::< endl;
       goto next;
     } else if (caracter_especial(c)) {
       if (menos(c)) {
@@ -306,6 +305,7 @@ AnalizadorLexico::AnalizadorLexico(string nombre, string token_file,
   programa.open(nombre, ios::in);
   generator.init(token_file, queue);
   fuente = nombre;
+  this->lineas=1;
 
   this->errores = errores;
 

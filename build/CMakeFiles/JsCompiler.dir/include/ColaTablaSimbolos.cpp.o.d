@@ -1,7 +1,7 @@
 CMakeFiles/JsCompiler.dir/include/ColaTablaSimbolos.cpp.o: \
- /root/Documents/Js--Compiler/include/ColaTablaSimbolos.cpp \
+ /home/sam/Documents/compiler/Js--Compiler/include/ColaTablaSimbolos.cpp \
  /usr/include/stdc-predef.h \
- /root/Documents/Js--Compiler/include/ColaTablaSimbolos.h \
+ /home/sam/Documents/compiler/Js--Compiler/include/ColaTablaSimbolos.h \
  /usr/include/c++/13/fstream /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
@@ -128,8 +128,8 @@ CMakeFiles/JsCompiler.dir/include/ColaTablaSimbolos.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
  /usr/include/c++/13/cerrno /usr/include/errno.h \
  /usr/include/x86_64-linux-gnu/bits/errno.h /usr/include/linux/errno.h \
- /usr/include/x86_64-linux-gnu/asm/errno.h \
- /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
+ /usr/lib/linux/uapi/x86/asm/errno.h /usr/include/asm-generic/errno.h \
+ /usr/include/asm-generic/errno-base.h \
  /usr/include/x86_64-linux-gnu/bits/types/error_t.h \
  /usr/include/c++/13/bits/charconv.h \
  /usr/include/c++/13/bits/basic_string.tcc \
@@ -157,7 +157,7 @@ CMakeFiles/JsCompiler.dir/include/ColaTablaSimbolos.cpp.o: \
  /usr/include/c++/13/deque /usr/include/c++/13/bits/stl_uninitialized.h \
  /usr/include/c++/13/bits/stl_deque.h /usr/include/c++/13/bits/deque.tcc \
  /usr/include/c++/13/bits/stl_stack.h \
- /root/Documents/Js--Compiler/include/TablaSimbolos.h \
+ /home/sam/Documents/compiler/Js--Compiler/include/TablaSimbolos.h \
  /usr/include/c++/13/unordered_map \
  /usr/include/c++/13/bits/unordered_map.h \
  /usr/include/c++/13/bits/hashtable.h \

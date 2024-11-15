@@ -30,6 +30,19 @@ class AnalizadorSintactico {
   set<string> noTerminales = {"Z", "B", "T", "E", "O", "M", "P", "L", "Q", "I",
                               "J", "C", "S", "D", "X", "F", "H", "A", "K"};
 
+std::map<std::string, std::string> token_char = {
+    {"operadorAsignacion", "="},
+    {"coma", ","},
+    {"puntoComa", ";"},
+    {"parentesisIzda", "("},
+    {"parentesisDcha", ")"},
+    {"llavesIzda", "{"},
+    {"llavesDcha", "}"},
+    {"operadorMenos", "-"},
+    {"operadorModulo", "%"},
+    {"operadorMayor", ">"},
+    {"operadorNegacion", "!"},
+};
   map<string, int> producciones = {{"Z -> B Z", 1},
                                    {"Z -> F Z", 2},
                                    {"Z -> lambda", 3},
@@ -143,6 +156,7 @@ class AnalizadorSintactico {
       {{"P", ")"}, "lambda"},
       {{"P", ";"}, "lambda"},
       {{"P", "-"}, "- O P"},
+      {{"P", ">"}, "lambda"},
       {{"O", "id"}, "M Y"},
       {{"O", "cadena"}, "M Y"},
       {{"O", "constanteEntera"}, "M Y"},
@@ -151,6 +165,8 @@ class AnalizadorSintactico {
       {{"O", "--"}, "M Y"},
       {{"Y", ")"}, "lambda"},
       {{"Y", ";"}, "lambda"},
+      {{"Y", "-"}, "lambda"},
+      {{"Y", ">"}, "lambda"},
       {{"Y", "%"}, "% M Y"},
       {{"M", "id"}, "id V"},
       {{"M", "cadena"}, "cadena"},
@@ -161,6 +177,9 @@ class AnalizadorSintactico {
       {{"V", "("}, "( L )"},
       {{"V", ")"}, "lambda"},
       {{"V", ";"}, "lambda"},
+      {{"V","-"},"lambda"},
+      {{"V","%"},"lambda"},
+      {{"V",">"},"lambda"},
       {{"L", "id"}, "E Q"},
       {{"L", "cadena"}, "E Q"},
       {{"L", "constanteEntera"}, "E Q"},
@@ -176,6 +195,7 @@ class AnalizadorSintactico {
       {{"I", "return"}, "S"},
       {{"I", "{"}, "{ C } J"},
       {{"J", "else"}, "else { C }"},
+      {{"J", "var"}, "lambda"},
       {{"J", "$"}, "lambda"},
       {{"C", "id"}, "B C"},
       {{"C", "var"}, "B C"},
@@ -210,6 +230,9 @@ class AnalizadorSintactico {
       {{"A", "void"}, "void"},
       {{"K", ")"}, "lambda"},
       {{"K", ","}, ", T id K"}};
+
+
+  void error(string unexpected);
 
 public:
   AnalizadorSintactico(AnalizadorLexico &lexico, GestorErrores &errores);

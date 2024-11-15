@@ -1,4 +1,5 @@
 #include "Analizador_Sintactico.h"
+#include "Generator.h"
 #include <algorithm>
 #include <iostream>
 #include <sstream>
@@ -47,8 +48,8 @@ template <typename T, typename... V> void _print(T t, V... v) {
 #endif
  
 
-void error() {
-  cout << "Error 1 " << endl;
+void AnalizadorSintactico::error(string unexpected) {
+  cout << "Error en linea  "<< lexico.lineas << " -> no se esperaba: " << unexpected << endl;
   throw std::runtime_error("Error Sintactico");
 }
 
@@ -58,7 +59,7 @@ AnalizadorSintactico::AnalizadorSintactico(AnalizadorLexico &lexico,
   string a;
   parse.open("parse.txt", fstream::out);
   parse << "D";
-  while ((a = siguienteToken()) != "EOF") {}
+  //while ((a = siguienteToken()) != "EOF") {}
 
   while ((a = siguienteToken()) != "EOF") {
     pila.push("$");
@@ -66,15 +67,17 @@ AnalizadorSintactico::AnalizadorSintactico(AnalizadorLexico &lexico,
 
     auto X = pila.top();
     while (X != "$" && a != "EOF") {
+      if(token_char.count(a))a=token_char[a];
+      if(token_char.count(X))X=token_char[X];
       cout << "element: " << X << ' ' << a << endl;
       if (X == a) {
         pila.pop();
         cout << "top" << pila.top() << endl;
         a = siguienteToken();
       } else if (terminales.count(X))
-        error();
+        error(X);
       else if (!M.count({X, a}))
-        error();
+        error(a);
       else if (M.count({X, a})) {
         cout << "esta!" << endl;
         string production = "";

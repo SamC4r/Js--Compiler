@@ -1,5 +1,5 @@
 CMakeFiles/JsCompiler.dir/include/Gestor_Errores.cpp.o: \
- /root/Documents/Js--Compiler/include/Gestor_Errores.cpp \
+ /home/sam/Documents/compiler/Js--Compiler/include/Gestor_Errores.cpp \
  /usr/include/stdc-predef.h /usr/include/c++/13/iostream \
  /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
@@ -127,8 +127,8 @@ CMakeFiles/JsCompiler.dir/include/Gestor_Errores.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
  /usr/include/c++/13/cerrno /usr/include/errno.h \
  /usr/include/x86_64-linux-gnu/bits/errno.h /usr/include/linux/errno.h \
- /usr/include/x86_64-linux-gnu/asm/errno.h \
- /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
+ /usr/lib/linux/uapi/x86/asm/errno.h /usr/include/asm-generic/errno.h \
+ /usr/include/asm-generic/errno-base.h \
  /usr/include/x86_64-linux-gnu/bits/types/error_t.h \
  /usr/include/c++/13/bits/charconv.h \
  /usr/include/c++/13/bits/basic_string.tcc \
@@ -150,4 +150,4 @@ CMakeFiles/JsCompiler.dir/include/Gestor_Errores.cpp.o: \
  /usr/include/c++/13/bits/basic_ios.tcc \
  /usr/include/c++/13/bits/ostream.tcc /usr/include/c++/13/istream \
  /usr/include/c++/13/bits/istream.tcc \
- /root/Documents/Js--Compiler/include/Gestor_Errores.h
+ /home/sam/Documents/compiler/Js--Compiler/include/Gestor_Errores.h

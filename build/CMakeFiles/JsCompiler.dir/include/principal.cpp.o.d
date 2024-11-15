@@ -1,5 +1,5 @@
 CMakeFiles/JsCompiler.dir/include/principal.cpp.o: \
- /root/Documents/Js--Compiler/include/principal.cpp \
+ /home/sam/Documents/compiler/Js--Compiler/include/principal.cpp \
  /usr/include/stdc-predef.h /usr/include/c++/13/filesystem \
  /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
@@ -17,8 +17,8 @@ CMakeFiles/JsCompiler.dir/include/principal.cpp.o: \
  /usr/include/x86_64-linux-gnu/c++/13/bits/error_constants.h \
  /usr/include/c++/13/cerrno /usr/include/errno.h \
  /usr/include/x86_64-linux-gnu/bits/errno.h /usr/include/linux/errno.h \
- /usr/include/x86_64-linux-gnu/asm/errno.h \
- /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
+ /usr/lib/linux/uapi/x86/asm/errno.h /usr/include/asm-generic/errno.h \
+ /usr/include/asm-generic/errno-base.h \
  /usr/include/x86_64-linux-gnu/bits/types/error_t.h \
  /usr/include/c++/13/iosfwd /usr/include/c++/13/bits/stringfwd.h \
  /usr/include/c++/13/bits/memoryfwd.h /usr/include/c++/13/bits/postypes.h \
@@ -174,10 +174,10 @@ CMakeFiles/JsCompiler.dir/include/principal.cpp.o: \
  /usr/include/c++/13/ext/aligned_buffer.h \
  /usr/include/c++/13/bits/fs_dir.h /usr/include/c++/13/bits/fs_ops.h \
  /usr/include/c++/13/iostream \
- /root/Documents/Js--Compiler/include/Analizador_Sintactico.cpp \
- /root/Documents/Js--Compiler/include/Analizador_Sintactico.h \
- /root/Documents/Js--Compiler/include/analizador_lexico.h \
- /root/Documents/Js--Compiler/include/ColaTablaSimbolos.h \
+ /home/sam/Documents/compiler/Js--Compiler/include/Analizador_Sintactico.cpp \
+ /home/sam/Documents/compiler/Js--Compiler/include/Analizador_Sintactico.h \
+ /home/sam/Documents/compiler/Js--Compiler/include/analizador_lexico.h \
+ /home/sam/Documents/compiler/Js--Compiler/include/ColaTablaSimbolos.h \
  /usr/include/c++/13/fstream \
  /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
@@ -185,7 +185,7 @@ CMakeFiles/JsCompiler.dir/include/principal.cpp.o: \
  /usr/include/c++/13/deque /usr/include/c++/13/bits/stl_uninitialized.h \
  /usr/include/c++/13/bits/stl_deque.h /usr/include/c++/13/bits/deque.tcc \
  /usr/include/c++/13/bits/stl_stack.h \
- /root/Documents/Js--Compiler/include/TablaSimbolos.h \
+ /home/sam/Documents/compiler/Js--Compiler/include/TablaSimbolos.h \
  /usr/include/c++/13/unordered_map \
  /usr/include/c++/13/bits/unordered_map.h \
  /usr/include/c++/13/bits/hashtable.h \
@@ -193,14 +193,14 @@ CMakeFiles/JsCompiler.dir/include/principal.cpp.o: \
  /usr/include/c++/13/bits/enable_special_members.h \
  /usr/include/c++/13/bits/node_handle.h \
  /usr/include/c++/13/bits/erase_if.h \
- /root/Documents/Js--Compiler/include/Generator.h \
+ /home/sam/Documents/compiler/Js--Compiler/include/Generator.h \
  /usr/include/c++/13/queue /usr/include/c++/13/vector \
  /usr/include/c++/13/bits/stl_vector.h \
  /usr/include/c++/13/bits/stl_bvector.h \
  /usr/include/c++/13/bits/vector.tcc /usr/include/c++/13/bits/stl_heap.h \
  /usr/include/c++/13/bits/stl_queue.h \
- /root/Documents/Js--Compiler/include/TiposToken.h \
- /root/Documents/Js--Compiler/include/Gestor_Errores.h \
+ /home/sam/Documents/compiler/Js--Compiler/include/TiposToken.h \
+ /home/sam/Documents/compiler/Js--Compiler/include/Gestor_Errores.h \
  /usr/include/c++/13/map /usr/include/c++/13/bits/stl_tree.h \
  /usr/include/c++/13/bits/stl_map.h \
  /usr/include/c++/13/bits/stl_multimap.h /usr/include/c++/13/set \

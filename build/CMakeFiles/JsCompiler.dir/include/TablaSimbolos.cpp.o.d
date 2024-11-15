@@ -1,7 +1,7 @@
 CMakeFiles/JsCompiler.dir/include/TablaSimbolos.cpp.o: \
- /root/Documents/Js--Compiler/include/TablaSimbolos.cpp \
+ /home/sam/Documents/compiler/Js--Compiler/include/TablaSimbolos.cpp \
  /usr/include/stdc-predef.h \
- /root/Documents/Js--Compiler/include/TablaSimbolos.h \
+ /home/sam/Documents/compiler/Js--Compiler/include/TablaSimbolos.h \
  /usr/include/c++/13/string /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
@@ -108,8 +108,8 @@ CMakeFiles/JsCompiler.dir/include/TablaSimbolos.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
  /usr/include/c++/13/cerrno /usr/include/errno.h \
  /usr/include/x86_64-linux-gnu/bits/errno.h /usr/include/linux/errno.h \
- /usr/include/x86_64-linux-gnu/asm/errno.h \
- /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
+ /usr/lib/linux/uapi/x86/asm/errno.h /usr/include/asm-generic/errno.h \
+ /usr/include/asm-generic/errno-base.h \
  /usr/include/x86_64-linux-gnu/bits/types/error_t.h \
  /usr/include/c++/13/bits/charconv.h \
  /usr/include/c++/13/bits/basic_string.tcc \

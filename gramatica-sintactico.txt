@@ -1,9 +1,11 @@
 Terminales = { 
-  var function 
+  var
+ function 
   id
-  ; ,
+  ; 
+  ,
   if else
-  ( { })
+  ( {  } )
   int boolean string void
   > - % !
   return 
@@ -14,98 +16,109 @@ Terminales = {
   cadena
 }
 
+
 NoTerminales = {
-Z
-B
-T
-E
-O
-M
-P
-L
-Q
-I
-J
-C
-S
-D
-X
-F
-H
-A
-K
-
-}
-
+Z, B, T, E, N, R, P, O, Y, M, V, L, Q, I, J, C, S, U, D, X, F, H, A, K }
 Axioma = Z
-
 Producciones = {
-
 Z -> B Z 
 Z -> F Z
 Z -> lambda
+
 
 B -> var T id ; 
 B -> if ( E ) I
 B -> S
 
+
 T -> int 
 T -> boolean
 T -> string
 
-E -> P E > O 
-E -> O 
 
-O -> P - O
-O -> M
+E -> R N
 
-M -> P % M
-M -> P
 
-P -> ! P 
-P -> id 
-P -> id ( L ) 
-P -> ( E ) 
-P -> constanteEntera 
-P -> cadena 
-P -> -- id
+N -> > R N
+N -> lambda
+
+
+R -> O P
+
+
+P -> - O P
+P -> lambda
+
+
+O ->  M Y
+
+
+Y -> % M Y
+Y -> lambda
+
+
+M -> - M
+M -> ! M
+M -> id V
+M -> ( E )
+M -> constanteEntera
+M -> cadena
+M -> -- id
+
+
+V -> ( L ) 
+V -> lambda
+
 
 L -> E Q 
 L -> lambda
 
+
 Q -> , E Q 
 Q -> lambda
+
 
 I -> S
 I -> { C } J
 
+
 J -> else { C }
 J -> lambda
+
 
 C -> B C 
 C -> lambda
 
-S ->  id = E ; 
-S -> id ( L ) ; 
+
+S ->  id U  
 S -> output E ; 
 S -> input D ; 
 S -> return X ;
 
+
+U -> = E ;
+U -> ( L ) ;
+
+
 D -> id
 D -> ( id )
+
 
 X -> E 
 X -> lambda
 
+
 F -> function H id ( A ) { C }
+
 
 H -> T 
 H -> void 
+
+
 A -> T id K 
 A -> void 
 
+
 K ->  , T id K 
 K -> lambda
-
 }
-
