@@ -43,82 +43,86 @@ std::map<std::string, std::string> token_char = {
     {"operadorMayor", ">"},
     {"operadorNegacion", "!"},
 };
-  map<string, int> producciones = {{"Z -> B Z", 1},
-                                   {"Z -> F Z", 2},
-                                   {"Z -> lambda", 3},
+  map<string, int> producciones = {
+    {"Z -> B Z", 1},
+    {"Z -> F Z", 2},
+    {"Z -> lambda", 3},
 
-                                   {"B -> var T id ;", 4},
-                                   {"B -> if ( E ) I", 5},
-                                   {"B -> S", 6},
+    {"B -> var T id ;", 4},
+    {"B -> if ( E ) I", 5},
+    {"B -> S", 6},
 
-                                   {"T -> int", 7},
-                                   {"T -> boolean", 8},
-                                   {"T -> string", 9},
+    {"T -> int", 7},
+    {"T -> boolean", 8},
+    {"T -> string", 9},
 
-                                   {"E -> R N", 10},
+    {"E -> R N", 10},
 
-                                   {"N -> > R N", 11},
-                                   {"N -> lambda", 12},
+    {"N -> > R N", 11},
+    {"N -> lambda", 12},
 
-                                   {"R -> O P", 13},
+    {"R -> O P", 13},
 
-                                   {"P -> - O P", 14},
-                                   {"P -> lambda", 15},
+    {"P -> - O P", 14},
+    {"P -> lambda", 15},
 
-                                   {"O -> M Y", 16},
+    {"O -> M Y", 16},
 
-                                   {"Y -> % M Y", 17},
-                                   {"Y -> lambda", 18},
+    {"Y -> % M Y", 17},
+    {"Y -> lambda", 18},
 
-                                   {"M -> ! M", 19},
-                                   {"M -> id V", 20},
-                                   {"M -> ( E )", 21},
-                                   {"M -> constanteEntera", 22},
-                                   {"M -> cadena", 23},
-                                   {"M -> -- id", 24},
+    {"M -> - M", 19},
+    {"M -> ! M", 20},
+    {"M -> id V", 21},
+    {"M -> ( E )", 22},
+    {"M -> constanteEntera", 23},
+    {"M -> cadena", 24},
+    {"M -> -- id", 25},
 
-                                   {"V -> ( L )", 25},
-                                   {"V -> lambda", 26},
+    {"V -> ( L )", 26},
+    {"V -> lambda", 27},
 
-                                   {"L -> E Q", 27},
-                                   {"L -> lambda", 28},
+    {"L -> E Q", 28},
+    {"L -> lambda", 29},
 
-                                   {"Q -> , E Q", 29},
-                                   {"Q -> lambda", 30},
+    {"Q -> , E Q", 30},
+    {"Q -> lambda", 31},
 
-                                   {"I -> S", 31},
-                                   {"I -> { C } J", 32},
+    {"I -> S", 32},
+    {"I -> { C } J", 33},
 
-                                   {"J -> else { C }", 33},
-                                   {"J -> lambda", 34},
+    {"J -> else { C }", 34},
+    {"J -> lambda", 35},
 
-                                   {"C -> B C", 35},
-                                   {"C -> lambda", 36},
+    {"C -> B C", 36},
+    {"C -> lambda", 37},
 
-                                   {"S -> id U ", 37},
-                                   {"S -> output E ;", 38},
-                                   {"S -> input D ;", 39},
-                                   {"S -> return X ;", 40},
+    {"S -> id U", 38},
+    {"S -> output E ;", 39},
+    {"S -> input D ;", 40},
+    {"S -> return X ;", 41},
 
-                                   {"U -> = E ;", 41},
-                                   {"U -> ( L ) ;", 42},
+    {"U -> = E ;", 42},
+    {"U -> ( L ) ;", 43},
 
-                                   {"D -> id", 43},
-                                   {"D -> ( id )", 44},
+    {"D -> id", 44},
+    {"D -> ( id )", 45},
 
-                                   {"X -> E", 45},
-                                   {"X -> lambda", 46},
+    {"X -> E", 46},
+    {"X -> lambda", 47},
 
-                                   {"F -> function H id ( A ) { C }", 47},
+    {"F -> function H id ( A ) { C }", 48},
 
-                                   {"H -> T", 48},
-                                   {"H -> void", 49},
+    {"H -> T", 49},
+    {"H -> void", 50},
 
-                                   {"A -> T id K", 50},
-                                   {"A -> void", 51},
+    {"A -> T id K", 51},
+    {"A -> void", 52},
 
-                                   {"K -> , T id K", 52},
-                                   {"K -> lambda", 53}};
+    {"K -> , T id K", 53},
+    {"K -> lambda", 54}
+};
+
 
   map<pair<string, string>, string> M = {
       {{"Z", "id"}, "B Z"},
