@@ -60,13 +60,12 @@ AnalizadorSintactico::AnalizadorSintactico(AnalizadorLexico &lexico,
   parse.open("parse.txt", fstream::out);
   parse << "D";
   //while ((a = siguienteToken()) != "EOF") {}
-
-  while ((a = siguienteToken()) != "EOF") {
+  a = siguienteToken();
+  while (a  != "$") {
     pila.push("$");
     pila.push("Z"); // axioma
-
     auto X = pila.top();
-    while (X != "$" && a != "EOF") {
+    while (X != "$") {
       if(token_char.count(a))a=token_char[a];
       if(token_char.count(X))X=token_char[X];
       cout << "element: " << X << ' ' << a << endl;
@@ -86,7 +85,7 @@ AnalizadorSintactico::AnalizadorSintactico(AnalizadorLexico &lexico,
              << (production = M[{X, a}]) << endl;
 
         string regla = X + " -> " + production;
-
+        cerr << "Regla: " << regla << endl;
         parse << " " << producciones[regla];
 
         pila.pop();
