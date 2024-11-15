@@ -208,7 +208,7 @@ std::map<std::string, std::string> token_char = {
       {{"C", "return"}, "B C"},
       {{"C", "if"}, "B C"},
       {{"C", "}"}, "lambda"},
-      {{"S", "id"}, "id U "},
+      {{"S", "id"}, "id U"},
       {{"S", "input"}, "input D ;"},
       {{"S", "output"}, "output E ;"},
       {{"S", "return"}, "return X ;"},
