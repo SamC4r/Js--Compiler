@@ -14,11 +14,37 @@ Terminales = {
   = --
   constanteEntera
   cadena
+  lambda
 }
 
 
 NoTerminales = {
-Z, B, T, E, N, R, P, O, Y, M, V, L, Q, I, J, C, S, U, D, X, F, H, A, K }
+Z
+B
+T 
+E 
+N 
+R 
+P
+O
+Y
+M
+V
+L
+Q
+I
+J
+C
+S
+U
+D
+X
+F
+H
+A
+K 
+}
+
 Axioma = Z
 Producciones = {
 Z -> B Z 
