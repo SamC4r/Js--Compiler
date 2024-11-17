@@ -123,7 +123,6 @@ std::map<std::string, std::string> token_char = {
     {"K -> lambda", 54}
 };
 
-
   map<pair<string, string>, string> M = {
       {{"Z", "id"}, "B Z"},
       {{"Z", "var"}, "B Z"},
@@ -181,9 +180,9 @@ std::map<std::string, std::string> token_char = {
       {{"V", "("}, "( L )"},
       {{"V", ")"}, "lambda"},
       {{"V", ";"}, "lambda"},
-      {{"V","-"},"lambda"},
-      {{"V","%"},"lambda"},
-      {{"V",">"},"lambda"},
+      {{"V", "-"}, "lambda"},
+      {{"V", "%"}, "lambda"},
+      {{"V", ">"}, "lambda"},
       {{"L", "id"}, "E Q"},
       {{"L", "cadena"}, "E Q"},
       {{"L", "constanteEntera"}, "E Q"},
@@ -233,8 +232,24 @@ std::map<std::string, std::string> token_char = {
       {{"A", "string"}, "T id K"},
       {{"A", "void"}, "void"},
       {{"K", ")"}, "lambda"},
-      {{"K", ","}, ", T id K"}};
-
+      {{"K", ","}, ", T id K"},
+      {{"E", "-"}, "R N"},
+      {{"N", ","}, "lambda"},
+      {{"R", "-"}, "O P"},
+      {{"P", ","}, "lambda"},
+      {{"O", "-"}, "M Y"},
+      {{"Y", ","}, "lambda"},
+      {{"M", "-"}, "- M"},
+      {{"V", ","}, "lambda"},
+      {{"L", "-"}, "E Q"},
+      {{"J", "id"}, "lambda"},
+      {{"J", "function"}, "lambda"},
+      {{"J", "input"}, "lambda"},
+      {{"J", "output"}, "lambda"},
+      {{"J", "return"}, "lambda"},
+      {{"J", "if"}, "lambda"},
+      {{"X", "-"}, "E"}
+  };
 
   void error(string unexpected);
 
