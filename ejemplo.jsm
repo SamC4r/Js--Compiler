@@ -1,4 +1,3 @@
-a-b
 var int x ;
 var boolean b;
 var int z;
