@@ -1,28 +1,41 @@
-<function, 3>
-<boolean, 1>
+<palabraReservada, 10>
+<palabraReservada, 1>
 <id, 0>
-<parentesisIzda,>
-<boolean, 1>
+<puntoComa,>
+<palabraReservada, 3>
+<palabraReservada, 1>
 <id, 1>
+<parentesisIzda,>
+<palabraReservada, 1>
+<id, 2>
 <parentesisDcha,>
 <llavesIzda,>
-<id, 2>
+<id, 3>
 <operadorAsignacion,>
 <constanteEntera, 3333>
 <puntoComa,>
-<if, 4>
+<palabraReservada, 4>
 <parentesisIzda,>
-<id, 3>
-<parentesisDcha,>
 <id, 4>
+<parentesisDcha,>
+<id, 5>
 <operadorAsignacion,>
-<id, 0>
-<parentesisIzda,>
 <id, 1>
+<parentesisIzda,>
+<id, 2>
 <parentesisDcha,>
 <puntoComa,>
-<return, 8>
+<palabraReservada, 10>
+<palabraReservada, 6>
+<id, 6>
+<puntoComa,>
+<id, 6>
+<operadorAsignacion,>
+<operadorEspecial,>
+<id, 7>
+<puntoComa,>
+<palabraReservada, 8>
 <operadorNegacion,>
-<id, 1>
+<id, 2>
 <puntoComa,>
 <llavesDcha,>
