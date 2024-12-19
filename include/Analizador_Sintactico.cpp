@@ -1,6 +1,4 @@
 #include "Analizador_Sintactico.h"
-#include "Generator.h"
-#include <algorithm>
 #include <iostream>
 #include <sstream>
 #include <string>
@@ -84,7 +82,10 @@ AnalizadorSintactico::AnalizadorSintactico(AnalizadorLexico &lexico,
                 cout << "Produccion: [" << X << ", " << a << "]: " << X
                     << " -> " << (production = M[{X, a}]) << endl;
 
+
+                int a = 23;
                 string regla = X + " -> " + production;
+
                 cerr << "Regla: " << regla << endl;
                 parse << " " << producciones[regla];
                 cerr << "contiene? " << producciones.count(regla) << " " << producciones[regla] << endl;
