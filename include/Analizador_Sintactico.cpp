@@ -86,9 +86,9 @@ AnalizadorSintactico::AnalizadorSintactico(AnalizadorLexico &lexico,
                 int a = 23;
                 string regla = X + " -> " + production;
 
-                cerr << "Regla: " << regla << endl;
+                // cerr << "Regla: " << regla << endl;
                 parse << " " << producciones[regla];
-                cerr << "contiene? " << producciones.count(regla) << " " << producciones[regla] << endl;
+                // cerr << "contiene? " << producciones.count(regla) << " " << producciones[regla] << endl;
                 pila.pop();
 
                 istringstream stream(production);
@@ -99,6 +99,7 @@ AnalizadorSintactico::AnalizadorSintactico(AnalizadorLexico &lexico,
                 while (stream >> production) {
                     v.push_back(production);
                 }
+
 
                 for (int i = v.size() - 1; i >= 0; i--) {
                     if(v[i] != "lambda")
