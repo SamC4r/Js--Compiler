@@ -48,6 +48,8 @@ _print(x)
 bool accionSemantica(string s){
     if(s == "{ T.tipo := ent }"){
         return true;
+    }else if(s == "{ L.tipo := T.Tipo }"){
+        return true;
     }
 
     return false;
