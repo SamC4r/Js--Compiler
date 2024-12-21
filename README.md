@@ -15,5 +15,6 @@
 
 # ToDo
 - [x] Comentarios de bloque
-- [ ] Mejorar tabla de simbolos
+- [x] Mejorar tabla de simbolos
 - [ ] Numeros negativos (ALEX no lo hace)
+- [ ] Implementacion de A.semantico
