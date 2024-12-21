@@ -47,7 +47,7 @@ _print(x)
 
 
 void AnalizadorSintactico::error(string unexpected) {
-    cout << "Error en linea  "<< lexico.lineas << " -> no se esperaba: " << unexpected << endl;
+    cout << "Error en la linea  "<< lexico.lineas << " -> no se esperaba: " << unexpected << endl;
     throw std::runtime_error("Error de Sintaxis");
 }
 
@@ -63,25 +63,23 @@ AnalizadorSintactico::AnalizadorSintactico(AnalizadorLexico &lexico,
         pila.push("Z"); // axioma
         auto X = pila.top();
         while (X != "$") {
-            if(token_char.count(a))a=token_char[a];
-            if(token_char.count(X))X=token_char[X];
-            cout << "element: " << X << ' ' << a << endl;
+            // if(token_char.count(a))a=token_char[a];
+            // if(token_char.count(X))X=token_char[X];
+            // cout << "element: " << X << ' ' << a << endl;
             if(a == "EOF") a= "$";
             if (X == a) {
                 pila.pop();
-                cout << "top" << pila.top() << endl;
+                // cout << "top" << pila.top() << endl;
                 a = siguienteToken();
             } else if (terminales.count(X))
                 error(X);
             else if (!M.count({X, a}))
                 error(a);
             else if (M.count({X, a})) {
-                cout << "esta!" << endl;
-                string production = "";
+                // cout << "esta!" << endl;
+                string production = M[{X, a}];
 
-                cout << "Produccion: [" << X << ", " << a << "]: " << X
-                    << " -> " << (production = M[{X, a}]) << endl;
-
+                // cout << "Produccion: [" << X << ", " << a << "]: " << X << " -> " <<  (production = M[{X, a}])  << endl;
 
                 int a = 23;
                 string regla = X + " -> " + production;
@@ -100,7 +98,6 @@ AnalizadorSintactico::AnalizadorSintactico(AnalizadorLexico &lexico,
                     v.push_back(production);
                 }
 
-
                 for (int i = v.size() - 1; i >= 0; i--) {
                     if(v[i] != "lambda")
                         pila.push(v[i]);
@@ -113,6 +110,6 @@ AnalizadorSintactico::AnalizadorSintactico(AnalizadorLexico &lexico,
 string AnalizadorSintactico::siguienteToken() {
 
     string s = lexico.getToken();
-    cout << "token: " << s << endl;
+    // cout << "token: " << s << endl;
     return s;
 }

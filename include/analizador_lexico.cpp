@@ -34,7 +34,7 @@ void Generator::gen_token(string tipo) {
 
     lastTokenType = tipo;
     lastTokenAttribute = "";
-    cerr << "TIPO -> " << tipo << endl;
+    // cerr << "TIPO -> " << tipo << endl;
     if(tipo_caracter_especial.count(tipo)){
         tipo=tipo_caracter_especial[tipo];
     }
@@ -77,8 +77,9 @@ void Generator::Token(string identificador) {
 
 void Generator::Token(char c) {
     string character(1,c);
-    cerr << "CARACTER " << character << endl;
-    gen_token(tipo_caracter_especial[character]); }
+    // cerr << "CARACTER " << character << endl;
+    gen_token(character);
+}
 
 void Generator::Token(int valor) { gen_token("constanteEntera", valor); }
 
