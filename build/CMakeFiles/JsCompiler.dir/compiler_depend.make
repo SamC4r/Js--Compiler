@@ -615,118 +615,120 @@ CMakeFiles/JsCompiler.dir/include/analizador_lexico.cpp.o: /home/sam/Documents/c
   /usr/include/alloca.h \
   /usr/include/asm-generic/errno-base.h \
   /usr/include/asm-generic/errno.h \
-  /usr/include/c++/13/backward/binders.h \
-  /usr/include/c++/13/bit \
-  /usr/include/c++/13/bits/alloc_traits.h \
-  /usr/include/c++/13/bits/allocator.h \
-  /usr/include/c++/13/bits/basic_ios.h \
-  /usr/include/c++/13/bits/basic_ios.tcc \
-  /usr/include/c++/13/bits/basic_string.h \
-  /usr/include/c++/13/bits/basic_string.tcc \
-  /usr/include/c++/13/bits/char_traits.h \
-  /usr/include/c++/13/bits/charconv.h \
-  /usr/include/c++/13/bits/codecvt.h \
-  /usr/include/c++/13/bits/concept_check.h \
-  /usr/include/c++/13/bits/cpp_type_traits.h \
-  /usr/include/c++/13/bits/cxxabi_forced.h \
-  /usr/include/c++/13/bits/cxxabi_init_exception.h \
-  /usr/include/c++/13/bits/deque.tcc \
-  /usr/include/c++/13/bits/enable_special_members.h \
-  /usr/include/c++/13/bits/erase_if.h \
-  /usr/include/c++/13/bits/exception.h \
-  /usr/include/c++/13/bits/exception_defines.h \
-  /usr/include/c++/13/bits/exception_ptr.h \
-  /usr/include/c++/13/bits/fstream.tcc \
-  /usr/include/c++/13/bits/functexcept.h \
-  /usr/include/c++/13/bits/functional_hash.h \
-  /usr/include/c++/13/bits/hash_bytes.h \
-  /usr/include/c++/13/bits/hashtable.h \
-  /usr/include/c++/13/bits/hashtable_policy.h \
-  /usr/include/c++/13/bits/invoke.h \
-  /usr/include/c++/13/bits/ios_base.h \
-  /usr/include/c++/13/bits/istream.tcc \
-  /usr/include/c++/13/bits/locale_classes.h \
-  /usr/include/c++/13/bits/locale_classes.tcc \
-  /usr/include/c++/13/bits/locale_facets.h \
-  /usr/include/c++/13/bits/locale_facets.tcc \
-  /usr/include/c++/13/bits/localefwd.h \
-  /usr/include/c++/13/bits/memory_resource.h \
-  /usr/include/c++/13/bits/memoryfwd.h \
-  /usr/include/c++/13/bits/move.h \
-  /usr/include/c++/13/bits/nested_exception.h \
-  /usr/include/c++/13/bits/new_allocator.h \
-  /usr/include/c++/13/bits/node_handle.h \
-  /usr/include/c++/13/bits/ostream.tcc \
-  /usr/include/c++/13/bits/ostream_insert.h \
-  /usr/include/c++/13/bits/postypes.h \
-  /usr/include/c++/13/bits/predefined_ops.h \
-  /usr/include/c++/13/bits/ptr_traits.h \
-  /usr/include/c++/13/bits/range_access.h \
-  /usr/include/c++/13/bits/refwrap.h \
-  /usr/include/c++/13/bits/requires_hosted.h \
-  /usr/include/c++/13/bits/std_abs.h \
-  /usr/include/c++/13/bits/stl_algobase.h \
-  /usr/include/c++/13/bits/stl_bvector.h \
-  /usr/include/c++/13/bits/stl_construct.h \
-  /usr/include/c++/13/bits/stl_deque.h \
-  /usr/include/c++/13/bits/stl_function.h \
-  /usr/include/c++/13/bits/stl_heap.h \
-  /usr/include/c++/13/bits/stl_iterator.h \
-  /usr/include/c++/13/bits/stl_iterator_base_funcs.h \
-  /usr/include/c++/13/bits/stl_iterator_base_types.h \
-  /usr/include/c++/13/bits/stl_pair.h \
-  /usr/include/c++/13/bits/stl_queue.h \
-  /usr/include/c++/13/bits/stl_stack.h \
-  /usr/include/c++/13/bits/stl_uninitialized.h \
-  /usr/include/c++/13/bits/stl_vector.h \
-  /usr/include/c++/13/bits/streambuf.tcc \
-  /usr/include/c++/13/bits/streambuf_iterator.h \
-  /usr/include/c++/13/bits/string_view.tcc \
-  /usr/include/c++/13/bits/stringfwd.h \
-  /usr/include/c++/13/bits/unordered_map.h \
-  /usr/include/c++/13/bits/uses_allocator.h \
-  /usr/include/c++/13/bits/uses_allocator_args.h \
-  /usr/include/c++/13/bits/utility.h \
-  /usr/include/c++/13/bits/vector.tcc \
-  /usr/include/c++/13/cctype \
-  /usr/include/c++/13/cerrno \
-  /usr/include/c++/13/clocale \
-  /usr/include/c++/13/cstddef \
-  /usr/include/c++/13/cstdio \
-  /usr/include/c++/13/cstdlib \
-  /usr/include/c++/13/cwchar \
-  /usr/include/c++/13/cwctype \
-  /usr/include/c++/13/debug/assertions.h \
-  /usr/include/c++/13/debug/debug.h \
-  /usr/include/c++/13/deque \
-  /usr/include/c++/13/exception \
-  /usr/include/c++/13/ext/aligned_buffer.h \
-  /usr/include/c++/13/ext/alloc_traits.h \
-  /usr/include/c++/13/ext/atomicity.h \
-  /usr/include/c++/13/ext/numeric_traits.h \
-  /usr/include/c++/13/ext/string_conversions.h \
-  /usr/include/c++/13/ext/type_traits.h \
-  /usr/include/c++/13/fstream \
-  /usr/include/c++/13/initializer_list \
-  /usr/include/c++/13/ios \
-  /usr/include/c++/13/iosfwd \
-  /usr/include/c++/13/iostream \
-  /usr/include/c++/13/istream \
-  /usr/include/c++/13/new \
-  /usr/include/c++/13/ostream \
-  /usr/include/c++/13/pstl/pstl_config.h \
-  /usr/include/c++/13/queue \
-  /usr/include/c++/13/stack \
-  /usr/include/c++/13/stdexcept \
-  /usr/include/c++/13/streambuf \
-  /usr/include/c++/13/string \
-  /usr/include/c++/13/string_view \
-  /usr/include/c++/13/system_error \
-  /usr/include/c++/13/tuple \
-  /usr/include/c++/13/type_traits \
-  /usr/include/c++/13/typeinfo \
-  /usr/include/c++/13/unordered_map \
-  /usr/include/c++/13/vector \
+  /usr/include/c++/14/backward/binders.h \
+  /usr/include/c++/14/bit \
+  /usr/include/c++/14/bits/alloc_traits.h \
+  /usr/include/c++/14/bits/allocator.h \
+  /usr/include/c++/14/bits/basic_ios.h \
+  /usr/include/c++/14/bits/basic_ios.tcc \
+  /usr/include/c++/14/bits/basic_string.h \
+  /usr/include/c++/14/bits/basic_string.tcc \
+  /usr/include/c++/14/bits/char_traits.h \
+  /usr/include/c++/14/bits/charconv.h \
+  /usr/include/c++/14/bits/codecvt.h \
+  /usr/include/c++/14/bits/concept_check.h \
+  /usr/include/c++/14/bits/cpp_type_traits.h \
+  /usr/include/c++/14/bits/cxxabi_forced.h \
+  /usr/include/c++/14/bits/cxxabi_init_exception.h \
+  /usr/include/c++/14/bits/deque.tcc \
+  /usr/include/c++/14/bits/enable_special_members.h \
+  /usr/include/c++/14/bits/erase_if.h \
+  /usr/include/c++/14/bits/exception.h \
+  /usr/include/c++/14/bits/exception_defines.h \
+  /usr/include/c++/14/bits/exception_ptr.h \
+  /usr/include/c++/14/bits/fstream.tcc \
+  /usr/include/c++/14/bits/functexcept.h \
+  /usr/include/c++/14/bits/functional_hash.h \
+  /usr/include/c++/14/bits/hash_bytes.h \
+  /usr/include/c++/14/bits/hashtable.h \
+  /usr/include/c++/14/bits/hashtable_policy.h \
+  /usr/include/c++/14/bits/invoke.h \
+  /usr/include/c++/14/bits/ios_base.h \
+  /usr/include/c++/14/bits/istream.tcc \
+  /usr/include/c++/14/bits/locale_classes.h \
+  /usr/include/c++/14/bits/locale_classes.tcc \
+  /usr/include/c++/14/bits/locale_facets.h \
+  /usr/include/c++/14/bits/locale_facets.tcc \
+  /usr/include/c++/14/bits/localefwd.h \
+  /usr/include/c++/14/bits/memory_resource.h \
+  /usr/include/c++/14/bits/memoryfwd.h \
+  /usr/include/c++/14/bits/move.h \
+  /usr/include/c++/14/bits/nested_exception.h \
+  /usr/include/c++/14/bits/new_allocator.h \
+  /usr/include/c++/14/bits/node_handle.h \
+  /usr/include/c++/14/bits/ostream.tcc \
+  /usr/include/c++/14/bits/ostream_insert.h \
+  /usr/include/c++/14/bits/postypes.h \
+  /usr/include/c++/14/bits/predefined_ops.h \
+  /usr/include/c++/14/bits/ptr_traits.h \
+  /usr/include/c++/14/bits/range_access.h \
+  /usr/include/c++/14/bits/refwrap.h \
+  /usr/include/c++/14/bits/requires_hosted.h \
+  /usr/include/c++/14/bits/std_abs.h \
+  /usr/include/c++/14/bits/stl_algobase.h \
+  /usr/include/c++/14/bits/stl_bvector.h \
+  /usr/include/c++/14/bits/stl_construct.h \
+  /usr/include/c++/14/bits/stl_deque.h \
+  /usr/include/c++/14/bits/stl_function.h \
+  /usr/include/c++/14/bits/stl_heap.h \
+  /usr/include/c++/14/bits/stl_iterator.h \
+  /usr/include/c++/14/bits/stl_iterator_base_funcs.h \
+  /usr/include/c++/14/bits/stl_iterator_base_types.h \
+  /usr/include/c++/14/bits/stl_pair.h \
+  /usr/include/c++/14/bits/stl_queue.h \
+  /usr/include/c++/14/bits/stl_stack.h \
+  /usr/include/c++/14/bits/stl_uninitialized.h \
+  /usr/include/c++/14/bits/stl_vector.h \
+  /usr/include/c++/14/bits/streambuf.tcc \
+  /usr/include/c++/14/bits/streambuf_iterator.h \
+  /usr/include/c++/14/bits/string_view.tcc \
+  /usr/include/c++/14/bits/stringfwd.h \
+  /usr/include/c++/14/bits/unordered_map.h \
+  /usr/include/c++/14/bits/uses_allocator.h \
+  /usr/include/c++/14/bits/uses_allocator_args.h \
+  /usr/include/c++/14/bits/utility.h \
+  /usr/include/c++/14/bits/vector.tcc \
+  /usr/include/c++/14/bits/version.h \
+  /usr/include/c++/14/cctype \
+  /usr/include/c++/14/cerrno \
+  /usr/include/c++/14/clocale \
+  /usr/include/c++/14/concepts \
+  /usr/include/c++/14/cstddef \
+  /usr/include/c++/14/cstdio \
+  /usr/include/c++/14/cstdlib \
+  /usr/include/c++/14/cwchar \
+  /usr/include/c++/14/cwctype \
+  /usr/include/c++/14/debug/assertions.h \
+  /usr/include/c++/14/debug/debug.h \
+  /usr/include/c++/14/deque \
+  /usr/include/c++/14/exception \
+  /usr/include/c++/14/ext/aligned_buffer.h \
+  /usr/include/c++/14/ext/alloc_traits.h \
+  /usr/include/c++/14/ext/atomicity.h \
+  /usr/include/c++/14/ext/numeric_traits.h \
+  /usr/include/c++/14/ext/string_conversions.h \
+  /usr/include/c++/14/ext/type_traits.h \
+  /usr/include/c++/14/fstream \
+  /usr/include/c++/14/initializer_list \
+  /usr/include/c++/14/ios \
+  /usr/include/c++/14/iosfwd \
+  /usr/include/c++/14/iostream \
+  /usr/include/c++/14/istream \
+  /usr/include/c++/14/new \
+  /usr/include/c++/14/ostream \
+  /usr/include/c++/14/pstl/pstl_config.h \
+  /usr/include/c++/14/queue \
+  /usr/include/c++/14/stack \
+  /usr/include/c++/14/stdexcept \
+  /usr/include/c++/14/streambuf \
+  /usr/include/c++/14/string \
+  /usr/include/c++/14/string_view \
+  /usr/include/c++/14/system_error \
+  /usr/include/c++/14/tuple \
+  /usr/include/c++/14/type_traits \
+  /usr/include/c++/14/typeinfo \
+  /usr/include/c++/14/unordered_map \
+  /usr/include/c++/14/vector \
   /usr/include/ctype.h \
   /usr/include/endian.h \
   /usr/include/errno.h \
@@ -801,27 +803,27 @@ CMakeFiles/JsCompiler.dir/include/analizador_lexico.cpp.o: /home/sam/Documents/c
   /usr/include/x86_64-linux-gnu/bits/wchar.h \
   /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h \
   /usr/include/x86_64-linux-gnu/bits/wordsize.h \
-  /usr/include/x86_64-linux-gnu/c++/13/bits/atomic_word.h \
-  /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
-  /usr/include/x86_64-linux-gnu/c++/13/bits/c++allocator.h \
-  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
-  /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
-  /usr/include/x86_64-linux-gnu/c++/13/bits/c++locale.h \
-  /usr/include/x86_64-linux-gnu/c++/13/bits/cpu_defines.h \
-  /usr/include/x86_64-linux-gnu/c++/13/bits/ctype_base.h \
-  /usr/include/x86_64-linux-gnu/c++/13/bits/ctype_inline.h \
-  /usr/include/x86_64-linux-gnu/c++/13/bits/error_constants.h \
-  /usr/include/x86_64-linux-gnu/c++/13/bits/gthr-default.h \
-  /usr/include/x86_64-linux-gnu/c++/13/bits/gthr.h \
-  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
+  /usr/include/x86_64-linux-gnu/c++/14/bits/atomic_word.h \
+  /usr/include/x86_64-linux-gnu/c++/14/bits/basic_file.h \
+  /usr/include/x86_64-linux-gnu/c++/14/bits/c++allocator.h \
+  /usr/include/x86_64-linux-gnu/c++/14/bits/c++config.h \
+  /usr/include/x86_64-linux-gnu/c++/14/bits/c++io.h \
+  /usr/include/x86_64-linux-gnu/c++/14/bits/c++locale.h \
+  /usr/include/x86_64-linux-gnu/c++/14/bits/cpu_defines.h \
+  /usr/include/x86_64-linux-gnu/c++/14/bits/ctype_base.h \
+  /usr/include/x86_64-linux-gnu/c++/14/bits/ctype_inline.h \
+  /usr/include/x86_64-linux-gnu/c++/14/bits/error_constants.h \
+  /usr/include/x86_64-linux-gnu/c++/14/bits/gthr-default.h \
+  /usr/include/x86_64-linux-gnu/c++/14/bits/gthr.h \
+  /usr/include/x86_64-linux-gnu/c++/14/bits/os_defines.h \
   /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
   /usr/include/x86_64-linux-gnu/gnu/stubs.h \
   /usr/include/x86_64-linux-gnu/sys/cdefs.h \
   /usr/include/x86_64-linux-gnu/sys/select.h \
   /usr/include/x86_64-linux-gnu/sys/single_threaded.h \
   /usr/include/x86_64-linux-gnu/sys/types.h \
-  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h \
-  /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h \
+  /usr/lib/gcc/x86_64-linux-gnu/14/include/stdarg.h \
+  /usr/lib/gcc/x86_64-linux-gnu/14/include/stddef.h \
   /usr/lib/linux/uapi/x86/asm/errno.h
 
 CMakeFiles/JsCompiler.dir/include/principal.cpp.o: /home/sam/Documents/compiler/Js--Compiler/include/principal.cpp \
@@ -836,157 +838,152 @@ CMakeFiles/JsCompiler.dir/include/principal.cpp.o: /home/sam/Documents/compiler/
   /usr/include/alloca.h \
   /usr/include/asm-generic/errno-base.h \
   /usr/include/asm-generic/errno.h \
-  /usr/include/c++/13/algorithm \
-  /usr/include/c++/13/backward/binders.h \
-  /usr/include/c++/13/bit \
-  /usr/include/c++/13/bits/algorithmfwd.h \
-  /usr/include/c++/13/bits/alloc_traits.h \
-  /usr/include/c++/13/bits/allocated_ptr.h \
-  /usr/include/c++/13/bits/allocator.h \
-  /usr/include/c++/13/bits/basic_ios.h \
-  /usr/include/c++/13/bits/basic_ios.tcc \
-  /usr/include/c++/13/bits/basic_string.h \
-  /usr/include/c++/13/bits/basic_string.tcc \
-  /usr/include/c++/13/bits/char_traits.h \
-  /usr/include/c++/13/bits/charconv.h \
-  /usr/include/c++/13/bits/chrono.h \
-  /usr/include/c++/13/bits/codecvt.h \
-  /usr/include/c++/13/bits/concept_check.h \
-  /usr/include/c++/13/bits/cpp_type_traits.h \
-  /usr/include/c++/13/bits/cxxabi_forced.h \
-  /usr/include/c++/13/bits/cxxabi_init_exception.h \
-  /usr/include/c++/13/bits/deque.tcc \
-  /usr/include/c++/13/bits/enable_special_members.h \
-  /usr/include/c++/13/bits/erase_if.h \
-  /usr/include/c++/13/bits/exception.h \
-  /usr/include/c++/13/bits/exception_defines.h \
-  /usr/include/c++/13/bits/exception_ptr.h \
-  /usr/include/c++/13/bits/fs_dir.h \
-  /usr/include/c++/13/bits/fs_fwd.h \
-  /usr/include/c++/13/bits/fs_ops.h \
-  /usr/include/c++/13/bits/fs_path.h \
-  /usr/include/c++/13/bits/fstream.tcc \
-  /usr/include/c++/13/bits/functexcept.h \
-  /usr/include/c++/13/bits/functional_hash.h \
-  /usr/include/c++/13/bits/hash_bytes.h \
-  /usr/include/c++/13/bits/hashtable.h \
-  /usr/include/c++/13/bits/hashtable_policy.h \
-  /usr/include/c++/13/bits/invoke.h \
-  /usr/include/c++/13/bits/ios_base.h \
-  /usr/include/c++/13/bits/istream.tcc \
-  /usr/include/c++/13/bits/locale_classes.h \
-  /usr/include/c++/13/bits/locale_classes.tcc \
-  /usr/include/c++/13/bits/locale_conv.h \
-  /usr/include/c++/13/bits/locale_facets.h \
-  /usr/include/c++/13/bits/locale_facets.tcc \
-  /usr/include/c++/13/bits/locale_facets_nonio.h \
-  /usr/include/c++/13/bits/locale_facets_nonio.tcc \
-  /usr/include/c++/13/bits/localefwd.h \
-  /usr/include/c++/13/bits/memory_resource.h \
-  /usr/include/c++/13/bits/memoryfwd.h \
-  /usr/include/c++/13/bits/move.h \
-  /usr/include/c++/13/bits/nested_exception.h \
-  /usr/include/c++/13/bits/new_allocator.h \
-  /usr/include/c++/13/bits/node_handle.h \
-  /usr/include/c++/13/bits/ostream.tcc \
-  /usr/include/c++/13/bits/ostream_insert.h \
-  /usr/include/c++/13/bits/parse_numbers.h \
-  /usr/include/c++/13/bits/postypes.h \
-  /usr/include/c++/13/bits/predefined_ops.h \
-  /usr/include/c++/13/bits/ptr_traits.h \
-  /usr/include/c++/13/bits/quoted_string.h \
-  /usr/include/c++/13/bits/range_access.h \
-  /usr/include/c++/13/bits/refwrap.h \
-  /usr/include/c++/13/bits/requires_hosted.h \
-  /usr/include/c++/13/bits/shared_ptr.h \
-  /usr/include/c++/13/bits/shared_ptr_base.h \
-  /usr/include/c++/13/bits/sstream.tcc \
-  /usr/include/c++/13/bits/std_abs.h \
-  /usr/include/c++/13/bits/stl_algo.h \
-  /usr/include/c++/13/bits/stl_algobase.h \
-  /usr/include/c++/13/bits/stl_bvector.h \
-  /usr/include/c++/13/bits/stl_construct.h \
-  /usr/include/c++/13/bits/stl_deque.h \
-  /usr/include/c++/13/bits/stl_function.h \
-  /usr/include/c++/13/bits/stl_heap.h \
-  /usr/include/c++/13/bits/stl_iterator.h \
-  /usr/include/c++/13/bits/stl_iterator_base_funcs.h \
-  /usr/include/c++/13/bits/stl_iterator_base_types.h \
-  /usr/include/c++/13/bits/stl_map.h \
-  /usr/include/c++/13/bits/stl_multimap.h \
-  /usr/include/c++/13/bits/stl_multiset.h \
-  /usr/include/c++/13/bits/stl_pair.h \
-  /usr/include/c++/13/bits/stl_queue.h \
-  /usr/include/c++/13/bits/stl_set.h \
-  /usr/include/c++/13/bits/stl_stack.h \
-  /usr/include/c++/13/bits/stl_tempbuf.h \
-  /usr/include/c++/13/bits/stl_tree.h \
-  /usr/include/c++/13/bits/stl_uninitialized.h \
-  /usr/include/c++/13/bits/stl_vector.h \
-  /usr/include/c++/13/bits/streambuf.tcc \
-  /usr/include/c++/13/bits/streambuf_iterator.h \
-  /usr/include/c++/13/bits/string_view.tcc \
-  /usr/include/c++/13/bits/stringfwd.h \
-  /usr/include/c++/13/bits/uniform_int_dist.h \
-  /usr/include/c++/13/bits/unique_ptr.h \
-  /usr/include/c++/13/bits/unordered_map.h \
-  /usr/include/c++/13/bits/uses_allocator.h \
-  /usr/include/c++/13/bits/uses_allocator_args.h \
-  /usr/include/c++/13/bits/utility.h \
-  /usr/include/c++/13/bits/vector.tcc \
-  /usr/include/c++/13/cctype \
-  /usr/include/c++/13/cerrno \
-  /usr/include/c++/13/clocale \
-  /usr/include/c++/13/codecvt \
-  /usr/include/c++/13/cstddef \
-  /usr/include/c++/13/cstdint \
-  /usr/include/c++/13/cstdio \
-  /usr/include/c++/13/cstdlib \
-  /usr/include/c++/13/ctime \
-  /usr/include/c++/13/cwchar \
-  /usr/include/c++/13/cwctype \
-  /usr/include/c++/13/debug/assertions.h \
-  /usr/include/c++/13/debug/debug.h \
-  /usr/include/c++/13/deque \
-  /usr/include/c++/13/exception \
-  /usr/include/c++/13/ext/aligned_buffer.h \
-  /usr/include/c++/13/ext/alloc_traits.h \
-  /usr/include/c++/13/ext/atomicity.h \
-  /usr/include/c++/13/ext/concurrence.h \
-  /usr/include/c++/13/ext/numeric_traits.h \
-  /usr/include/c++/13/ext/string_conversions.h \
-  /usr/include/c++/13/ext/type_traits.h \
-  /usr/include/c++/13/filesystem \
-  /usr/include/c++/13/fstream \
-  /usr/include/c++/13/initializer_list \
-  /usr/include/c++/13/iomanip \
-  /usr/include/c++/13/ios \
-  /usr/include/c++/13/iosfwd \
-  /usr/include/c++/13/iostream \
-  /usr/include/c++/13/istream \
-  /usr/include/c++/13/limits \
-  /usr/include/c++/13/locale \
-  /usr/include/c++/13/map \
-  /usr/include/c++/13/new \
-  /usr/include/c++/13/ostream \
-  /usr/include/c++/13/pstl/execution_defs.h \
-  /usr/include/c++/13/pstl/glue_algorithm_defs.h \
-  /usr/include/c++/13/pstl/pstl_config.h \
-  /usr/include/c++/13/queue \
-  /usr/include/c++/13/ratio \
-  /usr/include/c++/13/set \
-  /usr/include/c++/13/sstream \
-  /usr/include/c++/13/stack \
-  /usr/include/c++/13/stdexcept \
-  /usr/include/c++/13/streambuf \
-  /usr/include/c++/13/string \
-  /usr/include/c++/13/string_view \
-  /usr/include/c++/13/system_error \
-  /usr/include/c++/13/tuple \
-  /usr/include/c++/13/type_traits \
-  /usr/include/c++/13/typeinfo \
-  /usr/include/c++/13/unordered_map \
-  /usr/include/c++/13/vector \
+  /usr/include/c++/14/backward/binders.h \
+  /usr/include/c++/14/bit \
+  /usr/include/c++/14/bits/alloc_traits.h \
+  /usr/include/c++/14/bits/allocated_ptr.h \
+  /usr/include/c++/14/bits/allocator.h \
+  /usr/include/c++/14/bits/basic_ios.h \
+  /usr/include/c++/14/bits/basic_ios.tcc \
+  /usr/include/c++/14/bits/basic_string.h \
+  /usr/include/c++/14/bits/basic_string.tcc \
+  /usr/include/c++/14/bits/char_traits.h \
+  /usr/include/c++/14/bits/charconv.h \
+  /usr/include/c++/14/bits/chrono.h \
+  /usr/include/c++/14/bits/codecvt.h \
+  /usr/include/c++/14/bits/concept_check.h \
+  /usr/include/c++/14/bits/cpp_type_traits.h \
+  /usr/include/c++/14/bits/cxxabi_forced.h \
+  /usr/include/c++/14/bits/cxxabi_init_exception.h \
+  /usr/include/c++/14/bits/deque.tcc \
+  /usr/include/c++/14/bits/enable_special_members.h \
+  /usr/include/c++/14/bits/erase_if.h \
+  /usr/include/c++/14/bits/exception.h \
+  /usr/include/c++/14/bits/exception_defines.h \
+  /usr/include/c++/14/bits/exception_ptr.h \
+  /usr/include/c++/14/bits/fs_dir.h \
+  /usr/include/c++/14/bits/fs_fwd.h \
+  /usr/include/c++/14/bits/fs_ops.h \
+  /usr/include/c++/14/bits/fs_path.h \
+  /usr/include/c++/14/bits/fstream.tcc \
+  /usr/include/c++/14/bits/functexcept.h \
+  /usr/include/c++/14/bits/functional_hash.h \
+  /usr/include/c++/14/bits/hash_bytes.h \
+  /usr/include/c++/14/bits/hashtable.h \
+  /usr/include/c++/14/bits/hashtable_policy.h \
+  /usr/include/c++/14/bits/invoke.h \
+  /usr/include/c++/14/bits/ios_base.h \
+  /usr/include/c++/14/bits/istream.tcc \
+  /usr/include/c++/14/bits/locale_classes.h \
+  /usr/include/c++/14/bits/locale_classes.tcc \
+  /usr/include/c++/14/bits/locale_conv.h \
+  /usr/include/c++/14/bits/locale_facets.h \
+  /usr/include/c++/14/bits/locale_facets.tcc \
+  /usr/include/c++/14/bits/locale_facets_nonio.h \
+  /usr/include/c++/14/bits/locale_facets_nonio.tcc \
+  /usr/include/c++/14/bits/localefwd.h \
+  /usr/include/c++/14/bits/memory_resource.h \
+  /usr/include/c++/14/bits/memoryfwd.h \
+  /usr/include/c++/14/bits/move.h \
+  /usr/include/c++/14/bits/nested_exception.h \
+  /usr/include/c++/14/bits/new_allocator.h \
+  /usr/include/c++/14/bits/node_handle.h \
+  /usr/include/c++/14/bits/ostream.tcc \
+  /usr/include/c++/14/bits/ostream_insert.h \
+  /usr/include/c++/14/bits/parse_numbers.h \
+  /usr/include/c++/14/bits/postypes.h \
+  /usr/include/c++/14/bits/predefined_ops.h \
+  /usr/include/c++/14/bits/ptr_traits.h \
+  /usr/include/c++/14/bits/quoted_string.h \
+  /usr/include/c++/14/bits/range_access.h \
+  /usr/include/c++/14/bits/refwrap.h \
+  /usr/include/c++/14/bits/requires_hosted.h \
+  /usr/include/c++/14/bits/shared_ptr.h \
+  /usr/include/c++/14/bits/shared_ptr_base.h \
+  /usr/include/c++/14/bits/sstream.tcc \
+  /usr/include/c++/14/bits/std_abs.h \
+  /usr/include/c++/14/bits/stl_algobase.h \
+  /usr/include/c++/14/bits/stl_bvector.h \
+  /usr/include/c++/14/bits/stl_construct.h \
+  /usr/include/c++/14/bits/stl_deque.h \
+  /usr/include/c++/14/bits/stl_function.h \
+  /usr/include/c++/14/bits/stl_heap.h \
+  /usr/include/c++/14/bits/stl_iterator.h \
+  /usr/include/c++/14/bits/stl_iterator_base_funcs.h \
+  /usr/include/c++/14/bits/stl_iterator_base_types.h \
+  /usr/include/c++/14/bits/stl_map.h \
+  /usr/include/c++/14/bits/stl_multimap.h \
+  /usr/include/c++/14/bits/stl_multiset.h \
+  /usr/include/c++/14/bits/stl_pair.h \
+  /usr/include/c++/14/bits/stl_queue.h \
+  /usr/include/c++/14/bits/stl_set.h \
+  /usr/include/c++/14/bits/stl_stack.h \
+  /usr/include/c++/14/bits/stl_tree.h \
+  /usr/include/c++/14/bits/stl_uninitialized.h \
+  /usr/include/c++/14/bits/stl_vector.h \
+  /usr/include/c++/14/bits/streambuf.tcc \
+  /usr/include/c++/14/bits/streambuf_iterator.h \
+  /usr/include/c++/14/bits/string_view.tcc \
+  /usr/include/c++/14/bits/stringfwd.h \
+  /usr/include/c++/14/bits/unique_ptr.h \
+  /usr/include/c++/14/bits/unordered_map.h \
+  /usr/include/c++/14/bits/uses_allocator.h \
+  /usr/include/c++/14/bits/uses_allocator_args.h \
+  /usr/include/c++/14/bits/utility.h \
+  /usr/include/c++/14/bits/vector.tcc \
+  /usr/include/c++/14/bits/version.h \
+  /usr/include/c++/14/cctype \
+  /usr/include/c++/14/cerrno \
+  /usr/include/c++/14/clocale \
+  /usr/include/c++/14/codecvt \
+  /usr/include/c++/14/concepts \
+  /usr/include/c++/14/cstddef \
+  /usr/include/c++/14/cstdint \
+  /usr/include/c++/14/cstdio \
+  /usr/include/c++/14/cstdlib \
+  /usr/include/c++/14/ctime \
+  /usr/include/c++/14/cwchar \
+  /usr/include/c++/14/cwctype \
+  /usr/include/c++/14/debug/assertions.h \
+  /usr/include/c++/14/debug/debug.h \
+  /usr/include/c++/14/deque \
+  /usr/include/c++/14/exception \
+  /usr/include/c++/14/ext/aligned_buffer.h \
+  /usr/include/c++/14/ext/alloc_traits.h \
+  /usr/include/c++/14/ext/atomicity.h \
+  /usr/include/c++/14/ext/concurrence.h \
+  /usr/include/c++/14/ext/numeric_traits.h \
+  /usr/include/c++/14/ext/string_conversions.h \
+  /usr/include/c++/14/ext/type_traits.h \
+  /usr/include/c++/14/filesystem \
+  /usr/include/c++/14/fstream \
+  /usr/include/c++/14/initializer_list \
+  /usr/include/c++/14/iomanip \
+  /usr/include/c++/14/ios \
+  /usr/include/c++/14/iosfwd \
+  /usr/include/c++/14/iostream \
+  /usr/include/c++/14/istream \
+  /usr/include/c++/14/limits \
+  /usr/include/c++/14/locale \
+  /usr/include/c++/14/map \
+  /usr/include/c++/14/new \
+  /usr/include/c++/14/ostream \
+  /usr/include/c++/14/pstl/pstl_config.h \
+  /usr/include/c++/14/queue \
+  /usr/include/c++/14/ratio \
+  /usr/include/c++/14/set \
+  /usr/include/c++/14/sstream \
+  /usr/include/c++/14/stack \
+  /usr/include/c++/14/stdexcept \
+  /usr/include/c++/14/streambuf \
+  /usr/include/c++/14/string \
+  /usr/include/c++/14/string_view \
+  /usr/include/c++/14/system_error \
+  /usr/include/c++/14/tuple \
+  /usr/include/c++/14/type_traits \
+  /usr/include/c++/14/typeinfo \
+  /usr/include/c++/14/unordered_map \
+  /usr/include/c++/14/vector \
   /usr/include/ctype.h \
   /usr/include/endian.h \
   /usr/include/errno.h \
@@ -1022,6 +1019,7 @@ CMakeFiles/JsCompiler.dir/include/principal.cpp.o: /home/sam/Documents/compiler/
   /usr/include/x86_64-linux-gnu/bits/select.h \
   /usr/include/x86_64-linux-gnu/bits/setjmp.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
+  /usr/include/x86_64-linux-gnu/bits/stdint-least.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
   /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
@@ -1064,42 +1062,202 @@ CMakeFiles/JsCompiler.dir/include/principal.cpp.o: /home/sam/Documents/compiler/
   /usr/include/x86_64-linux-gnu/bits/wchar.h \
   /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h \
   /usr/include/x86_64-linux-gnu/bits/wordsize.h \
-  /usr/include/x86_64-linux-gnu/c++/13/bits/atomic_word.h \
-  /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
-  /usr/include/x86_64-linux-gnu/c++/13/bits/c++allocator.h \
-  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
-  /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
-  /usr/include/x86_64-linux-gnu/c++/13/bits/c++locale.h \
-  /usr/include/x86_64-linux-gnu/c++/13/bits/cpu_defines.h \
-  /usr/include/x86_64-linux-gnu/c++/13/bits/ctype_base.h \
-  /usr/include/x86_64-linux-gnu/c++/13/bits/ctype_inline.h \
-  /usr/include/x86_64-linux-gnu/c++/13/bits/error_constants.h \
-  /usr/include/x86_64-linux-gnu/c++/13/bits/gthr-default.h \
-  /usr/include/x86_64-linux-gnu/c++/13/bits/gthr.h \
-  /usr/include/x86_64-linux-gnu/c++/13/bits/messages_members.h \
-  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
-  /usr/include/x86_64-linux-gnu/c++/13/bits/time_members.h \
+  /usr/include/x86_64-linux-gnu/c++/14/bits/atomic_word.h \
+  /usr/include/x86_64-linux-gnu/c++/14/bits/basic_file.h \
+  /usr/include/x86_64-linux-gnu/c++/14/bits/c++allocator.h \
+  /usr/include/x86_64-linux-gnu/c++/14/bits/c++config.h \
+  /usr/include/x86_64-linux-gnu/c++/14/bits/c++io.h \
+  /usr/include/x86_64-linux-gnu/c++/14/bits/c++locale.h \
+  /usr/include/x86_64-linux-gnu/c++/14/bits/cpu_defines.h \
+  /usr/include/x86_64-linux-gnu/c++/14/bits/ctype_base.h \
+  /usr/include/x86_64-linux-gnu/c++/14/bits/ctype_inline.h \
+  /usr/include/x86_64-linux-gnu/c++/14/bits/error_constants.h \
+  /usr/include/x86_64-linux-gnu/c++/14/bits/gthr-default.h \
+  /usr/include/x86_64-linux-gnu/c++/14/bits/gthr.h \
+  /usr/include/x86_64-linux-gnu/c++/14/bits/messages_members.h \
+  /usr/include/x86_64-linux-gnu/c++/14/bits/os_defines.h \
+  /usr/include/x86_64-linux-gnu/c++/14/bits/time_members.h \
   /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
   /usr/include/x86_64-linux-gnu/gnu/stubs.h \
   /usr/include/x86_64-linux-gnu/sys/cdefs.h \
   /usr/include/x86_64-linux-gnu/sys/select.h \
   /usr/include/x86_64-linux-gnu/sys/single_threaded.h \
   /usr/include/x86_64-linux-gnu/sys/types.h \
-  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h \
-  /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h \
-  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h \
+  /usr/lib/gcc/x86_64-linux-gnu/14/include/stdarg.h \
+  /usr/lib/gcc/x86_64-linux-gnu/14/include/stddef.h \
+  /usr/lib/gcc/x86_64-linux-gnu/14/include/stdint.h \
   /usr/lib/linux/uapi/x86/asm/errno.h
 
 
-/usr/include/x86_64-linux-gnu/c++/13/bits/time_members.h:
+/usr/include/x86_64-linux-gnu/c++/14/bits/time_members.h:
 
-/usr/include/x86_64-linux-gnu/c++/13/bits/messages_members.h:
+/usr/include/x86_64-linux-gnu/bits/stdint-least.h:
+
+/usr/include/c++/14/map:
+
+/usr/include/c++/14/cstdint:
+
+/usr/include/c++/14/codecvt:
+
+/usr/include/c++/14/bits/stl_tree.h:
+
+/usr/include/c++/14/bits/stl_multiset.h:
+
+/usr/include/c++/14/bits/stl_multimap.h:
+
+/usr/include/c++/14/bits/stl_set.h:
+
+/usr/include/c++/14/bits/sstream.tcc:
+
+/usr/include/c++/14/bits/shared_ptr_base.h:
+
+/usr/include/c++/14/bits/locale_facets_nonio.h:
+
+/usr/include/c++/14/bits/locale_conv.h:
+
+/usr/include/c++/14/bits/fs_ops.h:
+
+/usr/include/c++/14/bits/allocated_ptr.h:
+
+/home/sam/Documents/compiler/Js--Compiler/include/Analizador_Sintactico.cpp:
+
+/home/sam/Documents/compiler/Js--Compiler/include/principal.cpp:
+
+/usr/include/x86_64-linux-gnu/c++/14/bits/error_constants.h:
+
+/usr/include/x86_64-linux-gnu/c++/14/bits/ctype_base.h:
+
+/usr/include/x86_64-linux-gnu/c++/14/bits/c++locale.h:
+
+/usr/include/x86_64-linux-gnu/c++/14/bits/c++allocator.h:
+
+/usr/include/x86_64-linux-gnu/c++/14/bits/atomic_word.h:
+
+/usr/include/c++/14/vector:
+
+/usr/include/c++/14/unordered_map:
+
+/usr/include/c++/14/typeinfo:
+
+/usr/include/c++/14/type_traits:
+
+/usr/include/c++/14/tuple:
+
+/usr/include/c++/14/system_error:
+
+/usr/include/c++/14/string_view:
+
+/usr/include/c++/14/queue:
+
+/usr/include/c++/14/pstl/pstl_config.h:
+
+/usr/include/c++/14/new:
+
+/usr/include/c++/14/istream:
+
+/usr/include/c++/14/iostream:
+
+/usr/include/c++/14/iosfwd:
+
+/usr/include/c++/14/ios:
+
+/usr/include/c++/14/fstream:
+
+/usr/include/c++/14/ext/type_traits.h:
+
+/usr/include/c++/14/ctime:
+
+/usr/include/c++/14/ext/numeric_traits.h:
+
+/usr/include/c++/14/ext/atomicity.h:
+
+/usr/include/c++/14/ext/alloc_traits.h:
+
+/usr/include/c++/14/deque:
+
+/usr/include/c++/14/debug/assertions.h:
+
+/usr/include/c++/14/cwctype:
+
+/usr/include/c++/14/cwchar:
+
+/usr/include/c++/14/cstddef:
+
+/usr/include/c++/14/concepts:
+
+/usr/include/x86_64-linux-gnu/c++/14/bits/ctype_inline.h:
+
+/usr/include/c++/14/clocale:
+
+/usr/include/x86_64-linux-gnu/c++/14/bits/c++config.h:
+
+/usr/include/c++/14/cerrno:
+
+/usr/include/c++/14/bits/version.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/14/include/stddef.h:
+
+/usr/include/c++/14/bits/vector.tcc:
+
+/usr/include/c++/14/bits/uses_allocator_args.h:
+
+/usr/include/c++/14/bits/uses_allocator.h:
+
+/usr/include/c++/14/bits/unordered_map.h:
+
+/usr/include/c++/14/bits/string_view.tcc:
+
+/usr/include/c++/14/bits/streambuf_iterator.h:
+
+/usr/include/c++/14/bits/streambuf.tcc:
+
+/usr/include/c++/14/bits/stl_uninitialized.h:
+
+/usr/include/c++/14/bits/stl_queue.h:
+
+/usr/include/c++/14/bits/stl_iterator_base_funcs.h:
+
+/usr/include/c++/14/bits/stl_stack.h:
+
+/usr/include/c++/14/bits/stl_heap.h:
+
+/usr/include/c++/14/bits/stl_function.h:
+
+/usr/include/c++/14/bits/unique_ptr.h:
+
+/usr/include/c++/14/bits/stl_deque.h:
+
+/usr/include/c++/14/bits/stl_construct.h:
+
+/usr/include/c++/14/bits/stl_algobase.h:
+
+/usr/include/c++/14/bits/std_abs.h:
+
+/usr/include/c++/14/bits/requires_hosted.h:
+
+/usr/include/c++/14/bits/range_access.h:
+
+/usr/include/c++/14/bits/locale_facets_nonio.tcc:
+
+/usr/include/c++/14/bits/ptr_traits.h:
+
+/usr/include/c++/14/bits/stl_pair.h:
+
+/usr/include/c++/14/bits/ostream_insert.h:
+
+/usr/include/c++/14/bits/stl_bvector.h:
+
+/usr/include/c++/14/bits/new_allocator.h:
+
+/usr/include/c++/14/bits/move.h:
+
+/usr/include/c++/14/bits/memoryfwd.h:
+
+/usr/include/c++/14/bits/localefwd.h:
 
 /usr/include/libintl.h:
 
-/usr/include/c++/13/set:
-
-/usr/include/c++/13/locale:
+/usr/include/c++/14/bits/locale_classes.tcc:
 
 /usr/include/stdint.h:
 
@@ -1109,6 +1267,8 @@ CMakeFiles/JsCompiler.dir/include/principal.cpp.o: /home/sam/Documents/compiler/
 
 /usr/include/c++/13/bits/cxxabi_init_exception.h:
 
+/usr/include/c++/14/cctype:
+
 /usr/include/c++/13/system_error:
 
 /usr/include/c++/13/bits/range_access.h:
@@ -1116,8 +1276,6 @@ CMakeFiles/JsCompiler.dir/include/principal.cpp.o: /home/sam/Documents/compiler/
 /usr/include/c++/13/pstl/pstl_config.h:
 
 /usr/include/c++/13/pstl/glue_algorithm_defs.h:
-
-/usr/include/c++/13/ext/concurrence.h:
 
 /usr/include/c++/13/pstl/execution_defs.h:
 
@@ -1131,15 +1289,13 @@ CMakeFiles/JsCompiler.dir/include/principal.cpp.o: /home/sam/Documents/compiler/
 
 /usr/include/features-time64.h:
 
-/usr/include/c++/13/map:
-
 /usr/include/c++/13/string_view:
-
-/usr/include/c++/13/istream:
 
 /usr/include/c++/13/initializer_list:
 
 /usr/include/c++/13/ext/string_conversions.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/14/include/stdarg.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h:
 
@@ -1155,31 +1311,37 @@ CMakeFiles/JsCompiler.dir/include/principal.cpp.o: /home/sam/Documents/compiler/
 
 /usr/include/c++/13/bits/functional_hash.h:
 
+/home/sam/Documents/compiler/Js--Compiler/include/Analizador_Sintactico.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h:
+
 /usr/include/c++/13/debug/assertions.h:
 
 /usr/include/c++/13/cstdlib:
 
-/usr/include/c++/13/cstdint:
+/usr/include/c++/14/bits/istream.tcc:
 
 /usr/include/c++/13/cstdio:
+
+/usr/include/x86_64-linux-gnu/c++/14/bits/c++io.h:
 
 /usr/include/c++/13/fstream:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h:
 
-/usr/include/c++/13/bits/fs_path.h:
-
 /usr/include/c++/13/clocale:
 
 /usr/include/c++/13/cerrno:
+
+/usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h:
+
+/usr/include/c++/14/bits/stl_iterator_base_types.h:
 
 /usr/include/c++/13/bits/vector.tcc:
 
 /usr/include/c++/13/deque:
 
-/usr/include/c++/13/codecvt:
-
-/usr/include/c++/13/ctime:
+/usr/include/c++/14/bits/fstream.tcc:
 
 /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h:
 
@@ -1187,7 +1349,11 @@ CMakeFiles/JsCompiler.dir/include/principal.cpp.o: /home/sam/Documents/compiler/
 
 /usr/include/c++/13/bits/stl_function.h:
 
+/usr/include/c++/14/bits/fs_path.h:
+
 /usr/include/c++/13/bits/uses_allocator_args.h:
+
+/usr/include/c++/14/cstdlib:
 
 /usr/include/c++/13/exception:
 
@@ -1199,23 +1365,17 @@ CMakeFiles/JsCompiler.dir/include/principal.cpp.o: /home/sam/Documents/compiler/
 
 /usr/include/c++/13/bits/postypes.h:
 
-/usr/include/c++/13/bits/stl_multiset.h:
-
-/usr/include/c++/13/iomanip:
+/usr/include/c++/13/bits/std_abs.h:
 
 /usr/include/c++/13/bits/stringfwd.h:
 
+/usr/include/x86_64-linux-gnu/c++/14/bits/os_defines.h:
+
 /usr/include/c++/13/bits/stl_stack.h:
-
-/usr/include/c++/13/bits/unordered_map.h:
-
-/usr/include/c++/13/bits/quoted_string.h:
 
 /usr/include/c++/13/bits/new_allocator.h:
 
 /usr/include/c++/13/bits/stl_uninitialized.h:
-
-/usr/include/c++/13/bits/stl_map.h:
 
 /usr/include/c++/13/bits/functexcept.h:
 
@@ -1223,13 +1383,15 @@ CMakeFiles/JsCompiler.dir/include/principal.cpp.o: /home/sam/Documents/compiler/
 
 /usr/include/c++/13/new:
 
+/usr/include/c++/14/bits/predefined_ops.h:
+
 /usr/include/c++/13/ext/alloc_traits.h:
 
 /usr/include/c++/13/bits/stl_heap.h:
 
-/usr/include/c++/13/bits/stl_construct.h:
+/usr/include/c++/14/bits/memory_resource.h:
 
-/usr/include/c++/13/bits/stl_bvector.h:
+/usr/include/c++/13/bits/stl_construct.h:
 
 /usr/include/c++/13/unordered_map:
 
@@ -1238,6 +1400,8 @@ CMakeFiles/JsCompiler.dir/include/principal.cpp.o: /home/sam/Documents/compiler/
 /usr/include/c++/13/bits/stl_algobase.h:
 
 /usr/include/c++/13/bits/exception_ptr.h:
+
+/usr/include/c++/13/bits/istream.tcc:
 
 /usr/include/c++/13/vector:
 
@@ -1251,11 +1415,19 @@ CMakeFiles/JsCompiler.dir/include/principal.cpp.o: /home/sam/Documents/compiler/
 
 /usr/include/c++/13/iostream:
 
+/usr/include/x86_64-linux-gnu/c++/14/bits/messages_members.h:
+
 /usr/include/c++/13/ext/type_traits.h:
 
 /usr/include/c++/13/bits/deque.tcc:
 
+/usr/include/c++/14/bits/parse_numbers.h:
+
+/usr/include/c++/14/ostream:
+
 /usr/include/x86_64-linux-gnu/bits/endian.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/14/include/stdint.h:
 
 /usr/include/x86_64-linux-gnu/gnu/stubs.h:
 
@@ -1275,6 +1447,8 @@ CMakeFiles/JsCompiler.dir/include/principal.cpp.o: /home/sam/Documents/compiler/
 
 /usr/include/c++/13/bits/basic_string.h:
 
+/usr/include/x86_64-linux-gnu/bits/endianness.h:
+
 /home/sam/Documents/compiler/Js--Compiler/include/ColaTablaSimbolos.cpp:
 
 /usr/include/c++/13/backward/binders.h:
@@ -1285,15 +1459,9 @@ CMakeFiles/JsCompiler.dir/include/principal.cpp.o: /home/sam/Documents/compiler/
 
 /usr/include/c++/13/bits/stl_deque.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h:
-
-/home/sam/Documents/compiler/Js--Compiler/include/Analizador_Sintactico.h:
-
 /usr/include/c++/13/bits/locale_facets.tcc:
 
-/usr/include/c++/13/ratio:
-
-/home/sam/Documents/compiler/Js--Compiler/include/principal.cpp:
+/usr/include/c++/14/bits/ios_base.h:
 
 /usr/include/c++/13/bits/enable_special_members.h:
 
@@ -1301,27 +1469,43 @@ CMakeFiles/JsCompiler.dir/include/principal.cpp.o: /home/sam/Documents/compiler/
 
 /usr/include/x86_64-linux-gnu/sys/single_threaded.h:
 
-/usr/include/c++/13/bits/allocated_ptr.h:
-
 /usr/include/c++/13/bit:
 
 /usr/include/c++/13/bits/basic_string.tcc:
 
+/usr/include/c++/14/ext/string_conversions.h:
+
 /usr/include/c++/13/bits/concept_check.h:
+
+/usr/include/c++/14/stack:
 
 /usr/include/c++/13/bits/alloc_traits.h:
 
 /home/sam/Documents/compiler/Js--Compiler/include/TablaSimbolos.h:
 
+/usr/include/c++/14/cstdio:
+
+/usr/include/c++/14/bits/utility.h:
+
 /usr/include/c++/13/bits/exception.h:
+
+/usr/include/c++/14/locale:
 
 /usr/include/x86_64-linux-gnu/bits/stdlib-float.h:
 
 /usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
 
+/usr/include/c++/14/ext/concurrence.h:
+
+/usr/include/c++/13/bits/ostream_insert.h:
+
 /home/sam/Documents/compiler/Js--Compiler/include/ColaTablaSimbolos.h:
 
+/usr/include/c++/14/bits/stl_map.h:
+
 /home/sam/Documents/compiler/Js--Compiler/include/analizador_lexico.h:
+
+/usr/include/c++/14/bits/hashtable.h:
 
 /usr/include/c++/13/iosfwd:
 
@@ -1329,15 +1513,21 @@ CMakeFiles/JsCompiler.dir/include/principal.cpp.o: /home/sam/Documents/compiler/
 
 /usr/include/c++/13/cwctype:
 
-/usr/include/c++/13/bits/sstream.tcc:
-
 /usr/include/alloca.h:
 
 /usr/include/c++/13/bits/ptr_traits.h:
 
 /usr/include/x86_64-linux-gnu/c++/13/bits/c++locale.h:
 
+/usr/include/c++/14/string:
+
 /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h:
+
+/usr/include/c++/14/bits/basic_ios.tcc:
+
+/usr/include/c++/14/bits/charconv.h:
+
+/usr/include/c++/14/bits/stringfwd.h:
 
 /usr/include/c++/13/algorithm:
 
@@ -1355,6 +1545,8 @@ CMakeFiles/JsCompiler.dir/include/principal.cpp.o: /home/sam/Documents/compiler/
 
 /usr/include/x86_64-linux-gnu/bits/types/clock_t.h:
 
+/usr/include/c++/14/bits/quoted_string.h:
+
 /usr/include/c++/13/bits/basic_ios.h:
 
 /usr/include/x86_64-linux-gnu/bits/time64.h:
@@ -1363,11 +1555,15 @@ CMakeFiles/JsCompiler.dir/include/principal.cpp.o: /home/sam/Documents/compiler/
 
 /usr/include/c++/13/bits/algorithmfwd.h:
 
+/usr/include/c++/14/debug/debug.h:
+
 /usr/include/c++/13/bits/stl_vector.h:
+
+/usr/include/c++/14/sstream:
 
 /usr/include/c++/13/bits/stl_tempbuf.h:
 
-/usr/include/c++/13/bits/stl_tree.h:
+/usr/include/c++/14/bits/stl_iterator.h:
 
 /usr/include/c++/13/bits/codecvt.h:
 
@@ -1379,10 +1575,6 @@ CMakeFiles/JsCompiler.dir/include/principal.cpp.o: /home/sam/Documents/compiler/
 
 /usr/include/ctype.h:
 
-/home/sam/Documents/compiler/Js--Compiler/include/Analizador_Sintactico.cpp:
-
-/usr/include/c++/13/bits/fs_ops.h:
-
 /home/sam/Documents/compiler/Js--Compiler/include/analizador_lexico.cpp:
 
 /usr/include/c++/13/bits/uniform_int_dist.h:
@@ -1391,13 +1583,23 @@ CMakeFiles/JsCompiler.dir/include/principal.cpp.o: /home/sam/Documents/compiler/
 
 /usr/include/c++/13/bits/invoke.h:
 
+/usr/include/c++/14/bits/stl_vector.h:
+
+/usr/include/c++/13/bits/unordered_map.h:
+
+/usr/include/c++/14/bits/basic_string.tcc:
+
 /usr/include/c++/13/streambuf:
 
 /usr/include/c++/13/bits/memory_resource.h:
 
+/usr/include/wchar.h:
+
+/usr/include/c++/14/bits/nested_exception.h:
+
 /usr/include/c++/13/bits/memoryfwd.h:
 
-/usr/include/c++/13/bits/fs_fwd.h:
+/usr/include/c++/14/bits/shared_ptr.h:
 
 /usr/include/c++/13/ios:
 
@@ -1408,6 +1610,8 @@ CMakeFiles/JsCompiler.dir/include/principal.cpp.o: /home/sam/Documents/compiler/
 /usr/include/c++/13/bits/refwrap.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h:
+
+/usr/include/c++/14/bits/node_handle.h:
 
 /usr/include/features.h:
 
@@ -1420,6 +1624,12 @@ CMakeFiles/JsCompiler.dir/include/principal.cpp.o: /home/sam/Documents/compiler/
 /home/sam/Documents/compiler/Js--Compiler/include/Gestor_Errores.h:
 
 /usr/include/pthread.h:
+
+/usr/include/c++/14/set:
+
+/usr/include/c++/14/bits/functexcept.h:
+
+/usr/include/c++/14/filesystem:
 
 /usr/include/wctype.h:
 
@@ -1435,15 +1645,13 @@ CMakeFiles/JsCompiler.dir/include/principal.cpp.o: /home/sam/Documents/compiler/
 
 /usr/include/x86_64-linux-gnu/bits/cpu-set.h:
 
+/usr/include/c++/14/bits/locale_facets.tcc:
+
 /usr/include/c++/13/bits/requires_hosted.h:
 
 /usr/include/x86_64-linux-gnu/bits/floatn-common.h:
 
-/usr/include/c++/13/limits:
-
 /usr/include/x86_64-linux-gnu/bits/types/wint_t.h:
-
-/usr/include/c++/13/bits/stl_queue.h:
 
 /usr/include/x86_64-linux-gnu/bits/floatn.h:
 
@@ -1453,9 +1661,17 @@ CMakeFiles/JsCompiler.dir/include/principal.cpp.o: /home/sam/Documents/compiler/
 
 /usr/include/x86_64-linux-gnu/bits/locale.h:
 
+/usr/include/c++/14/initializer_list:
+
+/usr/include/c++/14/bits/postypes.h:
+
 /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
 
+/usr/include/c++/14/ratio:
+
 /usr/include/x86_64-linux-gnu/bits/sched.h:
+
+/usr/include/c++/14/bits/locale_classes.h:
 
 /usr/include/time.h:
 
@@ -1465,9 +1681,9 @@ CMakeFiles/JsCompiler.dir/include/principal.cpp.o: /home/sam/Documents/compiler/
 
 /usr/include/x86_64-linux-gnu/bits/types/FILE.h:
 
-/usr/include/x86_64-linux-gnu/bits/struct_mutex.h:
+/usr/include/x86_64-linux-gnu/c++/14/bits/cpu_defines.h:
 
-/usr/include/c++/13/bits/shared_ptr.h:
+/usr/include/x86_64-linux-gnu/bits/struct_mutex.h:
 
 /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h:
 
@@ -1479,6 +1695,16 @@ CMakeFiles/JsCompiler.dir/include/principal.cpp.o: /home/sam/Documents/compiler/
 
 /usr/include/x86_64-linux-gnu/bits/timesize.h:
 
+/usr/include/c++/14/ext/aligned_buffer.h:
+
+/usr/include/c++/14/bits/ostream.tcc:
+
+/usr/include/c++/13/bits/stl_bvector.h:
+
+/usr/include/c++/14/bits/concept_check.h:
+
+/usr/include/c++/14/bits/cpp_type_traits.h:
+
 /usr/include/x86_64-linux-gnu/bits/stdio_lim.h:
 
 /usr/include/x86_64-linux-gnu/bits/timex.h:
@@ -1486,8 +1712,6 @@ CMakeFiles/JsCompiler.dir/include/principal.cpp.o: /home/sam/Documents/compiler/
 /usr/include/x86_64-linux-gnu/c++/13/bits/cpu_defines.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/__FILE.h:
-
-/usr/include/c++/13/bits/stl_multimap.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h:
 
@@ -1501,8 +1725,6 @@ CMakeFiles/JsCompiler.dir/include/principal.cpp.o: /home/sam/Documents/compiler/
 
 /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h:
 
-/usr/include/c++/13/sstream:
-
 /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h:
 
 /usr/include/x86_64-linux-gnu/bits/wchar.h:
@@ -1511,15 +1733,21 @@ CMakeFiles/JsCompiler.dir/include/principal.cpp.o: /home/sam/Documents/compiler/
 
 /usr/include/x86_64-linux-gnu/bits/types/error_t.h:
 
+/usr/include/c++/13/istream:
+
+/usr/include/c++/14/bits/erase_if.h:
+
 /usr/include/x86_64-linux-gnu/bits/types/locale_t.h:
+
+/usr/include/c++/14/bits/deque.tcc:
+
+/usr/include/c++/14/bits/exception_defines.h:
 
 /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h:
 
 /usr/include/asm-generic/errno.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_sched_param.h:
-
-/usr/include/c++/13/filesystem:
 
 /usr/include/c++/13/ext/numeric_traits.h:
 
@@ -1533,6 +1761,10 @@ CMakeFiles/JsCompiler.dir/include/principal.cpp.o: /home/sam/Documents/compiler/
 
 /usr/lib/linux/uapi/x86/asm/errno.h:
 
+/usr/include/x86_64-linux-gnu/c++/14/bits/gthr.h:
+
+/usr/include/x86_64-linux-gnu/c++/14/bits/basic_file.h:
+
 /usr/include/c++/13/ext/atomicity.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_tm.h:
@@ -1541,21 +1773,15 @@ CMakeFiles/JsCompiler.dir/include/principal.cpp.o: /home/sam/Documents/compiler/
 
 /usr/include/x86_64-linux-gnu/bits/types/timer_t.h:
 
+/usr/include/c++/14/bits/hashtable_policy.h:
+
 /usr/include/x86_64-linux-gnu/bits/typesizes.h:
-
-/usr/include/x86_64-linux-gnu/bits/waitflags.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h:
-
-/home/sam/Documents/compiler/Js--Compiler/include/Gestor_Errores.cpp:
-
-/usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h:
-
-/usr/include/c++/13/bits/unique_ptr.h:
 
 /usr/include/c++/13/bits/exception_defines.h:
 
 /usr/include/x86_64-linux-gnu/bits/waitstatus.h:
+
+/usr/include/c++/14/exception:
 
 /usr/include/x86_64-linux-gnu/bits/wordsize.h:
 
@@ -1563,11 +1789,15 @@ CMakeFiles/JsCompiler.dir/include/principal.cpp.o: /home/sam/Documents/compiler/
 
 /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h:
 
+/usr/include/c++/14/stdexcept:
+
 /usr/include/c++/13/typeinfo:
 
 /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h:
 
 /usr/include/x86_64-linux-gnu/c++/13/bits/ctype_base.h:
+
+/usr/include/c++/14/bits/fs_fwd.h:
 
 /usr/include/c++/13/bits/char_traits.h:
 
@@ -1581,9 +1811,13 @@ CMakeFiles/JsCompiler.dir/include/principal.cpp.o: /home/sam/Documents/compiler/
 
 /usr/include/x86_64-linux-gnu/c++/13/bits/gthr-default.h:
 
+/usr/include/c++/14/bits/allocator.h:
+
 /usr/include/c++/13/bits/node_handle.h:
 
 /usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
+
+/usr/include/x86_64-linux-gnu/c++/14/bits/gthr-default.h:
 
 /usr/include/x86_64-linux-gnu/sys/cdefs.h:
 
@@ -1595,36 +1829,56 @@ CMakeFiles/JsCompiler.dir/include/principal.cpp.o: /home/sam/Documents/compiler/
 
 /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h:
 
+/usr/include/c++/14/bits/alloc_traits.h:
+
+/usr/include/c++/14/bits/refwrap.h:
+
 /home/sam/Documents/compiler/Js--Compiler/include/TablaSimbolos.cpp:
+
+/usr/include/c++/14/streambuf:
 
 /home/sam/Documents/compiler/Js--Compiler/include/Generator.h:
 
 /home/sam/Documents/compiler/Js--Compiler/include/TiposToken.h:
 
-/usr/include/c++/13/queue:
+/usr/include/c++/14/backward/binders.h:
 
-/usr/include/x86_64-linux-gnu/bits/endianness.h:
+/usr/include/c++/14/bits/chrono.h:
 
-/usr/include/c++/13/bits/chrono.h:
+/usr/include/c++/14/bit:
 
-/usr/include/c++/13/bits/fs_dir.h:
+/usr/include/c++/14/bits/basic_ios.h:
 
-/usr/include/c++/13/bits/istream.tcc:
+/usr/include/c++/14/bits/locale_facets.h:
 
-/usr/include/c++/13/bits/locale_conv.h:
+/usr/include/c++/14/bits/basic_string.h:
 
-/usr/include/c++/13/bits/locale_facets_nonio.h:
+/usr/include/c++/14/bits/char_traits.h:
 
-/usr/include/c++/13/bits/locale_facets_nonio.tcc:
+/usr/include/x86_64-linux-gnu/bits/waitflags.h:
 
-/usr/include/c++/13/bits/std_abs.h:
+/usr/include/c++/14/bits/hash_bytes.h:
 
-/usr/include/c++/13/bits/parse_numbers.h:
+/usr/include/c++/14/bits/codecvt.h:
 
-/usr/include/wchar.h:
+/usr/include/c++/14/bits/cxxabi_forced.h:
 
-/usr/include/c++/13/bits/shared_ptr_base.h:
+/usr/include/c++/14/bits/cxxabi_init_exception.h:
 
-/usr/include/c++/13/bits/ostream_insert.h:
+/usr/include/c++/14/bits/enable_special_members.h:
 
-/usr/include/c++/13/bits/stl_set.h:
+/usr/include/c++/14/bits/fs_dir.h:
+
+/usr/include/c++/14/bits/exception.h:
+
+/usr/include/c++/14/bits/exception_ptr.h:
+
+/usr/include/c++/14/limits:
+
+/usr/include/c++/14/iomanip:
+
+/home/sam/Documents/compiler/Js--Compiler/include/Gestor_Errores.cpp:
+
+/usr/include/c++/14/bits/functional_hash.h:
+
+/usr/include/c++/14/bits/invoke.h:
