@@ -56,7 +56,7 @@ bool accionSemantica(string s){
 }
 
 void AnalizadorSintactico::error(string unexpected) {
-    cout << "Error en la linea  "<< lexico.lineas << " -> no se esperaba: " << unexpected << endl;
+    cout << "Error en la linea  "<< lexico.lineas << " - no se esperaba recibir: " << unexpected << endl;
     throw std::runtime_error("Error de Sintaxis");
 }
 
