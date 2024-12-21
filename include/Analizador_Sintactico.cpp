@@ -45,44 +45,54 @@ _print(x)
 #define debug(x...)
 #endif
 
+bool accionSemantica(string s){
+    if(s == "{ T.tipo := ent }"){
+        return true;
+    }
+
+    return false;
+}
 
 void AnalizadorSintactico::error(string unexpected) {
     cout << "Error en la linea  "<< lexico.lineas << " -> no se esperaba: " << unexpected << endl;
     throw std::runtime_error("Error de Sintaxis");
 }
 
-AnalizadorSintactico::AnalizadorSintactico(AnalizadorLexico &lexico,
-                                           GestorErrores &errores)
-: lexico(lexico), errores(errores) {
+AnalizadorSintactico::AnalizadorSintactico(AnalizadorLexico &lexico, GestorErrores &errores) : lexico(lexico), errores(errores) {
+
     string a = "";
     parse.open("parse.txt", fstream::out);
     parse << "D";
     //while ((a = siguienteToken()) != "EOF") {}
     while ((a = siguienteToken())  != "EOF" && a != "$" ) {
-        pila.push("$");
-        pila.push("Z"); // axioma
+        Simbolo* sp = new Simbolo("$");
+        pila.push(sp);
+        pila.push(new Simbolo("Z")); // axioma
         auto X = pila.top();
-        while (X != "$") {
+        while (X->symbol != "$") {
             // if(token_char.count(a))a=token_char[a];
             // if(token_char.count(X))X=token_char[X];
             // cout << "element: " << X << ' ' << a << endl;
             if(a == "EOF") a= "$";
-            if (X == a) {
+            if (X->symbol == a) {
                 pila.pop();
                 // cout << "top" << pila.top() << endl;
-                a = siguienteToken();
-            } else if (terminales.count(X))
-                error(X);
-            else if (!M.count({X, a}))
-                error(a);
-            else if (M.count({X, a})) {
-                // cout << "esta!" << endl;
-                string production = M[{X, a}];
 
-                // cout << "Produccion: [" << X << ", " << a << "]: " << X << " -> " <<  (production = M[{X, a}])  << endl;
+                //Meter X y sus atributos en AUX
+
+                a = siguienteToken();
+            } else if (terminales.count(X->symbol))
+                error(X->symbol);
+            else if (!M.count({X->symbol, a}))
+                error(a);
+            else if (M.count({X->symbol, a})) {
+                // cout << "esta!" << endl;
+                string production = M[{X->symbol, a}];
+
+                // cout << "Produccion: [" << X->symbol << ", " << a << "]: " << X->symbol << " -> " <<  (production = M[{X->symbol, a}])  << endl;
 
                 int a = 23;
-                string regla = X + " -> " + production;
+                string regla = X->symbol + " -> " + production;
 
                 // cerr << "Regla: " << regla << endl;
                 parse << " " << producciones[regla];
@@ -100,7 +110,7 @@ AnalizadorSintactico::AnalizadorSintactico(AnalizadorLexico &lexico,
 
                 for (int i = v.size() - 1; i >= 0; i--) {
                     if(v[i] != "lambda")
-                        pila.push(v[i]);
+                        pila.push(new Simbolo(v[i]));
                 }
             }
             X = pila.top();
