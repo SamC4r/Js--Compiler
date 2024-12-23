@@ -57,83 +57,85 @@ class AnalizadorSintactico {
         {"operadorNegacion", "!"},
     };
     map<string, int> producciones = {
-        {"Z -> B Z", 1},
-        {"Z -> F Z", 2},
-        {"Z -> lambda", 3},
+        {"W -> Z {createTSGlobal()}",1},
 
-        {"B -> var T id ;", 4},
-        {"B -> if ( E ) I", 5},
-        {"B -> S", 6},
+        {"Z -> B Z", 2},
+        {"Z -> F Z", 3},
+        {"Z -> lambda {Z.tipo=vacio}", 4},
 
-        {"T -> int", 7},
-        {"T -> boolean", 8},
-        {"T -> string", 9},
+        {"B -> var T id ; {InsertaTipo(id.pos,T.tipo)}", 5},
+        {"B -> if ( E ) I {B.tipo=if(E.tipo!=logico then error(\"no es un booleano\")) else if I.tipo!=tipo_ok then error(\"Sentencia If incorrecta\") else I.tipo}", 6},
+        {"B -> S", 7},
 
-        {"E -> R N", 10},
+        {"T -> int {T.tipo=ent}", 8},
+        {"T -> boolean {T.tipo=logico}", 9},
+        {"T -> string {T.tipo=cadena}", 10},
 
-        {"N -> > R N", 11},
-        {"N -> lambda", 12},
+        {"E -> R N", 11},
 
-        {"R -> O P", 13},
+        {"N -> > R N", 12},
+        {"N -> lambda {N.tipo=vacio}", 13},
 
-        {"P -> - O P", 14},
-        {"P -> lambda", 15},
+        {"R -> O P", 14},
 
-        {"O -> M Y", 16},
+        {"P -> - O P", 15},
+        {"P -> lambda {P.tipo=vacio}", 16},
 
-        {"Y -> % M Y", 17},
-        {"Y -> lambda", 18},
+        {"O -> M Y", 17},
 
-        {"M -> - M", 19},
-        {"M -> ! M", 20},
-        {"M -> id V", 21},
-        {"M -> ( E )", 22},
-        {"M -> constanteEntera", 23},
-        {"M -> cadena", 24},
-        {"M -> -- id", 25},
+        {"Y -> % M Y", 18},
+        {"Y -> lambda {Y.tipo=vacio}", 19},
 
-        {"V -> ( L )", 26},
-        {"V -> lambda", 27},
+        {"M -> - M", 20},
+        {"M -> ! M", 21},
+        {"M -> id V", 22},
+        {"M -> ( E )", 23},
+        {"M -> constanteEntera", 24},
+        {"M -> cadena", 25},
+        {"M -> -- id", 26},
 
-        {"L -> E Q", 28},
-        {"L -> lambda", 29},
+        {"V -> ( L )", 27},
+        {"V -> lambda {V.tipo=vacio}", 28},
 
-        {"Q -> , E Q", 30},
-        {"Q -> lambda", 31},
+        {"L -> E Q", 29},
+        {"L -> lambda {L.tipo=vacio}", 30},
 
-        {"I -> S", 32},
-        {"I -> { C } J", 33},
+        {"Q -> , E Q", 31},
+        {"Q -> lambda {Q.tipo=vacio}", 32},
 
-        {"J -> else { C }", 34},
-        {"J -> lambda", 35},
+        {"I -> S", 33},
+        {"I -> { C } J", 34},
 
-        {"C -> B C", 36},
-        {"C -> lambda", 37},
+        {"J -> else { C }", 35},
+        {"J -> lambda {J.tipo=vacio}", 36},
 
-        {"S -> id U", 38},
-        {"S -> output E ;", 39},
-        {"S -> input D ;", 40},
-        {"S -> return X ;", 41},
+        {"C -> B C", 37},
+        {"C -> lambda {C.tipo=vacio}", 38},
 
-        {"U -> = E ;", 42},
-        {"U -> ( L ) ;", 43},
+        {"S -> id U", 39},
+        {"S -> output E ;", 40},
+        {"S -> input D ;", 41},
+        {"S -> return X ;", 42},
 
-        {"D -> id", 44},
-        {"D -> ( id )", 45},
+        {"U -> = E ;", 43},
+        {"U -> ( L ) ;", 44},
 
-        {"X -> E", 46},
-        {"X -> lambda", 47},
+        {"D -> id", 45},
+        {"D -> ( id )", 46},
 
-        {"F -> function H id ( A ) { C }", 48},
+        {"X -> E", 47},
+        {"X -> lambda {X.tipo=vacio}", 48},
 
-        {"H -> T", 49},
-        {"H -> void", 50},
+        {"F -> function H id ( A ) { C }", 49},
 
-        {"A -> T id K", 51},
-        {"A -> void", 52},
+        {"H -> T", 50},
+        {"H -> void", 51},
 
-        {"K -> , T id K", 53},
-        {"K -> lambda", 54}
+        {"A -> T id K", 52},
+        {"A -> void", 53},
+
+        {"K -> , T id K", 54},
+        {"K -> lambda {K.}", 55}
     };
 
     map<pair<string, string>, string> M = {
