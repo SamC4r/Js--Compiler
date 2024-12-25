@@ -45,14 +45,19 @@ _print(x)
 #define debug(x...)
 #endif
 
-bool accionSemantica(string s){
-    if(s == "{ T.tipo := ent }"){
-        return true;
-    }else if(s == "{ L.tipo := T.Tipo }"){
-        return true;
-    }
 
-    return false;
+//Mejora? A la tabla anadirle numero de accion semantica y si es un numero correcto (pq es un map de numero -> accion semantica) aplicar la accion semantica con codigo. Por cada accion semantica se puede saber que simbolo modificar segun las pilas 
+
+bool AnalizadorSintactico::esAccionSemantica(string s){
+    return numero_accion_semantica.count(s);
+}
+
+void AnalizadorSintactico::ejecutarRegla(string s){
+    if(s == "{1.1}"){
+
+    }else if(s == "{x.x}"){ //T -> int {123}}
+        aux.top()->atributos->tipo="entero";
+    }
 }
 
 void AnalizadorSintactico::error(string unexpected) {
@@ -70,18 +75,26 @@ AnalizadorSintactico::AnalizadorSintactico(AnalizadorLexico &lexico, GestorError
         Simbolo* sp = new Simbolo("$");
         pila.push(sp);
         pila.push(new Simbolo("Z")); // axioma
+        aux.push(new Simbolo("Z")); // axioma
+
         auto X = pila.top();
         while (X->symbol != "$") {
             // if(token_char.count(a))a=token_char[a];
             // if(token_char.count(X))X=token_char[X];
-            // cout << "element: " << X << ' ' << a << endl;
-            if(a == "EOF") a= "$";
-            if (X->symbol == a) {
+            // cout << "element: " << X->symbol << ' ' << a << endl;
+            if(a == "EOF"){
+                a= "$";
+            }else if(esAccionSemantica(X->symbol)){
+                cout << "YEEEE" << endl;
+                ejecutarRegla(X->symbol);
+                pila.pop();
+            }
+            else if (X->symbol == a) {
                 pila.pop();
                 // cout << "top" << pila.top() << endl;
 
                 //Meter X y sus atributos en AUX
-
+                aux.push(X);
                 a = siguienteToken();
             } else if (terminales.count(X->symbol))
                 error(X->symbol);
@@ -101,6 +114,9 @@ AnalizadorSintactico::AnalizadorSintactico(AnalizadorLexico &lexico, GestorError
                 // cerr << "contiene? " << producciones.count(regla) << " " << producciones[regla] << endl;
                 pila.pop();
 
+                // Meter X y sus atributos en AUX;
+                aux.push(X);
+
                 istringstream stream(production);
                 vector<string> elementos;
 
@@ -109,7 +125,7 @@ AnalizadorSintactico::AnalizadorSintactico(AnalizadorLexico &lexico, GestorError
                 while (stream >> production) {
                     v.push_back(production);
                 }
-
+                debug(v);
                 for (int i = v.size() - 1; i >= 0; i--) {
                     if(v[i] != "lambda")
                         pila.push(new Simbolo(v[i]));
@@ -119,8 +135,13 @@ AnalizadorSintactico::AnalizadorSintactico(AnalizadorLexico &lexico, GestorError
         }
     };
 };
-string AnalizadorSintactico::siguienteToken() {
 
+
+/**
+ * Function to get the next token from the lexical analyzer.
+ * @return The next token as a string.
+ */
+string AnalizadorSintactico::siguienteToken() {
     string s = lexico.getToken();
     // cout << "token: " << s << endl;
     return s;

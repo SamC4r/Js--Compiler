@@ -2,7 +2,6 @@
 #include <map>
 #include <set>
 #include <string>
-#include <vector>
 
 using namespace std;
 
@@ -28,6 +27,7 @@ class AnalizadorSintactico {
     fstream parse;
 
     stack<Simbolo*> pila;
+    stack<Simbolo*> aux;
 
     string siguienteToken();
 
@@ -56,8 +56,8 @@ class AnalizadorSintactico {
         {"operadorMayor", ">"},
         {"operadorNegacion", "!"},
     };
-    map<string, int> producciones = {
-        {"W -> Z {createTSGlobal()}",1},
+    map<string,int> pruducciones_semanticas = {
+        {"W -> Z {ts=new TablaSimbolos(); ptrTablaSimbolos=ts}",1},
 
         {"Z -> B Z", 2},
         {"Z -> F Z", 3},
@@ -120,22 +120,106 @@ class AnalizadorSintactico {
         {"U -> = E ;", 43},
         {"U -> ( L ) ;", 44},
 
-        {"D -> id", 45},
-        {"D -> ( id )", 46},
+        {"D -> id {D.tipo=BuscaTipo(id.pos)}", 45},
+        {"D -> ( id ) {D.tipo=BuscaTipo(id.pos)}", 46},
 
         {"X -> E", 47},
         {"X -> lambda {X.tipo=vacio}", 48},
 
-        {"F -> function H id ( A ) { C }", 49},
+        {"F -> function H id {crearTSLocal(),despLocal=0} ( A ) { C } {DestruirTSLocal()}", 49},
 
-        {"H -> T", 50},
-        {"H -> void", 51},
+        {"H -> T {H.tipo=T.tipo}", 50},
+        {"H -> void {H.tipo=vacio}", 51},
 
         {"A -> T id K", 52},
-        {"A -> void", 53},
+        {"A -> void {A.tipo=vacio}", 53},
 
-        {"K -> , T id K", 54},
-        {"K -> lambda {K.}", 55}
+        {"K -> , T id K ", 54},
+        {"K -> lambda {K.tipo=vacio}", 55}
+
+    };
+    map<string, int> producciones = {
+        {"Z -> B Z", 1},
+        {"Z -> F Z", 2},
+        {"Z -> lambda", 3},
+
+        {"B -> var T id ;", 4},
+        {"B -> if ( E ) I", 5},
+        {"B -> S", 6},
+
+        {"T -> int", 7},
+        {"T -> boolean", 8},
+        {"T -> string", 9},
+
+        {"E -> R N", 10},
+
+        {"N -> > R N", 11},
+        {"N -> lambda", 12},
+
+        {"R -> O P", 13},
+
+        {"P -> - O P", 14},
+        {"P -> lambda", 15},
+
+        {"O -> M Y", 16},
+
+        {"Y -> % M Y", 17},
+        {"Y -> lambda", 18},
+
+        {"M -> - M", 19},
+        {"M -> ! M", 20},
+        {"M -> id V", 21},
+        {"M -> ( E )", 22},
+        {"M -> constanteEntera", 23},
+        {"M -> cadena", 24},
+        {"M -> -- id", 25},
+
+        {"V -> ( L )", 26},
+        {"V -> lambda", 27},
+
+        {"L -> E Q", 28},
+        {"L -> lambda", 29},
+
+        {"Q -> , E Q", 30},
+        {"Q -> lambda", 31},
+
+        {"I -> S", 32},
+        {"I -> { C } J", 33},
+
+        {"J -> else { C }", 34},
+        {"J -> lambda", 35},
+
+        {"C -> B C", 36},
+        {"C -> lambda", 37},
+
+        {"S -> id U", 38},
+        {"S -> output E ;", 39},
+        {"S -> input D ;", 40},
+        {"S -> return X ;", 41},
+
+        {"U -> = E ;", 42},
+        {"U -> ( L ) ;", 43},
+
+        {"D -> id", 44},
+        {"D -> ( id )", 45},
+
+        {"X -> E", 46},
+        {"X -> lambda", 47},
+
+        {"F -> function H id ( A ) { C }", 49},
+
+        {"H -> T", 49},
+        {"H -> void", 50},
+
+        {"A -> T id K", 51},
+        {"A -> void", 52},
+
+        {"K -> , T id K", 53},
+        {"K -> lambda", 54}
+    };
+
+    map<string,string> numero_accion_semantica = {
+        {"{1.1}","{if E.tipo=logico}"},
     };
 
     map<pair<string, string>, string> M = {
@@ -152,7 +236,7 @@ class AnalizadorSintactico {
         {{"B", "input"}, "S"},
         {{"B", "output"}, "S"},
         {{"B", "return"}, "S"},
-        {{"B", "if"}, "if ( E ) I"},
+        {{"B", "if"}, "if ( E ) I {1.1}"},
         {{"T", "boolean"}, "boolean"},
         {{"T", "int"}, "int"},
         {{"T", "string"}, "string"},
@@ -270,4 +354,6 @@ class AnalizadorSintactico {
 
 public:
     AnalizadorSintactico(AnalizadorLexico &lexico, GestorErrores &errores);
+    bool esAccionSemantica(string s);
+    void ejecutarRegla(string s);
 };

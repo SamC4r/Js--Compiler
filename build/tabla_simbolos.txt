@@ -1,9 +1,3 @@
 Contenidos de la Tabla # 1 :
-  * LEXEMA : 'bool'
-  * LEXEMA : 'ff'
-  * LEXEMA : 'ss'
-  * LEXEMA : 'varglobal'
-  * LEXEMA : 'l1'
-  * LEXEMA : 'l2'
+  * LEXEMA : 'condicion'
   * LEXEMA : 'a'
-  * LEXEMA : 's'
