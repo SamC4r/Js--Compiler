@@ -83,6 +83,7 @@ AnalizadorSintactico::AnalizadorSintactico(AnalizadorLexico &lexico, GestorError
             // if(token_char.count(a))a=token_char[a];
             // if(token_char.count(X))X=token_char[X];
             // cout << "element: " << X->symbol << ' ' << a << endl;
+            debug(X->symbol);
             if(a == "EOF"){
                 a= "$";
             }else if(esAccionSemantica(X->symbol)){
@@ -126,7 +127,6 @@ AnalizadorSintactico::AnalizadorSintactico(AnalizadorLexico &lexico, GestorError
                 while (stream >> production) {
                     v.push_back(production);
                 }
-                debug(v);
                 for (int i = v.size() - 1; i >= 0; i--) {
                     if(v[i] != "lambda")
                         pila.push(new Simbolo(v[i]));
