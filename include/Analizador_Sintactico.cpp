@@ -55,7 +55,8 @@ bool AnalizadorSintactico::esAccionSemantica(string s){
 void AnalizadorSintactico::ejecutarRegla(string s){
     if(s == "{1.1}"){
 
-    }else if(s == "{x.x}"){ //T -> int {123}}
+    }else if(s == "{x.x}"){ //T -> int {2}  {2}: {T.tipo = ent}
+        aux.pop();
         aux.top()->atributos->tipo="entero";
     }
 }
