@@ -12,14 +12,18 @@
 
 #define endl "\n"
 
+
 using namespace std;
+
+
+
 int cnt = 0;
 string fuente = "";
 
 template <typename T1, typename T2>
 void Generator::gen_token(T1 tipo, T2 atributo) {
     lastTokenType = tipo;
-    lastTokenAttribute = atributo;
+    lastTokenAttribute = to_string(atributo);
 
     if(codigo_palabra_reservada.count(tipo)){
         tipo="palabraReservada";
@@ -27,7 +31,9 @@ void Generator::gen_token(T1 tipo, T2 atributo) {
 
     token_file << "<" << tipo << ", " << atributo << ">" << endl;
     buscando = false;
-    q.push(lastTokenType);
+    cerr << "lastTokenAttrib: " << lastTokenAttribute << endl;
+    pair<string,string> p = {lastTokenType,lastTokenAttribute};
+    q.push(p);
 }
 
 void Generator::gen_token(string tipo) {
@@ -41,14 +47,16 @@ void Generator::gen_token(string tipo) {
     token_file << "<" << tipo << ",>" << endl;
 
     buscando = false;
-    q.push(lastTokenType);
+   pair<string,string> p = {lastTokenType,lastTokenAttribute};
+    q.push(p);  
 }
 template <typename T1> void Generator::gen_token(T1 tipo, string cadena) {
     token_file << "<" << tipo << ",\'" << cadena << "\'>" << endl;
     lastTokenType = tipo;
     lastTokenAttribute = cadena;
     buscando = false;
-    q.push(lastTokenType);
+     pair<string,string> p = {lastTokenType,lastTokenAttribute};
+    q.push(p); 
 }
 
 void Generator::init(string token_file_name, ColaTablaSimbolos &queue) {
@@ -71,7 +79,7 @@ void Generator::Token(string identificador) {
         if (simbolos->getEntry(identificador) == NULL) {
             simbolos->add(identificador);
         }
-        gen_token("id", simbolos->getEntry(identificador)->pos);
+        gen_token("id", (int) simbolos->getEntry(identificador)->pos);
     }
 }
 
@@ -215,7 +223,7 @@ TODO:
   No debe leer todo sino, esperar a que A.semantico pida token
 */
 
-string AnalizadorLexico::getToken() {
+pair<string,string> AnalizadorLexico::getToken() {
 
     char c;
     bool negativo = false;
@@ -227,10 +235,10 @@ string AnalizadorLexico::getToken() {
     bool posible_fin_comentario = false;
     generator.buscando = true;
     if (programa.eof())
-        return "$";
+        return {"$","-"};
 
     if(!generator.q.empty()){
-        string top = generator.q.front();
+        auto top = generator.q.front();
         generator.q.pop();
         return top;
     }
@@ -306,9 +314,9 @@ string AnalizadorLexico::getToken() {
         c = programa.get();
     }
     if(programa.eof()){
-        return "$";
+        return {"$","-"};
     }
-    string top = generator.q.front();
+    auto top = generator.q.front();
     generator.q.pop();
     return top;
 }

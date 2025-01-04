@@ -9,7 +9,6 @@ using namespace std;
 class AnalizadorLexico {
 private:
   fstream programa;
-  Generator generator;
   GestorErrores errores;
 
   bool is_delimiter(char c);
@@ -25,8 +24,9 @@ private:
   char cadena();
 
 public:
+    Generator generator;
   int lineas;
-  string getToken();
+  pair<string,string> getToken();
   AnalizadorLexico(string nombre, string token_file, ColaTablaSimbolos &queue,
                    GestorErrores &errores);
 };

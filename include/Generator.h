@@ -18,7 +18,7 @@ public:
   bool buscando;
   string lastTokenType;
   string lastTokenAttribute;
-  std::queue<string> q;
+  std::queue<pair<string,string>> q;
 
   unordered_map<string, int> codigo_palabra_reservada = {
       {"boolean", 1}, {"else", 2}, {"function", 3}, {"if", 4},

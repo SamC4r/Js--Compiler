@@ -16,7 +16,7 @@ struct Simbolo{
 
     Simbolo(string s){
         symbol=s;
-        atributos=NULL;
+        atributos=new Atributo();
     }
 };
 

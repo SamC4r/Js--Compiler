@@ -59,6 +59,25 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         aux.pop();
         aux.top()->atributos->tipo="entero";
     }
+
+    if(s == "{M->idV}"){
+        debug(aux.top()->symbol);
+        debug(aux.top()->atributos->tipo);
+        string v_tipo = aux.top()->atributos->tipo;
+        if(v_tipo == "vacio"){
+            aux.pop();
+
+            debug(lexico.generator.lastTokenAttribute);
+            debug(lexico.generator.lastTokenType);
+            // buscarTS()
+            exit(0);
+        }
+        cerr << "AAAAA" << endl;
+    }else if(s == "{V->lambda}"){
+        debug(aux.top()->symbol);
+        aux.top()->atributos->tipo="vacio";
+        debug(aux.top()->atributos->tipo);
+    }
 }
 
 void AnalizadorSintactico::error(string unexpected) {
@@ -80,14 +99,14 @@ AnalizadorSintactico::AnalizadorSintactico(AnalizadorLexico &lexico, GestorError
 
         auto X = pila.top();
         while (X->symbol != "$") {
-            // if(token_char.count(a))a=token_char[a];
-            // if(token_char.count(X))X=token_char[X];
-            // cout << "element: " << X->symbol << ' ' << a << endl;
-            debug(X->symbol);
+            if(token_char.count(a))a=token_char[a];
+            if(token_char.count(X->symbol))X->symbol=token_char[X->symbol];
+            cout << "element: " << X->symbol << ' ' << a << endl;
+            // debug(X->symbol);
             if(a == "EOF"){
                 a= "$";
             }else if(esAccionSemantica(X->symbol)){
-                cout << "YEEEE" << endl;
+                 cout << "YEEEE " << X->symbol << endl;
                 ejecutarRegla(X->symbol);
                 pila.pop();
             }
@@ -96,6 +115,8 @@ AnalizadorSintactico::AnalizadorSintactico(AnalizadorLexico &lexico, GestorError
                 // cout << "top" << pila.top() << endl;
 
                 //Meter X y sus atributos en AUX
+                debug(lexico.generator.lastTokenAttribute);
+                debug(lexico.generator.lastTokenType);
                 aux.push(X);
                 a = siguienteToken();
             } else if (terminales.count(X->symbol))
@@ -114,11 +135,12 @@ AnalizadorSintactico::AnalizadorSintactico(AnalizadorLexico &lexico, GestorError
                 // cerr << "Regla: " << regla << endl;
                 parse << " " << producciones[regla];
                 // cerr << "contiene? " << producciones.count(regla) << " " << producciones[regla] << endl;
+                cerr << "pop: ";
+                debug(pila.top()->symbol);
                 pila.pop();
 
                 // Meter X y sus atributos en AUX;
                 aux.push(X);
-
                 istringstream stream(production);
                 vector<string> elementos;
 
@@ -128,9 +150,12 @@ AnalizadorSintactico::AnalizadorSintactico(AnalizadorLexico &lexico, GestorError
                     v.push_back(production);
                 }
                 for (int i = v.size() - 1; i >= 0; i--) {
-                    if(v[i] != "lambda")
+                    if(v[i] != "lambda"){
                         pila.push(new Simbolo(v[i]));
+                    }
+                    debug(v[i]);
                 }
+                debug(pila.top()->symbol);
             }
             X = pila.top();
         }
@@ -143,7 +168,8 @@ AnalizadorSintactico::AnalizadorSintactico(AnalizadorLexico &lexico, GestorError
  * @return The next token as a string.
  */
 string AnalizadorSintactico::siguienteToken() {
-    string s = lexico.getToken();
-    // cout << "token: " << s << endl;
-    return s;
+    auto s = lexico.getToken();
+    cout << "token: " << s.first << endl;
+    cout << "atrib" << s.second << endl;
+    return s.first;
 }
