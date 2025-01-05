@@ -7,7 +7,6 @@
 #include <ios>
 #include <iostream>
 #include <string>
-#include <system_error>
 #include <unordered_map>
 
 #define endl "\n"
@@ -62,11 +61,11 @@ template <typename T1> void Generator::gen_token(T1 tipo, string cadena) {
 void Generator::init(string token_file_name, ColaTablaSimbolos &queue) {
 
     token_file.open(token_file_name, fstream::out);
-
+    zona_declaracion = false;
     this->queue = &queue;
-
-    TablaSimbolos global;
+    TablaSimbolos* global = new TablaSimbolos();
     this->queue->add(global);
+    this->ts_global=queue.top();
 }
 
 void Generator::Token(string identificador) {
@@ -74,10 +73,18 @@ void Generator::Token(string identificador) {
     if (codigo_palabra_reservada.count(identificador)) {
         gen_token(identificador, codigo_palabra_reservada[identificador]);
     } else {
-
+        if(identificador == "") return;
         TablaSimbolos *simbolos = queue->top();
-        if (simbolos->getEntry(identificador) == NULL) {
-            simbolos->add(identificador);
+        if(zona_declaracion && simbolos->getEntry(identificador) != NULL){ //no volver a declarar
+                cerr << "Variable ya declarada: \'" << identificador << "\' en linea: " << lineas << endl;
+                throw runtime_error("Variable ya declarada");
+        }
+        else if (simbolos->getEntry(identificador) == NULL) { //no declarada
+            if(zona_declaracion){
+                simbolos->add(identificador);
+            }else{
+                ts_global->add(identificador);
+            }
         }
         gen_token("id", (int) simbolos->getEntry(identificador)->pos);
     }
@@ -85,7 +92,6 @@ void Generator::Token(string identificador) {
 
 void Generator::Token(char c) {
     string character(1,c);
-    // cerr << "CARACTER " << character << endl;
     gen_token(character);
 }
 
@@ -105,7 +111,7 @@ void Generator::Token(string str, char del) {
 
 bool AnalizadorLexico::is_delimiter(char c) {
     if (c == '\n')
-        lineas++;
+        generator.lineas++;
     return (c == ' ' || c == '\n' || c == '\t' || c == '\0' || c == '\r' ||
     c == EOF);
 }
@@ -137,7 +143,7 @@ char AnalizadorLexico::leer_digito() {
     }
 
     if (number >= (1 << 15)) {
-        errores.genError(errores::NUMERO_FUERA_RANGO, lineas, to_string(number));
+        errores.genError(errores::NUMERO_FUERA_RANGO, generator.lineas, to_string(number));
     } else {
         generator.Token(number);
     }
@@ -170,11 +176,9 @@ char AnalizadorLexico::predecremento() {
     if (cnt > 2) {
         throw runtime_error("Expresion expected");
     } else if (cnt == 2) {
-        // cerr << "predecremento: " << decremento << endl;
         generator.Token(TiposToken::OPERADOR_ESPECIAL);
     } else {
-        // operador menos
-        // cerr << "<menos,->" << ' ' << c << endl;
+        // menos
         generator.Token('-');
     }
     return c;
@@ -194,9 +198,9 @@ char AnalizadorLexico::cadena() {
     }
     cnt += (c == '\'');
     if (cnt < 2) {
-        errores.genError(errores::CADENA_NO_CERRADA, lineas, str);
+        errores.genError(errores::CADENA_NO_CERRADA, generator.lineas, str);
     } else if (str.size() > 64) {
-        errores.genError(errores::CADENA_LARGA, lineas, str);
+        errores.genError(errores::CADENA_LARGA, generator.lineas, str);
     } else {
         // operador menos
         generator.Token(str, '\'');
@@ -218,17 +222,12 @@ FUNCIONAMIENTO:
   Recorre el fichero caracter por caracter y transita segun los estados del
 automata
 
-
-TODO:
-  No debe leer todo sino, esperar a que A.semantico pida token
 */
 
 pair<string,string> AnalizadorLexico::getToken() {
 
     char c;
     bool negativo = false;
-
-    // TODO: Comentarios
 
     bool comentario = false;
     bool posible_comentario = false;
@@ -308,7 +307,7 @@ pair<string,string> AnalizadorLexico::getToken() {
         } else {
             string s = "";
             s += c;
-            errores.genError(errores::CARACTER_NO_DEFINIDO, lineas, s);
+            errores.genError(errores::CARACTER_NO_DEFINIDO, generator.lineas, s);
         }
     next:
         c = programa.get();
@@ -328,8 +327,7 @@ AnalizadorLexico::AnalizadorLexico(string nombre, string token_file,
     programa.open(nombre, ios::in);
     generator.init(token_file, queue);
     fuente = nombre;
-    this->lineas=1;
-
+    generator.lineas=1;
     this->errores = errores;
 
     if (!programa.is_open()) {

@@ -7,7 +7,8 @@ using namespace std;
 
 struct Atributo{
     string tipo;
-    string ancho;
+    int ancho;
+    int pos;
 };
 
 struct Simbolo{
@@ -24,10 +25,14 @@ class AnalizadorSintactico {
 
     AnalizadorLexico &lexico;
     GestorErrores &errores;
+    TablaSimbolos* ts_actual;
     fstream parse;
 
     stack<Simbolo*> pila;
     stack<Simbolo*> aux;
+
+    string buscarTipoTS(int pos);
+    int insertarTipoTS(int pos,string tipo);
 
     string siguienteToken();
 
@@ -230,7 +235,7 @@ class AnalizadorSintactico {
         {"{dec_false}","declaracion=false"},
         {"{dec_true}","declaracion=true"},
         {"{B->S}","B -> S {B.tipo=S.tipo}"},
-        {"{T->int}","T -> int     {T.tipo=ent, T.ancho=4}"},
+        {"{T->int}","T -> int     {T.tipo=entero, T.ancho=4}"},
         {"{T->boolean}","T -> boolean    {T.tipo=logico, T.ancho = 1}"},
         {"{T->string}","T -> string  {T.tipo=cadena, T.ancho=64}"},
         {"{E->RN}","E -> R N  {E.tipo = if (R.tipo = entero AND N.tipo=logico) then logico else if (N.tipo = vacio) then R.tipo else error (“solo se pueden comparar enteros”)}"},
@@ -262,9 +267,9 @@ class AnalizadorSintactico {
         {"{C->BC1}","C -> B C1    {C.tipo = if (B.tipo = tipo_ok AND (C1.tipo = tipo_ok OR C1.tipo=vacio)) then tipo_ok else error()}"},
         {"{C->lambda}","C -> lambda  {C.tipo=vacio}"},
         {"{S->idU}","S ->  id U   {if (U.tipo=vacio OR BuscaTipoTS(id.pos) = U.tipo->T) then tipo_ok else error(“Error! Se ha asignado un tipo incorrecto a la variable”)"},
-        {"{S->outputE}","S -> output E ;   {S.tipo = tipo_ok if E.tipo != tipo_error}"},
-        {"{S->inputD}","S -> input D ;   {S.tipo = tipo_ok if D.tipo != tipo_error}"},
-        {"{S->returnX}","S -> return X ;  {S.tipo = tipo_ok if X.tipo != tipo_error}"},
+        {"{S->outputE;}","S -> output E ;   {S.tipo = tipo_ok if E.tipo != tipo_error}"},
+        {"{S->inputD;}","S -> input D ;   {S.tipo = tipo_ok if D.tipo != tipo_error}"},
+        {"{S->returnX;}","S -> return X ;  {S.tipo = tipo_ok if X.tipo != tipo_error}"},
         {"{U->=E}","U -> = E ;  {U.tipo = E.tipo}"},
         {"{U->(L)}","U -> ( L ) ; {U.tipo = L.tipo}  "},
         {"{D->id}","D -> id    {D.tipo=BuscaTipo(id.pos)}"},
@@ -285,21 +290,21 @@ class AnalizadorSintactico {
     };
 
     map<pair<string, string>, string> M = {
-        {{"Z", "id"}, "B {Z->BZ} Z"},
-        {{"Z", "var"}, "B {Z->BZ} Z"},
+        {{"Z", "id"}, "B Z {Z->BZ}"},
+        {{"Z", "var"}, "B Z {Z->BZ}"},
         {{"Z", "function"}, "F Z {Z->FZ}"},
-        {{"Z", "input"}, "B {Z->BZ} Z"},
-        {{"Z", "output"}, "B {Z->BZ} Z"},
-        {{"Z", "return"}, "B {Z->BZ} Z"},
-        {{"Z", "if"}, "B {Z->BZ} Z"},
+        {{"Z", "input"}, "B Z {Z->BZ}"},
+        {{"Z", "output"}, "B Z {Z->BZ}"},
+        {{"Z", "return"}, "B Z {Z->BZ}"},
+        {{"Z", "if"}, "B Z {Z->BZ}"},
         {{"Z", "$"}, "lambda {Z->lambda}"},
         {{"B", "id"}, "S {B->S}"},
         {{"B", "input"}, "S {B->S}"},
         {{"B", "output"}, "S {B->S}"},
         {{"B", "return"}, "S {B->S}"},
-        {{"B", "var"}, "{dec_true} var T id ; {B->varTid;}"},
+        {{"B", "var"}, "{dec_true} var T id {dec_false} ; {B->varTid;} "},
         {{"B", "if"}, "if ( E ) I {B->if(E)I}"},
-        {{"T", "boolean"}, "boolean {T->int}"},
+        {{"T", "boolean"}, "boolean {T->boolean}"},
         {{"T", "int"}, "int {T->int}"},
         {{"T", "string"}, "string {T->string}"},
         {{"E", "id"}, "R N {E->RN}"},
@@ -369,9 +374,9 @@ class AnalizadorSintactico {
         {{"C", "if"}, "B C {C->BC1}"},
         {{"C", "}"}, "lambda {C->lambda}"},
         {{"S", "id"}, "id U {S->idU}"},
-        {{"S", "input"}, "input D ; {S->inputD}"},
-        {{"S", "output"}, "output E ; {S->outputE}"},
-        {{"S", "return"}, "return X ; {S->returnX}"},
+        {{"S", "input"}, "input D ; {S->inputD;}"},
+        {{"S", "output"}, "output E ; {S->outputE;}"},
+        {{"S", "return"}, "return X ; {S->returnX;}"},
         {{"U", "("}, "( L ) ; {U->(L))}"},
         {{"U", "="}, "= E ; {U->=E}"},
         {{"D", "id"}, "id {D->id}"},

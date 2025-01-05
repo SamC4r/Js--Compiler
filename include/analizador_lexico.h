@@ -25,6 +25,7 @@ private:
 
 public:
     Generator generator;
+    bool zona_declaracion;
   int lineas;
   pair<string,string> getToken();
   AnalizadorLexico(string nombre, string token_file, ColaTablaSimbolos &queue,

@@ -10,14 +10,13 @@ using namespace std;
 class ColaTablaSimbolos {
 
 private:
-  stack<TablaSimbolos> q;
+  stack<TablaSimbolos*> q;
   fstream ts_file;
 
 public:
   ColaTablaSimbolos(string ts_file_name);
-  void add(TablaSimbolos symbol);
+  void add(TablaSimbolos* symbol);
   void pop();
   TablaSimbolos *top();
-  void search(string id);
   void print();
 };

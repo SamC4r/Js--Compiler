@@ -6,23 +6,24 @@ using namespace std;
 #pragma once
 
 struct Entry {
-  int pos;
-  string lexema;
-  string atributo;
-  /*
+    int pos;
+    string lexema;
+    string tipo;
+    /*
     Mas columnas
   */
 };
 
 class TablaSimbolos {
 public:
-  int cnt;
-  unordered_map<string, Entry> simbolos;
+    int cnt;
+    unordered_map<string, Entry> simbolos;
+    unordered_map<int, Entry> posiciones;
 
 public:
-  TablaSimbolos();
-  void print();
-  int getPos(string id);
-  Entry *getEntry(string id);
-  void add(string id);
+    TablaSimbolos();
+    void print();
+    Entry* getPos(int pos);
+    Entry *getEntry(string id);
+    void add(string id);
 };

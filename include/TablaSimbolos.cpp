@@ -11,11 +11,22 @@ using namespace std;
 
 TablaSimbolos::TablaSimbolos() { this->cnt = 0; }
 
-void TablaSimbolos::print() { cout << "hola " << endl; }
+void TablaSimbolos::print() { 
+    for (auto x : simbolos) { 
+        cout << x.first << " " << x.second.lexema << endl; 
+    } 
+}
 
-void TablaSimbolos::add(string id) { simbolos[id] = {cnt++, id, "var"}; }
+void TablaSimbolos::add(string id) {
+    posiciones[cnt] = {cnt,id,"entero"};
+    simbolos[id] = {cnt++, id,"entero"}; 
+}
 
-Entry *TablaSimbolos::getEntry(string id) {
+Entry* TablaSimbolos::getPos(int pos) { 
+    return &posiciones[pos]; 
+}
+
+Entry* TablaSimbolos::getEntry(string id) {
   if (!simbolos.count(id)) {
     return NULL;
   }

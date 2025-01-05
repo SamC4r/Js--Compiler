@@ -1,3 +1,0 @@
-Contenidos de la Tabla # 1 :
-  * LEXEMA : 'condicion'
-  * LEXEMA : 'a'
