@@ -14,24 +14,12 @@ Contenidos de la Tabla # 1 :
     + tipo : logico
     + despl : 0
    --------- ----------
-  * LEXEMA : 'l1'
-    ATRIBUTOS :
-    + tipo : logico
-    + despl : 6
-   --------- ----------
   * LEXEMA : 'a'
     ATRIBUTOS :
     + tipo : entero
-    + despl : 7
+    + despl : 6
    --------- ----------
 Contenidos de la Tabla # 2 :
-  * LEXEMA : 'num'
-    ATRIBUTOS :
-    + tipo : entero
-    + despl : 0
-   --------- ----------
-Contenidos de la Tabla # 3 :
-Contenidos de la Tabla # 4 :
   * LEXEMA : 'condicion'
     ATRIBUTOS :
     + tipo : logico
@@ -41,23 +29,6 @@ Contenidos de la Tabla # 4 :
     ATRIBUTOS :
     + tipo : logico
     + despl : 1
-   --------- ----------
-  * LEXEMA : 'fun'
-    ATRIBUTOS :
-    + tipo : function
-    + parametros : 0
-   --------- ----------
-  * LEXEMA : 'f'
-    ATRIBUTOS :
-    + tipo : function
-    + parametros : 2
-    + Parametro : entero
-    + Parametro : vacio
-   --------- ----------
-  * LEXEMA : 'true'
-    ATRIBUTOS :
-    + tipo : entero
-    + despl : 6
    --------- ----------
   * LEXEMA : 'ff'
     ATRIBUTOS :
@@ -70,15 +41,10 @@ Contenidos de la Tabla # 4 :
   * LEXEMA : 'varglobal'
     ATRIBUTOS :
     + tipo : entero
-    + despl : 10
+    + despl : 6
    --------- ----------
   * LEXEMA : 'hola'
     ATRIBUTOS :
     + tipo : entero
-    + despl : 10
-   --------- ----------
-  * LEXEMA : 'true'
-    ATRIBUTOS :
-    + tipo : entero
-    + despl : 14
+    + despl : 6
    --------- ----------

@@ -143,7 +143,6 @@ void AnalizadorSintactico::ejecutarRegla(string s){
     if(s == "{Z->BZ}"){
         string Z1_tipo = aux.top()->atributos->tipo;
         debug(Z1_tipo);
-       
 
         aux.pop();
         string B_tipo = aux.top()->atributos->tipo;
@@ -160,14 +159,9 @@ void AnalizadorSintactico::ejecutarRegla(string s){
     }
     else if(s == "{Z->FZ}"){
         string Z1_tipo = aux.top()->atributos->tipo;
-        debug(Z1_tipo);
-       
-
         aux.pop();
         string F_tipo = aux.top()->atributos->tipo;
-        debug(F_tipo);
         aux.pop();
-        debug(aux.top()->symbol);
         string Z_tipo = "";
         if(F_tipo == "tipo_ok" && (Z1_tipo == "vacio" || Z1_tipo == "tipo_ok")){
             Z_tipo = "tipo_ok";
@@ -189,7 +183,6 @@ void AnalizadorSintactico::ejecutarRegla(string s){
             aux.top()->atributos->tipo=ret;
         }else{
             //TODO: 
-            
         }
     }
     else if(s == "{M->(E)}"){
@@ -261,8 +254,10 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         lexico.generator.zona_declaracion=false;
         aux.top()->atributos->tipo="tipo_ok";
     }else if(s == "{B->S}"){
+        debug(aux.top()->symbol);
         string S_tipo = aux.top()->atributos->tipo;
         string S_ret = aux.top()->atributos->ret;
+        debug(S_tipo,S_ret);
         aux.pop();
         aux.top()->atributos->tipo=S_tipo; // B.tipo=S.tipo
         aux.top()->atributos->ret=S_ret; // B.ret=S.ret
@@ -396,9 +391,11 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         aux.pop();
         aux.top()->atributos->tipo=S_tipo;
     }else if(s == "{C->BC1}"){
-        string C1_tipo=aux.top()->atributos->tipo;
         debug(aux.top()->symbol);
+        string C1_tipo=aux.top()->atributos->tipo;
+        string C1_ret=aux.top()->atributos->ret;
         aux.pop();
+        debug(aux.top()->symbol);
         string B_tipo=aux.top()->atributos->tipo;
         string B_ret = aux.top()->atributos->ret;
         debug(B_tipo,C1_tipo);
@@ -410,7 +407,9 @@ void AnalizadorSintactico::ejecutarRegla(string s){
             C_tipo="tipo_error";
         }
         aux.top()->atributos->tipo=C_tipo;
-        aux.top()->atributos->ret = B_ret;
+        string ret = B_ret;
+        if(ret == "")ret=C1_ret;
+        aux.top()->atributos->ret=ret;
     }else if(s == "{S->outputE;}"){
         
         aux.pop(); //quita ;
@@ -426,9 +425,11 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         string S_tipo=(D_tipo == "tipo_error"? "tipo_error":"tipo_ok");
         aux.pop();
         aux.pop();
+        aux.top()->atributos->tipo=S_tipo;
     }else if(s == "{S->returnX;}"){
          aux.pop(); //;
         string X_tipo=aux.top()->atributos->tipo;
+        debug(aux.top()->symbol);
         aux.pop(); //X
         aux.pop(); //return
         string S_tipo=(X_tipo == "tipo_error"? "tipo_error":"tipo_ok");
@@ -438,16 +439,19 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         aux.top()->atributos->ret=S_return;
     }else if(s == "{S->idU}"){
         string U_tipo=aux.top()->atributos->tipo;
-        string S_tipo;
         aux.pop();
-        int id_pos = aux.top()->atributos->pos;
 
+        int id_pos = aux.top()->atributos->pos;
+        aux.pop();
+
+        string S_tipo;
         if(buscarTipoTS(id_pos) == U_tipo || U_tipo == "vacio"){
-            S_tipo=U_tipo;
+            S_tipo="tipo_ok";
         }else{
             string msg = ("la variable no es del tipo "+U_tipo+" en linea " + to_string(lexico.generator.lineas));
             S_tipo=Error(msg);
         }
+        aux.top()->atributos->tipo=S_tipo;
     }else if(s == "{U->=E}"){
         aux.pop(); //;
         string E_tipo=aux.top()->atributos->tipo;
@@ -521,6 +525,7 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         string F_devuelto = aux.top()->atributos->ret;
         debug(F_devuelto);
         string F_tipo = C_tipo;
+        debug(C_ret);
         if(F_devuelto != C_ret){
             string msg = ("el tipo de retorno de la funcion no es del mismo tipo que la declaracion de la funcion \t Error en la linea " + to_string(lexico.generator.lineas));;
             F_tipo=Error(msg);
@@ -648,13 +653,17 @@ AnalizadorSintactico::AnalizadorSintactico(AnalizadorLexico &lexico, GestorError
                     if(v[i] != "lambda"){
                         pila.push(new Simbolo(v[i]));
                     }
-                    if(v[i][0] != '{'){
+                    if(v[i][0] != '{' || v[i].size() == 1){
                         rule = v[i] + ' ' + rule;
                     }
                 }
                 string regla = X->symbol + " -> " + rule;
                 regla.pop_back();
                 parse << " " << producciones[regla];
+                if(producciones[regla] == 0){
+                    cout << regla << endl;
+                    exit(0);
+                }
             }
             X = pila.top();
         }
