@@ -52,6 +52,7 @@ void ColaTablaSimbolos::print() {
             if(e.tipo != "function"){
                 ts_file << "    + despl : " << e.desp << endl;
             }else{
+                ts_file << "    + etiqueta : " << e.lexema << endl;
                 ts_file << "    + parametros : " << e.f.n_params << endl;
                 for(string t : e.f.tipo_params){
                     ts_file << "    + Parametro : " << t << endl;

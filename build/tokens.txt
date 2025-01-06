@@ -14,8 +14,31 @@
 <id, 1>
 <puntoComa,>
 <palabraReservada, 3>
-<palabraReservada, 1>
+<palabraReservada, 6>
 <id, 2>
+<parentesisIzda,>
+<palabraReservada, 11>
+<parentesisDcha,>
+<llavesIzda,>
+<palabraReservada, 8>
+<constanteEntera, 100>
+<puntoComa,>
+<llavesDcha,>
+<palabraReservada, 3>
+<palabraReservada, 6>
+<id, 3>
+<parentesisIzda,>
+<palabraReservada, 6>
+<id, 0>
+<parentesisDcha,>
+<llavesIzda,>
+<palabraReservada, 8>
+<constanteEntera, 100>
+<puntoComa,>
+<llavesDcha,>
+<palabraReservada, 3>
+<palabraReservada, 1>
+<id, 4>
 <parentesisIzda,>
 <palabraReservada, 1>
 <id, 0>
@@ -27,11 +50,11 @@
 <id, 2>
 <parentesisDcha,>
 <llavesIzda,>
-<id, 3>
+<id, 5>
 <operadorAsignacion,>
 <constanteEntera, 3333>
 <puntoComa,>
-<id, 4>
+<id, 6>
 <operadorAsignacion,>
 <constanteEntera, 23>
 <puntoComa,>
