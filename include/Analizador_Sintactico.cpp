@@ -189,7 +189,7 @@ void AnalizadorSintactico::ejecutarRegla(string s){
             aux.top()->atributos->tipo=ret;
         }else{
             //TODO: 
-
+            
         }
     }
     else if(s == "{M->(E)}"){
@@ -227,12 +227,23 @@ void AnalizadorSintactico::ejecutarRegla(string s){
     } 
     else if(s == "{M->--id}"){
         int id_pos = aux.top()->atributos->pos;
+        aux.pop();
+        aux.pop();
+        aux.pop();
         string id_tipo = buscarTipoTS(id_pos);
         string M_tipo="";
         if(id_tipo=="entero") M_tipo="entero";
         else M_tipo=Error("solo se pueden predecrementar numeros enteros");
         aux.top()->atributos->tipo=M_tipo;
 
+    }
+    else if(s == "{V->(L)}"){
+        aux.pop();
+        string L_tipo=aux.top()->atributos->tipo;
+        aux.pop();
+        aux.pop();
+        string V_tipo = L_tipo;
+        aux.top()->atributos->tipo=V_tipo;
     }
     else if(s == "{V->lambda}"){
         aux.top()->atributos->tipo="vacio";
