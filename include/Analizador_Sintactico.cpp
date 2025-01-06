@@ -158,6 +158,27 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         }
         aux.top()->atributos->tipo = Z_tipo;
     }
+    else if(s == "{Z->FZ}"){
+        string Z1_tipo = aux.top()->atributos->tipo;
+        debug(Z1_tipo);
+       
+
+        aux.pop();
+        string F_tipo = aux.top()->atributos->tipo;
+        debug(F_tipo);
+        aux.pop();
+        debug(aux.top()->symbol);
+        string Z_tipo = "";
+        if(F_tipo == "tipo_ok" && (Z1_tipo == "vacio" || Z1_tipo == "tipo_ok")){
+            Z_tipo = "tipo_ok";
+        }else{
+            Z_tipo = "tipo_error";
+        }
+        aux.top()->atributos->tipo = Z_tipo;
+    }
+    else if(s == "{Z->lambda}"){
+        aux.top()->atributos->tipo="vacio";
+    }
     else if(s == "{M->idV}"){
         string v_tipo = aux.top()->atributos->tipo;
         aux.pop();
@@ -168,12 +189,52 @@ void AnalizadorSintactico::ejecutarRegla(string s){
             aux.top()->atributos->tipo=ret;
         }else{
             //TODO: 
+
         }
-    }else if(s == "{M->constanteEntera}"){
+    }
+    else if(s == "{M->(E)}"){
+        aux.pop();
+        string E_tipo=aux.top()->atributos->tipo;
+        aux.pop();
+        aux.pop();
+        string M_tipo=E_tipo;
+        aux.top()->atributos->tipo=M_tipo;
+    }
+    else if(s == "{M->-M1}"){
+        string M1_tipo=aux.top()->atributos->tipo;
+        aux.pop();
+        aux.pop();
+        string M_tipo="";
+        if(M1_tipo=="entero") M_tipo="entero";
+        else M_tipo=Error("solo se puede obtener el negativo de numeros enteros");
+    }
+    else if(s == "{M->!M1}"){
+        string M1_tipo=aux.top()->atributos->tipo;
+        aux.pop();
+        aux.pop();
+        string M_tipo="";
+        if(M1_tipo=="logico") M_tipo="logico";
+        else M_tipo=Error("solo se puede negar un booleano");
+    }
+    else if(s == "{M->constanteEntera}"){
         aux.pop();
         debug(aux.top()->symbol);
         aux.top()->atributos->tipo="entero";
-    } else if(s == "{V->lambda}"){
+    }
+    else if(s == "{M->cadena}"){
+        aux.pop();
+        aux.top()->atributos->tipo="cadena";
+    } 
+    else if(s == "{M->--id}"){
+        int id_pos = aux.top()->atributos->pos;
+        string id_tipo = buscarTipoTS(id_pos);
+        string M_tipo="";
+        if(id_tipo=="entero") M_tipo="entero";
+        else M_tipo=Error("solo se pueden predecrementar numeros enteros");
+        aux.top()->atributos->tipo=M_tipo;
+
+    }
+    else if(s == "{V->lambda}"){
         aux.top()->atributos->tipo="vacio";
     }else if(s == "{B->varTid;}"){
     
@@ -247,7 +308,19 @@ void AnalizadorSintactico::ejecutarRegla(string s){
             E_tipo = Error("solo se pueden comparar enteros");
         }
         aux.top()->atributos->tipo=E_tipo;
-    }else if(s == "{R->OP}"){
+    }
+    else if(s == "{N->>RN}"){
+        string N1_tipo = aux.top()->atributos->tipo;
+        aux.pop();
+        string R_tipo = aux.top()->atributos->tipo;
+        aux.pop();
+        aux.pop();
+        string N_tipo="";
+        if(R_tipo=="entero" && (N1_tipo=="vacio" || N1_tipo=="logico")) N_tipo="logico";
+        else N_tipo=Error("solo se pueden comparar enteros");
+        aux.top()->atributos->tipo=N_tipo;
+    }
+    else if(s == "{R->OP}"){
         string P_tipo=aux.top()->atributos->tipo;
         aux.pop();
         string O_tipo=aux.top()->atributos->tipo;
@@ -264,7 +337,21 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         }
  
         aux.top()->atributos->tipo=R_tipo;
-    } else if(s == "{O->MY}"){
+    
+    } 
+    else if(s == "{P->-OP}"){
+        string P1_tipo=aux.top()->atributos->tipo;
+        aux.pop();
+        string O_tipo=aux.top()->atributos->tipo;
+        aux.pop();
+        aux.pop();
+        string P_tipo="";
+        if((P1_tipo=="vacio" || P1_tipo=="entero") && O_tipo=="entero") P_tipo="entero";
+        else P_tipo=Error("Solo se puede restar entre numeros enteros");
+        aux.top()->atributos->tipo=P_tipo;
+
+    }
+    else if(s == "{O->MY}"){
         string Y_tipo = aux.top()->atributos->tipo;
         aux.pop();
         string M_tipo = aux.top()->atributos->tipo;
@@ -281,7 +368,18 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         }
  
         aux.top()->atributos->tipo = O_tipo;
-    } else if(s == "{I->S}") {
+    }
+    else if(s == "{Y->%MY}"){
+        string Y1_tipo=aux.top()->atributos->tipo;
+        aux.pop();
+        string M_tipo=aux.top()->atributos->tipo;
+        aux.pop();
+        aux.pop();
+        string Y_tipo="";
+        if((Y1_tipo=="vacio" || Y1_tipo=="entero") && M_tipo=="entero") Y_tipo="entero";
+        else Y_tipo=Error("solo se puede hacer modulo entre numeros enteros");
+    } 
+    else if(s == "{I->S}") {
         string S_tipo=aux.top()->atributos->tipo;
         debug(S_tipo);
         aux.pop();
