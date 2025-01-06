@@ -12,13 +12,14 @@ using namespace std;
 class Generator {
 
   fstream token_file;
-  TablaSimbolos* ts_global;
 
 public:
+    TablaSimbolos* ts_global;
   ColaTablaSimbolos *queue;
   bool buscando;
     int lineas;
     bool zona_declaracion;
+    bool function=false;
   string lastTokenType;
   string lastTokenAttribute;
   std::queue<pair<string,string>> q;

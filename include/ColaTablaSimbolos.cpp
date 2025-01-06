@@ -24,27 +24,41 @@ struct ts_content{
 };
 
 void ColaTablaSimbolos::print() {
-    TablaSimbolos* ambito_actual = top();
+    int it = 1;
+    while(!q.empty()){
 
-    ts_file << "Contenidos de la Tabla # " << q.size() << " :" << endl;
+        TablaSimbolos* ambito_actual = top();
 
-    vector<ts_content> ids;
+        ts_file << "Contenidos de la Tabla # " << it++ << " :" << endl;
 
-    for (auto row : ambito_actual->posiciones) {
-        Entry entry = row.second;
-        ids.push_back({row.first, entry});
-    }
+        vector<ts_content> ids;
 
-    // sort by pos number and output by pos number
-    sort(ids.begin(), ids.end());
-
-    for (auto p : ids) {
-        Entry e = p.entry;
-        ts_file << "  * LEXEMA : \'" << e.lexema << '\'' << endl;
-        if(e.tipo != ""){
-            ts_file << "    ATRIBUTOS :" << endl;
-            ts_file << "    + tipo : " << e.tipo << endl;
+        for (auto row : ambito_actual->posiciones) {
+            Entry entry = row.second;
+            ids.push_back({row.first, entry});
         }
-        ts_file << "   --------- ----------" << endl;
-  }
+
+        // sort by pos number and output by pos number
+        sort(ids.begin(), ids.end());
+
+        for (auto p : ids) {
+            Entry e = p.entry;
+            ts_file << "  * LEXEMA : \'" << e.lexema << '\'' << endl;
+            if(e.tipo != ""){
+                ts_file << "    ATRIBUTOS :" << endl;
+                ts_file << "    + tipo : " << e.tipo << endl;
+            }
+
+            if(e.tipo != "function"){
+                ts_file << "    + despl : " << e.desp << endl;
+            }else{
+                ts_file << "    + parametros : " << e.f.n_params << endl;
+                for(string t : e.f.tipo_params){
+                    ts_file << "    + Parametro : " << t << endl;
+                }
+            }
+            ts_file << "   --------- ----------" << endl;
+        }
+        q.pop();
+    }
 }

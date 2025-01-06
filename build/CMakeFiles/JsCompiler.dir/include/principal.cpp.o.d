@@ -195,12 +195,12 @@ CMakeFiles/JsCompiler.dir/include/principal.cpp.o: \
  /usr/include/c++/14/bits/hashtable_policy.h \
  /usr/include/c++/14/bits/enable_special_members.h \
  /usr/include/c++/14/bits/node_handle.h \
- /usr/include/c++/14/bits/erase_if.h \
- /home/sam/Documents/compiler/Js--Compiler/include/Generator.h \
- /usr/include/c++/14/queue /usr/include/c++/14/vector \
+ /usr/include/c++/14/bits/erase_if.h /usr/include/c++/14/vector \
  /usr/include/c++/14/bits/stl_vector.h \
  /usr/include/c++/14/bits/stl_bvector.h \
- /usr/include/c++/14/bits/vector.tcc /usr/include/c++/14/bits/stl_heap.h \
+ /usr/include/c++/14/bits/vector.tcc \
+ /home/sam/Documents/compiler/Js--Compiler/include/Generator.h \
+ /usr/include/c++/14/queue /usr/include/c++/14/bits/stl_heap.h \
  /usr/include/c++/14/bits/stl_queue.h \
  /home/sam/Documents/compiler/Js--Compiler/include/TiposToken.h \
  /home/sam/Documents/compiler/Js--Compiler/include/Gestor_Errores.h \

@@ -75,6 +75,7 @@ void Generator::Token(string identificador) {
     } else {
         if(identificador == "") return;
         TablaSimbolos *simbolos = queue->top();
+        simbolos->print();
         if(zona_declaracion && simbolos->getEntry(identificador) != NULL){ //no volver a declarar
                 cerr << "Variable ya declarada: \'" << identificador << "\' en linea: " << lineas << endl;
                 throw runtime_error("Variable ya declarada");
@@ -84,6 +85,12 @@ void Generator::Token(string identificador) {
                 simbolos->add(identificador);
             }else{
                 ts_global->add(identificador);
+                gen_token("id", (int) ts_global->getEntry(identificador)->pos);
+                // cerr << "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS" << ts_global->global_desp << endl;
+                if(!function)
+                    ts_global->global_desp+=4; //tipo entero por defecto 
+                else function=false;
+                return;
             }
         }
         gen_token("id", (int) simbolos->getEntry(identificador)->pos);

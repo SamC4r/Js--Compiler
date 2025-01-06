@@ -2,6 +2,7 @@
 #include <map>
 #include <set>
 #include <string>
+#include<vector>
 
 using namespace std;
 
@@ -9,6 +10,7 @@ struct Atributo{
     string tipo;
     int ancho;
     int pos;
+    string ret;
 };
 
 struct Simbolo{
@@ -32,7 +34,9 @@ class AnalizadorSintactico {
     stack<Simbolo*> aux;
 
     string buscarTipoTS(int pos);
-    int insertarTipoTS(int pos,string tipo);
+    int insertarTipoTS(int pos,string tipo,int ancho);
+    int insertarTipoTSGlobal(int pos,string tipo,int ancho, vector<string>& params,string ret);
+    void crearTSLocal();
 
     string siguienteToken();
 
@@ -60,90 +64,9 @@ class AnalizadorSintactico {
         {"operadorModulo", "%"},
         {"operadorMayor", ">"},
         {"operadorNegacion", "!"},
-    };
-    map<string,int> pruducciones_semanticas = {
-        {"W -> {ts=new TablaSimbolos(); ptrTablaSimbolos=ts; zona_declaracion=true} Z {destruirTS()}",1},
+    };                          
 
-        {"Z -> B Z", 2},
-        {"Z -> F Z", 3},
-        {"Z -> lambda {Z.tipo=vacio}", 4},
-
-        {"B -> var T id ; {InsertaTipo(id.pos,T.tipo)}", 5},
-        {"B -> if ( E ) I {B.tipo=if(E.tipo!=logico then error(\"no es un booleano\")) else if I.tipo!=tipo_ok then error(\"Sentencia If incorrecta\") else I.tipo}", 6},
-        {"B -> {zona_declaracion=false} S", 7},
-
-        {"T -> int {T.tipo=ent}", 8},
-        {"T -> boolean {T.tipo=logico}", 9},
-        {"T -> string {T.tipo=cadena}", 10},
-
-        {"E -> R N", 11},
-
-        {"N -> > R N", 12},
-        {"N -> lambda {N.tipo=vacio}", 13},
-
-        {"R -> O P", 14},
-
-        {"P -> - O P", 15},
-        {"P -> lambda {P.tipo=vacio}", 16},
-
-        {"O -> M Y", 17},
-
-        {"Y -> % M Y", 18},
-        {"Y -> lambda {Y.tipo=vacio}", 19},
-
-        {"M -> - M", 20},
-        {"M -> ! M", 21},
-        {"M -> id V", 22},
-        {"M -> ( E )", 23},
-        {"M -> constanteEntera", 24},
-        {"M -> cadena", 25},
-        {"M -> -- id", 26},
-
-        {"V -> ( L )", 27},
-        {"V -> lambda {V.tipo=vacio}", 28},
-
-        {"L -> E Q", 29},
-        {"L -> lambda {L.tipo=vacio}", 30},
-
-        {"Q -> , E Q", 31},
-        {"Q -> lambda {Q.tipo=vacio}", 32},
-
-        {"I -> S", 33},
-        {"I -> { C } J", 34},
-
-        {"J -> else { C }", 35},
-        {"J -> lambda {J.tipo=vacio}", 36},
-
-        {"C -> B C", 37},
-        {"C -> lambda {C.tipo=vacio}", 38},
-
-        {"S -> id U", 39},
-        {"S -> output E ;", 40},
-        {"S -> input D ;", 41},
-        {"S -> return X ;", 42},
-
-        {"U -> = E ;", 43},
-        {"U -> ( L ) ;", 44},
-
-        {"D -> id {D.tipo=BuscaTipo(id.pos)}", 45},
-        {"D -> ( id ) {D.tipo=BuscaTipo(id.pos)}", 46},
-
-        {"X -> E", 47},
-        {"X -> lambda {X.tipo=vacio}", 48},
-
-        {"F -> function H id {crearTSLocal(),despLocal=0, zona_declaracion=true} ( A ) { C } {DestruirTSLocal()}", 49},
-
-        {"H -> T {H.tipo=T.tipo}", 50},
-        {"H -> void {H.tipo=vacio}", 51},
-
-        {"A -> T id K", 52},
-        {"A -> void {A.tipo=vacio}", 53},
-
-        {"K -> , T id K ", 54},
-        {"K -> lambda {K.tipo=vacio}", 55}
-
-    };
-    map<string, int> producciones = {
+       map<string, int> producciones = {
         {"Z -> B Z", 1},
         {"Z -> F Z", 2},
         {"Z -> lambda", 3},
@@ -287,6 +210,7 @@ class AnalizadorSintactico {
         {"{A->void}","A -> void   {A.tipo=vacio}"},
         {"{K->,TidK1}","K ->  , T id K1 {K.tipo = if (K1.tipo != vacio) then T.tipo x K1.tipo else T.tipo}"},
         {"{K->lambda}","K -> lambda   {K.tipo=vacio}"},
+        {"{no_desp}","inhabilitar desplazamiento"}
     };
 
     map<pair<string, string>, string> M = {
@@ -388,7 +312,7 @@ class AnalizadorSintactico {
         {{"X", ";"}, "lambda {X->lambda}"},
         {{"X", "!"}, "E {X->E}"},
         {{"X", "--"}, "E {X->E}"},
-        {{"F", "function"}, "function {crearTSLocal} H id ( A {dec_false} ) {InsertarTipoTSGlobal} { C } {F.tipo}"},
+        {{"F", "function"}, " function H id {dec_true} {no_desp} {crearTSLocal} ( A {dec_false} ) {InsertarTipoTSGlobal} { C } {F.tipo}"},
         {{"H", "boolean"}, "T {H->T}"},
         {{"H", "int"}, "T {H->T}"},
         {{"H", "string"}, "T {H->T}"},

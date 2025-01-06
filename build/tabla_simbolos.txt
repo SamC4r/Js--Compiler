@@ -1,0 +1,84 @@
+Contenidos de la Tabla # 1 :
+  * LEXEMA : 'ss'
+    ATRIBUTOS :
+    + tipo : logico
+    + despl : 5
+   --------- ----------
+  * LEXEMA : 'num'
+    ATRIBUTOS :
+    + tipo : entero
+    + despl : 1
+   --------- ----------
+  * LEXEMA : 'prueba'
+    ATRIBUTOS :
+    + tipo : logico
+    + despl : 0
+   --------- ----------
+  * LEXEMA : 'l1'
+    ATRIBUTOS :
+    + tipo : logico
+    + despl : 6
+   --------- ----------
+  * LEXEMA : 'a'
+    ATRIBUTOS :
+    + tipo : entero
+    + despl : 7
+   --------- ----------
+Contenidos de la Tabla # 2 :
+  * LEXEMA : 'num'
+    ATRIBUTOS :
+    + tipo : entero
+    + despl : 0
+   --------- ----------
+Contenidos de la Tabla # 3 :
+Contenidos de la Tabla # 4 :
+  * LEXEMA : 'condicion'
+    ATRIBUTOS :
+    + tipo : logico
+    + despl : 0
+   --------- ----------
+  * LEXEMA : 'bool'
+    ATRIBUTOS :
+    + tipo : logico
+    + despl : 1
+   --------- ----------
+  * LEXEMA : 'fun'
+    ATRIBUTOS :
+    + tipo : function
+    + parametros : 0
+   --------- ----------
+  * LEXEMA : 'f'
+    ATRIBUTOS :
+    + tipo : function
+    + parametros : 2
+    + Parametro : entero
+    + Parametro : vacio
+   --------- ----------
+  * LEXEMA : 'true'
+    ATRIBUTOS :
+    + tipo : entero
+    + despl : 6
+   --------- ----------
+  * LEXEMA : 'ff'
+    ATRIBUTOS :
+    + tipo : function
+    + parametros : 3
+    + Parametro : logico
+    + Parametro : entero
+    + Parametro : logico
+   --------- ----------
+  * LEXEMA : 'varglobal'
+    ATRIBUTOS :
+    + tipo : entero
+    + despl : 10
+   --------- ----------
+  * LEXEMA : 'hola'
+    ATRIBUTOS :
+    + tipo : entero
+    + despl : 10
+   --------- ----------
+  * LEXEMA : 'true'
+    ATRIBUTOS :
+    + tipo : entero
+    + despl : 14
+   --------- ----------

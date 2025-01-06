@@ -9,17 +9,22 @@ Implementacion de los metodos de la clase TablaSimbolos
 
 using namespace std;
 
-TablaSimbolos::TablaSimbolos() { this->cnt = 0; }
+TablaSimbolos::TablaSimbolos() { 
+    this->cnt = 0; 
+    this->global_desp = 0;
+}
 
 void TablaSimbolos::print() { 
     for (auto x : simbolos) { 
-        cout << x.first << " " << x.second.lexema << endl; 
+        cout << x.first << " " << x.second.lexema << " " << x.second.pos << endl; 
     } 
 }
 
 void TablaSimbolos::add(string id) {
-    posiciones[cnt] = {cnt,id,"entero"};
-    simbolos[id] = {cnt++, id,"entero"}; 
+    int desp = this->global_desp;
+    cerr << desp << endl;
+    posiciones[cnt] = {cnt,id,"entero",desp};
+    simbolos[id] = {cnt++, id,"entero",desp}; 
 }
 
 Entry* TablaSimbolos::getPos(int pos) { 
