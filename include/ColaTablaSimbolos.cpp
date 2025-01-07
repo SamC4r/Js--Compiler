@@ -57,6 +57,7 @@ void ColaTablaSimbolos::print() {
                 for(string t : e.f.tipo_params){
                     ts_file << "    + Parametro : " << t << endl;
                 }
+                ts_file << "    + valor de retorno : " << e.f.ret << endl;
             }
             ts_file << "   --------- ----------" << endl;
         }

@@ -13,8 +13,15 @@ function int f(int num){
 
 function boolean ff (boolean ss,int num,boolean prueba){
 	varglobal = 3333;
-    hola=23;
-	/*if (l1) l2 = ff(ss,1,l1);*/
+  /*  hola=23 - 5%3 - 2;*/
+    var boolean l1;
+    l1=ff(ss,1,l1);
+	if (l1)   {
+        l1 = ff(ss,1,l1);
+    } else{
+
+    }
+
 	var int a;
 	/*a=--s;*/
     return ss;

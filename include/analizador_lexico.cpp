@@ -84,9 +84,9 @@ void Generator::Token(string identificador) {
             if(zona_declaracion){
                 simbolos->add(identificador);
             }else{
-                ts_global->add(identificador);
+                if(ts_global->getEntry(identificador) == NULL)
+                    ts_global->add(identificador);
                 gen_token("id", (int) ts_global->getEntry(identificador)->pos);
-                // cerr << "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS" << ts_global->global_desp << endl;
                 if(!function)
                     ts_global->global_desp+=4; //tipo entero por defecto 
                 else function=false;
