@@ -408,7 +408,7 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         aux.pop();
         string M_tipo = aux.top()->atributos->tipo;
         aux.pop();
-        // debug(Y_tipo,M_tipo);
+        debug(Y_tipo,M_tipo);
 
         string O_tipo = "";
         if(Y_tipo == "vacio"){
@@ -416,7 +416,7 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         }else if (M_tipo == "entero" && Y_tipo == "entero"){
             O_tipo = "entero";
         }else{
-            O_tipo = Error("solo se pueden comparar enteros");
+            O_tipo = Error("solo se pueden operar enteros");
         }
  
         aux.top()->atributos->tipo = O_tipo;
@@ -430,6 +430,7 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         string Y_tipo="";
         if((Y1_tipo=="vacio" || Y1_tipo=="entero") && M_tipo=="entero") Y_tipo="entero";
         else Y_tipo=Error("solo se puede hacer modulo entre numeros enteros");
+        aux.top()->atributos->tipo=Y_tipo;
     } 
     else if(s == "{I->S}") {
         string S_tipo=aux.top()->atributos->tipo;
