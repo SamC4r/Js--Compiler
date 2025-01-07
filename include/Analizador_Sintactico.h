@@ -134,7 +134,7 @@ class AnalizadorSintactico {
         {"X -> E", 46},
         {"X -> lambda", 47},
 
-        {"F -> function H id ( A ) { C }", 49},
+        {"F -> function H id ( A ) { C }", 48},
 
         {"H -> T", 49},
         {"H -> void", 50},

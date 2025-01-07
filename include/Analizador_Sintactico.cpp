@@ -273,6 +273,7 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         if(Q_tipo=="vacio") L_tipo=E_tipo;
         else L_tipo=E_tipo+" "+Q_tipo;
         aux.top()->atributos->tipo=L_tipo;
+        debug(L_tipo);
     }
     else if(s == "{Q->,EQ}"){
         string Q1_tipo = aux.top()->atributos->tipo;
@@ -735,6 +736,7 @@ AnalizadorSintactico::AnalizadorSintactico(AnalizadorLexico &lexico, GestorError
                     }
                 }
                 string regla = X->symbol + " -> " + rule;
+                debug(regla);
                 regla.pop_back();
                 parse << " " << producciones[regla];
                 if(producciones[regla] == 0){
@@ -756,7 +758,7 @@ string AnalizadorSintactico::siguienteToken() {
     auto s = lexico.getToken();
     debug(s);
     token=s;
-    // cout << "token: " << s.first << endl;
-    // cout << "atrib" << s.second << endl;
+    cout << "token: " << s.first << endl;
+    cout << "atrib" << s.second << endl;
     return s.first;
 }

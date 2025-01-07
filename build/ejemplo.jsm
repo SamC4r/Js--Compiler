@@ -9,7 +9,7 @@ function int fun(void){
 
 function int f(int num){
     var int l1;
-    l1=f();
+    l1=f(1);
     return 100;
 }
 
