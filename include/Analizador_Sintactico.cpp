@@ -313,6 +313,7 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         string B_tipo=I_tipo;
         aux.pop();//quita )
         string E_tipo=aux.top()->atributos->tipo;
+        debug(aux.top()->symbol);
         debug(E_tipo,I_tipo);
         if(E_tipo != "logico"){
             cerr << "Error en la linea  "<< lexico.generator.lineas << " - la condicion de un if debe ser de tipo logico" << endl;
@@ -457,7 +458,7 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         aux.top()->atributos->tipo=I_tipo;
         aux.top()->atributos->ret=I_ret;
     }
-    else if(s == "J->else{C}"){
+    else if(s == "{J->else{C}}"){
         aux.pop();
         string C_tipo=aux.top()->atributos->tipo;
         string C_ret=aux.top()->atributos->ret;
