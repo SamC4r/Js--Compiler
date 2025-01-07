@@ -694,7 +694,7 @@ AnalizadorSintactico::AnalizadorSintactico(AnalizadorLexico &lexico, GestorError
                 cout << "top" << pila.top()->symbol << endl;
 
                 //Meter X y sus atributos en AUX
-                if(token.second != "")
+                if(token.second != "" && token.first != "cadena")
                     X->atributos->pos = stoi(token.second); //add attribute
                 aux.push(X);
                 a = siguienteToken();
