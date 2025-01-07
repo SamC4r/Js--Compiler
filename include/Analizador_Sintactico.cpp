@@ -74,6 +74,15 @@ string AnalizadorSintactico::buscarTipoTS(int pos){
             cerr << "No se ha asignado un tipo a la variable \'" << e->lexema << "\'" << " en la linea: " << lexico.generator.lineas <<  endl;
             return nullptr;
         }
+        else if(e->tipo == "function"){
+            string tipo_params = "";
+            for(int i = 0; i<e->f.n_params-1; i++){
+                tipo_params+=e->f.tipo_params[i]+" ";
+            }
+            tipo_params+=e->f.tipo_params[e->f.n_params-1];
+            tipo_params+="->"+e->f.ret;
+            return tipo_params;
+        }
         return e->tipo;
     }
     return "";
@@ -176,13 +185,23 @@ void AnalizadorSintactico::ejecutarRegla(string s){
     else if(s == "{M->idV}"){
         string v_tipo = aux.top()->atributos->tipo;
         aux.pop();
-        if(v_tipo == "vacio"){
-            int id_pos = aux.top()->atributos->pos;
-            aux.pop();
-            string ret = buscarTipoTS(id_pos);
-            aux.top()->atributos->tipo=ret;
-        }else{
-            //TODO: 
+        int id_pos = aux.top()->atributos->pos;
+        aux.pop();
+        string id_tipo = buscarTipoTS(id_pos);
+        if((id_tipo=="entero" || id_tipo=="cadena" || id_tipo=="logico") && v_tipo=="vacio"){
+            aux.top()->atributos->tipo=id_tipo;
+        }
+        else if(id_tipo == v_tipo+"entero"){
+            aux.top()->atributos->tipo="entero";
+        }
+        else if(id_tipo == v_tipo+"cadena"){
+            aux.top()->atributos->tipo="cadena";
+        }
+        else if(id_tipo == v_tipo+"logico"){
+            aux.top()->atributos->tipo="logico";
+        }
+        else{
+            aux.top()->atributos->tipo=Error("funcion llamada con parametros incorrectos");
         }
     }
     else if(s == "{M->(E)}"){
@@ -229,18 +248,37 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         else M_tipo=Error("solo se pueden predecrementar numeros enteros");
         aux.top()->atributos->tipo=M_tipo;
 
-    }
+    }   
     else if(s == "{V->(L)}"){
         aux.pop();
         string L_tipo=aux.top()->atributos->tipo;
         aux.pop();
         aux.pop();
         string V_tipo = L_tipo;
-        aux.top()->atributos->tipo=V_tipo;
+        aux.top()->atributos->tipo=V_tipo+"->";
     }
-    else if(s == "{V->lambda}"){
-        aux.top()->atributos->tipo="vacio";
-    }else if(s == "{B->varTid;}"){
+    else if(s == "{L->EQ}"){
+        string Q_tipo = aux.top()->atributos->tipo;
+        aux.pop();
+        string E_tipo = aux.top()->atributos->tipo;
+        aux.pop();
+        string L_tipo;
+        if(Q_tipo=="vacio") L_tipo=E_tipo;
+        else L_tipo=E_tipo+" "+Q_tipo;
+        aux.top()->atributos->tipo=L_tipo;
+    }
+    else if(s == "{Q->,EQ}"){
+        string Q1_tipo = aux.top()->atributos->tipo;
+        aux.pop();
+        string E_tipo = aux.top()->atributos->tipo;
+        aux.pop();
+        aux.pop();
+        string Q_tipo;
+        if(Q1_tipo=="vacio") Q_tipo = E_tipo;
+        else Q_tipo=E_tipo+" "+Q1_tipo;
+        aux.top()->atributos->tipo=Q_tipo;
+    }
+    else if(s == "{B->varTid;}"){
     
         aux.pop();
 
@@ -285,7 +323,7 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         lexico.generator.zona_declaracion=true;
     }else if(s == "{dec_false}"){
         lexico.generator.zona_declaracion=false;
-    }else if(s == "{V->lambda}" || s == "{Y->lambda}" || s == "{P->lambda}" || s == "{N->lambda}" || s == "{J->lambda}" || s == "{X->lambda}" || s == "{K->lambda}" || s == "{C->lambda}"){
+    }else if(s == "{V->lambda}" || s == "{Q->lambda}" || s == "{L->lambda}" || s == "{Y->lambda}" || s == "{P->lambda}" || s == "{N->lambda}" || s == "{J->lambda}" || s == "{X->lambda}" || s == "{K->lambda}" || s == "{C->lambda}"){
         aux.top()->atributos->tipo="vacio";
     }else if(s == "{T->boolean}"){
         aux.pop();
@@ -390,7 +428,40 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         debug(S_tipo);
         aux.pop();
         aux.top()->atributos->tipo=S_tipo;
-    }else if(s == "{C->BC1}"){
+    }
+    else if(s == "{I->{C}J}"){
+        string J_tipo = aux.top()->atributos->tipo;
+        string J_ret = aux.top()->atributos->ret;
+        aux.pop();
+        aux.pop();
+        string C_tipo = aux.top()->atributos->tipo;
+        string C_ret = aux.top()->atributos->ret;
+        aux.pop();
+        aux.pop();
+        string I_tipo;
+        string I_ret;
+        if((J_tipo=="tipo_ok" || J_tipo=="vacio") && (C_tipo=="tipo_ok" || C_tipo=="vacio")){
+            I_tipo="tipo_ok";
+        }
+        else I_tipo="tipo_error";
+        if(J_ret=="vacio" ||J_ret==C_ret){
+            I_ret=C_ret;
+        }
+        else I_ret=Error("El return del if y del else son de tipos distintos");
+        aux.top()->atributos->tipo=I_tipo;
+        aux.top()->atributos->ret=I_ret;
+    }
+    else if(s == "J->else{C}"){
+        aux.pop();
+        string C_tipo=aux.top()->atributos->tipo;
+        string C_ret=aux.top()->atributos->ret;
+        aux.pop();
+        aux.pop();
+        aux.pop();
+        aux.top()->atributos->tipo=C_tipo;
+        aux.top()->atributos->ret=C_ret;
+    }
+    else if(s == "{C->BC1}"){
         debug(aux.top()->symbol);
         string C1_tipo=aux.top()->atributos->tipo;
         string C1_ret=aux.top()->atributos->ret;
@@ -409,6 +480,7 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         aux.top()->atributos->tipo=C_tipo;
         string ret = B_ret;
         if(ret == "")ret=C1_ret;
+        else if(C1_ret!="") ret=Error("Despues de un return no puede haber mas codigo dentro del bloque");
         aux.top()->atributos->ret=ret;
     }else if(s == "{S->outputE;}"){
         
@@ -419,6 +491,7 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         aux.pop(); //quita E
         aux.pop();          //quita output
         aux.top()->atributos->tipo=S_tipo;
+        aux.top()->atributos->ret="vacio";
     }else if(s == "{S->inputD;}"){
         aux.pop();
         string D_tipo=aux.top()->atributos->tipo;
@@ -426,6 +499,7 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         aux.pop();
         aux.pop();
         aux.top()->atributos->tipo=S_tipo;
+        aux.top()->atributos->ret="vacio";
     }else if(s == "{S->returnX;}"){
          aux.pop(); //;
         string X_tipo=aux.top()->atributos->tipo;
@@ -452,6 +526,7 @@ void AnalizadorSintactico::ejecutarRegla(string s){
             S_tipo=Error(msg);
         }
         aux.top()->atributos->tipo=S_tipo;
+        aux.top()->atributos->ret="vacio";
     }else if(s == "{U->=E}"){
         aux.pop(); //;
         string E_tipo=aux.top()->atributos->tipo;
@@ -549,9 +624,10 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         string T_tipo = aux.top()->atributos->tipo;
         int T_ancho = aux.top()->atributos->ancho;
         aux.pop();
-        string params = T_tipo + " " + K_tipo;
         insertarTipoTS(id_pos,T_tipo,T_ancho);
-        string A_tipo = params;
+        string A_tipo;
+        if(K_tipo=="vacio")A_tipo=T_tipo;
+        else A_tipo=T_tipo+" "+K_tipo;
         aux.top()->atributos->tipo = A_tipo;
     }else if(s == "{A->void}"){
         aux.pop();
