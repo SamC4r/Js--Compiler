@@ -192,7 +192,7 @@ void AnalizadorSintactico::ejecutarRegla(string s){
             int p = params.size();
             int a = args.size();
             if(p + 1 != a){
-                string msg="el numero de parametros de llamada no coincide con el numero de argumentos esperados por la funcion en la linea: " + to_string(lexico.generator.lineas);
+                string msg="el numero de parametros de la llamada no coincide con el numero de argumentos esperados por la funcion en la linea: " + to_string(lexico.generator.lineas);
                 M_tipo = Error(msg);
             }
             bool same=true;
@@ -262,7 +262,7 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         aux.pop();
         aux.pop();
         string V_tipo = L_tipo;
-        aux.top()->atributos->tipo=V_tipo;
+        aux.top()->atributos->tipo=V_tipo + " ";
     }
     else if(s == "{L->EQ}"){
         string Q_tipo = aux.top()->atributos->tipo;
@@ -685,8 +685,8 @@ AnalizadorSintactico::AnalizadorSintactico(AnalizadorLexico &lexico, GestorError
             }else if(esAccionSemantica(X->symbol)){
                  cout << "YEEEE " << X->symbol << endl;
                 ejecutarRegla(X->symbol);
-                debug(aux.top()->symbol);
-                debug(aux.top()->atributos->tipo);
+                // debug(aux.top()->symbol);
+                // debug(aux.top()->atributos->tipo);
                 pila.pop();
             }
             else if (X->symbol == a) {
