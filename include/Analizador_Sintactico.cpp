@@ -720,7 +720,7 @@ void AnalizadorSintactico::ejecutarRegla(string s){
 }
 
 void AnalizadorSintactico::error(string unexpected) {
-    cerr << "Error en la linea  "<< lexico.lineas << " - no se esperaba recibir: " << unexpected << endl;
+    cerr << "Error en la linea  "<< lexico.generator.lineas << " - no se esperaba recibir: " << unexpected << endl;
     throw std::runtime_error("Error de Sintaxis");
 }
 
