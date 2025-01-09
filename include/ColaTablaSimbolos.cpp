@@ -27,42 +27,40 @@ struct ts_content{
 
 void ColaTablaSimbolos::print() {
     static int it = 1;
-    //TODO: En vez de imprimir la cola, destruir la tabla de simbolos como accion semantica y ejecutar este metodo
-    // while(!q.empty()){
+    TablaSimbolos* ambito_actual = top();
 
-        TablaSimbolos* ambito_actual = top();
+    ts_file << "Contenidos de la Tabla # " << it++ << " :" << endl;
 
-        ts_file << "Contenidos de la Tabla # " << it++ << " :" << endl;
+    vector<ts_content> ids;
+    cerr << "ASHDLKASDJALSKDJASLDKJ" << endl;
+    cerr << ambito_actual->posiciones.size() << endl;
+    for (auto row : ambito_actual->posiciones) {
+        Entry entry = row.second;
+        ids.push_back({row.first, entry});
+        cerr << entry.lexema << endl;
+    }
 
-        vector<ts_content> ids;
-
-        for (auto row : ambito_actual->posiciones) {
-            Entry entry = row.second;
-            ids.push_back({row.first, entry});
+    // sort by pos number and output by pos number
+    sort(ids.begin(), ids.end());
+    for (auto p : ids) {
+        Entry e = p.entry;
+        ts_file << "  * LEXEMA : \'" << e.lexema << '\'' << endl;
+        if(e.tipo != ""){
+            ts_file << "    ATRIBUTOS :" << endl;
+            ts_file << "    + Tipo : " << e.tipo << endl;
         }
 
-        // sort by pos number and output by pos number
-        sort(ids.begin(), ids.end());
-
-        for (auto p : ids) {
-            Entry e = p.entry;
-            ts_file << "  * LEXEMA : \'" << e.lexema << '\'' << endl;
-            if(e.tipo != ""){
-                ts_file << "    ATRIBUTOS :" << endl;
-                ts_file << "    + tipo : " << e.tipo << endl;
+        if(e.tipo != "function"){
+            ts_file << "    + Despl : " << e.desp << endl;
+        }else{
+            ts_file << "    + numParam : " << e.f.n_params << endl;
+            int n=1;
+            for(string t : e.f.tipo_params){
+                ts_file << "    + TipoParametro" << n++ << " : " << t << endl;
             }
-
-            if(e.tipo != "function"){
-                ts_file << "    + despl : " << e.desp << endl;
-            }else{
-                ts_file << "    + etiqueta : " << e.lexema << endl;
-                ts_file << "    + parametros : " << e.f.n_params << endl;
-                for(string t : e.f.tipo_params){
-                    ts_file << "    + Parametro : " << t << endl;
-                }
-                ts_file << "    + valor de retorno : " << e.f.ret << endl;
-            }
-            ts_file << "   --------- ----------" << endl;
+            ts_file << "    + TipoRetorno : " << e.f.ret << endl;
+            ts_file << "    + Etiqueta : " << e.lexema << endl;
         }
-    // }
+        ts_file << "   --------- ----------" << endl;
+    }
 }

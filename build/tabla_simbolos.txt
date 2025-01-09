@@ -2,42 +2,88 @@ Contenidos de la Tabla # 1 :
 Contenidos de la Tabla # 2 :
   * LEXEMA : 'num'
     ATRIBUTOS :
-    + tipo : entero
-    + despl : 0
+    + Tipo : entero
+    + Despl : 0
    --------- ----------
   * LEXEMA : 'l1'
     ATRIBUTOS :
-    + tipo : entero
-    + despl : 1
+    + Tipo : entero
+    + Despl : 1
    --------- ----------
 Contenidos de la Tabla # 3 :
   * LEXEMA : 'ss'
     ATRIBUTOS :
-    + tipo : logico
-    + despl : 2
+    + Tipo : logico
+    + Despl : 2
    --------- ----------
   * LEXEMA : 'num'
     ATRIBUTOS :
-    + tipo : entero
-    + despl : 1
+    + Tipo : entero
+    + Despl : 1
    --------- ----------
   * LEXEMA : 'prueba'
     ATRIBUTOS :
-    + tipo : logico
-    + despl : 0
+    + Tipo : logico
+    + Despl : 0
    --------- ----------
   * LEXEMA : 'l1'
     ATRIBUTOS :
-    + tipo : logico
-    + despl : 3
+    + Tipo : logico
+    + Despl : 3
    --------- ----------
   * LEXEMA : 'c'
     ATRIBUTOS :
-    + tipo : cadena
-    + despl : 4
+    + Tipo : cadena
+    + Despl : 4
    --------- ----------
   * LEXEMA : 'a'
     ATRIBUTOS :
-    + tipo : entero
-    + despl : 68
+    + Tipo : entero
+    + Despl : 68
+   --------- ----------
+Contenidos de la Tabla # 4 :
+  * LEXEMA : 'condicion'
+    ATRIBUTOS :
+    + Tipo : logico
+    + Despl : 0
+   --------- ----------
+  * LEXEMA : 'bool'
+    ATRIBUTOS :
+    + Tipo : logico
+    + Despl : 1
+   --------- ----------
+  * LEXEMA : 'fun'
+    ATRIBUTOS :
+    + Tipo : function
+    + numParam : 0
+    + TipoRetorno : entero
+    + Etiqueta : fun
+   --------- ----------
+  * LEXEMA : 'f'
+    ATRIBUTOS :
+    + Tipo : function
+    + numParam : 1
+    + TipoParametro1 : entero
+    + TipoRetorno : entero
+    + Etiqueta : f
+   --------- ----------
+  * LEXEMA : 'ff'
+    ATRIBUTOS :
+    + Tipo : function
+    + numParam : 3
+    + TipoParametro1 : logico
+    + TipoParametro2 : entero
+    + TipoParametro3 : logico
+    + TipoRetorno : logico
+    + Etiqueta : ff
+   --------- ----------
+  * LEXEMA : 'varglobal'
+    ATRIBUTOS :
+    + Tipo : entero
+    + Despl : 10
+   --------- ----------
+  * LEXEMA : 'hola'
+    ATRIBUTOS :
+    + Tipo : entero
+    + Despl : 10
    --------- ----------

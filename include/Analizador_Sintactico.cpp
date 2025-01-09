@@ -593,8 +593,7 @@ void AnalizadorSintactico::ejecutarRegla(string s){
 
         insertarTipoTSGlobal(id_pos,F_tipo,0,params,H_tipo);
         aux.top()->atributos->ret=H_tipo;
-        // exit(0);
-        // exit(0);
+       
     }else if(s == "{F.tipo}"){
         aux.pop();
         string C_tipo = aux.top()->atributos->tipo;
@@ -613,8 +612,8 @@ void AnalizadorSintactico::ejecutarRegla(string s){
             F_tipo=Error(msg);
         }
         aux.top()->atributos->tipo=F_tipo;
+        cerr << "ASDDDDDDDDDDDDD" << endl;
         destruirTS();
-        // exit(0);
     }else if(s == "{H->T}"){
         string T_tipo = aux.top()->atributos->tipo;
         aux.pop();
@@ -753,6 +752,7 @@ AnalizadorSintactico::AnalizadorSintactico(AnalizadorLexico &lexico, GestorError
             X = pila.top();
         }
     };
+    destruirTS();
 };
 
 
