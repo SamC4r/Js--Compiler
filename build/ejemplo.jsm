@@ -1,31 +1,28 @@
-var boolean condicion;
-if (condicion)
-  output condicion;
-var boolean bool;
+var string s; 
+var int a;
+var int bb;
+a = 91 % 8 - a;
 
-function int fun(void){
-    return 100;
-}
-
-function int f(int num){
-    var int l1;
-    l1=f(1);
-    return 100;
-}
-
-
-function boolean ff (boolean ss,int num,boolean prueba){
-	varglobal = 3333;
-    hola=23 - 5%3 - 2;
+function boolean put(string s, int RR) {
+    var boolean s_s;
+   /* put("++++Helloooooooooooooooooooooooooooooooooooooooooooooooooooooooooo");*/
+    RR = (8);
+    
+    put(s,8);
+    if (bb) return kk;
+    put(s,4 - (a - 00987));
     var boolean l1;
-    var int ab;
-    l1=ff(ss,1,l1);
-	if (l1)   {
-        l1 = ff(ss,1,l1);
-    } else{
-        l1=ss;
-    }
-    var int a;
-    ff(ss,1,l1);
     return l1;
-} 
+}
+
+function int a(void){
+    var int f;
+    f=a();
+    return f;
+}
+
+a();
+
+kk = 11; /*332211;*/
+var string s_s;
+RR = 1;

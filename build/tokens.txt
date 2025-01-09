@@ -1,137 +1,113 @@
 <palabraReservada, 10>
-<palabraReservada, 1>
-<id, 0>
-<puntoComa,>
-<palabraReservada, 4>
-<parentesisIzda,>
-<id, 0>
-<parentesisDcha,>
-<palabraReservada, 7>
+<palabraReservada, 9>
 <id, 0>
 <puntoComa,>
 <palabraReservada, 10>
-<palabraReservada, 1>
+<palabraReservada, 6>
+<id, 1>
+<puntoComa,>
+<palabraReservada, 10>
+<palabraReservada, 6>
+<id, 2>
+<puntoComa,>
+<id, 1>
+<operadorAsignacion,>
+<constanteEntera, 91>
+<operadorModulo,>
+<constanteEntera, 8>
+<operadorMenos,>
 <id, 1>
 <puntoComa,>
 <palabraReservada, 3>
+<palabraReservada, 1>
+<id, 3>
+<parentesisIzda,>
+<palabraReservada, 9>
+<id, 0>
+<coma,>
 <palabraReservada, 6>
+<id, 1>
+<parentesisDcha,>
+<llavesIzda,>
+<palabraReservada, 10>
+<palabraReservada, 1>
 <id, 2>
+<puntoComa,>
+<id, 1>
+<operadorAsignacion,>
+<parentesisIzda,>
+<constanteEntera, 8>
+<parentesisDcha,>
+<puntoComa,>
+<id, 3>
+<parentesisIzda,>
+<id, 0>
+<coma,>
+<constanteEntera, 8>
+<parentesisDcha,>
+<puntoComa,>
+<palabraReservada, 4>
+<parentesisIzda,>
+<id, 2>
+<parentesisDcha,>
+<palabraReservada, 8>
+<id, 4>
+<puntoComa,>
+<id, 3>
+<parentesisIzda,>
+<id, 0>
+<coma,>
+<constanteEntera, 4>
+<operadorMenos,>
+<parentesisIzda,>
+<id, 1>
+<operadorMenos,>
+<constanteEntera, 987>
+<parentesisDcha,>
+<parentesisDcha,>
+<puntoComa,>
+<palabraReservada, 10>
+<palabraReservada, 1>
+<id, 3>
+<puntoComa,>
+<palabraReservada, 8>
+<id, 3>
+<puntoComa,>
+<llavesDcha,>
+<palabraReservada, 3>
+<palabraReservada, 6>
+<id, 1>
 <parentesisIzda,>
 <palabraReservada, 11>
 <parentesisDcha,>
 <llavesIzda,>
-<palabraReservada, 8>
-<constanteEntera, 100>
-<puntoComa,>
-<llavesDcha,>
-<palabraReservada, 3>
-<palabraReservada, 6>
-<id, 3>
-<parentesisIzda,>
-<palabraReservada, 6>
-<id, 0>
-<parentesisDcha,>
-<llavesIzda,>
 <palabraReservada, 10>
 <palabraReservada, 6>
-<id, 1>
+<id, 0>
 <puntoComa,>
-<id, 1>
+<id, 0>
 <operadorAsignacion,>
-<id, 3>
+<id, 1>
 <parentesisIzda,>
-<constanteEntera, 1>
 <parentesisDcha,>
 <puntoComa,>
 <palabraReservada, 8>
-<constanteEntera, 100>
+<id, 0>
 <puntoComa,>
 <llavesDcha,>
-<palabraReservada, 3>
-<palabraReservada, 1>
-<id, 4>
-<parentesisIzda,>
-<palabraReservada, 1>
-<id, 0>
-<coma,>
-<palabraReservada, 6>
 <id, 1>
-<coma,>
-<palabraReservada, 1>
-<id, 2>
+<parentesisIzda,>
 <parentesisDcha,>
-<llavesIzda,>
-<id, 5>
+<puntoComa,>
+<id, 4>
 <operadorAsignacion,>
-<constanteEntera, 3333>
+<constanteEntera, 11>
+<puntoComa,>
+<palabraReservada, 10>
+<palabraReservada, 9>
+<id, 5>
 <puntoComa,>
 <id, 6>
 <operadorAsignacion,>
-<constanteEntera, 23>
-<operadorMenos,>
-<constanteEntera, 5>
-<operadorModulo,>
-<constanteEntera, 3>
-<operadorMenos,>
-<constanteEntera, 2>
-<puntoComa,>
-<palabraReservada, 10>
-<palabraReservada, 1>
-<id, 3>
-<puntoComa,>
-<palabraReservada, 10>
-<palabraReservada, 6>
-<id, 4>
-<puntoComa,>
-<id, 3>
-<operadorAsignacion,>
-<id, 4>
-<parentesisIzda,>
-<id, 0>
-<coma,>
 <constanteEntera, 1>
-<coma,>
-<id, 3>
-<parentesisDcha,>
 <puntoComa,>
-<palabraReservada, 4>
-<parentesisIzda,>
-<id, 3>
-<parentesisDcha,>
-<llavesIzda,>
-<id, 3>
-<operadorAsignacion,>
-<id, 4>
-<parentesisIzda,>
-<id, 0>
-<coma,>
-<constanteEntera, 1>
-<coma,>
-<id, 3>
-<parentesisDcha,>
-<puntoComa,>
-<llavesDcha,>
-<palabraReservada, 2>
-<llavesIzda,>
-<id, 3>
-<operadorAsignacion,>
-<id, 0>
-<puntoComa,>
-<llavesDcha,>
-<palabraReservada, 10>
-<palabraReservada, 6>
-<id, 5>
-<puntoComa,>
-<id, 4>
-<parentesisIzda,>
-<id, 0>
-<coma,>
-<constanteEntera, 1>
-<coma,>
-<id, 3>
-<parentesisDcha,>
-<puntoComa,>
-<palabraReservada, 8>
-<id, 3>
-<puntoComa,>
-<llavesDcha,>

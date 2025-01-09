@@ -78,7 +78,6 @@ string AnalizadorSintactico::buscarTipoTSGlobal(int pos){
 }
 
 string AnalizadorSintactico::buscarTipoTS(int pos){
-    cerr << "biuscando" << endl;
     TablaSimbolos* ts_actual = lexico.generator.queue->top();
     TablaSimbolos* ts_global = lexico.generator.ts_global;
     if(ts_actual->posiciones.count(pos)){
@@ -88,24 +87,9 @@ string AnalizadorSintactico::buscarTipoTS(int pos){
             return "";
         }
         return e->tipo;
-    }else if(ts_global->posiciones.count(pos)){
-        Entry* e = ts_global->getPos(pos);
-        if(e->tipo == ""){
-            cerr << "No se ha asignado un tipo a la variable \'" << e->lexema << "\'" << " en la linea: " << lexico.generator.lineas <<  endl;
-            return "";
-        }
-        else if(e->tipo == "function"){
-            string tipo_params = "";
-            for(int i = 0; i<e->f.n_params; i++){
-                if(i != 0)tipo_params+=" ";
-                tipo_params+=e->f.tipo_params[i];
-            }
-            tipo_params+=" " + e->f.ret; //return val
-            return tipo_params;
-        }
-        return e->tipo;
+    }else{
+        return buscarTipoTSGlobal(pos);
     }
-    return "";
 }
 
 int AnalizadorSintactico::insertarTipoTS(int pos,string tipo,int ancho){
@@ -232,6 +216,7 @@ void AnalizadorSintactico::ejecutarRegla(string s){
             }
             bool same=true;
             for(int i = 0; i <p && same;i++){
+                if(params[i] == "vacio") continue;
                 if(params[i] != args[i]){
                     same=false;
                     break;
@@ -297,7 +282,6 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         aux.pop();
         aux.pop();
         string V_tipo = L_tipo;
-        debug("VVVVV",aux.top()->symbol);
         aux.top()->atributos->tipo=V_tipo + " ";
     }
     else if(s == "{L->EQ}"){
@@ -574,6 +558,7 @@ void AnalizadorSintactico::ejecutarRegla(string s){
             }
             bool same=true;
             for(int i = 0; i <p && same;i++){
+                if(params[i] == "vacio")continue;
                 if(params[i] != args[i]){
                     same=false;
                     break;
@@ -760,10 +745,12 @@ AnalizadorSintactico::AnalizadorSintactico(AnalizadorLexico &lexico, GestorError
                     X->atributos->pos = stoi(token.second); //add attribute
                 aux.push(X);
                 a = siguienteToken();
-            } else if (terminales.count(X->symbol))
+            } else if (terminales.count(X->symbol)){
                 error(X->symbol);
-            else if (!M.count({X->symbol, a}))
+            }
+            else if (!M.count({X->symbol, a})){
                 error(a);
+            }
             else if (M.count({X->symbol, a})) {
                 // cout << "esta!" << endl;
                 string production = M[{X->symbol, a}];
