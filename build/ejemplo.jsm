@@ -18,17 +18,14 @@ function boolean ff (boolean ss,int num,boolean prueba){
 	varglobal = 3333;
     hola=23 - 5%3 - 2;
     var boolean l1;
+    var int ab;
     l1=ff(ss,1,l1);
 	if (l1)   {
         l1 = ff(ss,1,l1);
     } else{
         l1=ss;
     }
-    var string c;
-    c = 'HOLA JAJA SALU2';  
-    output c;
-
-	var int a;
-	/*a=--s;*/
-    return ss;
+    var int a;
+    ff(ss,1,l1);
+    return l1;
 } 

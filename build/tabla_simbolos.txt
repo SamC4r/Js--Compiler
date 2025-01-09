@@ -31,15 +31,15 @@ Contenidos de la Tabla # 3 :
     + Tipo : logico
     + Despl : 3
    --------- ----------
-  * LEXEMA : 'c'
+  * LEXEMA : 'ab'
     ATRIBUTOS :
-    + Tipo : cadena
+    + Tipo : entero
     + Despl : 4
    --------- ----------
   * LEXEMA : 'a'
     ATRIBUTOS :
     + Tipo : entero
-    + Despl : 68
+    + Despl : 5
    --------- ----------
 Contenidos de la Tabla # 4 :
   * LEXEMA : 'condicion'

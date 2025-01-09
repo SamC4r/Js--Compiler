@@ -34,6 +34,7 @@ class AnalizadorSintactico {
     stack<Simbolo*> aux;
 
     string buscarTipoTS(int pos);
+    string buscarTipoTSGlobal(int pos);
     int insertarTipoTS(int pos,string tipo,int ancho);
     int insertarTipoTSGlobal(int pos,string tipo,int ancho, vector<string>& params,string ret);
     void destruirTS();
@@ -302,7 +303,7 @@ class AnalizadorSintactico {
         {{"S", "input"}, "input D ; {S->inputD;}"},
         {{"S", "output"}, "output E ; {S->outputE;}"},
         {{"S", "return"}, "return X ; {S->returnX;}"},
-        {{"U", "("}, "( L ) ; {U->(L))}"},
+        {{"U", "("}, "( L ) ; {U->(L)}"},
         {{"U", "="}, "= E ; {U->=E}"},
         {{"D", "id"}, "id {D->id}"},
         {{"D", "("}, "( id ) {D->(id))}"},

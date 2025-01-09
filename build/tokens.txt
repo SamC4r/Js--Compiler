@@ -79,6 +79,10 @@
 <palabraReservada, 1>
 <id, 3>
 <puntoComa,>
+<palabraReservada, 10>
+<palabraReservada, 6>
+<id, 4>
+<puntoComa,>
 <id, 3>
 <operadorAsignacion,>
 <id, 4>
@@ -115,21 +119,19 @@
 <puntoComa,>
 <llavesDcha,>
 <palabraReservada, 10>
-<palabraReservada, 9>
-<id, 4>
-<puntoComa,>
-<id, 4>
-<operadorAsignacion,>
-<cadena,'HOLA JAJA SALU2'>
-<puntoComa,>
-<palabraReservada, 7>
-<id, 4>
-<puntoComa,>
-<palabraReservada, 10>
 <palabraReservada, 6>
 <id, 5>
 <puntoComa,>
-<palabraReservada, 8>
+<id, 4>
+<parentesisIzda,>
 <id, 0>
+<coma,>
+<constanteEntera, 1>
+<coma,>
+<id, 3>
+<parentesisDcha,>
+<puntoComa,>
+<palabraReservada, 8>
+<id, 3>
 <puntoComa,>
 <llavesDcha,>

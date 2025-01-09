@@ -55,6 +55,28 @@ bool AnalizadorSintactico::esAccionSemantica(string s){
 
 pair<string,string> token;
 
+string AnalizadorSintactico::buscarTipoTSGlobal(int pos){
+    TablaSimbolos* ts_global = lexico.generator.ts_global;
+    if(ts_global->posiciones.count(pos)){
+        Entry* e = ts_global->getPos(pos);
+        if(e->tipo == ""){
+            cerr << "No se ha asignado un tipo a la variable \'" << e->lexema << "\'" << " en la linea: " << lexico.generator.lineas <<  endl;
+            return "";
+        }
+        else if(e->tipo == "function"){
+            string tipo_params = "";
+            for(int i = 0; i<e->f.n_params; i++){
+                if(i != 0)tipo_params+=" ";
+                tipo_params+=e->f.tipo_params[i];
+            }
+            tipo_params+=" " + e->f.ret; //return val
+            return tipo_params;
+        }
+        return e->tipo;
+    }
+    return "";
+}
+
 string AnalizadorSintactico::buscarTipoTS(int pos){
     cerr << "biuscando" << endl;
     TablaSimbolos* ts_actual = lexico.generator.queue->top();
@@ -187,15 +209,23 @@ void AnalizadorSintactico::ejecutarRegla(string s){
     else if(s == "{M->idV}"){
         string v_tipo = aux.top()->atributos->tipo;
         aux.pop();
+        debug(aux.top()->symbol);
+        debug(aux.top()->atributos->pos);
         int id_pos = aux.top()->atributos->pos;
         aux.pop();
         string ret = buscarTipoTS(id_pos);
         string M_tipo=ret;
         if(v_tipo != "vacio"){
+            ret = buscarTipoTSGlobal(id_pos);
             vector<string> params = split(v_tipo,' ');
             vector<string> args = split(ret,' ');
             int p = params.size();
             int a = args.size();
+            debug(p,a);
+            debug(id_pos);
+            debug(params,args);
+            lexico.generator.ts_global->print();
+            lexico.generator.queue->top()->print();
             if(p + 1 != a){
                 string msg="el numero de parametros de la llamada no coincide con el numero de argumentos esperados por la funcion en la linea: " + to_string(lexico.generator.lineas);
                 M_tipo = Error(msg);
@@ -267,6 +297,7 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         aux.pop();
         aux.pop();
         string V_tipo = L_tipo;
+        debug("VVVVV",aux.top()->symbol);
         aux.top()->atributos->tipo=V_tipo + " ";
     }
     else if(s == "{L->EQ}"){
@@ -292,11 +323,10 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         aux.top()->atributos->tipo=Q_tipo;
     }
     else if(s == "{B->varTid;}"){
-    
         aux.pop();
-
         int id_pos = aux.top()->atributos->pos;
         aux.pop();
+        debug("AAAA",id_pos);
         string T_tipo = aux.top()->atributos->tipo;
         int T_ancho = aux.top()->atributos->ancho;
         aux.pop(); //quita T
@@ -305,10 +335,8 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         lexico.generator.zona_declaracion=false;
         aux.top()->atributos->tipo="tipo_ok";
     }else if(s == "{B->S}"){
-        // debug(aux.top()->symbol);
         string S_tipo = aux.top()->atributos->tipo;
         string S_ret = aux.top()->atributos->ret;
-        // debug(S_tipo,S_ret);
         aux.pop();
         aux.top()->atributos->tipo=S_tipo; // B.tipo=S.tipo
         aux.top()->atributos->ret=S_ret; // B.ret=S.ret
@@ -414,7 +442,7 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         aux.pop();
         string M_tipo = aux.top()->atributos->tipo;
         aux.pop();
-        debug(Y_tipo,M_tipo);
+        // debug(Y_tipo,M_tipo);
 
         string O_tipo = "";
         if(Y_tipo == "vacio"){
@@ -525,11 +553,40 @@ void AnalizadorSintactico::ejecutarRegla(string s){
 
         int id_pos = aux.top()->atributos->pos;
         aux.pop();
-
+        debug(id_pos);
         string S_tipo;
-        if(buscarTipoTS(id_pos) == U_tipo || U_tipo == "vacio"){
+        string global_tipo = buscarTipoTSGlobal(id_pos);
+        if(buscarTipoTS(id_pos) == U_tipo || U_tipo == "vacio" || buscarTipoTSGlobal(id_pos) == U_tipo){
             S_tipo="tipo_ok";
-        }else{
+        }else if(global_tipo != ""){
+            vector<string> params = split(U_tipo,' ');
+            vector<string> args = split(global_tipo,' ');
+            int p = params.size();
+            int a = args.size();
+            debug(p,a);
+            debug(id_pos);
+            debug(params,args);
+            lexico.generator.ts_global->print();
+            lexico.generator.queue->top()->print();
+            if(p + 1 != a){
+                string msg="el numero de parametros de la llamada no coincide con el numero de argumentos esperados por la funcion en la linea: " + to_string(lexico.generator.lineas);
+                S_tipo = Error(msg);
+            }
+            bool same=true;
+            for(int i = 0; i <p && same;i++){
+                if(params[i] != args[i]){
+                    same=false;
+                    break;
+                }
+            }
+            if(same) {
+                S_tipo ="tipo_ok";
+            }else{
+                string msg ="Los tipos de los parametros de la llamada a la funcion no coinciden con lo esperado en la linea " + to_string(lexico.generator.lineas);
+                S_tipo = Error(msg);
+            }
+
+        } else{
             string msg = ("la variable no es del tipo "+U_tipo+" en linea " + to_string(lexico.generator.lineas));
             S_tipo=Error(msg);
         }
@@ -612,7 +669,6 @@ void AnalizadorSintactico::ejecutarRegla(string s){
             F_tipo=Error(msg);
         }
         aux.top()->atributos->tipo=F_tipo;
-        cerr << "ASDDDDDDDDDDDDD" << endl;
         destruirTS();
     }else if(s == "{H->T}"){
         string T_tipo = aux.top()->atributos->tipo;
@@ -684,7 +740,7 @@ AnalizadorSintactico::AnalizadorSintactico(AnalizadorLexico &lexico, GestorError
         while (X->symbol != "$") {
             if(token_char.count(a))a=token_char[a];
             if(token_char.count(X->symbol))X->symbol=token_char[X->symbol];
-            // cout << "element: " << X->symbol << ' ' << a << endl;
+            cout << "element: " << X->symbol << ' ' << a << endl;
             // debug(X->symbol);
             if(a == "EOF"){
                 a= "$";
@@ -741,7 +797,7 @@ AnalizadorSintactico::AnalizadorSintactico(AnalizadorLexico &lexico, GestorError
                     }
                 }
                 string regla = X->symbol + " -> " + rule;
-                debug(regla);
+                // debug(regla);
                 regla.pop_back();
                 parse << " " << producciones[regla];
                 if(producciones[regla] == 0){
@@ -764,7 +820,7 @@ string AnalizadorSintactico::siguienteToken() {
     auto s = lexico.getToken();
     debug(s);
     token=s;
-    cout << "token: " << s.first << endl;
-    cout << "atrib" << s.second << endl;
+    // cout << "token: " << s.first << endl;
+    // cout << "atrib" << s.second << endl;
     return s.first;
 }
