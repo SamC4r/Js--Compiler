@@ -1,0 +1,16 @@
+
+
+	var	 boolean	b;var int x ;
+input x;output x;input z;
+output x%z;
+b=x>z;if (b)
+x =
+  x - 6
+    % z
+    % 1
+    % (2
+    % y
+    % 7);
+function int a(int c, int b){
+        return x;
+    }

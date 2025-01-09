@@ -13,9 +13,16 @@ struct Atributo{
     string ret;
 };
 
+struct Id{
+    int pos;
+    string tipo;
+    int ancho;
+};
+
 struct Simbolo{
     string symbol;
     Atributo* atributos;
+    vector<Id> ids;
 
     Simbolo(string s){
         symbol=s;

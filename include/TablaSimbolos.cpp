@@ -22,7 +22,6 @@ void TablaSimbolos::print() {
 
 void TablaSimbolos::add(string id) {
     int desp = this->global_desp;
-    cerr << desp << endl;
     posiciones[cnt] = {cnt,id,"entero",desp};
     simbolos[id] = {cnt++, id,"entero",desp}; 
 }

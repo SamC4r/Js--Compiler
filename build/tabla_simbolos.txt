@@ -1,69 +1,89 @@
 Contenidos de la Tabla # 1 :
-  * LEXEMA : 's'
-    ATRIBUTOS :
-    + Tipo : cadena
-    + Despl : 1
-   --------- ----------
-  * LEXEMA : 'RR'
+Contenidos de la Tabla # 2 :
+  * LEXEMA : 'num'
     ATRIBUTOS :
     + Tipo : entero
     + Despl : 0
    --------- ----------
-  * LEXEMA : 's_s'
+  * LEXEMA : 'l1'
+    ATRIBUTOS :
+    + Tipo : entero
+    + Despl : 1
+   --------- ----------
+Contenidos de la Tabla # 3 :
+  * LEXEMA : 'ss'
     ATRIBUTOS :
     + Tipo : logico
-    + Despl : 65
+    + Despl : 0
+   --------- ----------
+  * LEXEMA : 'num'
+    ATRIBUTOS :
+    + Tipo : entero
+    + Despl : 1
+   --------- ----------
+  * LEXEMA : 'prueba'
+    ATRIBUTOS :
+    + Tipo : logico
+    + Despl : 2
    --------- ----------
   * LEXEMA : 'l1'
     ATRIBUTOS :
     + Tipo : logico
-    + Despl : 66
+    + Despl : 3
    --------- ----------
-Contenidos de la Tabla # 2 :
-  * LEXEMA : 'f'
+  * LEXEMA : 'ab'
     ATRIBUTOS :
     + Tipo : entero
-    + Despl : 0
-   --------- ----------
-Contenidos de la Tabla # 3 :
-  * LEXEMA : 's'
-    ATRIBUTOS :
-    + Tipo : cadena
-    + Despl : 0
+    + Despl : 4
    --------- ----------
   * LEXEMA : 'a'
+    ATRIBUTOS :
+    + Tipo : entero
+    + Despl : 5
+   --------- ----------
+Contenidos de la Tabla # 4 :
+  * LEXEMA : 'condicion'
+    ATRIBUTOS :
+    + Tipo : logico
+    + Despl : 0
+   --------- ----------
+  * LEXEMA : 'bool'
+    ATRIBUTOS :
+    + Tipo : logico
+    + Despl : 1
+   --------- ----------
+  * LEXEMA : 'fun'
     ATRIBUTOS :
     + Tipo : function
     + numParam : 0
     + TipoRetorno : entero
-    + Etiqueta : a
+    + Etiqueta : fun
    --------- ----------
-  * LEXEMA : 'bb'
-    ATRIBUTOS :
-    + Tipo : entero
-    + Despl : 65
-   --------- ----------
-  * LEXEMA : 'put'
+  * LEXEMA : 'f'
     ATRIBUTOS :
     + Tipo : function
-    + numParam : 2
-    + TipoParametro1 : cadena
+    + numParam : 1
+    + TipoParametro1 : entero
+    + TipoRetorno : entero
+    + Etiqueta : f
+   --------- ----------
+  * LEXEMA : 'ff'
+    ATRIBUTOS :
+    + Tipo : function
+    + numParam : 3
+    + TipoParametro1 : logico
     + TipoParametro2 : entero
+    + TipoParametro3 : logico
     + TipoRetorno : logico
-    + Etiqueta : put
+    + Etiqueta : ff
    --------- ----------
-  * LEXEMA : 'kk'
+  * LEXEMA : 'varglobal'
     ATRIBUTOS :
     + Tipo : entero
-    + Despl : 74
+    + Despl : 10
    --------- ----------
-  * LEXEMA : 's_s'
-    ATRIBUTOS :
-    + Tipo : cadena
-    + Despl : 94
-   --------- ----------
-  * LEXEMA : 'RR'
+  * LEXEMA : 'hola'
     ATRIBUTOS :
     + Tipo : entero
-    + Despl : 90
+    + Despl : 10
    --------- ----------

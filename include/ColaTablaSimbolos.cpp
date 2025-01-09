@@ -32,7 +32,6 @@ void ColaTablaSimbolos::print() {
     ts_file << "Contenidos de la Tabla # " << it++ << " :" << endl;
 
     vector<ts_content> ids;
-    cerr << "ASHDLKASDJALSKDJASLDKJ" << endl;
     cerr << ambito_actual->posiciones.size() << endl;
     for (auto row : ambito_actual->posiciones) {
         Entry entry = row.second;

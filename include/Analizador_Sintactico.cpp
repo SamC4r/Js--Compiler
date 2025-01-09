@@ -1,4 +1,5 @@
 #include "Analizador_Sintactico.h"
+#include <algorithm>
 #include <iostream>
 #include <sstream>
 #include <stdexcept>
@@ -632,7 +633,6 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         // debug(params);
         // debug("--------------------------------");
         // lexico.generator.ts_global->print();
-
         insertarTipoTSGlobal(id_pos,F_tipo,0,params,H_tipo);
         aux.top()->atributos->ret=H_tipo;
        
@@ -666,6 +666,7 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         aux.top()->atributos->tipo = H_tipo;
     }else if(s == "{A->TidK}"){
         string K_tipo = aux.top()->atributos->tipo;
+        vector<Id> ids = aux.top()->ids;
         aux.pop();
         int id_pos = aux.top()->atributos->pos;
         aux.pop();
@@ -676,6 +677,9 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         string A_tipo;
         if(K_tipo=="vacio")A_tipo=T_tipo;
         else A_tipo=T_tipo+" "+K_tipo;
+        for(auto x : ids){
+            insertarTipoTS(x.pos,x.tipo,x.ancho);
+        }
         aux.top()->atributos->tipo = A_tipo;
     }else if(s == "{A->void}"){
         aux.pop();
@@ -683,13 +687,13 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         aux.top()->atributos->tipo = A_tipo;
     }else if(s == "{K->,TidK1}"){
         string K1_tipo = aux.top()->atributos->tipo;
+        vector<Id> ids = aux.top()->ids;
         aux.pop();
         int id_pos = aux.top()->atributos->pos;
         aux.pop();
         string T_tipo = aux.top()->atributos->tipo;
         int T_ancho = aux.top()->atributos->ancho;
         aux.pop();
-        insertarTipoTS(id_pos,T_tipo,T_ancho);
         aux.pop();
         string K_tipo;
         if(K1_tipo == "vacio"){
@@ -697,7 +701,8 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         }else{
             K_tipo =T_tipo + " " + K1_tipo;
         }
-
+        aux.top()->ids = ids;
+        aux.top()->ids.insert(aux.top()->ids.begin(),  {id_pos,T_tipo,T_ancho});
         aux.top()->atributos->tipo = K_tipo;
     }else if(s == "{no_desp}"){
         lexico.generator.function = true;
