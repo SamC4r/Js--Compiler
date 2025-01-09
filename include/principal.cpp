@@ -25,7 +25,7 @@ int main() {
   GestorErrores errores;
   AnalizadorLexico lexico(filename, token_file, queue, errores);
   AnalizadorSintactico sintactico(lexico, errores);
-  queue.print();
+  // queue.print();
 
   return 0;
 }

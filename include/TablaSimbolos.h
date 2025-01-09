@@ -30,6 +30,7 @@ class TablaSimbolos {
 public:
     int cnt;
     int global_desp;
+    string name;
     unordered_map<string, Entry> simbolos;
     unordered_map<int, Entry> posiciones;
 

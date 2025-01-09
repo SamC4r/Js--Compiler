@@ -23,9 +23,12 @@ struct ts_content{
     }
 };
 
+
+
 void ColaTablaSimbolos::print() {
-    int it = 1;
-    while(!q.empty()){
+    static int it = 1;
+    //TODO: En vez de imprimir la cola, destruir la tabla de simbolos como accion semantica y ejecutar este metodo
+    // while(!q.empty()){
 
         TablaSimbolos* ambito_actual = top();
 
@@ -61,6 +64,5 @@ void ColaTablaSimbolos::print() {
             }
             ts_file << "   --------- ----------" << endl;
         }
-        q.pop();
-    }
+    // }
 }

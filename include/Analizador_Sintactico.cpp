@@ -122,6 +122,11 @@ void AnalizadorSintactico::crearTSLocal(){
     lexico.generator.queue->add(ts_local);
 }
 
+void AnalizadorSintactico::destruirTS(){
+    lexico.generator.queue->print();
+    lexico.generator.queue->pop();
+}
+
 string Error(string msg){
     cerr << "[x] Error " << msg << endl;
     throw runtime_error(msg);
@@ -608,6 +613,7 @@ void AnalizadorSintactico::ejecutarRegla(string s){
             F_tipo=Error(msg);
         }
         aux.top()->atributos->tipo=F_tipo;
+        destruirTS();
         // exit(0);
     }else if(s == "{H->T}"){
         string T_tipo = aux.top()->atributos->tipo;

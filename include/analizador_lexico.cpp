@@ -75,7 +75,6 @@ void Generator::Token(string identificador) {
     } else {
         if(identificador == "") return;
         TablaSimbolos *simbolos = queue->top();
-        simbolos->print();
         if(zona_declaracion && simbolos->getEntry(identificador) != NULL){ //no volver a declarar
                 cerr << "Variable ya declarada: \'" << identificador << "\' en linea: " << lineas << endl;
                 throw runtime_error("Variable ya declarada");
