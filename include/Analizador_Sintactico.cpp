@@ -247,6 +247,7 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         string M_tipo="";
         if(M1_tipo=="entero") M_tipo="entero";
         else M_tipo=Error("solo se puede obtener el negativo de numeros enteros");
+        aux.top()->atributos->tipo=M_tipo;
     }
     else if(s == "{M->!M1}"){
         string M1_tipo=aux.top()->atributos->tipo;
@@ -259,7 +260,6 @@ void AnalizadorSintactico::ejecutarRegla(string s){
     }
     else if(s == "{M->constanteEntera}"){
         aux.pop();
-        // debug(aux.top()->symbol);
         aux.top()->atributos->tipo="entero";
     }
     else if(s == "{M->cadena}"){
