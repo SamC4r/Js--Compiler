@@ -129,8 +129,8 @@ void AnalizadorSintactico::crearTSLocal(){
     lexico.generator.queue->add(ts_local);
 }
 
-void AnalizadorSintactico::destruirTS(){
-    lexico.generator.queue->print();
+void AnalizadorSintactico::destruirTS(string name){
+    lexico.generator.queue->print(name);
     lexico.generator.queue->pop();
 }
 
@@ -255,6 +255,7 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         string M_tipo="";
         if(M1_tipo=="logico") M_tipo="logico";
         else M_tipo=Error("solo se puede negar un booleano");
+        aux.top()->atributos->tipo=M_tipo;
     }
     else if(s == "{M->constanteEntera}"){
         aux.pop();
@@ -548,11 +549,6 @@ void AnalizadorSintactico::ejecutarRegla(string s){
             vector<string> args = split(global_tipo,' ');
             int p = params.size();
             int a = args.size();
-            debug(p,a);
-            debug(id_pos);
-            debug(params,args);
-            lexico.generator.ts_global->print();
-            lexico.generator.queue->top()->print();
             if(p + 1 != a){
                 string msg="el numero de parametros de la llamada no coincide con el numero de argumentos esperados por la funcion en la linea: " + to_string(lexico.generator.lineas);
                 S_tipo = Error(msg);
@@ -654,7 +650,7 @@ void AnalizadorSintactico::ejecutarRegla(string s){
             F_tipo=Error(msg);
         }
         aux.top()->atributos->tipo=F_tipo;
-        destruirTS();
+        destruirTS("funcion local");
     }else if(s == "{H->T}"){
         string T_tipo = aux.top()->atributos->tipo;
         aux.pop();
@@ -800,7 +796,7 @@ AnalizadorSintactico::AnalizadorSintactico(AnalizadorLexico &lexico, GestorError
             X = pila.top();
         }
     };
-    destruirTS();
+    destruirTS("principal");
 };
 
 

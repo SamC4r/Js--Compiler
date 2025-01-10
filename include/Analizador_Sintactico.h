@@ -44,7 +44,7 @@ class AnalizadorSintactico {
     string buscarTipoTSGlobal(int pos);
     int insertarTipoTS(int pos,string tipo,int ancho);
     int insertarTipoTSGlobal(int pos,string tipo,int ancho, vector<string>& params,string ret);
-    void destruirTS();
+    void destruirTS(string name);
     void crearTSLocal();
 
     string siguienteToken();

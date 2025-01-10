@@ -18,5 +18,5 @@ public:
   void add(TablaSimbolos* symbol);
   void pop();
   TablaSimbolos *top();
-  void print();
+  void print(string nombre);
 };

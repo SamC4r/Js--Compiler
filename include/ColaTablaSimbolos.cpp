@@ -25,11 +25,11 @@ struct ts_content{
 
 
 
-void ColaTablaSimbolos::print() {
+void ColaTablaSimbolos::print(string nombre) {
     static int it = 1;
     TablaSimbolos* ambito_actual = top();
 
-    ts_file << "Contenidos de la Tabla # " << it++ << " :" << endl;
+    ts_file << "Contenidos de la Tabla " << nombre << " # " << it++ << " :" << endl;
 
     vector<ts_content> ids;
     cerr << ambito_actual->posiciones.size() << endl;
@@ -46,7 +46,7 @@ void ColaTablaSimbolos::print() {
         ts_file << "  * LEXEMA : \'" << e.lexema << '\'' << endl;
         if(e.tipo != ""){
             ts_file << "    ATRIBUTOS :" << endl;
-            ts_file << "    + Tipo : " << e.tipo << endl;
+            ts_file << "    + Tipo : \'" << e.tipo << '\'' << endl;
         }
 
         if(e.tipo != "function"){
@@ -55,10 +55,10 @@ void ColaTablaSimbolos::print() {
             ts_file << "    + numParam : " << e.f.n_params << endl;
             int n=1;
             for(string t : e.f.tipo_params){
-                ts_file << "    + TipoParametro" << n++ << " : " << t << endl;
+                ts_file << "    + TipoParametro" << n++ << " : \'" << t << "\'"<< endl;
             }
-            ts_file << "    + TipoRetorno : " << e.f.ret << endl;
-            ts_file << "    + Etiqueta : " << e.lexema << endl;
+            ts_file << "    + TipoRetorno : \'" << e.f.ret << "\'"<< endl;
+            ts_file << "    + Etiqueta : \'" << e.lexema << "\'"<< endl;
         }
         ts_file << "   --------- ----------" << endl;
     }
