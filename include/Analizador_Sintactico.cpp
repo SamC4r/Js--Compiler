@@ -53,7 +53,7 @@ _print(x)
 bool AnalizadorSintactico::esAccionSemantica(string s){
     return numero_accion_semantica.count(s);
 }
-
+      bool returnBool = false;
 pair<string,string> token;
 
 string AnalizadorSintactico::buscarTipoTSGlobal(int pos){
@@ -135,7 +135,7 @@ void AnalizadorSintactico::destruirTS(string name){
 }
 
 string Error(string msg){
-    cerr << "[x] Error " << msg << endl;
+    cerr << "[X] Error [X]: " << msg << endl;
     throw runtime_error(msg);
     return ("tipo_error");
 }
@@ -495,6 +495,7 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         aux.pop();
         string B_tipo=aux.top()->atributos->tipo;
         string B_ret = aux.top()->atributos->ret;
+       
         // debug(B_tipo,C1_tipo);
         aux.pop();
         string C_tipo="";
@@ -505,8 +506,9 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         }
         aux.top()->atributos->tipo=C_tipo;
         string ret = B_ret;
+        if(ret != "" && C1_tipo != "vacio") ret=Error("Despues de un return no puede haber mas codigo dentro del bloque");
         if(ret == "")ret=C1_ret;
-        else if(C1_ret!="") ret=Error("Despues de un return no puede haber mas codigo dentro del bloque");
+        // if(ret == "")ret=Error("funcion no tiene un valor de retorno");
         aux.top()->atributos->ret=ret;
     }else if(s == "{S->outputE;}"){
         
@@ -533,6 +535,7 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         string S_return = X_tipo;
         aux.top()->atributos->tipo=S_tipo;
         aux.top()->atributos->ret=S_return;
+        returnBool = true;
     }else if(s == "{S->idU}"){
         string U_tipo=aux.top()->atributos->tipo;
         aux.pop();
@@ -542,13 +545,15 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         debug(id_pos);
         string S_tipo;
         string global_tipo = buscarTipoTSGlobal(id_pos);
-        if(buscarTipoTS(id_pos) == U_tipo || U_tipo == "vacio" || buscarTipoTSGlobal(id_pos) == U_tipo){
+        string local_tipo = buscarTipoTS(id_pos);
+        if(local_tipo == U_tipo || U_tipo == "vacio" || buscarTipoTSGlobal(id_pos) == U_tipo){
             S_tipo="tipo_ok";
-        }else if(global_tipo != ""){
+        }else if(global_tipo!=local_tipo && global_tipo != ""){
             vector<string> params = split(U_tipo,' ');
             vector<string> args = split(global_tipo,' ');
             int p = params.size();
             int a = args.size();
+            debug(params,args);
             if(p + 1 != a){
                 string msg="el numero de parametros de la llamada no coincide con el numero de argumentos esperados por la funcion en la linea: " + to_string(lexico.generator.lineas);
                 S_tipo = Error(msg);
@@ -645,12 +650,17 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         // debug(F_devuelto);
         string F_tipo = C_tipo;
         // debug(C_ret);
-        if(F_devuelto != C_ret){
+        if(C_ret == ""){
+            string msg= "la funcion no tiene valor de retorno en la linea " + to_string(lexico.generator.lineas);
+            F_tipo=Error(msg);
+        }
+        else if(F_devuelto != C_ret){
             string msg = ("el tipo de retorno de la funcion no es del mismo tipo que la declaracion de la funcion \t Error en la linea " + to_string(lexico.generator.lineas));;
             F_tipo=Error(msg);
         }
         aux.top()->atributos->tipo=F_tipo;
         destruirTS("funcion local");
+        returnBool = false;
     }else if(s == "{H->T}"){
         string T_tipo = aux.top()->atributos->tipo;
         aux.pop();
