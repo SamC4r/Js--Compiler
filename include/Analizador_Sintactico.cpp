@@ -274,7 +274,6 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         int id_pos = aux.top()->atributos->pos;
         aux.pop();
         aux.pop();
-        aux.pop();
         string id_tipo = buscarTipoTS(id_pos,aux.top()->linea);
         string M_tipo="";
         if(id_tipo=="entero") M_tipo="entero";
