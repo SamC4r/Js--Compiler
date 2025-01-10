@@ -234,7 +234,7 @@ class AnalizadorSintactico {
         {{"B", "input"}, "S {B->S}"},
         {{"B", "output"}, "S {B->S}"},
         {{"B", "return"}, "S {B->S}"},
-        {{"B", "var"}, "{dec_true} var T id {dec_false} ; {B->varTid;} "},
+        {{"B", "var"}, "{dec_true} var T id {dec_false} ; {B->varTid;}"},
         {{"B", "if"}, "if ( E ) I {B->if(E)I}"},
         {{"T", "boolean"}, "boolean {T->boolean}"},
         {{"T", "int"}, "int {T->int}"},

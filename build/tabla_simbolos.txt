@@ -1,12 +1,6 @@
 Contenidos de la Tabla funcion local # 1 :
-Contenidos de la Tabla funcion local # 2 :
-  * LEXEMA : 'num'
+  * LEXEMA : 'ss'
     ATRIBUTOS :
-    + Tipo : 'entero'
+    + Tipo : 'logico'
     + Despl : 0
-   --------- ----------
-  * LEXEMA : 'l1'
-    ATRIBUTOS :
-    + Tipo : 'entero'
-    + Despl : 1
    --------- ----------

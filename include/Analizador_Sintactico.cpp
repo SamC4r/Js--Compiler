@@ -231,6 +231,7 @@ void AnalizadorSintactico::ejecutarRegla(string s){
             }
         }
         aux.top()->atributos->tipo=M_tipo;
+        debug(aux.top()->atributos->tipo);
     }
     else if(s == "{M->(E)}"){
         aux.pop();
@@ -345,8 +346,6 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         aux.pop(); //quita if
 
         aux.top()->atributos->tipo = B_tipo;
-        // debug(aux.top()->atributos->tipo);
-        // exit(0);
     } else if(s == "{dec_true}"){
         lexico.generator.zona_declaracion=true;
     }else if(s == "{dec_false}"){
@@ -386,7 +385,7 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         aux.pop();
         string R_tipo = aux.top()->atributos->tipo;
         aux.pop();
-        aux.pop();
+        aux.pop(); //>
         string N_tipo="";
         if(R_tipo=="entero" && (N1_tipo=="vacio" || N1_tipo=="logico")) N_tipo="logico";
         else N_tipo=Error("solo se pueden comparar enteros");
@@ -478,6 +477,8 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         else I_ret=Error("El return del if y del else son de tipos distintos");
         aux.top()->atributos->tipo=I_tipo;
         aux.top()->atributos->ret=I_ret;
+        debug("_------------------");
+        debug(I_tipo);
     }
     else if(s == "{J->else{C}}"){
         aux.pop();
@@ -549,9 +550,10 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         string S_tipo;
         string global_tipo = buscarTipoTSGlobal(id_pos);
         string local_tipo = buscarTipoTS(id_pos);
+        debug(global_tipo,local_tipo,U_tipo);
         if(local_tipo == U_tipo || U_tipo == "vacio" || buscarTipoTSGlobal(id_pos) == U_tipo){
             S_tipo="tipo_ok";
-        }else if(global_tipo!=local_tipo && global_tipo != ""){
+        }else if(global_tipo != ""){
             vector<string> params = split(U_tipo,' ');
             vector<string> args = split(global_tipo,' ');
             int p = params.size();
@@ -735,7 +737,8 @@ AnalizadorSintactico::AnalizadorSintactico(AnalizadorLexico &lexico, GestorError
     string a = siguienteToken();
     auto X = pila.top();
     while ((X=pila.top())->symbol != "$") {
-        // cout << "element " << X->symbol << ' ' << a << endl;
+        cout << "element " << X->symbol << ' ' << a << endl;
+        cout << "lineas: " << lexico.generator.lineas << endl;
         if(terminales.count(X->symbol) || X->symbol == "$"){
             if(X->symbol == a){
                 pila.pop();
