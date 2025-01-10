@@ -607,7 +607,7 @@ void AnalizadorSintactico::ejecutarRegla(string s){
             string msg = "\'" + lexico.generator.queue->top()->getPos(id_pos)->lexema + "\' no es una funcion en la linea " + to_string(U_linea);
             S_tipo = Error(msg);
         } else{
-            string msg = ("la variable no es del tipo "+U_tipo+" en linea " + to_string(lexico.generator.prev_lineas));
+            string msg = ("la variable no es del tipo "+U_tipo+" en linea " + to_string(S_linea));
             S_tipo=Error(msg);
         }
         aux.top()->atributos->tipo=S_tipo;
