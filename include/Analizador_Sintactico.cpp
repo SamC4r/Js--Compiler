@@ -64,7 +64,7 @@ string AnalizadorSintactico::buscarTipoTSGlobal(int pos, int linea){
     if(ts_global->posiciones.count(pos)){
         Entry* e = ts_global->getPos(pos);
         if(e->tipo == ""){
-            cerr << "No se ha asignado un tipo a la variable \'" << e->lexema << "\'" << " en la linea: " << lexico.generator.prev_lineas <<  endl;
+            cerr << "No se ha asignado un tipo a la variable \'" << e->lexema << "\'" << " en la linea: " << to_string(linea) <<  endl;
             return "";
         }
         else if(e->tipo == "function"){
