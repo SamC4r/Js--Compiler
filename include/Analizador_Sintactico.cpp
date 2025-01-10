@@ -1,5 +1,4 @@
 #include "Analizador_Sintactico.h"
-#include <algorithm>
 #include <iostream>
 #include <sstream>
 #include <stdexcept>
@@ -47,13 +46,10 @@ _print(x)
 #define debug(x...)
 #endif
 
-
-//Mejora? A la tabla anadirle numero de accion semantica y si es un numero correcto (pq es un map de numero -> accion semantica) aplicar la accion semantica con codigo. Por cada accion semantica se puede saber que simbolo modificar segun las pilas 
-
 bool AnalizadorSintactico::esAccionSemantica(string s){
     return numero_accion_semantica.count(s);
 }
-bool returnBool = false;
+
 pair<string,string> token;
 
 string AnalizadorSintactico::buscarTipoTSGlobal(int pos){
@@ -539,7 +535,6 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         string S_return = X_tipo;
         aux.top()->atributos->tipo=S_tipo;
         aux.top()->atributos->ret=S_return;
-        returnBool = true;
     }else if(s == "{S->idU}"){
         string U_tipo=aux.top()->atributos->tipo;
         aux.pop();
@@ -665,7 +660,6 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         }
         aux.top()->atributos->tipo=F_tipo;
         destruirTS("funcion local");
-        returnBool = false;
     }else if(s == "{H->T}"){
         string T_tipo = aux.top()->atributos->tipo;
         aux.pop();
@@ -720,8 +714,20 @@ void AnalizadorSintactico::ejecutarRegla(string s){
     }
 }
 
-void AnalizadorSintactico::error(string unexpected) {
-    cerr << "Error en la linea  "<< lexico.generator.lineas << " - no se esperaba recibir: " << unexpected << endl;
+void AnalizadorSintactico::error(string expected, string unexpected) {
+    if(terminales.count(expected)){
+        cerr << "Error en la linea  "<< lexico.generator.lineas << " - se esperaba recibir: \'" << (expected) << "\' Pero se obtuvo: \'" << unexpected << "\'" << endl;
+    }else{
+        vector<string> first_follow=first[expected];
+        cerr << "Error en la linea  "<< lexico.generator.lineas << " - se esperaba recibir alguno de: [";
+        bool first=true;
+            for(string s : first_follow){
+            if(!first)cerr << ", ";
+            cerr << "\'" << s << "\'";
+            first=false;
+        }
+        cerr << ",] Pero se obtuvo: \'" << unexpected << "\'" << endl;
+    }
     throw std::runtime_error("Error de Sintaxis");
 }
 
@@ -749,7 +755,7 @@ AnalizadorSintactico::AnalizadorSintactico(AnalizadorLexico &lexico, GestorError
                 aux.push(X);
                 a = siguienteToken();               
             }else{
-                error(X->symbol);
+                error(X->symbol,a);
             }
         }else if(noTerminales.count(X->symbol)){
                 cout << "esta!" << endl;
@@ -794,7 +800,7 @@ AnalizadorSintactico::AnalizadorSintactico(AnalizadorLexico &lexico, GestorError
                     exit(0);
                 }
             }else{
-                error(X->symbol);
+                error(X->symbol,a);
             }
         }else if(esAccionSemantica(X->symbol)){
             cout << "YEEEE " << X->symbol << endl;
@@ -802,9 +808,6 @@ AnalizadorSintactico::AnalizadorSintactico(AnalizadorLexico &lexico, GestorError
             pila.pop();
         }
     }
-    if(a == "$" && aux.top()->symbol == "Z"){
-
-    }else error("a");
     destruirTS("principal");
 };
 

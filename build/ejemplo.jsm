@@ -1,4 +1,4 @@
-var int n1;var int n2;
+var int n1; var int n2;
 var boolean l1;var boolean l2;
 var string
 		cad		;
@@ -20,6 +20,7 @@ function boolean ff (boolean ss)
 	if (l1) l2 = ff (ss);
 	return ss;
 }
+
 		
 		
 var int aa_aa;

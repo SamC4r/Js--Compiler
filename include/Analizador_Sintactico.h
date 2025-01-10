@@ -46,6 +46,7 @@ class AnalizadorSintactico {
     int insertarTipoTSGlobal(int pos,string tipo,int ancho, vector<string>& params,string ret);
     void destruirTS(string name);
     void crearTSLocal();
+    void error(string expected, string unexpected);
 
     string siguienteToken();
 
@@ -57,8 +58,34 @@ class AnalizadorSintactico {
         "input", "output",   "=",       "--",     "constanteEntera",
         "cadena", "lambda"
     };
-
     set<string> noTerminales = { "Z", "B", "T", "E", "N", "R", "P", "O", "Y", "M", "V", "L", "Q", "I", "J", "C", "S", "U", "D", "X", "F", "H", "A", "K" };
+
+    map<string,vector<string>> first = {
+        {"V",{"(",")",":","%",">",",","-"}},
+        {"Z", {"id","var","function","input","output","return","if","$"}},
+        {"B", {"id","input","output","return","var","if"}},
+        {"T", {"boolean","int","string"}},
+        {"E", {"id","cadena","constanteEntera","(","!","--","-"}},
+        {"N", {")",";",">",","}},
+        {"R", {"id","cadena","constanteEntera","(","!","--","-"}},
+        {"P", {")",";","-",">",","}},
+        {"O", {"id","cadena","constanteEntera","(","!","--","-"}},
+        {"Y", {")",";","-","%",">",","}},
+        {"M", {"id","cadena","constanteEntera","(","!","--","-"}},
+        {"L", {"id","cadena","constanteEntera","(","!", "--",")","-"}},
+        {"Q", {")",","}},
+        {"I", {"id","input","output","return","{"}},
+        {"J", {"else","var","$","id","function","input","output","return","if"}},
+        {"C", {"id","var","input","output","return","if","}"}},
+        {"S", {"id","input","output","return"}},
+        {"U", {"(","="}},
+        {"D", {"id","("}},
+        {"X", {"id","cadena","constanteEntera","(",";","!","--","-"}},
+        {"F", {"function"}},
+        {"H", {"boolean","int","string","void"}},
+        {"A", {"boolean","int","string","void"}},
+        {"K", {")",","}}
+    };
 
     std::map<std::string, std::string> token_char = {
         {"operadorAsignacion", "="},
@@ -349,7 +376,6 @@ class AnalizadorSintactico {
         {{"X", "-"}, "E {X->E}"}
     };
 
-    void error(string unexpected);
 
 public:
     AnalizadorSintactico(AnalizadorLexico &lexico, GestorErrores &errores);

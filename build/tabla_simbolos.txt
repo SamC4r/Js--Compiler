@@ -1,6 +1,0 @@
-Contenidos de la Tabla funcion local # 1 :
-  * LEXEMA : 'ss'
-    ATRIBUTOS :
-    + Tipo : 'logico'
-    + Despl : 0
-   --------- ----------
