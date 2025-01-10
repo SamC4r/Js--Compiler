@@ -1,0 +1,41 @@
+<palabraReservada, 10>
+<palabraReservada, 1>
+<id, 0>
+<puntoComa,>
+<palabraReservada, 4>
+<parentesisIzda,>
+<id, 0>
+<parentesisDcha,>
+<llavesIzda,>
+<id, 0>
+<operadorAsignacion,>
+<id, 1>
+<operadorMayor,>
+<id, 2>
+<puntoComa,>
+<llavesDcha,>
+<palabraReservada, 2>
+<llavesIzda,>
+<palabraReservada, 7>
+<constanteEntera, 0>
+<puntoComa,>
+<llavesDcha,>
+<palabraReservada, 10>
+<palabraReservada, 1>
+<id, 3>
+<puntoComa,>
+<palabraReservada, 3>
+<palabraReservada, 6>
+<id, 4>
+<parentesisIzda,>
+<palabraReservada, 11>
+<parentesisDcha,>
+<llavesIzda,>
+<id, 4>
+<parentesisIzda,>
+<parentesisDcha,>
+<puntoComa,>
+<palabraReservada, 8>
+<constanteEntera, 1>
+<puntoComa,>
+<llavesDcha,>

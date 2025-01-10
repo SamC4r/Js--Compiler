@@ -51,7 +51,14 @@ bool AnalizadorSintactico::esAccionSemantica(string s){
 }
 
 pair<string,string> token;
-
+bool AnalizadorSintactico::esFuncion(int pos){
+    TablaSimbolos* ts_global = lexico.generator.ts_global;
+    if(ts_global->posiciones.count(pos)){
+        Entry* e = ts_global->getPos(pos);
+        return e->tipo == "function";
+    }
+    return false;
+}
 string AnalizadorSintactico::buscarTipoTSGlobal(int pos, int linea){
     TablaSimbolos* ts_global = lexico.generator.ts_global;
     if(ts_global->posiciones.count(pos)){
@@ -197,7 +204,12 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         string ret = buscarTipoTS(id_pos,aux.top()->linea);
         string M_tipo=ret;
         int M_linea=aux.top()->linea;
+        bool funcion = esFuncion(id_pos);
         if(v_tipo != "vacio"){
+            if(!funcion){
+                string msg="la variable "+aux.top()->symbol+" en la linea " + to_string(aux.top()->linea)+" no es una funcion";
+                M_tipo = Error(msg);
+            }
             ret = buscarTipoTSGlobal(id_pos,aux.top()->linea);
             vector<string> params = split(v_tipo,' ');
             vector<string> args = split(ret,' ');
@@ -557,27 +569,30 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         debug(id_pos);
         string S_tipo;
         int S_linea=aux.top()->linea;
-        string global_tipo = buscarTipoTSGlobal(id_pos,S_linea);
         string local_tipo = buscarTipoTS(id_pos,S_linea);
-        debug(global_tipo,local_tipo,U_tipo);
-        if(local_tipo == U_tipo || U_tipo == "vacio" || global_tipo == U_tipo){
+        bool funcion = esFuncion(id_pos);
+        vector<string> params = split(U_tipo,' ');
+        debug(funcion);                    
+
+        if(local_tipo == U_tipo || U_tipo == "vacio"){
             S_tipo="tipo_ok";
-        }else if(global_tipo != ""){
-            vector<string> params = split(U_tipo,' ');
+        }else if(funcion){
+            string global_tipo = buscarTipoTSGlobal(id_pos,S_linea);
             vector<string> args = split(global_tipo,' ');
-            int p = params.size();
-            int a = args.size();
-            debug(params,args);
+            int p =0, a= 0;
+
+            for(string s : params){ if(s != "vacio")p++; }  
+            for(string s : args){ if(s != "vacio" && s != "")a++; }
+
             if(p + 1 != a){
                 string msg="el numero de parametros de la llamada no coincide con el numero de argumentos esperados por la funcion en la linea: " + to_string(U_linea);
                 S_tipo = Error(msg);
-            }
+            }  
             bool same=true;
-            for(int i = 0; i <p && same;i++){
+            for(int i = 0; i <params.size() && same;i++){
                 if(params[i] == "vacio")continue;
                 if(params[i] != args[i]){
                     same=false;
-                    break;
                 }
             }
             if(same) {
@@ -586,7 +601,11 @@ void AnalizadorSintactico::ejecutarRegla(string s){
                 string msg ="Los tipos de los parametros de la llamada a la funcion no coinciden con lo esperado en la linea " + to_string(U_linea);
                 S_tipo = Error(msg);
             }
-
+        }else if(U_tipo == "vacio " || params.size() > 1){
+            debug(U_tipo);
+            debug(params);
+            string msg = "\'" + lexico.generator.queue->top()->getPos(id_pos)->lexema + "\' no es una funcion en la linea " + to_string(U_linea);
+            S_tipo = Error(msg);
         } else{
             string msg = ("la variable no es del tipo "+U_tipo+" en linea " + to_string(lexico.generator.prev_lineas));
             S_tipo=Error(msg);
@@ -606,7 +625,7 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         aux.pop(); //L
         string U_tipo=L_tipo;
         aux.pop(); //(
-        aux.top()->atributos->tipo=U_tipo;
+        aux.top()->atributos->tipo=U_tipo + " ";
     }else if(s == "{D->id}"){
         int id_pos = aux.top()->atributos->pos;
         aux.pop();

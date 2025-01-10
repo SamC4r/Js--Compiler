@@ -43,6 +43,7 @@ class AnalizadorSintactico {
 
     string buscarTipoTS(int pos, int linea);
     string buscarTipoTSGlobal(int pos, int linea);
+    bool esFuncion(int pos);
     int insertarTipoTS(int pos,string tipo,int ancho);
     int insertarTipoTSGlobal(int pos,string tipo,int ancho, vector<string>& params,string ret);
     void destruirTS(string name);

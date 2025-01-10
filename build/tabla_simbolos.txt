@@ -1,12 +1,29 @@
 Contenidos de la Tabla funcion local # 1 :
-Contenidos de la Tabla funcion local # 2 :
-  * LEXEMA : 'num'
+Contenidos de la Tabla principal # 2 :
+  * LEXEMA : 'logico2'
     ATRIBUTOS :
-    + Tipo : 'entero'
+    + Tipo : 'logico'
     + Despl : 0
    --------- ----------
-  * LEXEMA : 'l1'
+  * LEXEMA : 'int1'
     ATRIBUTOS :
     + Tipo : 'entero'
     + Despl : 1
+   --------- ----------
+  * LEXEMA : 'int2'
+    ATRIBUTOS :
+    + Tipo : 'entero'
+    + Despl : 5
+   --------- ----------
+  * LEXEMA : 'condicion'
+    ATRIBUTOS :
+    + Tipo : 'logico'
+    + Despl : 9
+   --------- ----------
+  * LEXEMA : 'a'
+    ATRIBUTOS :
+    + Tipo : 'function'
+    + numParam : 0
+    + TipoRetorno : 'entero'
+    + Etiqueta : 'a'
    --------- ----------
