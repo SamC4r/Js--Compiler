@@ -1,47 +1,49 @@
-var int n1; var int n2;
-var boolean l1;var boolean l2;
-var string
-		cad		;
-var boolean lllll;
-input n1;
-l1 = l2;
-if (! l2) cad = 'hello';
-n2 = n1 % 378;
+var boolean condicion;
+if (condicion)
+  output condicion;
+var boolean bool;
 
-output		33 
-		% 
-		n1 
-		% 
-		n2;
-
-function boolean ff (boolean ss)
-{
-	varglobal = 3333;
-	if (l1) l2 = ff (ss);
-	return ss;
+function int fun(void){
+    return 100;
 }
 
-		
-		
-var int aa_aa;
-var int iiii;
-var string s64;
-var boolean boo;
-var boolean booo;
-var int aaaaa;
-var int iiiii;
+function int f(int num){
+    var int l1;
+    l1=f(1);
+    return 100;
+}
 
-abc1=abc0;
+var boolean logico2;
+var int num1;
+var int num2;
+var int logico;
+if(logico2){
+    logico=num1 - num2;
+}else{
+    output 0;
+}
 
-var
-string
-boo ;
+function boolean ff (boolean ss,int num,boolean prueba){
+	varglobal = 3333;
+    hola=23 - 5%3 - 2;
+    var boolean l1;
+    var int ab;
+    l1=ff(ss,1,l1);
+	if (l1)   {
+        l1 = ff(ss,1,l1);
+    } else{
+        l1=ss;
+    }
+    var string c;
+    c = --c;
+    c='Joala';
+    var int a;
+    ff(ss,1,l1);
+    return 1;
+} 
 
 
-output 123;
 
 
-if (booo) output 0;
-		
-if (ff(l1)) 
-    output varglobal;
+
+

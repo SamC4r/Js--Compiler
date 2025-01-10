@@ -33,6 +33,7 @@ void Generator::gen_token(T1 tipo, T2 atributo) {
     cerr << "lastTokenAttrib: " << lastTokenAttribute << endl;
     pair<string,string> p = {lastTokenType,lastTokenAttribute};
     q.push(p);
+    prev_lineas=lineas;
 }
 
 void Generator::gen_token(string tipo) {
@@ -48,6 +49,7 @@ void Generator::gen_token(string tipo) {
     buscando = false;
    pair<string,string> p = {lastTokenType,lastTokenAttribute};
     q.push(p);  
+    prev_lineas=lineas;
 }
 template <typename T1> void Generator::gen_token(T1 tipo, string cadena) {
     token_file << "<" << tipo << ",\'" << cadena << "\'>" << endl;
@@ -56,6 +58,7 @@ template <typename T1> void Generator::gen_token(T1 tipo, string cadena) {
     buscando = false;
      pair<string,string> p = {lastTokenType,lastTokenAttribute};
     q.push(p); 
+    prev_lineas=lineas;
 }
 
 void Generator::init(string token_file_name, ColaTablaSimbolos &queue) {
@@ -66,6 +69,7 @@ void Generator::init(string token_file_name, ColaTablaSimbolos &queue) {
     TablaSimbolos* global = new TablaSimbolos();
     this->queue->add(global);
     this->ts_global=queue.top();
+    prev_lineas=0;
 }
 
 void Generator::Token(string identificador) {

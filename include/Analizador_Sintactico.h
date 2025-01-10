@@ -23,6 +23,7 @@ struct Simbolo{
     string symbol;
     Atributo* atributos;
     vector<Id> ids;
+    int linea;
 
     Simbolo(string s){
         symbol=s;
@@ -40,8 +41,8 @@ class AnalizadorSintactico {
     stack<Simbolo*> pila;
     stack<Simbolo*> aux;
 
-    string buscarTipoTS(int pos);
-    string buscarTipoTSGlobal(int pos);
+    string buscarTipoTS(int pos, int linea);
+    string buscarTipoTSGlobal(int pos, int linea);
     int insertarTipoTS(int pos,string tipo,int ancho);
     int insertarTipoTSGlobal(int pos,string tipo,int ancho, vector<string>& params,string ret);
     void destruirTS(string name);

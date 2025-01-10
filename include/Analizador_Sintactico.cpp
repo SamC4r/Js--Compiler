@@ -52,12 +52,12 @@ bool AnalizadorSintactico::esAccionSemantica(string s){
 
 pair<string,string> token;
 
-string AnalizadorSintactico::buscarTipoTSGlobal(int pos){
+string AnalizadorSintactico::buscarTipoTSGlobal(int pos, int linea){
     TablaSimbolos* ts_global = lexico.generator.ts_global;
     if(ts_global->posiciones.count(pos)){
         Entry* e = ts_global->getPos(pos);
         if(e->tipo == ""){
-            cerr << "No se ha asignado un tipo a la variable \'" << e->lexema << "\'" << " en la linea: " << lexico.generator.lineas <<  endl;
+            cerr << "No se ha asignado un tipo a la variable \'" << e->lexema << "\'" << " en la linea: " << lexico.generator.prev_lineas <<  endl;
             return "";
         }
         else if(e->tipo == "function"){
@@ -74,18 +74,18 @@ string AnalizadorSintactico::buscarTipoTSGlobal(int pos){
     return "";
 }
 
-string AnalizadorSintactico::buscarTipoTS(int pos){
+string AnalizadorSintactico::buscarTipoTS(int pos, int linea){
     TablaSimbolos* ts_actual = lexico.generator.queue->top();
     TablaSimbolos* ts_global = lexico.generator.ts_global;
     if(ts_actual->posiciones.count(pos)){
         Entry* e = ts_actual->getPos(pos);
         if(e->tipo == ""){
-            cerr << "No se ha asignado un tipo a la variable \'" << e->lexema << "\'" << " en la linea: " << lexico.generator.lineas <<  endl;
+            cerr << "No se ha asignado un tipo a la variable \'" << e->lexema << "\'" << " en la linea: " << lexico.generator.prev_lineas <<  endl;
             return "";
         }
         return e->tipo;
     }else{
-        return buscarTipoTSGlobal(pos);
+        return buscarTipoTSGlobal(pos,linea);
     }
 }
 
@@ -194,10 +194,11 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         debug(aux.top()->atributos->pos);
         int id_pos = aux.top()->atributos->pos;
         aux.pop();
-        string ret = buscarTipoTS(id_pos);
+        string ret = buscarTipoTS(id_pos,aux.top()->linea);
         string M_tipo=ret;
+        int M_linea=aux.top()->linea;
         if(v_tipo != "vacio"){
-            ret = buscarTipoTSGlobal(id_pos);
+            ret = buscarTipoTSGlobal(id_pos,aux.top()->linea);
             vector<string> params = split(v_tipo,' ');
             vector<string> args = split(ret,' ');
             int p = params.size();
@@ -208,7 +209,7 @@ void AnalizadorSintactico::ejecutarRegla(string s){
             lexico.generator.ts_global->print();
             lexico.generator.queue->top()->print();
             if(p + 1 != a){
-                string msg="el numero de parametros de la llamada no coincide con el numero de argumentos esperados por la funcion en la linea: " + to_string(lexico.generator.lineas);
+                string msg="el numero de parametros de la llamada no coincide con el numero de argumentos esperados por la funcion en la linea: " + to_string(M_linea);
                 M_tipo = Error(msg);
             }
             bool same=true;
@@ -222,7 +223,7 @@ void AnalizadorSintactico::ejecutarRegla(string s){
             if(same) {
                 M_tipo = args[params.size()];
             }else{
-                string msg ="Los tipos de los parametros de la llamada a la funcion no coinciden con lo esperado en la linea " + to_string(lexico.generator.lineas);
+                string msg ="Los tipos de los parametros de la llamada a la funcion no coinciden con lo esperado en la linea " + to_string(M_linea);
                 M_tipo = Error(msg);
             }
         }
@@ -243,7 +244,10 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         aux.pop();
         string M_tipo="";
         if(M1_tipo=="entero") M_tipo="entero";
-        else M_tipo=Error("solo se puede obtener el negativo de numeros enteros");
+        else{
+            string msg="solo se puede obtener el negativo de numeros enteros \t Error en la linea " + to_string(aux.top()->linea);
+            M_tipo=Error(msg);
+        }
         aux.top()->atributos->tipo=M_tipo;
     }
     else if(s == "{M->!M1}"){
@@ -252,7 +256,10 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         aux.pop();
         string M_tipo="";
         if(M1_tipo=="logico") M_tipo="logico";
-        else M_tipo=Error("solo se puede negar un booleano");
+        else{
+            string msg="solo se pueden negar un booleano\t Error en la linea " + to_string(aux.top()->linea);
+            M_tipo=Error(msg);
+        }
         aux.top()->atributos->tipo=M_tipo;
     }
     else if(s == "{M->constanteEntera}"){
@@ -268,12 +275,15 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         aux.pop();
         aux.pop();
         aux.pop();
-        string id_tipo = buscarTipoTS(id_pos);
+        string id_tipo = buscarTipoTS(id_pos,aux.top()->linea);
         string M_tipo="";
         if(id_tipo=="entero") M_tipo="entero";
-        else M_tipo=Error("solo se pueden predecrementar numeros enteros");
-        aux.top()->atributos->tipo=M_tipo;
+        else{
+            string msg="solo se pueden predecrementar numeros enteros \t Error en la linea " + to_string(aux.top()->linea);
+         M_tipo=Error(msg);
+        }
 
+        aux.top()->atributos->tipo=M_tipo;
     }   
     else if(s == "{V->(L)}"){
         aux.pop();
@@ -330,10 +340,11 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         string B_tipo=I_tipo;
         aux.pop();//quita )
         string E_tipo=aux.top()->atributos->tipo;
+        int E_linea=aux.top()->linea;
         debug(aux.top()->symbol);
         debug(E_tipo,I_tipo);
         if(E_tipo != "logico"){
-            cerr << "Error en la linea  "<< lexico.generator.lineas << " - la condicion de un if debe ser de tipo logico" << endl;
+            cerr << "Error en la linea  "<< E_linea << " - la condicion de un if debe ser de tipo logico" << endl;
             throw runtime_error("Condicion del if incorrecta: solo se pueden comprobar condiciones logicas");
             B_tipo="error";
         }
@@ -372,7 +383,8 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         }else if (N_tipo == "vacio"){
             E_tipo=R_tipo;
         }else{
-            E_tipo = Error("solo se pueden comparar enteros");
+            string msg="solo se pueden predecrementar numeros enteros \t Error en la linea " + to_string(aux.top()->linea);
+            E_tipo = Error(msg);
         }
         aux.top()->atributos->tipo=E_tipo;
     }
@@ -489,6 +501,7 @@ void AnalizadorSintactico::ejecutarRegla(string s){
     else if(s == "{C->BC1}"){
         string C1_tipo=aux.top()->atributos->tipo;
         string C1_ret=aux.top()->atributos->ret;
+        int C1_linea=aux.top()->linea;
         aux.pop();
         string B_tipo=aux.top()->atributos->tipo;
         string B_ret = aux.top()->atributos->ret;
@@ -504,7 +517,7 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         aux.top()->atributos->tipo=C_tipo;
         string ret = B_ret;
         if(ret != "" && C1_tipo != "vacio") {
-            string msg = "Despues de un return no puede haber mas codigo dentro del bloque en linea " + to_string(lexico.generator.lineas);
+            string msg = "Despues de un return no puede haber mas codigo dentro del bloque en linea " + to_string(C1_linea);
             ret=Error(msg);
         }
         if(ret == "")ret=C1_ret;
@@ -537,16 +550,18 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         aux.top()->atributos->ret=S_return;
     }else if(s == "{S->idU}"){
         string U_tipo=aux.top()->atributos->tipo;
+        int U_linea = aux.top()->linea;
         aux.pop();
 
         int id_pos = aux.top()->atributos->pos;
         aux.pop();
         debug(id_pos);
         string S_tipo;
-        string global_tipo = buscarTipoTSGlobal(id_pos);
-        string local_tipo = buscarTipoTS(id_pos);
+        int S_linea=aux.top()->linea;
+        string global_tipo = buscarTipoTSGlobal(id_pos,S_linea);
+        string local_tipo = buscarTipoTS(id_pos,S_linea);
         debug(global_tipo,local_tipo,U_tipo);
-        if(local_tipo == U_tipo || U_tipo == "vacio" || buscarTipoTSGlobal(id_pos) == U_tipo){
+        if(local_tipo == U_tipo || U_tipo == "vacio" || global_tipo == U_tipo){
             S_tipo="tipo_ok";
         }else if(global_tipo != ""){
             vector<string> params = split(U_tipo,' ');
@@ -555,7 +570,7 @@ void AnalizadorSintactico::ejecutarRegla(string s){
             int a = args.size();
             debug(params,args);
             if(p + 1 != a){
-                string msg="el numero de parametros de la llamada no coincide con el numero de argumentos esperados por la funcion en la linea: " + to_string(lexico.generator.lineas);
+                string msg="el numero de parametros de la llamada no coincide con el numero de argumentos esperados por la funcion en la linea: " + to_string(U_linea);
                 S_tipo = Error(msg);
             }
             bool same=true;
@@ -569,12 +584,12 @@ void AnalizadorSintactico::ejecutarRegla(string s){
             if(same) {
                 S_tipo ="tipo_ok";
             }else{
-                string msg ="Los tipos de los parametros de la llamada a la funcion no coinciden con lo esperado en la linea " + to_string(lexico.generator.lineas);
+                string msg ="Los tipos de los parametros de la llamada a la funcion no coinciden con lo esperado en la linea " + to_string(U_linea);
                 S_tipo = Error(msg);
             }
 
         } else{
-            string msg = ("la variable no es del tipo "+U_tipo+" en linea " + to_string(lexico.generator.lineas));
+            string msg = ("la variable no es del tipo "+U_tipo+" en linea " + to_string(lexico.generator.prev_lineas));
             S_tipo=Error(msg);
         }
         aux.top()->atributos->tipo=S_tipo;
@@ -596,15 +611,17 @@ void AnalizadorSintactico::ejecutarRegla(string s){
     }else if(s == "{D->id}"){
         int id_pos = aux.top()->atributos->pos;
         aux.pop();
-        string id_tipo = buscarTipoTS(id_pos);
+        int D_linea = aux.top()->linea;
+        string id_tipo = buscarTipoTS(id_pos,D_linea);
         string D_tipo = id_tipo;
         aux.top()->atributos->tipo = D_tipo;
     }else if(s == "{D->(id)}"){
         aux.pop(); //)
         int id_pos = aux.top()->atributos->pos;
         aux.pop(); //id
-        string id_tipo = buscarTipoTS(id_pos);
         aux.pop(); //(
+        int D_linea = aux.top()->linea;
+        string id_tipo = buscarTipoTS(id_pos,D_linea);
 
         string D_tipo = id_tipo;
         aux.top()->atributos->tipo = D_tipo;
@@ -651,11 +668,11 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         string F_tipo = C_tipo;
         // debug(C_ret);
         if(C_ret == ""){
-            string msg= "la funcion no tiene valor de retorno en la linea " + to_string(lexico.generator.lineas);
+            string msg= "la funcion no tiene valor de retorno en la linea " + to_string(lexico.generator.prev_lineas);
             F_tipo=Error(msg);
         }
         else if(F_devuelto != C_ret){
-            string msg = ("el tipo de retorno de la funcion no es del mismo tipo que la declaracion de la funcion \t Error en la linea " + to_string(lexico.generator.lineas));;
+            string msg = ("el tipo de retorno de la funcion no es del mismo tipo que la declaracion de la funcion \t Error en la linea " + to_string(lexico.generator.prev_lineas));
             F_tipo=Error(msg);
         }
         aux.top()->atributos->tipo=F_tipo;
@@ -716,10 +733,10 @@ void AnalizadorSintactico::ejecutarRegla(string s){
 
 void AnalizadorSintactico::error(string expected, string unexpected) {
     if(terminales.count(expected)){
-        cerr << "Error en la linea  "<< lexico.generator.lineas << " - se esperaba recibir: \'" << (expected) << "\' Pero se obtuvo: \'" << unexpected << "\'" << endl;
+        cerr << "Error en la linea  "<< lexico.generator.prev_lineas << " - se esperaba recibir: \'" << (expected) << "\' Pero se obtuvo: \'" << unexpected << "\'" << endl;
     }else{
         vector<string> first_follow=first[expected];
-        cerr << "Error en la linea  "<< lexico.generator.lineas << " - se esperaba recibir alguno de: [";
+        cerr << "Error en la linea  "<< lexico.generator.prev_lineas << " - se esperaba recibir alguno de: [";
         bool first=true;
             for(string s : first_follow){
             if(!first)cerr << ", ";
@@ -743,8 +760,9 @@ AnalizadorSintactico::AnalizadorSintactico(AnalizadorLexico &lexico, GestorError
     string a = siguienteToken();
     auto X = pila.top();
     while ((X=pila.top())->symbol != "$") {
+        X->linea=lexico.generator.lineas;
         cout << "element " << X->symbol << ' ' << a << endl;
-        cout << "lineas: " << lexico.generator.lineas << endl;
+        cout << "lineas: " << lexico.generator.prev_lineas << endl;
         if(terminales.count(X->symbol) || X->symbol == "$"){
             if(X->symbol == a){
                 pila.pop();
