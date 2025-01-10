@@ -1,25 +1,36 @@
+var boolean condicion;
+if (condicion)
+  output condicion;
+var boolean bool;
 
-var string	cadena;
-input 
-cadena;
-var boolean logico1	;
-var boolean logico2 	;
-var int int2			;
-
-
-
-/* Ejemplo #1*/
-
-int1 = 873;
-
-int2 = 378;
-if (! logico2) cadena = ' hello!';
-
-function string ff(string sss)
-{
-	global = 33;
-	logico1 =  logico2;
+function int fun(void){
+    return 100;
 }
+
+function int f(int num){
+    var int l1;
+    l1=f(1);
+    return 100;
+}
+
+
+function boolean ff (boolean ss,int num,boolean prueba){
+	varglobal = 3333;
+    hola=23 - 5%3 - 2;
+    var boolean l1;
+    var int ab;
+    l1=ff(ss,1,l1);
+	if (l1)   {
+        l1 = ff(ss,1,l1);
+    } else{
+        l1=ss;
+    }
+    var string c;
+    c='Jolala';
+    var int a;
+    ff(ss,1,l1);
+} 
+
 
 
 

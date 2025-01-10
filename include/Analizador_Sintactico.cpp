@@ -53,7 +53,7 @@ _print(x)
 bool AnalizadorSintactico::esAccionSemantica(string s){
     return numero_accion_semantica.count(s);
 }
-      bool returnBool = false;
+bool returnBool = false;
 pair<string,string> token;
 
 string AnalizadorSintactico::buscarTipoTSGlobal(int pos){
@@ -327,7 +327,7 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         aux.top()->atributos->tipo=S_tipo; // B.tipo=S.tipo
         aux.top()->atributos->ret=S_ret; // B.ret=S.ret
     }else if(s == "{B->if(E)I}"){
-      
+
         string I_tipo=aux.top()->atributos->tipo;
         aux.pop();
         string B_tipo=I_tipo;
@@ -366,7 +366,7 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         aux.top()->atributos->tipo="cadena";
         aux.top()->atributos->ancho=64;
     }else if(s == "{E->RN}"){
-       
+
         string N_tipo=aux.top()->atributos->tipo;
         aux.pop();
         string R_tipo=aux.top()->atributos->tipo;
@@ -407,9 +407,9 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         }else{
             R_tipo = Error("solo se pueden operar con numeros");
         }
- 
+
         aux.top()->atributos->tipo=R_tipo;
-    
+
     } 
     else if(s == "{P->-OP}"){
         string P1_tipo=aux.top()->atributos->tipo;
@@ -438,7 +438,7 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         }else{
             O_tipo = Error("solo se pueden operar enteros");
         }
- 
+
         aux.top()->atributos->tipo = O_tipo;
     }
     else if(s == "{Y->%MY}"){
@@ -495,7 +495,7 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         aux.pop();
         string B_tipo=aux.top()->atributos->tipo;
         string B_ret = aux.top()->atributos->ret;
-       
+
         // debug(B_tipo,C1_tipo);
         aux.pop();
         string C_tipo="";
@@ -506,16 +506,19 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         }
         aux.top()->atributos->tipo=C_tipo;
         string ret = B_ret;
-        if(ret != "" && C1_tipo != "vacio") ret=Error("Despues de un return no puede haber mas codigo dentro del bloque");
+        if(ret != "" && C1_tipo != "vacio") {
+            string msg = "Despues de un return no puede haber mas codigo dentro del bloque en linea " + to_string(lexico.generator.lineas);
+            ret=Error(msg);
+        }
         if(ret == "")ret=C1_ret;
         // if(ret == "")ret=Error("funcion no tiene un valor de retorno");
         aux.top()->atributos->ret=ret;
     }else if(s == "{S->outputE;}"){
-        
+
         aux.pop(); //quita ;
         string E_tipo=aux.top()->atributos->tipo;
         string S_tipo=(E_tipo == "tipo_error"? "tipo_error":"tipo_ok");
-      
+
         aux.pop(); //quita E
         aux.pop();          //quita output
         aux.top()->atributos->tipo=S_tipo;
@@ -527,7 +530,7 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         aux.pop();
         aux.top()->atributos->tipo=S_tipo;
     }else if(s == "{S->returnX;}"){
-         aux.pop(); //;
+        aux.pop(); //;
         string X_tipo=aux.top()->atributos->tipo;
         aux.pop(); //X
         aux.pop(); //return
@@ -636,7 +639,7 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         // lexico.generator.ts_global->print();
         insertarTipoTSGlobal(id_pos,F_tipo,0,params,H_tipo);
         aux.top()->atributos->ret=H_tipo;
-       
+
     }else if(s == "{F.tipo}"){
         aux.pop();
         string C_tipo = aux.top()->atributos->tipo;
@@ -722,48 +725,33 @@ void AnalizadorSintactico::error(string unexpected) {
 
 AnalizadorSintactico::AnalizadorSintactico(AnalizadorLexico &lexico, GestorErrores &errores) : lexico(lexico), errores(errores) {
 
-    string a = "";
     parse.open("parse.txt", fstream::out);
     parse << "D";
-    //while ((a = siguienteToken()) != "EOF") {}
-    while ((a = siguienteToken())  != "EOF" && a != "$" ) {
-        Simbolo* sp = new Simbolo("$");
-        pila.push(sp);
-        pila.push(new Simbolo("Z")); // axioma
-        aux.push(new Simbolo("Z")); // axioma
+    Simbolo* sp = new Simbolo("$");
+    pila.push(sp);
+    pila.push(new Simbolo("Z")); // axioma
+    aux.push(new Simbolo("Z")); // axioma
 
-        auto X = pila.top();
-        while (X->symbol != "$") {
-            if(token_char.count(a))a=token_char[a];
-            if(token_char.count(X->symbol))X->symbol=token_char[X->symbol];
-            cout << "element: " << X->symbol << ' ' << a << endl;
-            // debug(X->symbol);
-            if(a == "EOF"){
-                a= "$";
-            }else if(esAccionSemantica(X->symbol)){
-                 cout << "YEEEE " << X->symbol << endl;
-                ejecutarRegla(X->symbol);
-                // debug(aux.top()->symbol);
-                // debug(aux.top()->atributos->tipo);
-                pila.pop();
-            }
-            else if (X->symbol == a) {
+    string a = siguienteToken();
+    auto X = pila.top();
+    while ((X=pila.top())->symbol != "$") {
+        // cout << "element " << X->symbol << ' ' << a << endl;
+        if(terminales.count(X->symbol) || X->symbol == "$"){
+            if(X->symbol == a){
                 pila.pop();
                 cout << "top" << pila.top()->symbol << endl;
-
                 //Meter X y sus atributos en AUX
                 if(token.second != "" && token.first != "cadena")
                     X->atributos->pos = stoi(token.second); //add attribute
                 aux.push(X);
-                a = siguienteToken();
-            } else if (terminales.count(X->symbol)){
+                a = siguienteToken();               
+            }else{
                 error(X->symbol);
             }
-            else if (!M.count({X->symbol, a})){
-                error(a);
-            }
-            else if (M.count({X->symbol, a})) {
-                // cout << "esta!" << endl;
+        }else if(noTerminales.count(X->symbol)){
+                cout << "esta!" << endl;
+            if(M.count({X->symbol, a})){
+
                 string production = M[{X->symbol, a}];
 
                 // cout << "Produccion: [" << X->symbol << ", " << a << "]: " << X->symbol << " -> " <<  (production = M[{X->symbol, a}])  << endl;
@@ -795,17 +783,25 @@ AnalizadorSintactico::AnalizadorSintactico(AnalizadorLexico &lexico, GestorError
                     }
                 }
                 string regla = X->symbol + " -> " + rule;
-                // debug(regla);
+                debug(regla);
                 regla.pop_back();
                 parse << " " << producciones[regla];
                 if(producciones[regla] == 0){
                     cout << regla << endl;
                     exit(0);
                 }
+            }else{
+                error(X->symbol);
             }
-            X = pila.top();
+        }else if(esAccionSemantica(X->symbol)){
+            cout << "YEEEE " << X->symbol << endl;
+            ejecutarRegla(X->symbol);
+            pila.pop();
         }
-    };
+    }
+    if(a == "$" && aux.top()->symbol == "Z"){
+
+    }else error("a");
     destruirTS("principal");
 };
 

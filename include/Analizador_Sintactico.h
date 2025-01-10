@@ -58,8 +58,7 @@ class AnalizadorSintactico {
         "cadena", "lambda"
     };
 
-    set<string> noTerminales = {"Z", "B", "T", "E", "O", "M", "P", "L", "Q", "I",
-        "J", "C", "S", "D", "X", "F", "H", "A", "K"};
+    set<string> noTerminales = { "Z", "B", "T", "E", "N", "R", "P", "O", "Y", "M", "V", "L", "Q", "I", "J", "C", "S", "U", "D", "X", "F", "H", "A", "K" };
 
     std::map<std::string, std::string> token_char = {
         {"operadorAsignacion", "="},
