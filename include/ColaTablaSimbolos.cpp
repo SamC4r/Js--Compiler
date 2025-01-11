@@ -28,10 +28,10 @@ struct ts_content{
 
 
 void ColaTablaSimbolos::print(string nombre) {
-    static int it = 1;
+    static int it = 2;
     TablaSimbolos* ambito_actual = top();
 
-    ts_file << "Contenidos de la Tabla " << nombre << " # " << it++ << " :" << endl;
+    ts_file << "Contenidos de la Tabla " << nombre << " # " << (nombre == "principal"  ? 1:it++) << " :" << endl;
 
     vector<ts_content> ids;
     cerr << ambito_actual->posiciones.size() << endl;

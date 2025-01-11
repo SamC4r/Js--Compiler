@@ -2,40 +2,149 @@
 <palabraReservada, 1>
 <id, 0>
 <puntoComa,>
-<palabraReservada, 4>
+<palabraReservada, 7>
+<constanteEntera, 4>
+<operadorModulo,>
+<constanteEntera, 5>
+<operadorModulo,>
+<constanteEntera, 77>
+<puntoComa,>
+<palabraReservada, 3>
+<palabraReservada, 1>
+<id, 1>
 <parentesisIzda,>
+<palabraReservada, 6>
 <id, 0>
 <parentesisDcha,>
 <llavesIzda,>
-<id, 0>
-<operadorAsignacion,>
+<palabraReservada, 10>
+<palabraReservada, 9>
 <id, 1>
+<puntoComa,>
+<palabraReservada, 7>
+<cadena,'Es bisiesto?'>
+<puntoComa,>
+<palabraReservada, 5>
+<id, 1>
+<puntoComa,>
+<palabraReservada, 8>
+<parentesisIzda,>
+<parentesisIzda,>
+<id, 0>
+<operadorModulo,>
+<constanteEntera, 4>
 <operadorMayor,>
+<constanteEntera, 0>
+<parentesisDcha,>
+<parentesisDcha,>
+<puntoComa,>
+<llavesDcha,>
+<palabraReservada, 3>
+<palabraReservada, 6>
+<id, 2>
+<parentesisIzda,>
+<palabraReservada, 6>
+<id, 0>
+<coma,>
+<palabraReservada, 6>
+<id, 1>
+<parentesisDcha,>
+<llavesIzda,>
+<palabraReservada, 10>
+<palabraReservada, 6>
+<id, 2>
+<puntoComa,>
+<palabraReservada, 7>
+<parentesisIzda,>
+<cadena,'di cuantos dias tiene el mes '>
+<parentesisDcha,>
+<puntoComa,>
+<palabraReservada, 7>
+<id, 0>
+<puntoComa,>
+<palabraReservada, 7>
+<cadena,' de '>
+<puntoComa,>
+<palabraReservada, 7>
+<id, 1>
+<puntoComa,>
+<palabraReservada, 5>
+<id, 2>
+<puntoComa,>
+<palabraReservada, 4>
+<parentesisIzda,>
+<id, 1>
+<parentesisIzda,>
+<id, 1>
+<parentesisDcha,>
+<parentesisDcha,>
+<id, 2>
+<operadorAsignacion,>
+<id, 2>
+<operadorMenos,>
+<constanteEntera, 1>
+<puntoComa,>
+<palabraReservada, 8>
 <id, 2>
 <puntoComa,>
 <llavesDcha,>
-<palabraReservada, 2>
-<llavesIzda,>
-<palabraReservada, 7>
-<constanteEntera, 0>
-<puntoComa,>
-<llavesDcha,>
-<palabraReservada, 10>
+<palabraReservada, 3>
 <palabraReservada, 1>
 <id, 3>
-<puntoComa,>
-<palabraReservada, 3>
+<parentesisIzda,>
 <palabraReservada, 6>
+<id, 0>
+<coma,>
+<palabraReservada, 6>
+<id, 1>
+<coma,>
+<palabraReservada, 6>
+<id, 2>
+<parentesisDcha,>
+<llavesIzda,>
+<palabraReservada, 8>
+<operadorNegacion,>
+<parentesisIzda,>
+<id, 0>
+<operadorMayor,>
+<id, 2>
+<parentesisIzda,>
+<id, 1>
+<coma,>
+<id, 2>
+<parentesisDcha,>
+<parentesisDcha,>
+<puntoComa,>
+<llavesDcha,>
+<palabraReservada, 3>
+<palabraReservada, 11>
 <id, 4>
 <parentesisIzda,>
 <palabraReservada, 11>
 <parentesisDcha,>
 <llavesIzda,>
+<palabraReservada, 4>
+<parentesisIzda,>
+<id, 3>
+<parentesisIzda,>
+<constanteEntera, 25>
+<coma,>
+<constanteEntera, 10>
+<coma,>
+<constanteEntera, 2024>
+<parentesisDcha,>
+<parentesisDcha,>
+<palabraReservada, 7>
+<parentesisIzda,>
+<cadena,'OK'>
+<parentesisDcha,>
+<puntoComa,>
+<llavesDcha,>
+<palabraReservada, 10>
+<palabraReservada, 1>
+<id, 5>
+<puntoComa,>
 <id, 4>
 <parentesisIzda,>
 <parentesisDcha,>
 <puntoComa,>
-<palabraReservada, 8>
-<constanteEntera, 1>
-<puntoComa,>
-<llavesDcha,>

@@ -139,7 +139,7 @@ void AnalizadorSintactico::destruirTS(string name){
 
 string Error(string msg){
     cerr << "[X] Error [X]: " << msg << endl;
-    throw runtime_error(msg);
+    // throw runtime_error(msg);
     return ("tipo_error");
 }
 vector<std::string> split(const string& str, char delimiter) {
@@ -615,12 +615,12 @@ void AnalizadorSintactico::ejecutarRegla(string s){
                 string msg ="Los tipos de los parametros de la llamada a la funcion no coinciden con lo esperado en la linea " + to_string(U_linea);
                 S_tipo = Error(msg);
             }
-        }else if(U_tipo == "vacio " || params.size() > 1){
-            debug(U_tipo);
-            debug(params);
+        }else if(U_tipo.back() == ' ' || params.size() > 1){
             string msg = "\'" + lexico.generator.queue->top()->getPos(id_pos)->lexema + "\' no es una funcion en la linea " + to_string(U_linea);
             S_tipo = Error(msg);
         } else{
+            debug(U_tipo);
+            debug(params);
             string msg = ("la variable no es del tipo "+U_tipo+" en linea " + to_string(S_linea));
             S_tipo=Error(msg);
         }
@@ -739,6 +739,9 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         string K1_tipo = aux.top()->atributos->tipo;
         vector<Id> ids = aux.top()->ids;
         aux.pop();
+        //string K1_tipo = aux.top()->atributos->tipo;
+        //vector<Id> ids = aux.top()->ids;
+        //aux.pop();
         int id_pos = aux.top()->atributos->pos;
         aux.pop();
         string T_tipo = aux.top()->atributos->tipo;
@@ -757,7 +760,7 @@ void AnalizadorSintactico::ejecutarRegla(string s){
     }else if(s == "{no_desp}"){
         lexico.generator.function = true;
     }
-}
+} 
 
 void AnalizadorSintactico::error(string expected, string unexpected) {
     if(terminales.count(expected)){

@@ -1,29 +1,89 @@
-Contenidos de la Tabla funcion local # 1 :
-Contenidos de la Tabla principal # 2 :
-  * LEXEMA : 'logico2'
+Contenidos de la Tabla funcion local # 2 :
+  * LEXEMA : 'a'
     ATRIBUTOS :
-    + Tipo : 'logico'
+    + Tipo : 'entero'
     + Despl : 0
    --------- ----------
-  * LEXEMA : 'int1'
+  * LEXEMA : 'bis'
+    ATRIBUTOS :
+    + Tipo : 'cadena'
+    + Despl : 1
+   --------- ----------
+Contenidos de la Tabla funcion local # 3 :
+  * LEXEMA : 'm'
+    ATRIBUTOS :
+    + Tipo : 'entero'
+    + Despl : 0
+   --------- ----------
+  * LEXEMA : 'a'
     ATRIBUTOS :
     + Tipo : 'entero'
     + Despl : 1
    --------- ----------
-  * LEXEMA : 'int2'
+  * LEXEMA : 'dd'
     ATRIBUTOS :
     + Tipo : 'entero'
-    + Despl : 5
+    + Despl : 2
    --------- ----------
-  * LEXEMA : 'condicion'
+Contenidos de la Tabla funcion local # 4 :
+  * LEXEMA : 'd'
     ATRIBUTOS :
-    + Tipo : 'logico'
-    + Despl : 9
+    + Tipo : 'entero'
+    + Despl : 0
+   --------- ----------
+  * LEXEMA : 'm'
+    ATRIBUTOS :
+    + Tipo : 'entero'
+    + Despl : 1
    --------- ----------
   * LEXEMA : 'a'
     ATRIBUTOS :
+    + Tipo : 'entero'
+    + Despl : 2
+   --------- ----------
+Contenidos de la Tabla funcion local # 5 :
+Contenidos de la Tabla principal # 1 :
+  * LEXEMA : 'booleano'
+    ATRIBUTOS :
+    + Tipo : 'logico'
+    + Despl : 0
+   --------- ----------
+  * LEXEMA : 'bisiesto'
+    ATRIBUTOS :
+    + Tipo : 'function'
+    + numParam : 1
+    + TipoParametro1 : 'entero'
+    + TipoRetorno : 'logico'
+    + Etiqueta : 'bisiesto'
+   --------- ----------
+  * LEXEMA : 'dias'
+    ATRIBUTOS :
+    + Tipo : 'function'
+    + numParam : 2
+    + TipoParametro1 : 'entero'
+    + TipoParametro2 : 'entero'
+    + TipoRetorno : 'entero'
+    + Etiqueta : 'dias'
+   --------- ----------
+  * LEXEMA : 'esFechaCorrecta'
+    ATRIBUTOS :
+    + Tipo : 'function'
+    + numParam : 3
+    + TipoParametro1 : 'entero'
+    + TipoParametro2 : 'entero'
+    + TipoParametro3 : 'entero'
+    + TipoRetorno : 'logico'
+    + Etiqueta : 'esFechaCorrecta'
+   --------- ----------
+  * LEXEMA : 'demo'
+    ATRIBUTOS :
     + Tipo : 'function'
     + numParam : 0
-    + TipoRetorno : 'entero'
-    + Etiqueta : 'a'
+    + TipoRetorno : 'vacio'
+    + Etiqueta : 'demo'
+   --------- ----------
+  * LEXEMA : 'abc'
+    ATRIBUTOS :
+    + Tipo : 'logico'
+    + Despl : 13
    --------- ----------

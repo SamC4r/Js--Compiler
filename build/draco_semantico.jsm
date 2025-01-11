@@ -35,7 +35,7 @@ abc1=abc0;
 
 var
 string
-boo ;
+bo1o ;
 
 
 output 123;
