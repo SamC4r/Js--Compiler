@@ -139,7 +139,7 @@ void AnalizadorSintactico::destruirTS(string name){
 
 string Error(string msg){
     cerr << "[X] Error [X]: " << msg << endl;
-    // throw runtime_error(msg);
+    throw runtime_error(msg);
     return ("tipo_error");
 }
 vector<std::string> split(const string& str, char delimiter) {
