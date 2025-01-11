@@ -13,6 +13,8 @@ void ColaTablaSimbolos::add(TablaSimbolos* symbol) { q.push(symbol); }
 
 void ColaTablaSimbolos::pop() { q.pop(); }
 
+int ColaTablaSimbolos::size() { return q.size(); }
+
 TablaSimbolos* ColaTablaSimbolos::top() { return q.top(); }
 
 struct ts_content{

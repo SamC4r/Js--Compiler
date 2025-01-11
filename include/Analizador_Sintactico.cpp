@@ -472,8 +472,10 @@ void AnalizadorSintactico::ejecutarRegla(string s){
     } 
     else if(s == "{I->S}") {
         string S_tipo=aux.top()->atributos->tipo;
+        string S_ret=aux.top()->atributos->ret;
         aux.pop();
         aux.top()->atributos->tipo=S_tipo;
+        aux.top()->atributos->ret=S_ret;
     }
     else if(s == "{I->{C}J}"){
         string J_tipo = aux.top()->atributos->tipo;
@@ -484,16 +486,21 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         string C_ret = aux.top()->atributos->ret;
         aux.pop();
         aux.pop();
+        int I_linea = aux.top()->linea;
         string I_tipo;
         string I_ret;
         if((J_tipo=="tipo_ok" || J_tipo=="vacio") && (C_tipo=="tipo_ok" || C_tipo=="vacio")){
             I_tipo="tipo_ok";
         }
         else I_tipo="tipo_error";
-        if(J_ret=="vacio" ||J_ret==C_ret){
-            I_ret=C_ret;
+        if(C_ret=="") I_ret=J_ret;
+        else if(J_ret=="") I_ret=C_ret;
+        else if(C_ret==J_ret) I_ret=C_ret;
+        else{
+            string msg = "Returns de if y else distintos a partir de la linea " + to_string(I_linea);
+            I_tipo=Error(msg);
+            I_ret="tipo_error";
         }
-        else I_ret=Error("El return del if y del else son de tipos distintos");
         aux.top()->atributos->tipo=I_tipo;
         aux.top()->atributos->ret=I_ret;
         debug("_------------------");
@@ -519,20 +526,22 @@ void AnalizadorSintactico::ejecutarRegla(string s){
 
         // debug(B_tipo,C1_tipo);
         aux.pop();
+        int C_linea = aux.top()->linea;
         string C_tipo="";
         if(B_tipo == "tipo_ok" && (C1_tipo == "vacio" || C1_tipo == "tipo_ok")){
             C_tipo="tipo_ok";
         }else{
             C_tipo="tipo_error";
         }
-        aux.top()->atributos->tipo=C_tipo;
         string ret = B_ret;
-        if(ret != "" && C1_tipo != "vacio") {
-            string msg = "Despues de un return no puede haber mas codigo dentro del bloque en linea " + to_string(C1_linea);
-            ret=Error(msg);
+        if(ret != "" && C1_ret != ret && C1_ret!="") {
+            string msg = "returns de tipos distintos en el bloque que empieza en la linea " + to_string(C_linea);
+            C_tipo=Error(msg);
         }
         if(ret == "")ret=C1_ret;
+        if(ret == "tipo_error") C_tipo="tipo_error";
         // if(ret == "")ret=Error("funcion no tiene un valor de retorno");
+        aux.top()->atributos->tipo=C_tipo;
         aux.top()->atributos->ret=ret;
     }else if(s == "{S->outputE;}"){
 
@@ -554,9 +563,14 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         aux.pop(); //;
         string X_tipo=aux.top()->atributos->tipo;
         aux.pop(); //X
+        int return_linea = aux.top()->linea;
         aux.pop(); //return
         string S_tipo=(X_tipo == "tipo_error"? "tipo_error":"tipo_ok");
         string S_return = X_tipo;
+        if(lexico.generator.queue->size()!=2){
+            string msg = "return fuera de funcion en linea " + to_string(return_linea);
+            S_tipo = Error(msg);
+        }
         aux.top()->atributos->tipo=S_tipo;
         aux.top()->atributos->ret=S_return;
     }else if(s == "{S->idU}"){
@@ -685,11 +699,7 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         // debug(F_devuelto);
         string F_tipo = C_tipo;
         // debug(C_ret);
-        if(C_ret == ""){
-            string msg= "la funcion no tiene valor de retorno en la linea " + to_string(lexico.generator.prev_lineas);
-            F_tipo=Error(msg);
-        }
-        else if(F_devuelto != C_ret){
+        if(F_devuelto != C_ret && C_ret!=""){
             string msg = ("el tipo de retorno de la funcion no es del mismo tipo que la declaracion de la funcion \t Error en la linea " + to_string(lexico.generator.prev_lineas));
             F_tipo=Error(msg);
         }
@@ -773,7 +783,6 @@ AnalizadorSintactico::AnalizadorSintactico(AnalizadorLexico &lexico, GestorError
     Simbolo* sp = new Simbolo("$");
     pila.push(sp);
     pila.push(new Simbolo("Z")); // axioma
-    aux.push(new Simbolo("Z")); // axioma
 
     string a = siguienteToken();
     auto X = pila.top();

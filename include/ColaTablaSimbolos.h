@@ -17,6 +17,7 @@ public:
   ColaTablaSimbolos(string ts_file_name);
   void add(TablaSimbolos* symbol);
   void pop();
+  int size();
   TablaSimbolos *top();
   void print(string nombre);
 };
