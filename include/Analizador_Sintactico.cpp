@@ -593,12 +593,18 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         }else if(funcion){
             string global_tipo = buscarTipoTSGlobal(id_pos,S_linea);
             vector<string> args = split(global_tipo,' ');
-            int p =0, a= 0;
+            int p=0;
+            int a=0;
+            for(string s : params){
+                if(s != "vacio" && s!="")p++;
+            }
+            for(int i = 0; i + 1 < args.size();i++){
+                string s = args[i];
+                if(s != "vacio" && s!="")a++;
+            }
 
-            for(string s : params){ if(s != "vacio")p++; }  
-            for(string s : args){ if(s != "vacio" && s != "")a++; }
-
-            if(p + 1 != a){
+            debug(p,a);
+            if(p != a){
                 string msg="el numero de parametros de la llamada no coincide con el numero de argumentos esperados por la funcion en la linea: " + to_string(U_linea);
                 S_tipo = Error(msg);
             }  
