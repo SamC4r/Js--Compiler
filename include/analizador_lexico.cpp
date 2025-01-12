@@ -91,7 +91,7 @@ void Generator::Token(string identificador) {
                     ts_global->add(identificador);
                 gen_token("id", (int) ts_global->getEntry(identificador)->pos);
                 if(!function)
-                    ts_global->global_desp+=4; //tipo entero por defecto 
+                    ts_global->global_desp+=1; //tipo entero por defecto 
                 else function=false;
                 return;
             }

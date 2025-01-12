@@ -331,7 +331,6 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         aux.top()->atributos->tipo=Q_tipo;
     }
     else if(s == "{B->varTid;}"){
-        aux.pop();
         int id_pos = aux.top()->atributos->pos;
         aux.pop();
         debug("AAAA",id_pos);
@@ -342,7 +341,11 @@ void AnalizadorSintactico::ejecutarRegla(string s){
         aux.pop(); //quita var
         lexico.generator.zona_declaracion=false;
         aux.top()->atributos->tipo="tipo_ok";
-    }else if(s == "{B->S}"){
+    }
+    else if(s == "{;}"){
+        aux.pop();
+    }
+    else if(s == "{B->S}"){
         string S_tipo = aux.top()->atributos->tipo;
         string S_ret = aux.top()->atributos->ret;
         aux.pop();
