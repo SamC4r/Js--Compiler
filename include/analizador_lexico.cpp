@@ -11,159 +11,191 @@
 
 #define endl "\n"
 
-
 using namespace std;
-
-
 
 int cnt = 0;
 string fuente = "";
 
 template <typename T1, typename T2>
-void Generator::gen_token(T1 tipo, T2 atributo) {
+void Generator::gen_token(T1 tipo, T2 atributo)
+{
     lastTokenType = tipo;
     lastTokenAttribute = to_string(atributo);
 
-    if(codigo_palabra_reservada.count(tipo)){
-        tipo="palabraReservada";
+    if (codigo_palabra_reservada.count(tipo))
+    {
+        tipo = "palabraReservada";
     }
 
     token_file << "<" << tipo << ", " << atributo << ">" << endl;
     buscando = false;
     cerr << "lastTokenAttrib: " << lastTokenAttribute << endl;
-    pair<string,string> p = {lastTokenType,lastTokenAttribute};
+    pair<string, string> p = {lastTokenType, lastTokenAttribute};
     q.push(p);
-    prev_lineas=lineas;
+    prev_lineas = lineas;
 }
 
-void Generator::gen_token(string tipo) {
+void Generator::gen_token(string tipo)
+{
 
     lastTokenType = tipo;
     lastTokenAttribute = "";
     // cerr << "TIPO -> " << tipo << endl;
-    if(tipo_caracter_especial.count(tipo)){
-        tipo=tipo_caracter_especial[tipo];
+    if (tipo_caracter_especial.count(tipo))
+    {
+        tipo = tipo_caracter_especial[tipo];
     }
     token_file << "<" << tipo << ",>" << endl;
 
     buscando = false;
-   pair<string,string> p = {lastTokenType,lastTokenAttribute};
-    q.push(p);  
-    prev_lineas=lineas;
+    pair<string, string> p = {lastTokenType, lastTokenAttribute};
+    q.push(p);
+    prev_lineas = lineas;
 }
-template <typename T1> void Generator::gen_token(T1 tipo, string cadena) {
+template <typename T1>
+void Generator::gen_token(T1 tipo, string cadena)
+{
     token_file << "<" << tipo << ",\'" << cadena << "\'>" << endl;
     lastTokenType = tipo;
     lastTokenAttribute = cadena;
     buscando = false;
-     pair<string,string> p = {lastTokenType,lastTokenAttribute};
-    q.push(p); 
-    prev_lineas=lineas;
+    pair<string, string> p = {lastTokenType, lastTokenAttribute};
+    q.push(p);
+    prev_lineas = lineas;
 }
 
-void Generator::init(string token_file_name, ColaTablaSimbolos &queue) {
+void Generator::init(string token_file_name, ColaTablaSimbolos &queue)
+{
 
     token_file.open(token_file_name, fstream::out);
     zona_declaracion = false;
     this->queue = &queue;
-    TablaSimbolos* global = new TablaSimbolos();
+    TablaSimbolos *global = new TablaSimbolos();
     this->queue->add(global);
-    this->ts_global=queue.top();
-    prev_lineas=0;
+    this->ts_global = queue.top();
+    prev_lineas = 0;
 }
 
-void Generator::Token(string identificador) {
+void Generator::Token(string identificador)
+{
 
-    if (codigo_palabra_reservada.count(identificador)) {
+    if (codigo_palabra_reservada.count(identificador))
+    {
         gen_token(identificador, codigo_palabra_reservada[identificador]);
-    } else {
-        if(identificador == "") return;
+    }
+    else
+    {
+        if (identificador == "")
+            return;
         TablaSimbolos *simbolos = queue->top();
-        if(zona_declaracion && simbolos->getEntry(identificador) != NULL){ //no volver a declarar
-                cerr << "Variable ya declarada: \'" << identificador << "\' en linea: " << lineas << endl;
-                throw runtime_error("Variable ya declarada");
+        if (zona_declaracion && simbolos->getEntry(identificador) != NULL)
+        { // no volver a declarar
+            cerr << "Variable ya declarada: \'" << identificador << "\' en linea: " << lineas << endl;
+            throw runtime_error("Variable ya declarada");
         }
-        else if (simbolos->getEntry(identificador) == NULL) { //no declarada
-            if(zona_declaracion){
+        else if (simbolos->getEntry(identificador) == NULL)
+        { // no declarada
+            if (zona_declaracion)
+            {
                 simbolos->add(identificador);
-            }else{
-                if(ts_global->getEntry(identificador) == NULL)
+            }
+            else
+            {
+                if (ts_global->getEntry(identificador) == NULL)
+                {
                     ts_global->add(identificador);
-                gen_token("id", (int) ts_global->getEntry(identificador)->pos);
-                if(!function)
-                    ts_global->global_desp+=1; //tipo entero por defecto 
-                else function=false;
+                    if (!function)
+                        ts_global->global_desp += 1;
+                    else
+                        function = false;
+                }
+                gen_token("id", (int)ts_global->getEntry(identificador)->pos);
                 return;
             }
         }
-        gen_token("id", (int) simbolos->getEntry(identificador)->pos);
+        gen_token("id", (int)simbolos->getEntry(identificador)->pos);
     }
 }
 
-void Generator::Token(char c) {
-    string character(1,c);
+void Generator::Token(char c)
+{
+    string character(1, c);
     gen_token(character);
 }
 
 void Generator::Token(int valor) { gen_token("constanteEntera", valor); }
 
-void Generator::Token(TiposToken tipo) {
-    if (tipo == TiposToken::OPERADOR_ESPECIAL) {
+void Generator::Token(TiposToken tipo)
+{
+    if (tipo == TiposToken::OPERADOR_ESPECIAL)
+    {
         gen_token("--");
     }
 }
 
-void Generator::Token(string str, char del) {
-    if (del == '\'') {
+void Generator::Token(string str, char del)
+{
+    if (del == '\'')
+    {
         gen_token("cadena", str);
     }
 }
 
-bool AnalizadorLexico::is_delimiter(char c) {
+bool AnalizadorLexico::is_delimiter(char c)
+{
     if (c == '\n')
         generator.lineas++;
     return (c == ' ' || c == '\n' || c == '\t' || c == '\0' || c == '\r' ||
-    c == EOF);
+            c == EOF);
 }
 
 bool AnalizadorLexico::is_eof(char c) { return (c == EOF); }
 
 bool AnalizadorLexico::d(char c) { return (c >= '0' && c <= '9'); }
 
-bool AnalizadorLexico::l(char c) {
+bool AnalizadorLexico::l(char c)
+{
     return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || c == '_');
 }
 
-bool AnalizadorLexico::caracter_especial(char c) {
+bool AnalizadorLexico::caracter_especial(char c)
+{
     return (c == '=' || c == '%' || c == '-' || c == '(' || c == ')' ||
-    c == '{' || c == '}' || c == ';' || c == ',' || c == '%' ||
-    c == '>' || c == '!');
+            c == '{' || c == '}' || c == ';' || c == ',' || c == '%' ||
+            c == '>' || c == '!');
 }
 
 bool AnalizadorLexico::cadena(char c) { return (c == '\''); }
 
 bool AnalizadorLexico::menos(char c) { return (c == '-'); }
 
-char AnalizadorLexico::leer_digito() {
+char AnalizadorLexico::leer_digito()
+{
     int number = 0;
     char c;
-    while (d(c = programa.peek()) && !programa.eof()) {
+    while (d(c = programa.peek()) && !programa.eof())
+    {
         number = number * 10 + (c - '0');
         c = programa.get();
     }
 
-    if (number >= (1 << 15)) {
+    if (number >= (1 << 15))
+    {
         errores.genError(errores::NUMERO_FUERA_RANGO, generator.lineas, to_string(number));
-    } else {
+    }
+    else
+    {
         generator.Token(number);
     }
     return c;
 }
 
-char AnalizadorLexico::leer_letra() {
+char AnalizadorLexico::leer_letra()
+{
     string palabra = "";
     char c;
-    while ((l(c = programa.peek()) || d(c)) && !programa.eof()) {
+    while ((l(c = programa.peek()) || d(c)) && !programa.eof())
+    {
         palabra += c;
         c = programa.get();
     }
@@ -172,46 +204,61 @@ char AnalizadorLexico::leer_letra() {
     return c;
 }
 
-char AnalizadorLexico::predecremento() {
+char AnalizadorLexico::predecremento()
+{
     string decremento = "";
     char c;
     int cnt = 0;
 
-    while (menos(c = programa.peek()) && !programa.eof()) {
+    while (menos(c = programa.peek()) && !programa.eof())
+    {
         decremento += c;
         c = programa.get();
         cnt++;
     }
 
-    if (cnt > 2) {
+    if (cnt > 2)
+    {
         throw runtime_error("Expresion expected");
-    } else if (cnt == 2) {
+    }
+    else if (cnt == 2)
+    {
         generator.Token(TiposToken::OPERADOR_ESPECIAL);
-    } else {
+    }
+    else
+    {
         // menos
         generator.Token('-');
     }
     return c;
 }
 
-char AnalizadorLexico::cadena() {
+char AnalizadorLexico::cadena()
+{
     string str = "";
     char c = programa.get(); // to skip '  --> place pointer on it. Then test for
     // the next ones
     int cnt = 1;
-    while (!cadena(c = programa.peek()) && !programa.eof()) {
-        if (c == '\n') {
+    while (!cadena(c = programa.peek()) && !programa.eof())
+    {
+        if (c == '\n')
+        {
             break;
         }
         str += c;
         c = programa.get();
     }
     cnt += (c == '\'');
-    if (cnt < 2) {
+    if (cnt < 2)
+    {
         errores.genError(errores::CADENA_NO_CERRADA, generator.lineas, str);
-    } else if (str.size() > 64) {
+    }
+    else if (str.size() > 64)
+    {
         errores.genError(errores::CADENA_LARGA, generator.lineas, str);
-    } else {
+    }
+    else
+    {
         // operador menos
         generator.Token(str, '\'');
     }
@@ -234,7 +281,8 @@ automata
 
 */
 
-pair<string,string> AnalizadorLexico::getToken() {
+pair<string, string> AnalizadorLexico::getToken()
+{
 
     char c;
     bool negativo = false;
@@ -244,28 +292,34 @@ pair<string,string> AnalizadorLexico::getToken() {
     bool posible_fin_comentario = false;
     generator.buscando = true;
     if (programa.eof())
-        return {"$","-"};
+        return {"$", "-"};
 
-    if(!generator.q.empty()){
+    if (!generator.q.empty())
+    {
         auto top = generator.q.front();
         generator.q.pop();
         return top;
     }
 
-    while (programa && !programa.eof() && generator.buscando) {
+    while (programa && !programa.eof() && generator.buscando)
+    {
 
         c = programa.peek();
 
-        if (comentario && posible_fin_comentario && c == '/') {
+        if (comentario && posible_fin_comentario && c == '/')
+        {
             comentario = false;
             posible_fin_comentario = false;
             posible_comentario = false;
             goto next;
-        } else {
+        }
+        else
+        {
             posible_fin_comentario = false;
         }
 
-        if (comentario && c == '*') {
+        if (comentario && c == '*')
+        {
             posible_fin_comentario = true;
             goto next;
         }
@@ -273,34 +327,49 @@ pair<string,string> AnalizadorLexico::getToken() {
         if (comentario)
             goto next;
 
-        if (posible_comentario && c == '*') {
+        if (posible_comentario && c == '*')
+        {
             comentario = true;
             goto next;
-        } else {
+        }
+        else
+        {
             posible_comentario = false;
         }
 
-        if (c == '/') {
+        if (c == '/')
+        {
             posible_comentario = true;
             goto next;
         }
 
-        if (l(c)) {
+        if (l(c))
+        {
             c = leer_letra(); // Devuelve el caracter en el que se encuentra el
             // puntero de lectura
-        } else if (d(c)) {
+        }
+        else if (d(c))
+        {
             c = leer_digito();
-        } else if (menos(c)) {
+        }
+        else if (menos(c))
+        {
             c = predecremento();
-        } else if (cadena(c)) {
+        }
+        else if (cadena(c))
+        {
             c = cadena();
         }
 
-        if (is_delimiter(c)) { // En este caso hay que saltarlo
+        if (is_delimiter(c))
+        { // En este caso hay que saltarlo
             // cerr << "Delimiter: " << (int)c <AnalizadorSintactico::< endl;
             goto next;
-        } else if (caracter_especial(c)) {
-            if (menos(c)) {
+        }
+        else if (caracter_especial(c))
+        {
+            if (menos(c))
+            {
                 negativo = true;
                 continue;
                 // SI es negativo hay que comprobar si se puede dar el caso de --  . Por
@@ -310,11 +379,17 @@ pair<string,string> AnalizadorLexico::getToken() {
                 continue;
             // cerr << "especial: " << c << endl;
             generator.Token(c);
-        } else if (d(c) || l(c)) {
+        }
+        else if (d(c) || l(c))
+        {
             continue;
-        } else if (cadena(c)) {
+        }
+        else if (cadena(c))
+        {
             goto next;
-        } else {
+        }
+        else
+        {
             string s = "";
             s += c;
             errores.genError(errores::CARACTER_NO_DEFINIDO, generator.lineas, s);
@@ -322,8 +397,9 @@ pair<string,string> AnalizadorLexico::getToken() {
     next:
         c = programa.get();
     }
-    if(programa.eof()){
-        return {"$","-"};
+    if (programa.eof())
+    {
+        return {"$", "-"};
     }
     auto top = generator.q.front();
     generator.q.pop();
@@ -332,15 +408,17 @@ pair<string,string> AnalizadorLexico::getToken() {
 
 AnalizadorLexico::AnalizadorLexico(string nombre, string token_file,
                                    ColaTablaSimbolos &queue,
-                                   GestorErrores &errores) {
+                                   GestorErrores &errores)
+{
 
     programa.open(nombre, ios::in);
     generator.init(token_file, queue);
     fuente = nombre;
-    generator.lineas=1;
+    generator.lineas = 1;
     this->errores = errores;
 
-    if (!programa.is_open()) {
+    if (!programa.is_open())
+    {
         cerr << "[+] Error abriendo archivo" << endl;
         return;
     }
