@@ -9,8 +9,9 @@
 1. `git clone https://github.com/SamC4r/Js--Compiler.git`
 2. `rm -r Js--Compiler/build`
 3. `mkdir build && cd build/`
-4. `make`
-5. `./Js--Compiler`
+4. `cmake ..`
+5. `make`
+6. `./Js--Compiler`
 
 
 # ToDo
