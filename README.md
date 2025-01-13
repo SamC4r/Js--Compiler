@@ -13,7 +13,7 @@
 5. `make`
 6. `./Js--Compiler`
 
-El archivo fuente a compilar debe llamarse `ejemplo.jsm`
+El archivo fuente a compilar debe llamarse `ejemplo.jsm` y estar dentro de `build`
 
 # ToDo
 - [x] Comentarios de bloque
