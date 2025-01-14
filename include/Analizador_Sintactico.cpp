@@ -746,11 +746,17 @@ void AnalizadorSintactico::ejecutarRegla(string s)
 
         // debug(funcion, local_tipo,U_tipo,id_pos,global_tipo);
 
-        if (local_tipo == U_tipo || U_tipo == "vacio"){
+        if (local_tipo == U_tipo){
             S_tipo = "tipo_ok";
         }
-        else if (funcion)
+        else if (funcion) //es funcion 
         {
+            
+            if(U_tipo.back() != ' '){//se intenta usar una funcion como una variable
+                string msg="no se puede asignar un valor a una funcion. Error en la linea "+to_string(U_linea);
+                S_tipo=Error(msg);
+            }
+            //es funcion y se usa como funcion
             vector<string> args = split(global_tipo, ' ');
             int p = 0;
             int a = 0;
@@ -795,8 +801,9 @@ void AnalizadorSintactico::ejecutarRegla(string s)
             string msg = "\'" + lexico.generator.queue->top()->getPos(id_pos)->lexema + "\' no es una funcion en la linea " + to_string(U_linea);
             S_tipo = Error(msg);
         }
-        else if (local_tipo != U_tipo) { //no es funcion y los tipos no coinciden 
+        else if (local_tipo != U_tipo) { //los tipos no coinciden 
             string msg = ("la variable no es del tipo " + U_tipo + " en linea " + to_string(S_linea));
+           
             S_tipo = Error(msg);
         }
         aux.top()->atributos->tipo = S_tipo;
