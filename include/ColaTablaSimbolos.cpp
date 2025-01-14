@@ -34,11 +34,11 @@ void ColaTablaSimbolos::print(string nombre) {
     ts_file << "Contenidos de la Tabla " << nombre << " # " << (nombre == "principal"  ? 1:it++) << " :" << endl;
 
     vector<ts_content> ids;
-    cerr << ambito_actual->posiciones.size() << endl;
+    // cerr << ambito_actual->posiciones.size() << endl;
     for (auto row : ambito_actual->posiciones) {
         Entry entry = row.second;
         ids.push_back({row.first, entry});
-        cerr << entry.lexema << endl;
+        // cerr << entry.lexema << endl;
     }
 
     // sort by pos number and output by pos number

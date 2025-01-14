@@ -1,37 +1,86 @@
 Contenidos de la Tabla funcion local # 2 :
 Contenidos de la Tabla funcion local # 3 :
+  * LEXEMA : 'm_s_g'
+    ATRIBUTOS :
+    + Tipo : 'cadena'
+    + Despl : 0
+   --------- ----------
+Contenidos de la Tabla funcion local # 4 :
+  * LEXEMA : 'wea'
+    ATRIBUTOS :
+    + Tipo : 'cadena'
+    + Despl : 0
+   --------- ----------
 Contenidos de la Tabla principal # 1 :
   * LEXEMA : 'texto'
     ATRIBUTOS :
     + Tipo : 'cadena'
     + Despl : 0
    --------- ----------
-  * LEXEMA : 'i'
-    ATRIBUTOS :
-    + Tipo : 'function'
-    + numParam : 0
-    + TipoRetorno : 'vacio'
-    + Etiqueta : 'i'
-   --------- ----------
-  * LEXEMA : 'a'
-    ATRIBUTOS :
-    + Tipo : 'function'
-    + numParam : 0
-    + TipoRetorno : 'vacio'
-    + Etiqueta : 'a'
-   --------- ----------
-  * LEXEMA : 'jji'
+  * LEXEMA : 'aa_aa'
     ATRIBUTOS :
     + Tipo : 'entero'
     + Despl : 64
    --------- ----------
-  * LEXEMA : 'xa'
+  * LEXEMA : 'iiii'
     ATRIBUTOS :
     + Tipo : 'entero'
     + Despl : 65
    --------- ----------
-  * LEXEMA : 'jaja'
+  * LEXEMA : 's64'
+    ATRIBUTOS :
+    + Tipo : 'cadena'
+    + Despl : 66
+   --------- ----------
+  * LEXEMA : 'bo'
+    ATRIBUTOS :
+    + Tipo : 'logico'
+    + Despl : 130
+   --------- ----------
+  * LEXEMA : 'ffff'
+    ATRIBUTOS :
+    + Tipo : 'function'
+    + numParam : 0
+    + TipoRetorno : 'entero'
+    + Etiqueta : 'ffff'
+   --------- ----------
+  * LEXEMA : 'variable'
     ATRIBUTOS :
     + Tipo : 'entero'
-    + Despl : 66
+    + Despl : 131
+   --------- ----------
+  * LEXEMA : 'll'
+    ATRIBUTOS :
+    + Tipo : 'entero'
+    + Despl : 132
+   --------- ----------
+  * LEXEMA : 'put'
+    ATRIBUTOS :
+    + Tipo : 'function'
+    + numParam : 1
+    + TipoParametro1 : 'cadena'
+    + TipoRetorno : 'vacio'
+    + Etiqueta : 'put'
+   --------- ----------
+  * LEXEMA : 'pideTexto'
+    ATRIBUTOS :
+    + Tipo : 'function'
+    + numParam : 0
+    + TipoRetorno : 'vacio'
+    + Etiqueta : 'pideTexto'
+   --------- ----------
+  * LEXEMA : 'wea'
+    ATRIBUTOS :
+    + Tipo : 'entero'
+    + Despl : 133
+   --------- ----------
+  * LEXEMA : 'jiji'
+    ATRIBUTOS :
+    + Tipo : 'entero'
+    + Despl : 134
+   --------- ----------
+  * LEXEMA : 'lol'
+    ATRIBUTOS :
+    + Tipo : 'entero'
+    + Despl : 135
    --------- ----------

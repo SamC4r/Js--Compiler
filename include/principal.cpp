@@ -12,20 +12,23 @@
 using namespace std;
 
 int main() {
-  ios_base::sync_with_stdio(0);
-  cin.tie(NULL);
+    ios_base::sync_with_stdio(0);
+    cin.tie(NULL);
 
-  cout << filesystem::current_path() << endl;
+    cout << filesystem::current_path() << endl;
 
-  string filename = "ejemplo.jsm";
-  string token_file = "tokens.txt";
-  string ts_file = "tabla_simbolos.txt";
+    string filename = "ejemplo.jsm";
+    string token_file = "tokens.txt";
+    string ts_file = "tabla_simbolos.txt";
 
-  ColaTablaSimbolos queue(ts_file);
-  GestorErrores errores;
-  AnalizadorLexico lexico(filename, token_file, queue, errores);
-  AnalizadorSintactico sintactico(lexico, errores);
-  // queue.print();
+    ColaTablaSimbolos queue(ts_file);
+    GestorErrores errores;
+    AnalizadorLexico lexico(filename, token_file, queue, errores);
+    AnalizadorSintactico sintactico(lexico, errores);
+    // queue.print();
 
-  return 0;
+    cout << "[***] Compiled! [***]" << endl;
+
+
+    return 0;
 }

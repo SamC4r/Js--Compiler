@@ -29,7 +29,7 @@ void Generator::gen_token(T1 tipo, T2 atributo)
 
     token_file << "<" << tipo << ", " << atributo << ">" << endl;
     buscando = false;
-    cerr << "lastTokenAttrib: " << lastTokenAttribute << endl;
+    // cerr << "lastTokenAttrib: " << lastTokenAttribute << endl;
     pair<string, string> p = {lastTokenType, lastTokenAttribute};
     q.push(p);
     prev_lineas = lineas;
