@@ -741,16 +741,18 @@ void AnalizadorSintactico::ejecutarRegla(string s)
         int S_linea = aux.top()->linea;
         string local_tipo = buscarTipoTS(id_pos, S_linea);
         bool funcion = esFuncion(id_pos);
+        string global_tipo = buscarTipoTSGlobal(id_pos, S_linea);
         vector<string> params = split(U_tipo, ' ');
-        debug(funcion, local_tipo);
 
-        if (local_tipo == U_tipo || U_tipo == "vacio")
-        {
+        debug(funcion, local_tipo,U_tipo,id_pos,global_tipo);
+
+        S_tipo="tipo_ok";
+
+        if (local_tipo == U_tipo || U_tipo == "vacio"){
             S_tipo = "tipo_ok";
         }
         else if (funcion)
         {
-            string global_tipo = buscarTipoTSGlobal(id_pos, S_linea);
             vector<string> args = split(global_tipo, ' ');
             int p = 0;
             int a = 0;
@@ -814,13 +816,8 @@ void AnalizadorSintactico::ejecutarRegla(string s)
         aux.pop(); //=
         aux.top()->atributos->tipo = U_tipo;
     }
-    else if (s == "{punto_coma}")
-    {
-        aux.pop();
-    }
-    else if (s == "{U->(L)}")
-    {
-        //       aux.pop(); //;
+    else if (s == "{U->(L)}") {
+        aux.pop(); //;
         aux.pop(); //)
         string L_tipo = aux.top()->atributos->tipo;
         aux.pop(); // L

@@ -21,9 +21,6 @@ struct Entry {
     
     Function f;
 
-    /*
-    Mas columnas
-  */
 };
 
 class TablaSimbolos {
@@ -42,3 +39,7 @@ public:
     void add(string id);
 
 };
+
+
+
+
