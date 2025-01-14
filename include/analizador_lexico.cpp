@@ -101,13 +101,10 @@ void Generator::Token(string identificador)
             }
             else
             {
-                if (ts_global->getEntry(identificador) == NULL)
-                {
+                if (ts_global->getEntry(identificador) == NULL) {
                     ts_global->add(identificador);
-                    if (!function)
+                    if(!function)
                         ts_global->global_desp += 1;
-                    else
-                        function = false;
                 }
                 gen_token("id", (int)ts_global->getEntry(identificador)->pos);
                 return;

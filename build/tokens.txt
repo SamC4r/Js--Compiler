@@ -2,95 +2,47 @@
 <palabraReservada, 9>
 <id, 0>
 <puntoComa,>
-<palabraReservada, 10>
-<palabraReservada, 6>
+<palabraReservada, 3>
+<palabraReservada, 11>
 <id, 1>
-<puntoComa,>
-<palabraReservada, 10>
-<palabraReservada, 6>
+<parentesisIzda,>
+<palabraReservada, 11>
+<parentesisDcha,>
+<llavesIzda,>
+<llavesDcha,>
+<palabraReservada, 3>
+<palabraReservada, 11>
 <id, 2>
+<parentesisIzda,>
+<palabraReservada, 11>
+<parentesisDcha,>
+<llavesIzda,>
+<id, 2>
+<parentesisIzda,>
+<parentesisDcha,>
 <puntoComa,>
-<palabraReservada, 10>
-<palabraReservada, 9>
+<id, 2>
+<parentesisIzda,>
+<parentesisDcha,>
+<puntoComa,>
+<id, 2>
+<parentesisIzda,>
+<parentesisDcha,>
+<puntoComa,>
+<llavesDcha,>
+<id, 2>
+<parentesisIzda,>
+<parentesisDcha,>
+<puntoComa,>
 <id, 3>
+<operadorAsignacion,>
+<constanteEntera, 23>
 <puntoComa,>
 <palabraReservada, 10>
-<palabraReservada, 1>
-<id, 4>
-<puntoComa,>
-<palabraReservada, 3>
 <palabraReservada, 6>
-<id, 5>
-<parentesisIzda,>
-<palabraReservada, 11>
-<parentesisDcha,>
-<llavesIzda,>
-<id, 1>
-<operadorAsignacion,>
-<constanteEntera, 11>
-<puntoComa,>
-<id, 1>
-<operadorAsignacion,>
-<id, 2>
-<operadorModulo,>
-<constanteEntera, 33>
-<puntoComa,>
-<palabraReservada, 8>
-<id, 1>
-<puntoComa,>
-<llavesDcha,>
-<id, 6>
-<operadorAsignacion,>
-<constanteEntera, 0>
-<puntoComa,>
-<palabraReservada, 4>
-<parentesisIzda,>
 <id, 4>
-<parentesisDcha,>
-<id, 1>
-<operadorAsignacion,>
-<id, 7>
 <puntoComa,>
-<palabraReservada, 7>
 <id, 5>
-<parentesisIzda,>
-<parentesisDcha,>
-<puntoComa,>
-<palabraReservada, 3>
-<palabraReservada, 11>
-<id, 8>
-<parentesisIzda,>
-<palabraReservada, 9>
-<id, 0>
-<parentesisDcha,>
-<llavesIzda,>
-<palabraReservada, 7>
-<cadena,'Mensaje introducido:'>
-<puntoComa,>
-<palabraReservada, 7>
-<id, 0>
-<puntoComa,>
-<llavesDcha,>
-<palabraReservada, 3>
-<palabraReservada, 11>
-<id, 9>
-<parentesisIzda,>
-<palabraReservada, 11>
-<parentesisDcha,>
-<llavesIzda,>
-<palabraReservada, 7>
-<cadena,'Introduce un texto corto'>
-<puntoComa,>
-<palabraReservada, 5>
-<id, 0>
-<puntoComa,>
-<llavesDcha,>
-<id, 9>
-<parentesisIzda,>
-<parentesisDcha,>
-<puntoComa,>
-<id, 8>
-<parentesisIzda,>
-<id, 0>
-<parentesisDcha,>
+<operadorAsignacion,>
+<constanteEntera, 22>
 <puntoComa,>

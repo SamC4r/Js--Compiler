@@ -791,13 +791,11 @@ void AnalizadorSintactico::ejecutarRegla(string s)
                 S_tipo = Error(msg);
             }
         }
-        else if (U_tipo.back() == ' ' || params.size() > 1)
-        {
+        else if (U_tipo.back() == ' ' || params.size() > 1){//no es funcion pero se intenta llamar a una funcion
             string msg = "\'" + lexico.generator.queue->top()->getPos(id_pos)->lexema + "\' no es una funcion en la linea " + to_string(U_linea);
             S_tipo = Error(msg);
         }
-        else if (local_tipo != U_tipo)
-        {
+        else if (local_tipo != U_tipo) { //no es funcion y los tipos no coinciden 
             string msg = ("la variable no es del tipo " + U_tipo + " en linea " + to_string(S_linea));
             S_tipo = Error(msg);
         }
@@ -973,7 +971,7 @@ void AnalizadorSintactico::ejecutarRegla(string s)
     }
     else if (s == "{no_desp}")
     {
-        lexico.generator.function = true;
+        lexico.generator.function = !lexico.generator.function;
     }
 }
 

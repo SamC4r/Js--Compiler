@@ -350,7 +350,7 @@ class AnalizadorSintactico {
         {{"X", ";"}, "lambda {X->lambda}"},
         {{"X", "!"}, "E {X->E}"},
         {{"X", "--"}, "E {X->E}"},
-        {{"F", "function"}, " function H id {dec_true} {no_desp} {crearTSLocal} ( A {dec_false} ) {InsertarTipoTSGlobal} { C } {F.tipo}"},
+        {{"F", "function"}, " function {no_desp} H id {dec_true} {no_desp} {crearTSLocal} ( A {dec_false} ) {InsertarTipoTSGlobal} { C } {F.tipo}"},
         {{"H", "boolean"}, "T {H->T}"},
         {{"H", "int"}, "T {H->T}"},
         {{"H", "string"}, "T {H->T}"},
