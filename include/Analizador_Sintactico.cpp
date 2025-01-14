@@ -746,8 +746,6 @@ void AnalizadorSintactico::ejecutarRegla(string s)
 
         debug(funcion, local_tipo,U_tipo,id_pos,global_tipo);
 
-        S_tipo="tipo_ok";
-
         if (local_tipo == U_tipo || U_tipo == "vacio"){
             S_tipo = "tipo_ok";
         }
@@ -798,10 +796,8 @@ void AnalizadorSintactico::ejecutarRegla(string s)
             string msg = "\'" + lexico.generator.queue->top()->getPos(id_pos)->lexema + "\' no es una funcion en la linea " + to_string(U_linea);
             S_tipo = Error(msg);
         }
-        else if (U_tipo != params[0] && U_tipo != local_tipo)
+        else if (local_tipo != U_tipo)
         {
-            debug(U_tipo);
-            debug(params);
             string msg = ("la variable no es del tipo " + U_tipo + " en linea " + to_string(S_linea));
             S_tipo = Error(msg);
         }
