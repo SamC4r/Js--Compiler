@@ -384,6 +384,8 @@ pair<string, string> AnalizadorLexico::getToken()
         else if (cadena(c))
         {
             goto next;
+        }else if(c == '/' || comentario){
+            continue;
         }
         else
         {
