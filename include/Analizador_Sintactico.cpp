@@ -439,8 +439,10 @@ void AnalizadorSintactico::ejecutarRegla(string s)
     {
 
         string I_tipo = aux.top()->atributos->tipo;
+        string I_ret = aux.top()->atributos->ret;
         aux.pop();
         string B_tipo = I_tipo;
+        string B_ret = I_ret;
         aux.pop(); // quita )
         string E_tipo = aux.top()->atributos->tipo;
         int E_linea = aux.top()->linea;
@@ -457,6 +459,7 @@ void AnalizadorSintactico::ejecutarRegla(string s)
         aux.pop(); // quita if
 
         aux.top()->atributos->tipo = B_tipo;
+        aux.top()->atributos->ret = B_ret;
     }
     else if (s == "{dec_true}")
     {
@@ -888,7 +891,7 @@ void AnalizadorSintactico::ejecutarRegla(string s)
     }
     else if (s == "{F.tipo}")
     {
-        // aux.pop();
+        aux.pop();
         string C_tipo = aux.top()->atributos->tipo;
         string C_ret = aux.top()->atributos->ret;
         // debug(aux.top()->symbol);
@@ -897,12 +900,13 @@ void AnalizadorSintactico::ejecutarRegla(string s)
         aux.pop();
         // debug(aux.top()->symbol);
         string F_devuelto = aux.top()->atributos->ret;
+        int F_linea = aux.top()->linea;
         // debug(F_devuelto);
         string F_tipo = C_tipo;
         // debug(C_ret);
         if (F_devuelto != C_ret && C_ret != "")
         {
-            string msg = ("el tipo de retorno de la funcion no es del mismo tipo que la declaracion de la funcion \t Error en la linea " + to_string(lexico.generator.prev_lineas));
+            string msg = ("el tipo de retorno de la funcion no es del mismo tipo que la declaracion de la funcion \t Error en la linea " + to_string(F_linea));
             F_tipo = Error(msg);
         }
         aux.top()->atributos->tipo = F_tipo;
