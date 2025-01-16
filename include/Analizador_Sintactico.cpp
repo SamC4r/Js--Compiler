@@ -304,6 +304,10 @@ void AnalizadorSintactico::ejecutarRegla(string s)
                 M_tipo = Error(msg);
             }
         }
+        else if(funcion){
+            string msg = "Se ha intentado llamar a una funcion sin parentesis en la linea " + to_string(M_linea);
+            M_tipo = Error(msg);
+        }
         aux.top()->atributos->tipo = M_tipo;
         // debug(aux.top()->atributos->tipo);
     }
